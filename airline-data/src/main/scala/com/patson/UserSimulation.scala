@@ -6,7 +6,7 @@ import com.patson.model._
 import com.typesafe.config.ConfigFactory
 
 object UserSimulation {
-  val LARGE_AIRLINE_PURGE_USER_THRESHOLD = 90 //in days
+  val LARGE_AIRLINE_PURGE_USER_THRESHOLD = 45 //in days
   val SMALL_AIRLINE_PURGE_USER_THRESHOLD = 30 //in days
   val configFactory = ConfigFactory.load()
   val devMode = if (configFactory.hasPath("dev")) configFactory.getBoolean("dev") else false

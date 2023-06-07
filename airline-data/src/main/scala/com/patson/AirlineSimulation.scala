@@ -20,8 +20,7 @@ object AirlineSimulation {
   val MAX_SERVICE_QUALITY_INCREMENT : Double = 0.5
   val MAX_SERVICE_QUALITY_DECREMENT : Double = 10
   val MAX_REPUTATION_DELTA = 1
-  val BANKRUPTCY_CASH_THRESHOLD = -10000000 //-10M
-  val MAX_AIRPORT_CHAMPION_BOOST_ENTRIES = 120 //per airline, how many airport champ entries can it add up for reputation boost
+  val BANKRUPTCY_CASH_THRESHOLD = -100000000 //-10M
 
   def airlineSimulation(cycle: Int, flightLinkResult : List[LinkConsumptionDetails], loungeResult : scala.collection.immutable.Map[Lounge, LoungeConsumptionDetails], airplanes : List[Airplane]) = {
     //compute profit
