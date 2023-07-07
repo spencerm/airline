@@ -45,7 +45,6 @@ jobs:
           username: ${{ secrets.sandbox_user }}
           key: ${{ secrets.sandbox_key }}
           port: ${{ secrets.sandbox_port }}
-          script_stop: true
           source: "."
           strip_components: 2
           target: "/var/www/test.myfly.club/airline/"
@@ -56,7 +55,6 @@ jobs:
           username: ${{ secrets.sandbox_user }}
           key: ${{ secrets.sandbox_key }}
           port: ${{ secrets.sandbox_port }}
-          script_stop: true
           script: |
             cd /var/www/test.myfly.club/airline/airline-data/
             ./activator publishLocal
