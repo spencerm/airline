@@ -57,7 +57,6 @@ jobs:
           key: ${{ secrets.sandbox_key }}
           port: ${{ secrets.sandbox_port }}
           script: |
-            sudo -i
             cd /var/www/sandbox.myfly.club/airline/airline-data/
             ./activator publishLocal
       # killall -9 java
