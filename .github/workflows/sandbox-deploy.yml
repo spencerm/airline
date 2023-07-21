@@ -38,16 +38,17 @@ jobs:
       #     asset_path: ./cwt-spring/target/cwt-spring-SNAPSHOT.jar
       #     asset_name: cwt-spring.jar
       #     asset_content_type: application/java-archive
-      - name: SCP to Contabo
+      - name: SCP to Oracle
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.sandbox_host }}
           username: ${{ secrets.sandbox_user }}
           key: ${{ secrets.sandbox_key }}
           port: ${{ secrets.sandbox_port }}
+          script_stop: true
           source: "."
           strip_components: 2
-          target: "/var/www/test.myfly.club/airline/"
+          target: "/var/www/sandbox.myfly.club/airline/"
       - name: Build java, restart server
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -56,7 +57,8 @@ jobs:
           key: ${{ secrets.sandbox_key }}
           port: ${{ secrets.sandbox_port }}
           script: |
-            cd /var/www/test.myfly.club/airline/airline-data/
+            sudo -i
+            cd /var/www/sandbox.myfly.club/airline/airline-data/
             ./activator publishLocal
       # killall -9 java
 
