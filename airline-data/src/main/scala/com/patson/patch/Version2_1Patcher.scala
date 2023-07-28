@@ -22,9 +22,9 @@ object Version2_1Patcher extends App {
 
   def mainFlow() {
     patchSchema()
-    AirportGeoPatcher.mainFlow()
-    patchAssetBlueprints()
-    AirplaneModelPatcher.mainFlow()
+    // AirportGeoPatcher.mainFlow()
+    // patchAssetBlueprints()
+    // AirplaneModelPatcher.mainFlow()
 
     Await.result(actorSystem.terminate(), Duration.Inf)
   }
@@ -45,8 +45,9 @@ object Version2_1Patcher extends App {
     dataSource.setJdbcUrl(DATABASE_CONNECTION)
     dataSource.setMaxPoolSize(100)
     val connection = dataSource.getConnection
-    Meta.createAirportAsset(connection)
-    Meta.createAllianceMission(connection)
+    // Meta.createAirportAsset(connection)
+    // Meta.createAllianceMission(connection)
+    Meta.createAirlineStrategy(connection)
 
     connection.close
   }

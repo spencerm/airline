@@ -198,32 +198,6 @@ object Computation {
     
     (baseCost * airportSizeMultiplier * distanceMultiplier * internationalMultiplier).toInt 
   }
-  
-//  def computeReputationBoost(country : Country, ranking : Int) : Double = {
-//    //US gives boost of (rank : boost)
-//    // 1st : 30
-//    // 2nd : 24
-//    // 3rd : 19
-//    // 4th : 16
-//    // 5th : 13
-//    // 6th : 10
-//    // 7th : 8
-//    // 8th : 6
-//    // 9th : 4
-//    // 10th : 2
-//
-//    val ratioToModelPower = country.airportPopulation * country.income.toDouble / MODEL_COUNTRY_POWER
-//
-//    val boost = math.log10(ratioToModelPower * 100) / 2 * reputationBoostTop10(ranking)
-//
-//    if (boost < 1 && ranking <= 3) {
-//      1
-//    } else if (boost < 0.5) {
-//      0.5
-//    } else {
-//      BigDecimal(boost).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble
-//    }
-//  }
 
   val REDUCED_COMPENSATION_SERVICE_LEVEL_THRESHOLD = 40 //airline with service level below this will pay less compensation
   
@@ -247,30 +221,6 @@ object Computation {
       0
     }
   }
-
-//  val MAX_FREQUENCY_ABSOLUTE_BASE = 30
-//  def getMaxFrequencyThreshold(airline : Airline) : Int = {
-//    MAX_FREQUENCY_ABSOLUTE_BASE
-//  }
-
-//  def getMaxFrequencyThreshold(airline : Airline) : Int = {
-//     AllianceSource.loadAllianceMemberByAirline(airline) match {
-//       case Some(allianceMember) => {
-//         if (allianceMember.role != AllianceRole.APPLICANT) {
-//           AllianceRankingUtil.getRanking(allianceMember.allianceId) match {
-//             case Some((ranking, _)) => {
-//               val maxFrequencyBonus = Alliance.getMaxFrequencyBonus(ranking)
-//               MAX_FREQUENCY_ABSOLUTE_BASE + maxFrequencyBonus
-//             }
-//             case None => MAX_FREQUENCY_ABSOLUTE_BASE
-//           }
-//         } else {
-//           MAX_FREQUENCY_ABSOLUTE_BASE
-//         }
-//       }
-//       case None => MAX_FREQUENCY_ABSOLUTE_BASE
-//     }
-//  }
   
   def getResetAmount(airlineId : Int) : ResetAmountInfo = {
     val currentCycle = CycleSource.loadCycle()
