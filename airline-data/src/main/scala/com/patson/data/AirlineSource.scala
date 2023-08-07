@@ -146,6 +146,16 @@ object AirlineSource {
             infoStatement.setString(7, airline.getCountryCode().getOrElse(null))
             infoStatement.setString(8, airline.getAirlineCode())
             infoStatement.executeUpdate()
+
+            //insert airline strategy
+            val stratStatement = connection.prepareStatement("INSERT INTO " + AIRLINE_OPERATIONS_STRATEGY + "(airline, economy, business, first, vacation_packages, flexible_ticketing) VALUES(?,?,?,?,?,?)")
+            stratStatement.setInt(1, airline.id)
+            stratStatement.setBoolean(2, true)
+            stratStatement.setBoolean(3, false)
+            stratStatement.setBoolean(4, false)
+            stratStatement.setBoolean(5, false)
+            stratStatement.setBoolean(6, false)
+            stratStatement.executeUpdate()
           } 
       }
       

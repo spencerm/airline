@@ -1,5 +1,6 @@
 html {
   --text-color: #606060;
+  --primary-color: #1a5bc3;
   --text-shadow: 0px 0px 1px rgba(0,0,0,0.2);
   --background-gradient-image: linear-gradient(to bottom, #EEEEEE, #EEEEEE 90%, #D0D0D0);
   --section-background-image: var(--background-gradient-image);
@@ -125,6 +126,12 @@ body {
 a {
     font-size: 13px;
     color: var(--text-color);
+}
+
+i {
+    font-size: 90%;
+    font-style: italic;
+    opacity: .9;
 }
 
 ::placeholder {
@@ -581,7 +588,8 @@ div.section, div.selectedSection, .modal-content {
 	border-radius: 5px 5px 5px 5px;
 	box-shadow: inset 0 0 2px white, 0 0 3px rgba(0, 0, 0, 0.5);
     border-radius: 0.5em 0.5em 0.5em 0.5em;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px 10px 20px 10px;
     box-sizing:border-box;
 }
@@ -1142,3 +1150,155 @@ iframe.clip {
     box-shadow: inset 0 0 2px white, 0 0 4px rgba(0, 0, 0, 0.6);
 }
 
+
+/**
+ * 2023 extending bootstrap utilities
+ */
+.columns-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+@media (min-width: 768px) {
+    .w-md-40 {
+        width: 40%;
+    }
+    .w-md-50 {
+        width: 50%;
+    }
+    .w-md-100 {
+        width: 100%;
+    }
+    .md\:columns-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+    .md\:columns-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+    .md\:columns-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+}
+
+/**
+ * 2023 input styles
+ * based on: https://codepen.io/stickybiscuits/pen/qBrMKVO
+ */
+ @keyframes eh {
+    0% {transform: scale(0%)};
+    100% {transform: scale(100%)};
+}
+
+.feather-check { color: var(--text-color); width: 30px; height: 30px; }
+.checked-icon { display: block; opacity: 0;}
+.rad-icon { opacity: 0; background-color: transparent; border: 2px solid white; height: 20px; width: 20px; border-radius: 50%; margin: 5px auto; display: block; }
+
+.checkbox .label, .radio .label { position: absolute; left: 50px; top: 4px; vertical-align: middle; }
+
+.checkbox, .radio, .toggle {
+    margin-bottom: .5rem;
+    & h5 { line-height: 1; }
+    & input { height: 100%; width: 100%; opacity: 0; position: absolute; z-index: 100; cursor: pointer; vertical-align: middle; }
+}
+
+.input-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.checkbox, .radio {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: block;
+}
+
+.check, .rad {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #e3eefa;
+}
+.check { border-radius: 3px; transition: all 0.4s; }
+.rad {border-radius: 50%; transition: all 0.4s; }
+
+.checkbox.on .check, .radio.on .rad { background-color: var(--primary-color); }
+.checkbox.on .checked-icon, .radio.on .rad-icon {
+    opacity: 1; 
+    text-align: center;
+    animation-name: eh;
+    animation-duration: 0.3s;
+}
+
+.checkbox .checked-icon, .radio .rad-icon { transition: opacity 0.3s ease-out; }
+
+.toggle {
+    position: relative;
+    height: 55px;
+    display: block;
+
+    .slider {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: 0.4s;
+        border-radius: 34px;
+        height: 34px;
+        width: 60px;
+        background-color: var(--button-background);
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    & i, & b {
+        display: inline-block;
+        line-height: 1.1;
+    }
+
+    .label {position: absolute;left: 70px;top: 0px;vertical-align: middle;}
+
+    &.on .slider { background-color: var(--primary-color); }
+    &.on .slider:before { transform: translateX(26px); box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2); }
+
+    &.disabled .slider { background-color: var(--button-background); }
+    &.disabled .slider:before { box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.05); }
+    &.disabled .label { color: #bababa; }
+    &.disabled input { pointer-events: none; }
+
+}
+
+
+
+/* -- DISABLED -- */
+
+.checkbox.disabled .check, .radio.disabled .rad { background-color: var(--button-background); }
+
+.disabled .label { color: #bababa; }
+.disabled input { pointer-events: none; }
+
+/* -- FOCUS -- */
+
+.toggle.focus .slider, .checkbox.focus .check, .radio.focus .rad { box-shadow: 0px 0px 0px 2px #bababa; transition: all 0.4s; }
+.focus .label { text-shadow: 0px 0px 3px ; transition: all 0.4s; }

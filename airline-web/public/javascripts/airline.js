@@ -18,6 +18,10 @@ $( document ).ready(function() {
     })
 })
 
+function getCurrentAirline() {
+	return activeAirline;
+}
+
 function updateAirlineInfo(airlineId) {
 	$.ajax({
 		type: 'GET',

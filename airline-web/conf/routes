@@ -33,6 +33,7 @@ GET	 	 /airports/:airportId/champions	      controllers.Application.getAirportCh
 GET		 /airports/base/scale-details			  controllers.Application.getScaleDetails()
 GET      /airports/:airportId/generic-transits     controllers.GenericTransitApplication.getGenericTransits(airportId: Int)
 
+
 GET		 /cities/:cityId/airportShares	  controllers.Application.getAirportSharesOnCity(cityId: Int)
 
 GET		 /airlines						  controllers.AirlineApplication.getAllAirlines(loginStatus : Boolean ?= false, hideInactive : Boolean ?= false)
@@ -152,6 +153,8 @@ GET	 	 /airlines/:airlineId/select-alliance-mission/:missionId	      controllers
 GET      /airlines/:airlineId/mission-stats/:missionId      controllers.AllianceMissionApplication.getAllianceMissionStats(airlineId : Int, missionId : Int)
 GET	 	 /airlines/:airlineId/select-alliance-mission-reward/:missionId/:rewardId	      controllers.AllianceMissionApplication.selectAllianceMissionReward(airlineId : Int, missionId : Int, rewardId : Int)
 GET      /airlines/:airlineId/former-names  controllers.AirlineApplication.getAirlineFormerNames(airlineId : Int)
+GET      /airlines/:airlineId/strategy	      controllers.AirlineStrategyApplication.getAirlineStrategy(airlineId : Int)
+PUT     /airlines/:airlineId/strategy	      controllers.AirlineStrategyApplication.postAirlineStrategy(airlineId : Int)
 
 GET	 	 /airport-asset/:assetId	      controllers.AirportAssetApplication.getAirportAssetDetailsWithoutAirline(assetId : Int)
 

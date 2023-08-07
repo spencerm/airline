@@ -86,6 +86,10 @@ object Meta {
     statement.execute()
     statement.close()
 
+    statement = connection.prepareStatement("DROP TABLE IF EXISTS " + AIRLINE_OPERATIONS_STRATEGY)
+    statement.execute()
+    statement.close()
+
     statement = connection.prepareStatement("DROP TABLE IF EXISTS " + AIRLINE_APPEAL_TABLE)
     statement.execute()
     statement.close()
@@ -216,6 +220,18 @@ object Meta {
       "FOREIGN KEY(airline) REFERENCES " + AIRLINE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE" +
       ")")
 
+    statement.execute()
+    statement.close()
+
+    statement = connection.prepareStatement("CREATE TABLE " + AIRLINE_OPERATIONS_STRATEGY + "(" +
+      "airline INTEGER PRIMARY KEY, " +
+      "economy TINYINT(1), " +
+      "business TINYINT(1), " +
+      "first TINYINT(1), " +
+      "vacation_packages TINYINT(1), " +
+      "flexible_ticketing TINYINT(1), " +
+      "FOREIGN KEY(airline) REFERENCES " + AIRLINE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE" +
+      ")")
     statement.execute()
     statement.close()
 
@@ -1580,6 +1596,9 @@ object Meta {
     var statement = connection.prepareStatement("DROP TABLE IF EXISTS " + COUNTRY_DELEGATE_TASK_TABLE)
     statement.execute()
     statement.close()
+    connection.prepareStatement("DROP TABLE IF EXISTS " + STRATEGY_DELEGATE_TASK_TABLE)
+    statement.execute()
+    statement.close()
     statement = connection.prepareStatement("DROP TABLE IF EXISTS " + LINK_NEGOTIATION_TASK_TABLE)
     statement.execute()
     statement.close()
@@ -1598,7 +1617,6 @@ object Meta {
 
     statement.execute()
     statement.close()
-
 
 
     statement = connection.prepareStatement("CREATE TABLE " + COUNTRY_DELEGATE_TASK_TABLE + "(" +
@@ -2264,6 +2282,23 @@ object Meta {
       "PRIMARY KEY (alliance, cycle, property)," +
       "FOREIGN KEY(alliance) REFERENCES " + ALLIANCE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE" +
       ")")
+    statement.execute()
+    statement.close()
+  }
+
+  def createAirlineStrategy(connection : Connection): Unit = {
+
+    var statement = connection.prepareStatement("DROP TABLE IF EXISTS " + AIRLINE_OPERATIONS_STRATEGY)
+    statement.execute()
+    statement.close()
+
+    statement = connection.prepareStatement("CREATE TABLE " + AIRLINE_OPERATIONS_STRATEGY + "(" +
+      "airline INTEGER PRIMARY KEY REFERENCES " + AIRLINE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE," +
+      "economy TINYINT(1), " +
+      "business TINYINT(1), " +
+      "first TINYINT(1), " +
+      "vacation_packages TINYINT(1), " +
+      "flexible_ticketing TINYINT(1))")
     statement.execute()
     statement.close()
   }

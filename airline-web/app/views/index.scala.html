@@ -15,23 +15,25 @@
       html, body { height: 100%; margin: 0; padding: 0; }
     </style>
     <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("css-templates/treviso/css/style.css")'>
+	<!-- bootstrap utilities v5.3 -->
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/bootstrap-utilities.min.css")'>
     <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/main.css")'>
     <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/departures.css")'>
-    <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/tooltip.css")'>
-      <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/country.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/tooltip.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/country.css")'>
 	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/chat.css")'>
-      <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/search.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/campaign.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/profile.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/switch.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/select.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/about.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/prompt.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/search.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/campaign.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/profile.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/switch.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/select.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/about.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/prompt.css")'>
 	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/jemoji/jemoji.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/emojify/emojify.min.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/splitting/splitting.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/splitting/splitting-cells.css")'>
-	  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/mobile.css")'> <!-- this has to be last so it overrides the CSS if mobile-->
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/emojify/emojify.min.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/splitting/splitting.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("javascripts/splitting/splitting-cells.css")'>
+	<link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/mobile.css")'> <!-- this has to be last so it overrides the CSS if mobile-->
 
 
     
@@ -43,7 +45,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 			  crossorigin="anonymous"></script>
-<!--    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
     <script src='@routes.Assets.versioned("javascripts/libs/jquery.cookie.js")'></script>
 
     <script src='@routes.Assets.versioned("javascripts/libs/reconnecting-websocket.min.js")'></script>
@@ -74,6 +75,7 @@
 	<script src='@routes.Assets.versioned("javascripts/delegate.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/country.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/office.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/2023.js")'></script>
 	<script src='@routes.Assets.versioned("javascripts/tiles.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/ranking.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/bank.js")'></script>
@@ -142,12 +144,12 @@
   	<input type="hidden" id="floatMessage" value="@message"/>
   	<div id="floatMessageBox" style="height: 30px; width: 300px; display: none;"></div>
 	<div id="linkHistoryControlPanel" class="section mapControlPanel" style="display: none; width: 500px; max-width: 95vw;">
-		<div style="float: left; width : 50%">
+		<div style="float: left; width: 50%">
 			<h4>Top Transit PAX</h4>
-			<div style="width : 90%" class="transitAirlineList table data">
+			<div style="width: 90%" class="transitAirlineList table data">
 			</div>
 		</div>
-		<div style="float: left; width : 50%">
+		<div style="float: left; width: 50%">
 			<div>
 				<input class="showAlliance" type="checkbox" checked="checked" onclick="showLinkHistory()">Alliance
 				<input class="showOther" type="checkbox" checked="checked" onclick="showLinkHistory()">Other
@@ -158,7 +160,7 @@
 				<input class="showBusiness" type="checkbox" checked="checked" onclick="loadLinkHistory(selectedLink)">Business
 				<input class="showFirst" type="checkbox" checked="checked" onclick="loadLinkHistory(selectedLink)">First
 			</div>
-			<div style="width : 100%" class="routeList">
+			<div style="width: 100%" class="routeList">
 			</div>
 			<div style="display: flex; align-items: center;">
 				<img class="clickable prev" title="View passenger map of previous week" src='@routes.Assets.versioned("images/icons/arrow-180.png")'/>
@@ -309,7 +311,7 @@
 <!--				</span>-->
 <!--				</div>-->
 				<div style="width:100%; position: relative; padding-bottom: min(540px, 56.25%);">
-<!--					<iframe id="landingVideo" style="max-width : 95%;" src="https://player.vimeo.com/video/517246577?autoplay=1&muted=1&quality=720p" width="960" height="540" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen> </iframe>-->
+<!--					<iframe id="landingVideo" style="max-width: 95%;" src="https://player.vimeo.com/video/517246577?autoplay=1&muted=1&quality=720p" width="960" height="540" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen> </iframe>-->
 					<iframe id="landingVideo" style="width:100%;height:100%;position:absolute;left:50%;top:0px; max-width:960px; max-height:540px; transform:translateX(-50%);"
 							frameborder="0" width="100%" height="100%"  src="https://player.vimeo.com/video/517246577?autoplay=1&muted=1&quality=720p" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen> </iframe>
 				</div>
@@ -799,7 +801,7 @@
                                                 </div>
                                             </h5>
 										</div>
-                                        <!-- 					    			<div class="value"><select id="planLinkAirplaneSelect" multiple="multiple" onchange="updateFrequencyBar($('#planLinkModelSelect').val())"></select></div> -->
+                                        <!--     			<div class="value"><select id="planLinkAirplaneSelect" multiple="multiple" onchange="updateFrequencyBar($('#planLinkModelSelect').val())"></select></div> -->
                                         <div class="value">
                                             <div class="noAirplaneHelp" style="display: none">
 												<div class="tooltip">
@@ -951,7 +953,7 @@
 							<div id="airplaneModelDetails" style="width: 100%; display: none;">
 								<div class="table">
 									<h4>Airplane Model Details</h4>
-				<!-- 					Model : <select id="airplaneModelOption" onchange="updateModelInfo()"></select><br/> -->
+				<!-- Model : <select id="airplaneModelOption" onchange="updateModelInfo()"></select><br/> -->
 									<div class="table-row">
 										<div class="label"><h5>Model:</h5></div>
 										<div class="value" id="modelName"></div>
@@ -1018,7 +1020,7 @@
 	<!--   			end world map canvas -->
 				<div id="linksCanvas"  class="canvas" style="display: none; height: 100%; min-width: 400px;">
 					<div style="float: left;" class="mainPanel">
-						<div class="section" style="height: 95% ; width : 98%; float: left;">
+						<div class="section" style="height: 95% ; width: 98%; float: left;">
 							<div style="height: 20px; padding-left: 30px;">
 								<img src='@routes.Assets.versioned("images/icons/clock-frame.png")' class="button" title="Sort by last updated" onclick="toggleLinksTableSortOrder($('#hiddenLinkSortBy'))" style="vertical-align: text-bottom">
 							</div>
@@ -1082,7 +1084,7 @@
 					<!-- left panel -->
 					<div style="float:left; max-width: 100%" class="verticalGroup airportCanvasLeftGroup">
 						<div style="width: 100%; display: flex; flex-flow: row; flex-wrap: wrap; gap: 10px; margin-top : 5px;">
-							<div style="flex-basis : 28%; flex-grow: 1; box-sizing:border-box;">
+							<div style="flex-basis : 50%; flex-grow: 1; box-sizing:border-box;">
 								<div class="section" style="box-sizing:border-box; size: 100%; margin-left: 0; margin-right: 0; margin-top: 0;">
 									<h4>Airport Rating</h4>
 									<div class="table" style="width: 100%">
@@ -1184,8 +1186,7 @@
 
 			<!--     					<div class="button" onclick="showWorldMap()">Cancel</div> -->
 								</div>
-							</div>
-							<div class="section loyalistDetails" style="flex-basis : 15%; flex-grow: 1; box-sizing:border-box; margin: 0px; ">
+								<div class="section loyalistDetails" style="flex-basis : 15%; flex-grow: 1; box-sizing:border-box; margin: 0px; ">
 								<h4>
 									Loyalist Trend
 									<span class="tooltip">
@@ -1209,6 +1210,7 @@
 										</div>
 									</div>
 								</div>
+							</div>
 							</div>
 							<div class="section" style="box-sizing:border-box; flex-grow: 1; flex-basis: 50%; margin-right:0px; min-width: 300px; margin:0px;">
 								<h4>
@@ -1419,7 +1421,7 @@
 				</div>
 	<!--   			end airport canvas -->
 				<div id="departuresCanvas" class="canvas" style="display: none; height: 100%">
-					<div style="height: 610px ; width : 1200px; float: left;" class="section">
+					<div style="height: 610px ; width: 1200px; float: left;" class="section">
 						<div class="title" style="float: left;">Departures</div>
 						<div id="weather" style="float: right;">
 							<div style="float: right;">
@@ -1465,7 +1467,7 @@
 				<!--  end departures canvas -->
 				<div id="countryCanvas" class="canvas" style="height: 100%; display: none;">
 					<div class="mainPanel" style="float: left;">
-						<div style="height: 95% ; width : 95%; float: left;" class="section">
+						<div style="height: 95% ; width: 95%; float: left;" class="section">
 							<div style="width: 100%; height: 100%; overflow: auto;">
 								<div id="countryTableHeader" class="table data" style="width: 100%; height: 20px; min-width: 400px;">
 									<div class="table-header">
@@ -1537,21 +1539,21 @@
 								<div class="table-row">
 									<div class="label"><h5>National Airline:</h5></div>
 									<div class="value" style="padding-bottom : 10px;">
-										<div class="table data nationalAirlines" style="width : 100%">
+										<div class="table data nationalAirlines" style="width: 100%">
 										</div>
 									</div>
 								</div>
 								<div class="table-row">
 									<div class="label"><h5>Partnered Airline:</h5></div>
 									<div class="value" style="padding-bottom : 10px;">
-										<div class="table data partneredAirlines" style="width : 100%">
+										<div class="table data partneredAirlines" style="width: 100%">
 										</div>
 									</div>
 								</div>
 								<div class="table-row">
 									<div class="label"><h5>Top Airline:</h5></div>
 									<div class="value" style="padding-bottom : 10px;">
-										<div class="table data countryDetailsChampion" style="width : 100%">
+										<div class="table data countryDetailsChampion" style="width: 100%">
 										</div>
 									</div>
 								</div>
@@ -1563,7 +1565,7 @@
 	<!--   			end country canvas -->
 				<div id="airplaneCanvas"  class="canvas" style="height: 100%; display: none; min-width: 600px;">
 					<div style="float: left;" class="mainPanel airplaneCanvasLeftGroup">
-						<div style="height: 95% ; width : 98%; float: left;"  class="section">
+						<div style="height: 95% ; width: 98%; float: left;"  class="section">
 							<div class="table" style="width: 30%; margin-bottom: 10px;">
 								<div class="table-header">
 									<div class="cell detailsSelection clickable selected" data-type="market" onclick="selectAirplaneTab($(this))" style="border-radius: 5px 0 0 5px">Market</div>
@@ -1625,25 +1627,25 @@
 										</div>
 										<h4 style="margin-top:10px;">Preferred Suppliers</h4>
 										<div class="preferredSuppliers" style="width: 100%; display: flex; flex-wrap: wrap;">
-											<div style='min-width : 200px; flex: 1; position: relative;' class='section LIGHT'>
+											<div style='min-width: 200px; flex: 1; position: relative;' class='section LIGHT'>
 												<h4>Light Airplane Suppliers</h4>
 												<div class="remarks"><span class="capacityRange"></span>&nbsp;PAX</div>
 												<div class="supplierList"></div>
 												<div style="margin-top: 10px; font-weight:bold; ">Discount:&nbsp;<span class="discount"></span></div>
 											</div>
-											<div style='min-width : 200px; flex: 1; position: relative;' class='section REGIONAL'>
+											<div style='min-width: 200px; flex: 1; position: relative;' class='section REGIONAL'>
 												<h4>Regional Airplane Suppliers</h4>
 												<div class="remarks"><span class="capacityRange"></span>&nbsp;PAX</div>
 												<div class="supplierList"></div>
 												<div style="margin-top: 10px; font-weight:bold; ">Discount:&nbsp;<span class="discount"></span></div>
 											</div>
-											<div style='min-width : 200px; flex: 1; position: relative;' class='section MEDIUM'>
+											<div style='min-width: 200px; flex: 1; position: relative;' class='section MEDIUM'>
 												<h4>Medium Airplane Suppliers</h4>
 												<div class="remarks"><span class="capacityRange"></span>&nbsp;PAX</div>
 												<div class="supplierList"></div>
 												<div style="margin-top: 10px; font-weight:bold; ">Discount:&nbsp;<span class="discount"></span></div>
 											</div>
-											<div style='min-width : 200px; flex: 1; position: relative;' class='section LARGE'>
+											<div style='min-width: 200px; flex: 1; position: relative;' class='section LARGE'>
 												<h4>Large Airplane Suppliers</h4>
 												<div class="remarks"><span class="capacityRange"></span>&nbsp;PAX</div>
 												<div class="supplierList"></div>
@@ -1653,10 +1655,6 @@
 									</div>
 									<input type="checkbox" onclick="toggleUtilizationRate($('#airplaneCanvas .hangar .sectionContainer'), $(this))" class="toggleUtilizationRateBox"><img src='@routes.Assets.versioned("images/icons/clock-select-remain.png")' title="Toggle Utilization Rate"/>
 									<input type="checkbox" onclick="toggleCondition($('#airplaneCanvas .hangar .sectionContainer'), $(this))" class="toggleConditionBox"><img src='@routes.Assets.versioned("images/icons/gear.png")' title="Toggle Airplane Condition"/>
-<!--									<select class="select-css hangarType" onchange="selectHangarType($(this).val())">-->
-<!--										<option value="byModel" selected="selected">By Model</option>-->
-<!--										<option value="byBase">By Base</option>-->
-<!--									</select>-->
 									<div class="sectionContainer" style="display: flex; flex-wrap: wrap;">
 									</div>
 								</div>
@@ -1673,7 +1671,7 @@
 								</div>
 
 								<div class="table" style="width: 100%;">
-	<!-- 								<h4>Airplane Model Details</h4> -->
+	<!-- 			<h4>Airplane Model Details</h4> -->
 									<div class="table-row">
 										<div class="label"><h5>Model:</h5></div>
 										<div class="value"><span class="modelName"></span><img class="favorite clickable-no-highlight" onclick="promptSetFavorite()"></div>
@@ -1737,7 +1735,7 @@
 								<div class="button" onclick="showAirplaneModelConfigurations($('#airplaneCanvas .selectedModel').val())">Config</div>
 								<div class="button" onclick="showAllAirplaneInventory($('#airplaneCanvas .selectedModel').val())">Inventory</div>
 							</div>
-							<div class="section" style="width : 95%; float: left; overflow: auto;">
+							<div class="section" style="width: 95%; float: left; overflow: auto;">
 								<h4>Used Airplane Market</h4>
 								<div class="table data" style="height: 20px; width: 100%">
 									<div class="table-header" id="usedAirplaneSortHeader">
@@ -1760,7 +1758,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="section stats" style="width : 95%; float: left; overflow: auto;">
+							<div class="section stats" style="width: 95%; float: left; overflow: auto;">
 								<h4>Top Operators</h4>
 								<div style="height: 150px; width: 100%; overflow: auto;">
 									<div class="table data topOperators" style="max-height: 100%; width: 100%">
@@ -1773,10 +1771,6 @@
 								</div>
 							</div>
 						</div>
-<!--						<div class="section" style="width : 95%; float: left; overflow: auto;">-->
-<!--							<h4>Inventory</h4>-->
-<!--							<div id="airplaneInventoryList"></div>-->
-<!--						</div>-->
 					</div>
 	<!-- 			    end right panel -->
 				</div>
@@ -1930,19 +1924,16 @@
 							<div style="clear: both;"></div>
 						</div>
 
-						<div style="width : 100%;" class="section">
-<!--							<div style="float: left;" class="clickable selected selection" onclick="selectSheet($(this), $('#incomeSheet'))"><h4>Income Sheet</h4></div>-->
-<!--							<div style="float: left;"><h4>&nbsp;|&nbsp;</h4></div>-->
-<!--							<div style="float: left;" class="clickable selection" onclick="selectSheet($(this), $('#cashFlowSheet'))"><h4>Cash Flow Sheet</h4></div>-->
-<!--							<div style="clear: both;"></div>-->
-                            <div class="controllers" style="width: 95%; margin-bottom: 5px;">
-                                <div class="table" style="width: 30%; float: left;">
+						<div style="width: 100%;" class="section">
+                            <div class="controllers" style="width: 95%; margin-bottom: 5px; display: flex;">
+                                <div class="table" style="width: 60%">
                                     <div class="table-header sheetOptions">
-                                        <div class="cell clickable selected" data-type="income" onclick="selectSheet($(this), $('#incomeSheet'))">Income Sheet</div>
+										<div class="cell clickable selected" data-type="operationsStrategy" onclick="selectSheet($(this), $('#operationsStrategy')); loadAirlineStrategy();">Operations Strategy</div>
+                                        <div class="cell clickable" data-type="income" onclick="selectSheet($(this), $('#incomeSheet'))">Income Sheet</div>
                                         <div class="cell clickable" data-type="cashFlow" onclick="selectSheet($(this), $('#cashFlowSheet'))">Cash Flow Sheet</div>
                                     </div>
                                 </div>
-                                <div style="display: flex; align-items: center; float: right;">
+                                <div style="display: flex; align-items: center; margin-left: auto;">
                                     <img src='@routes.Assets.versioned("images/icons/arrow-180.png")' class="button" onclick="officeHistoryStep(-1)"/>
                                     &nbsp;
                                     <select class="select-css period" onchange="changeOfficePeriod($(this).val())">
@@ -1957,9 +1948,86 @@
                                 <div style="clear: both;"></div>
                             </div>
 
-							<div style="width : 100%;" id="incomeSheet" class="sheet">
+							<div class="d-flex flex-wrap justify-content-between column-gap-4" id="airlineStrategy">
+								<div class="section d-flex flex-row w-100">
+									<div class="w-75 d-flex flex-column">
+										<h3 class="w-100 mb-3">Assign Managers</h3>
+										<div class="mb-4"><p>Total managers required: <span class="totalRequired">0</span></p></div>
+										<span class="d-inline ml-1 delegatesShortcut clickable" onclick="showDelegateStatusModal()"></span>
+									</div>
+									<div class="w-25 d-flex flex-column">
+										<div class="button mt-4" onclick="loadAirlineStrategy();">Cancel</div>
+										<div class="button" onclick="saveAirlineStrategy();">Save</div>
+									</div>
+								</div>
+								<div class="section d-flex flex-column flex-grow-1 w-100 w-md-40">
+									<h3 class="w-100 mb-1">Reservations</h3>
+									<fieldset class="checkbox-large d-flex flex-column">
+										<div class="mb-4"><p>Managers required: <span class="required">0</span></p></div>
+										<div class="toggle" id="hasEconomy">
+											<input type="checkbox" name="hasEconomy">
+											<span class="slider"></span>
+											<label for="hasEconomy" class="label"><b>Economy</b> <i>Enables economy class for all flights.</i></label>
+										</div>
+										<div class="toggle" id="hasBusiness">
+											<input type="checkbox" name="hasBusiness">
+											<span class="slider"></span>
+											<label for="hasBusiness" class="label"><b>Business</b> <i>Enables business class for all flights.</i></label>
+										</div>
+										<div class="toggle" id="hasFirst">
+											<input type="checkbox" name="hasFirst">
+											<span class="slider"></span>
+											<label for="hasFirst" class="label"><b>First</b> <i>Enables First class for all flights.</i></label>
+										</div>
+										<div class="toggle" id="hasVacationPackages">
+											<input type="checkbox" name="hasVacationPackages">
+											<span class="slider"></span>
+											<label for="hasVacationPackages" class="label"><b>Vaction Packages</b> <i>For tourists, lowers perceived price by 10%.</i></label>
+										</div>
+										<div class="toggle" id="hasFlexibleTicketing">
+											<input type="checkbox" name="hasFlexibleTicketing">
+											<span class="slider"></span>
+											<label for="hasFlexibleTicketing" class="label"><b>Flexible Ticketing</b> <i>For business pax (not business class), lowers perceived price by 10%.</i></label>
+										</div>
+									</fieldset>
+								</div>
+								<div class="section d-flex flex-column flex-grow-1 w-100 w-md-40">
+									<h3 class="w-100 mb-1">Passenger Experience</h3>
+									<fieldset class="checkbox-large d-flex flex-column">
+										<div class="mb-4"><p>Managers required: <span class="required">0</span></p></div>
+										<div class="toggle" id="hasIFE">
+											<input type="checkbox" name="hasIFE">
+											<span class="slider"></span>
+											<label for="hasIFE" class="label"><b>In-flight Entertainment</b> <i>Decreases percived price for Economy by 4%, Business 8%, and 1st 12%.</i></label>
+										</div>
+										<div class="toggle" id="hasWifi">
+											<input type="checkbox" name="hasWifi">
+											<span class="slider"></span>
+											<label for="hasWifi" class="label"><b>In-flight Wifi</b> <i>Decreases perceived price for Swift by 20% and Comprehensive by 8%.</i></label>
+										</div>
+										<div class="toggle" id="hasConcierge">
+											<input type="checkbox" name="hasConcierge">
+											<span class="slider"></span>
+											<label for="hasConcierge" class="label"><b>Concierge Service</b> <i>Decreases perceived price for Elite by 20%.</i></label>
+										</div>
+										<div class="toggle" id="hasRewards">
+											<input type="checkbox" name="hasRewards">
+											<span class="slider"></span>
+											<label for="hasRewards" class="label"><b>Rewards Program</b> <i>Decreases perceived price for Brand Conscious by 20% and Comprehensive by 8%.</i></label>
+										</div>
+										<div class="toggle" id="hasPremiumMeals">
+											<input type="checkbox" name="hasPremiumMeals">
+											<span class="slider"></span>
+											<label for="hasPremiumMeals" class="label"><b>Premium Meal Service</b> <i>Decreases percived price for 1st class by 20% and business class by 8%.</i></label>
+										</div>
+									</fieldset>
+								</div>
+									
+							</div>
+
+							<div style="width: 100%; display: none;" id="incomeSheet" class="sheet">
 								<div id="totalProfitChart" style="width: 100%; height: 300px; margin: 0 auto;"></div>
-			<!-- 					left column -->
+								<!-- left column -->
 								<div style="height: 100%; float: left; padding-right: 10px; box-sizing: border-box;" class="verticalGroup">
 									<div class="table data section" style="width: 100%;">
 										<h4>Total Income</h4>
@@ -2032,7 +2100,7 @@
 										</div>
 									</div>
 								</div>
-			<!-- 					right column -->
+								<!-- right column -->
 								<div style="height: 100%; float: right; padding-right: 20px; box-sizing: border-box;" class="verticalGroup">
 									<div class="table data section" style="width: 100%;">
 										<h4>Transactions</h4>
@@ -2133,13 +2201,13 @@
 										</div>
 									</div>
 								</div>
-			<!-- 					end right side -->
+			<!-- end right side -->
 								<div style="clear: both;"></div>
 							</div>
-			<!--          		end income statement -->
-							<div style="width : 100%; display: none;" id="cashFlowSheet" class="sheet">
+			<!-- end income statement -->
+							<div style="width: 100%; display: none;" id="cashFlowSheet" class="sheet">
 								<div id="totalCashFlowChart" style="width: 100%; height: 300px; margin: 0 auto;"></div>
-			<!-- 					left column -->
+			<!-- left column -->
 								<div style="height: 100%; width: 100%;">
 									<div style="float: left; padding-right: 10px; box-sizing: border-box;" class="verticalGroup">
 										<div class="table data section" style="width: 100%;">
@@ -2200,7 +2268,7 @@
 							</div>
 		<!--          		end cashflow sheet -->
 						</div>
-	<!-- 					end statements -->
+	<!-- end statements -->
 					</div>
 	<!-- 				end left section  -->
 					<div style="float: left;" class="verticalGroup officeCanvasRightGroup">
@@ -2367,14 +2435,14 @@
 
 				<div id="bankCanvas" class="canvas" style="height: 100%; display: none; min-width: 600px;">
 					<div style="float: left;" class="verticalGroup bankCanvasLeftGroup">
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>Interest Rate History</h4>
 							<div id="loanInterestRateChart"></div>
 						</div>
 					</div>
 					<div style="float: left;" class="verticalGroup bankCanvasRightGroup">
 					<!--  new loan -->
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>New Loan</h4>
 							<div class="table" style="width: 100%; margin-bottom: 15px; min-width: 400px;">
 								<div class="table-row">
@@ -2406,7 +2474,7 @@
 								</div>
 							</div>
 						</div>
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>Outstanding Loans</h4>
 							<div class="table data" id="outstandingLoansTable" style="height: 100%; width: 100%; min-width: 400px;">
 								<div class="table-header">
@@ -2428,14 +2496,14 @@
 
 				<div id="oilCanvas" class="canvas" style="height: 100%; display: none;">
 					<div style="float: left;" class="verticalGroup oilCanvasLeftGroup">
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>Oil Price History</h4>
 							<div id="oilPriceChart"></div>
 						</div>
 					</div>
 					<div style="float: left;" class="verticalGroup oilCanvasRightGroup">
 					<!--  new loan -->
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>Fuel Consumption History
 								<span class="tooltip">
 									<img src='@routes.Assets.versioned("images/icons/information.png")'>
@@ -2537,7 +2605,7 @@
 								<span id="signOilContractRejection" class="warning"></span>
 							</div>
 						</div>
-						<div style="width : 95%; float: left;" class="section">
+						<div style="width: 95%; float: left;" class="section">
 							<h4>Active Oil Contracts</h4>
 							<div class="table data" id="existingContractsTable" style="height: 100%; width: 100%">
 								<div class="table-header">
@@ -2583,30 +2651,6 @@
 								<div class="cell" style="width: 30%" align="right">Total Weekly Passengers</div>
 							</div>
 						</div>
-	<!--          			<div class="table data section" id="passengerRankAs" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (Asia)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
-	<!--          			<div class="table data section" id="passengerRankEu" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (Europe)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
-	<!--          			<div class="table data section" id="passengerRankSa" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (South America)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
 						<div class="table data section" id="linkCountRank" style="width: 95%">
 							<div class="table-header">
 								<div class="cell" style="width: 10%">Rank</div>
@@ -2641,30 +2685,6 @@
 								<div class="cell" style="width: 30%" align="right">Weekly Lounge Visitors</div>
 							</div>
 						</div>
-	<!--          			<div class="table data section" id="passengerRankNa" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (North America)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
-	<!--          			<div class="table data section" id="passengerRankOc" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (Oceania)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
-	<!--          			<div class="table data section" id="passengerRankAf" style="width: 95%"> -->
-	<!-- 	  	  				<div class="table-header"> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Rank</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 10%">Movement</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 50%">Airline</div> -->
-	<!-- 	 	  					<div class="cell" style="width: 30%" align="right">Weekly Passenger (Africa)</div> -->
-	<!-- 						</div> -->
-	<!--          			</div> -->
 						<div class="table data section" id="serviceQualityRank" style="width: 95%">
 							<div class="table-header">
 								<div class="cell" style="width: 10%">Rank</div>
@@ -2679,7 +2699,7 @@
 	<!--   			end ranking canvas -->
 				<div id="rivalsCanvas" class="canvas" style="height: 100%; display: none;">
 					<div style="float: left;" class="mainPanel">
-						<div style="width : 95%; height: 95%; float: left;" class="section">
+						<div style="width: 95%; height: 95%; float: left;" class="section">
 							<div style="height: 20px;">
 								<input type="checkbox" id="hideInactive" onchange="toggleHideInactive(this.checked)" checked/><span class="label">Hide Inactive Airlines</span>
 								<span id="rivalIdSortButton" data-sort-property="id" data-sort-order="descending" class="button adminActions" title="Sort by created date"
@@ -2887,7 +2907,7 @@
 	<!--   			end rival canvas -->
 				<div id="allianceCanvas" class="canvas" style="height: 100%; display: none;">
 					<div class="verticalGroup allianceCanvasLeftGroup" style="float: left; height: 100%; display: flex; flex-direction: column;">
-						<div id="currentAirlineMemberDetails" style="width : 95%;" class="section">
+						<div id="currentAirlineMemberDetails" style="width: 95%;" class="section">
 							<div style="width: 50%; float: left;">
 								<div style="margin-bottom: 15px;">
 									<h4>Your Airline Alliance</h4>
@@ -3008,7 +3028,7 @@
 						</div>
 
 
-						<div style="width : 95%; flex: 1; display: flex; flex-direction: column; min-height: 200px" class="section">
+						<div style="width: 95%; flex: 1; display: flex; flex-direction: column; min-height: 200px" class="section">
 							<div id = "allianceTableSortHeader" class="table data" style="width: 100%; height: 20px;">
 								<div class="table-header">
 									<div class="cell clickable" style="width: 30%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAllianceTableSortOrder($(this))">Alliance Name</div>
@@ -3137,7 +3157,7 @@
 				</div>
 		<!-- end alliance canvas -->
 				<div id="logCanvas" class="canvas" style="height: 100%; display: none;">
-					<div style="width : 95%; height: 200px" class="section">
+					<div style="width: 95%; height: 200px" class="section">
 						<h4>Alerts</h4>
 						<div id = "alertTableSortHeader" class="table data" style="width: 100%; height: 20px;">
 							<div class="table-header">
@@ -3162,7 +3182,7 @@
 					</div>
 
 
-					<div style="width : 95%; height: 500px" class="section">
+					<div style="width: 95%; height: 500px" class="section">
 						<div style="height: 60px;">
 							<h4>Add Self Note</h4>
 							<input type="text" class="selfNote" size="50" maxlength="100">
@@ -3199,7 +3219,7 @@
 
 				<div id="eventCanvas" class="canvas" style="height: 100%; display: none;">
 					<div class="verticalGroup firstColumn" style="min-height: 200px; float:left;">
-						<div style="width : 90%" class="section">
+						<div style="width: 90%" class="section">
 							<h4>Olympics</h4>
 							<div id = "olympicsTableSortHeader" class="table data" style="width: 100%; height: 20px;">
 								<div class="table-header">
@@ -3222,7 +3242,7 @@
 						</div>
 					</div>
 					<div class="verticalGroup secondColumn" style="float:left;">
-						<div id="olympicsDetails" style="width : 90%; display: none;" class="section">
+						<div id="olympicsDetails" style="width: 90%; display: none;" class="section">
 							<h4><img class="year1 yearStatus">Year 1 - Host City Voting</h4>
 							<div class="table data" id="olympicsCandidatesTable" style="width: 100%; max-height: 100%">
 								<div class="table-header">
@@ -3287,7 +3307,7 @@
 				<!-- end event canvas -->
 
 			  <div id="searchCanvas" class="canvas" style="height: 100%; display: none; justify-content: center;">
-				  <div style="width : 90%; max-width: 800px; height: 95%; display: flex; flex-flow: column;" class="section mainSection">
+				  <div style="width: 90%; max-width: 800px; height: 95%; display: flex; flex-flow: column;" class="section mainSection">
 					  <div style="width: 100%; min-height: 80px;" class="titlesContainer">
 						  <div class="titleNavigation">
 							  <div style="float:left;" class="left" onclick="titleNavigate($(this), -1)"><img class='button' src='@routes.Assets.versioned("images/icons/24px/arrow-180.png")' style="opacity: 0.8"></div>
@@ -3302,14 +3322,14 @@
 					  <!-- shared for route and research-->
 					  <div class="searchFieldContainer" style="margin-top: 10px">
 						  <div style="padding: 10px; margin: 10px 0px;"> <!--from and to box-->
-							  <div style="float: left; width : 50%; position: relative;">
+							  <div style="float: left; width: 50%; position: relative;">
 								  <div class="searchInput" data-search-type="airport">
 									  <input type="text" style="width: 80%" tabindex="101" class="fromAirport" placeholder="From" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.fromAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.fromAirport'))">
 									  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
 								  </div>
 								  <div class="searchResult"></div>
 							  </div>
-							  <div style="float: left; width : 50%; position: relative;">
+							  <div style="float: left; width: 50%; position: relative;">
 								  <div class="searchInput" data-search-type="airport">
 									  <input type="text" style="width: 80%" tabindex="102" class="toAirport" placeholder="To" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.toAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.toAirport'))">
 									  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
@@ -3330,16 +3350,16 @@
 					  </div>
 					  <div class="historySearch searchContainer" style="flex-grow: 1; display: flex; flex-flow: column; ">
 						 <div style="margin-top: 10px">
-							<div class="locationCriteria" style="float: left; width : 50%; position: relative; box-sizing: border-box;">
+							<div class="locationCriteria" style="float: left; width: 50%; position: relative; box-sizing: border-box;">
 							  <div class="searchCriterion"> <!-- Airport -->
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="airport">
 										  <input type="text" style="width: 80%" tabindex="101" class="fromAirport" data-search-group="fromDestination" placeholder="From Airport (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.fromAirport'))" onkeydown="searchKeyDown(event, $('div.historySearch input.fromAirport'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
 									  </div>
 									  <div class="searchResult"></div>
 								  </div>
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="airport">
 										  <input type="text" style="width: 80%" tabindex="102" class="toAirport" data-search-group="toDestination" placeholder="To Airport (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.toAirport'))" onkeydown="searchKeyDown(event, $('div.historySearch input.toAirport'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
@@ -3349,14 +3369,14 @@
 								  <div style="clear: both;"></div>
 							  </div>
 							  <div class="searchCriterion"> <!-- Country -->
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="country">
 										  <input type="text" style="width: 80%" tabindex="103" class="fromCountry" data-search-group="fromDestination" placeholder="From Country (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.fromCountry'))" onkeydown="searchKeyDown(event, $('div.historySearch input.fromCountry'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
 									  </div>
 									  <div class="searchResult"></div>
 								  </div>
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="country">
 										  <input type="text" style="width: 80%" tabindex="104" class="toCountry" data-search-group="toDestination" placeholder="To Country (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.toCountry'))" onkeydown="searchKeyDown(event, $('div.historySearch input.toCountry'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
@@ -3366,14 +3386,14 @@
 								  <div style="clear: both;"></div>
 							  </div>
 							  <div class="searchCriterion"> <!-- Country -->
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="zone">
 										  <input type="text" style="width: 80%" tabindex="105" class="fromZone" data-search-group="fromDestination" placeholder="From Zone (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.fromZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.fromZone'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
 									  </div>
 									  <div class="searchResult"></div>
 								  </div>
-								  <div style="float: left; width : 50%; position: relative;">
+								  <div style="float: left; width: 50%; position: relative;">
 									  <div class="searchInput" data-search-type="zone">
 										  <input type="text" style="width: 80%" tabindex="106" class="toZone" data-search-group="toDestination" placeholder="To Zone (Any)" autocomplete="no"  oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.toZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.toZone'))">
 										  <span class="spinner" style="display: none;"><img src='https://i.stack.imgur.com/FhHRx.gif' style="height: 16px"></span>
@@ -3383,8 +3403,8 @@
 								  <div style="clear: both;"></div>
 							  </div>
 							</div>
-							<div class="otherCriteria" style="float: right; width : 50%; position: relative; box-sizing: border-box;">
-								<div style="float: left; width : 50%; position: relative;">
+							<div class="otherCriteria" style="float: right; width: 50%; position: relative; box-sizing: border-box;">
+								<div style="float: left; width: 50%; position: relative;">
 									<div class = "searchCriterion">
 										<div class="searchInput" data-search-type="airline">
 											<input type="text" style="width: 80%" tabindex="107" class="airline" data-search-group="entity" placeholder="Airline (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.airline'))" onkeydown="searchKeyDown(event, $('div.historySearch input.airline'))">
@@ -3400,14 +3420,14 @@
 										<div class="searchResult"></div>
 									</div>
 								</div>
-								<div style="float: left; width : 50%; position: relative;">
+								<div style="float: left; width: 50%; position: relative;">
 									<div class="table">
 										<div class="table-row searchCriterion">
-											<div class="label" style="width : 70%">Capacity >=</div>
+											<div class="label" style="width: 70%">Capacity >=</div>
 											<div class="data"><input type="text"  tabindex="109" class="capacity" size="6" placeholder="Any" onfocusout="numberInputFocusOut($(this))"></div>
 										</div>
 										<div class="table-row searchCriterion">
-											<div class="label" style="width : 70%">Capacity Change >=</div>
+											<div class="label" style="width: 70%">Capacity Change >=</div>
 											<div class="data"><input type="text"  tabindex="109" class="capacityDelta" size="6" placeholder="Any" onfocusout="numberInputFocusOut($(this))"></div>
 										</div>
 									</div>
@@ -3781,7 +3801,7 @@
 
 	<!-- Confirmation Modal -->
 	<div id="confirmationModal" class="modal">
-	  <div class="modal-content"  style="width : 400px;">
+	  <div class="modal-content"  style="width: 400px;">
 	    <span class="close" onclick="closeModal($('#confirmationModal'))">&times;</span>
 	    <div style="margin-bottom: 10px;">
 	    	<img src='@routes.Assets.versioned("images/icons/32px/question.png")'><span style="font-size: 20px;">Confirmation</span>
@@ -3794,7 +3814,7 @@
 
 	  <!-- Selection Modal -->
 	  <div id="selectionModal" class="modal">
-		  <div class="modal-content"  style="width : 400px;">
+		  <div class="modal-content"  style="width: 400px;">
 			  <span class="close" onclick="closeModal($('#selectionModal'))">&times;</span>
 			  <div style="margin-bottom: 10px;">
 				  <img src='@routes.Assets.versioned("images/icons/32px/question.png")'><span style="font-size: 20px;">Selection</span>
@@ -3808,7 +3828,7 @@
 	<!-- Logo Modal -->
 	
 	<div id="logoModal" class="modal">
-	  <div class="modal-content"  style="width : 400px;">
+	  <div class="modal-content"  style="width: 400px;">
 	    <span class="close" onclick="closeModal($('#logoModal'))">&times;</span>
 	    <h4>Logo Templates</h4>
 	    <div id="logoTemplates"></div>
@@ -3830,7 +3850,7 @@
 	</div>
 	
 	<div id="uploadLogoModal" class="modal">
-		<div class="modal-content"  style="width : 400px;">
+		<div class="modal-content"  style="width: 400px;">
 			<span class="close" onclick="closeModal($('#uploadLogoModal'))">&times;</span>
 			<h4>Upload Own Logo</h4>
 			<ul>
@@ -3848,7 +3868,7 @@
 	</div>
 
   <div id="uploadLiveryModal" class="modal">
-	  <div class="modal-content"  style="width : 400px;">
+	  <div class="modal-content"  style="width: 400px;">
 		  <span class="close" onclick="closeModal($('#uploadLiveryModal'))">&times;</span>
 		  <h4>Upload Airline Livery</h4>
 		  <ul>
@@ -3867,7 +3887,7 @@
 	
 	<!-- airport facility modal -->
 	<div id="facilityModal" class="modal facility">
-	  <div class="modal-content"  style="width : 400px;">
+	  <div class="modal-content"  style="width: 400px;">
 	    <span class="close" onclick="closeModal($(this).closest('.modal'))">&times;</span>
 	    <h4><span class="facilityType"></span></h4>
 		<h6 class="facilityDescription"></h6>
@@ -3919,7 +3939,7 @@
 	</div>
 
     <div id="genericTransitModal" class="modal facility">
-	  <div class="modal-content"  style="width : 500px;">
+	  <div class="modal-content"  style="width: 500px;">
 		  <span class="close" onclick="closeModal($(this).closest('.modal'))">&times;</span>
 		  <h4>Transit options to nearby airports</h4>
 
@@ -3937,7 +3957,7 @@
 	</div>
 
   <div id="baseSpecializationModal" class="modal">
-	  <div class="modal-content"  style="width : 600px;">
+	  <div class="modal-content"  style="width: 600px;">
 		  <span class="close" onclick="closeModal($(this).closest('.modal'))">&times;</span>
 		  <h4>Specializations</h4>
 		  <div class="container" style="width: 100%">
@@ -3953,7 +3973,7 @@
 
 	<!-- Santa Claus modal -->
 	<div id="santaClausModal" class="modal christmas-event" aria-hidden="true">
-		<div class="modal-content"  style="width : 500px;">
+		<div class="modal-content"  style="width: 500px;">
 			<span class="close" onclick="closeSantaClausModal()">&times;</span>
 			<div style="margin-bottom: 30px"><h2>Santa, Where are you?</h2></div>
 			<h4 style="margin-bottom: 10px;">Search History</h4>
@@ -4019,7 +4039,7 @@
 	
 	<!-- airport passenger quality expectation model -->
 	<div id="expectedQualityModal" class="modal">
-		<div class="modal-content"  style="width : 500px;">
+		<div class="modal-content"  style="width: 500px;">
 			<span class="close" onclick="closeModal($('#expectedQualityModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;">Flight Quality Expectation</h4>
 			<div style="margin-bottom: 10px;">Quality expection for this route from passengers of this airport:</div>
@@ -4053,7 +4073,7 @@
 	
 	<!-- link passenger composition modal -->
     <div id="linkCompositionModal" class="modal">
-        <div class="modal-content"  style="width : 800px">
+        <div class="modal-content"  style="width: 800px">
             <span class="close" onclick="closeModal($('#linkCompositionModal'))">&times;</span>
 			<div style="clear: both;"></div>
 			<h4 style="margin-bottom: 10px;">Passenger Satisfaction</h4>
@@ -4188,7 +4208,7 @@
 
   <!-- link event modal -->
   <div id="linkEventModal" class="modal">
-	  <div class="modal-content"  style="width : 800px;margin: 5% auto;">
+	  <div class="modal-content"  style="width: 800px;margin: 5% auto;">
 		  <span class="close" onclick="closeModal($('#linkEventModal'))">&times;</span>
 		  <div style="clear: both;"></div>
 		  <h4 style="margin-bottom: 10px;" class="title"></h4>
@@ -4243,7 +4263,7 @@
 
   <!-- link confirmation modal -->
   <div id="linkConfirmationModal" class="modal">
-	  <div class="modal-content" style="width : 600px">
+	  <div class="modal-content" style="width: 600px">
 		  <span class="close" onclick="closeModal($('#linkConfirmationModal'))">&times;</span>
 		  <h4 style="margin-bottom: 10px;" class="modalHeader"></h4>
 		  <div style=" float: left; width:50%; padding-left: 10%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; ">
@@ -4338,7 +4358,7 @@
   </div>
 
   <div id="negotiationDifficultyModal" class="modal">
-	  <div class="modal-content" style="width : 750px">
+	  <div class="modal-content" style="width: 750px">
 		  <span class="close" onclick="closeModal($('#negotiationDifficultyModal'))">&times;</span>
 		  <h4 style="margin-bottom: 10px;" class="modalHeader">Negotiation Difficulty Details</h4>
           <div style="clear: both;"></div>
@@ -4445,7 +4465,7 @@
   </div>
 
   <div id="negotiationAnimation" class="modal">
-	  <div class="modal-content" style="width : 520px; max-width : 95vw;">
+	  <div class="modal-content" style="width: 520px; max-width: 95vw;">
 <!--		  <span class="close" onclick="closeModal($('#negotiationAnimation'))">&times;</span>-->
 		  <h4 class="modalHeader" style="margin-bottom: 10px; text-align: center;">Negotiation in progress... Success Rate:&nbsp;<span class="successRate"></span>%</h4>
 <!--		  <div class="clipContainer desktopOnly">
@@ -4474,7 +4494,7 @@
 
     <!-- link rival loyalty modal -->
     <div id="linkRivalHistoryModal" class="modal">
-        <div class="modal-content"  style="width : 800px; height: 450px;">
+        <div class="modal-content"  style="width: 800px; height: 450px;">
             <span class="close" onclick="closeModal($('#linkRivalHistoryModal'))">&times;</span>
             <h4 style="margin-bottom: 10px;">Ticket Price History</h4>
             <div style="width: 100%; float: left;">
@@ -4517,7 +4537,7 @@
 	</div>
 	<!-- link rival network modal -->
 	<div id="linkRivalDetailsModal" class="modal">
-		<div class="modal-content"  style="width : 800px; height: 600px;">
+		<div class="modal-content"  style="width: 800px; height: 600px;">
 			<span class="close" onclick="closeModal($('#linkRivalDetailsModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;">Loyalty</h4>
 			<div style="height: 250px; width: 100%;">
@@ -4567,7 +4587,7 @@
 
 	<!-- airplane model configuration -->
 	<div id="modelConfigurationModal" class="modal">
-		<div class="modal-content"  style="width : 800px; height: 800px; margin: 5% auto; overflow:auto;">
+		<div class="modal-content"  style="width: 800px; height: 800px; margin: 5% auto; overflow:auto;">
 			<span class="close" onclick="closeModal($('#modelConfigurationModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;"><span class="modelName"></span>&nbsp;Configuration</h4>
 			<div>
@@ -4582,7 +4602,7 @@
 
 <!--	airplane inventory by base-->
 	<div id="airplaneBaseModal" class="modal">
-		<div class="modal-content"  style="width : 800px; height: 800px; margin: 5% auto;">
+		<div class="modal-content"  style="width: 800px; height: 800px; margin: 5% auto;">
 			<span class="close" onclick="closeModal($('#airplaneBaseModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;"><span class="modelName"></span>&nbsp;Base</h4>
 			<div>
@@ -4597,7 +4617,7 @@
 
   <!--	all airplane inventory -->
   <div id="allAirplaneInventoryModal" class="modal">
-	  <div class="modal-content"  style="width : 800px; height: 800px; margin: 5% auto;">
+	  <div class="modal-content"  style="width: 800px; height: 800px; margin: 5% auto;">
 		  <span class="close" onclick="closeModal($('#allAirplaneInventoryModal'))">&times;</span>
 		  <h4 style="margin-bottom: 10px;"><span class="modelName"></span>&nbsp;Base</h4>
 		  <div>
@@ -4612,7 +4632,7 @@
 
 
 	<div id="buyAirplaneModal" class="modal">
-		<div class="modal-content" style="width : 400px;">
+		<div class="modal-content" style="width: 400px;">
 			<span class="close" onclick="closeModal($('#buyAirplaneModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;">Confirm Purchase of <span class="modelName"></span></h4>
 			<div class="modelIllustration" style="width:100%; position: relative; max-width: 500px;">
@@ -4663,7 +4683,7 @@
 
 	<!-- popup of owned airplane details and control -->
 	<div id="ownedAirplaneDetailModal" class="modal">
-		<div class="modal-content"  style="width : 600px;">
+		<div class="modal-content"  style="width: 600px;">
 			<span class="close" onclick="closeModal($('#ownedAirplaneDetailModal'))">&times;</span>
 			<h4>Owned Airplane Details</h4>
 			<div id="ownedAirplaneDetail" style="width: 100%;">
@@ -4752,7 +4772,7 @@
 	</div>
 
 	  <div id="setFavoriteModal" class="modal">
-		  <div class="modal-content" style="width : 400px;">
+		  <div class="modal-content" style="width: 400px;">
 			  <span class="close" onclick="closeModal($('#setFavoriteModal'))">&times;</span>
 			  <h4 style="margin-bottom: 10px;">Set <span class="modelName" style="font-weight: bold;"></span> as Favorite</h4>
 			  <div class="modelIllustration" style="width:100%; position: relative; max-width: 500px;">
@@ -4779,7 +4799,7 @@
 	  </div>
 
 	<div id="olympicsVoteModal" class="modal">
-		<div class="modal-content"  style="width : 900px; height: 800px; margin: 5% auto; overflow-y: auto;">
+		<div class="modal-content"  style="width: 900px; height: 800px; margin: 5% auto; overflow-y: auto;">
 			<span class="close" onclick="closeModal($('#olympicsVoteModal'))">&times;</span>
 			<h4 style="margin-bottom: 10px;">Olympics Host City Voting (1 : highest precedence)</h4>
 			<div class="table data" id="olympicsCityVoteTable" style="width: 100%; min-width: 500px;">
@@ -4790,7 +4810,7 @@
   	</div>
 
       <div id="eventRewardModal" class="modal" aria-hidden="true">
-          <div class="modal-content"  style="width : 500px;">
+          <div class="modal-content"  style="width: 500px;">
               <span class="close" onclick="closeEventRewardModal()">&times;</span>
 
 			  <div style="float:left"><img src='@routes.Assets.versioned("images/icons/rubber-balloons.png")'></div>
@@ -4811,7 +4831,7 @@
       </div>
 
 	  <div id="olympicsRankingsModal" class="modal">
-		  <div class="modal-content"  style="width : 500px; height: 800px; margin: 5% auto; overflow-y: auto;">
+		  <div class="modal-content"  style="width: 500px; height: 800px; margin: 5% auto; overflow-y: auto;">
 			  <span class="close" onclick="closeModal($('#olympicsRankingsModal'))">&times;</span>
 			  <h4>Top Airlines</h4>
 			  <div class="table data section topAirlines" style="width: 95%">
@@ -4844,7 +4864,7 @@
 
 
 	  <div id="allianceMemberModal" class="modal">
-		  <div class="modal-content" style="width : 400px;">
+		  <div class="modal-content" style="width: 400px;">
 			  <span class="close" onclick="closeModal($('#allianceMemberModal'))">&times;</span>
 
 			  <div class="table" style="width: 100%;">
@@ -4875,7 +4895,7 @@
 	  </div>
 
 	  <div id="allianceMissionModal" class="modal">
-		  <div class="modal-content"  style="width : 800px;">
+		  <div class="modal-content"  style="width: 800px;">
 			  <span class="close" onclick="closeModal($('#allianceMissionModal'))">&times;</span>
 			  <h4 style="margin: 10px 0px;" class="phase" data-phase="1"><img>Phase 1: Select Mission Candidates&nbsp;<span class="tillNextPhase"></span></h4>
 			  <div class="allianceMissionCandidates">
@@ -4914,7 +4934,7 @@
 	  </div>
 
 	  <div id="airlineCountryRelationshipModal" class="modal">
-		  <div class="modal-content" style="width : 800px;">
+		  <div class="modal-content" style="width: 800px;">
 			  <span class="close" onclick="closeModal($('#airlineCountryRelationshipModal'))">&times;</span>
 			  <h2 style="margin-bottom: 20px">Relationship Management with&nbsp;<span class="country"></span></h2>
 			  <h4 style="margin-bottom: 10px; margin-top: 30px;">Airline Title</h4>
@@ -4966,7 +4986,7 @@
 
 
       <div id="campaignModal" class="modal">
-	    <div class="modal-content" style="width : 800px;">
+	    <div class="modal-content" style="width: 800px;">
 		  <span class="close" onclick="closeModal($('#campaignModal'))">&times;</span>
 		  <h2 style="margin-bottom: 20px">Campaign Management</h2>
 			<div style="display:flex; align-items: flex-end; margin-bottom: 10px;">
@@ -5092,7 +5112,7 @@
 <!--  end campaign model-->
 
 <!--	  <div id="baseDetailsModal" class="modal">-->
-<!--		  <div class="modal-content"  style="width : 400px;">-->
+<!--		  <div class="modal-content"  style="width: 400px;">-->
 <!--			  <span class="close" onclick="closeModal($(this).closest('.modal'))">&times;</span>-->
 <!--			  <h4 style="margin-bottom: 10px;">Office Scale Details</h4>-->
 <!--			  <div class="table data scaleDetails" style="width: 100%;">-->
@@ -5110,7 +5130,7 @@
 <!--	  </div>-->
 
 	  <div id="sendAirlineMessageModal" class="modal">
-		  <div class="modal-content"  style="width : 500px;">
+		  <div class="modal-content"  style="width: 500px;">
 			  <span class="close" onclick="closeModal($('#sendAirlineMessageModal'))">&times;</span>
 			  <h4 style="margin-bottom: 10px;">Send private message (popup) <span class="airlineName"></span></h4>
               <textarea style="height: 200px; width: 95%; line-height: 20px;" class="sendMessage"></textarea>
@@ -5121,7 +5141,7 @@
          </div>
 	  </div>
 	  <div id="sendBroadcastMessageModal" class="modal">
-		  <div class="modal-content"  style="width : 500px;">
+		  <div class="modal-content"  style="width: 500px;">
 			  <span class="close" onclick="closeModal($('#sendBroadcastMessageModal'))">&times;</span>
 			  <h4 style="margin-bottom: 10px;">Broadcast message to all online airlines</h4>
 
@@ -5135,7 +5155,7 @@
 	  </div>
 
 	  <div id="broadcastMessagePopup" class="modal">
-		  <div class="modal-content"  style="width : 500px; height: 200px;">
+		  <div class="modal-content"  style="width: 500px; height: 200px;">
 			  <span class="close" onclick="closeModal($('#broadcastMessagePopup'))">&times;</span>
 			  <h4 style="margin-bottom: 10px;">Broadcast message from Admin</h4>
 			  <div style="width: 95%; text-align: center;">
@@ -5146,7 +5166,7 @@
 	  </div>
 
 	  <div id="airlineMessagePopup" class="modal">
-		  <div class="modal-content"  style="width : 500px; height: 200px;">
+		  <div class="modal-content"  style="width: 500px; height: 200px;">
 			  <span class="close" onclick="closeModal($('#airlineMessagePopup'))">&times;</span>
 			  <h4 style="margin-bottom: 10px;">Private message from Admin</h4>
 			  <div style="width: 95%; text-align: center;">
@@ -5158,7 +5178,7 @@
 
 	  <div id="profilesModal" class="modal">
 		<input type="hidden" id="profileId" name="profileId" value="0"/>
-		  <div class="modal-content transparent-modal" style="max-width : 90vw; width: 1300px;">
+		  <div class="modal-content transparent-modal" style="max-width: 90vw; width: 1300px;">
 			  <h2 style="margin-bottom: 20px">Please select your profile</h2>
 			  <div id ="profiles" style="padding: 10px;">
 
@@ -5171,7 +5191,7 @@
 	  </div>
 
   <div id="delegateStatusModal" class="modal">
-	  <div class="modal-content"  style="width : 400px;">
+	  <div class="modal-content"  style="width: 400px;">
 		  <span class="close" onclick="closeModal($('#delegateStatusModal'))">&times;</span>
 		  <h4>Delegates Pool<span class="delegatesTooltip"><img src='@routes.Assets.versioned("images/icons/information.png")'></span></h4>
 		  <div class="delegateStatus"></div>
@@ -5180,7 +5200,7 @@
 
 
   <div id="airportAssetDetailsModal" class="modal">
-	  <div class="modal-content" style="width : 600px; max-width: 100%">
+	  <div class="modal-content" style="width: 600px; max-width: 100%">
 		  <span class="close" onclick="closeModal($(this).closest('.modal'))">&times;</span>
 		  <h4><span class="name"></span></h4>
 <!--		  <div class="descriptions"></div>-->
@@ -5307,7 +5327,7 @@
 
 
   <div id="loyalistHistoryModal" class="modal">
-	  <div class="modal-content"  style="width : 700px;">
+	  <div class="modal-content"  style="width: 700px;">
 		  <span class="close" onclick="closeModal($('#loyalistHistoryModal'))">&times;</span>
 		  <h4>Loyalist History/Trend</span></h4>
 		  <div class="loyalistHistoryChart" style="height: 250px; width: 100%"></div>
@@ -5315,7 +5335,7 @@
   </div>
 
   <div id="settingsModal" class="modal">
-	  <div class="modal-content"  style="width : 400px; max-width: 80%">
+	  <div class="modal-content"  style="width: 400px; max-width: 80%">
 		  <span class="close" onclick="closeModal($('#settingsModal'))">&times;</span>
 		  <h4>Settings</h4>
 		  <div class="table" style="width: 90%;">
@@ -5364,7 +5384,7 @@
   </div>
 
   <div id="airlinesByIpModal" class="modal">
-	  <div class="modal-content"  style="width : 900px;">
+	  <div class="modal-content"  style="width: 900px;">
 		  <span class="close" onclick="closeModal($('#airlinesByIpModal'))">&times;</span>
 		  <h4>Airlines by IP&nbsp;<span class="ip"></span></h4>
 		  <div class="table data airlineByIpTable" style="max-height: 100%; width: 100%">
@@ -5388,7 +5408,7 @@
   </div>
 
   <div id="airlinesByUuidModal" class="modal">
-	  <div class="modal-content"  style="width : 900px;">
+	  <div class="modal-content"  style="width: 900px;">
 		  <span class="close" onclick="closeModal($('#airlinesByUuidModal'))">&times;</span>
 		  <h4>Airlines by UUID&nbsp;<span class="uuid"></span></h4>
 		  <div class="table data airlineByUuidTable" style="max-height: 100%; width: 100%">

@@ -50,6 +50,10 @@ object SqliteMeta {
      statement.execute()
      statement.close()
 
+     statement = connection.prepareStatement("DROP TABLE IF EXISTS " + AIRLINE_OPERATIONS_STRATEGY)
+     statement.execute()
+     statement.close()
+
      statement = connection.prepareStatement("DROP TABLE IF EXISTS " + AIRLINE_APPEAL_TABLE)
      statement.execute()
      statement.close()
@@ -144,6 +148,16 @@ object SqliteMeta {
                                                  "reputation DOUBLE)")
          statement.execute()
          statement.close()
+
+        statement = connection.prepareStatement("CREATE TABLE " + AIRLINE_OPERATIONS_STRATEGY + "(" +
+                                                "airline INTEGER PRIMARY KEY REFERENCES " + AIRLINE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE," +
+                                                "economy TINYINT(1), " +
+                                                "business TINYINT(1), " +
+                                                "first TINYINT(1), " +
+                                                "vacation_packages TINYINT(1), " +
+                                                "flexible_ticketing TINYINT(1))")
+        statement.execute()
+        statement.close()
          
          statement = connection.prepareStatement("CREATE TABLE " + AIRLINE_APPEAL_TABLE + "(" + 
                                                  "airport INTEGER REFERENCES " + AIRPORT_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE, " +

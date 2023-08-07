@@ -15,19 +15,19 @@ case class Airline(name: String, isGenerated : Boolean = false, var id : Int = 0
     airlineInfo.balance = balance
   }
 
-  def setCurrentServiceQuality(serviceQuality : Double) {
+  def setCurrentServiceQuality(serviceQuality : Double) = {
     airlineInfo.currentServiceQuality = serviceQuality
   }
 
-  def setTargetServiceQuality(targetServiceQuality : Int) {
+  def setTargetServiceQuality(targetServiceQuality : Int) = {
     airlineInfo.targetServiceQuality = targetServiceQuality
   }
 
-  def setReputation(reputation : Double) {
+  def setReputation(reputation : Double) = {
     airlineInfo.reputation = reputation
   }
 
-  def setMaintenanceQuality(maintenanceQuality : Double) {
+  def setMaintenanceQuality(maintenanceQuality : Double) = {
     airlineInfo.maintenanceQuality = maintenanceQuality
   }
 
@@ -76,8 +76,7 @@ case class Airline(name: String, isGenerated : Boolean = false, var id : Int = 0
     allianceId
   }
 
-
-  def setBases(bases : List[AirlineBase]) {
+  def setBases(bases : List[AirlineBase]) = {
     this.bases = bases
   }
 

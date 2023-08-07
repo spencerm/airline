@@ -2,6 +2,7 @@ package com.patson.data
 import java.sql.{Connection, Statement, Types}
 import java.util.{Calendar, Date}
 import com.patson.data.Constants._
+import com.patson.data.AirlineStrategySource
 import com.patson.data.LinkSource.DetailType
 import com.patson.data.UserSource.dateFormat
 import com.patson.model._
@@ -108,9 +109,16 @@ object LinkSource {
           case Some(fullLoad) => AirlineCache.getAirline(airlineId, fullLoad).orElse(Some(Airline.fromId(airlineId)))
           case None => Some(Airline.fromId(airlineId))
         }
+        val strategy = AirlineStrategySource.loadAirlineStrategy(airlineId)
         
         if (fromAirport.isDefined && toAirport.isDefined && airline.isDefined) {
           val transportType = TransportType(resultSet.getInt("transport_type"))
+          val capacity = {
+            val economy = if (strategy.hasEconomy) resultSet.getInt("capacity_economy") else 0
+            val business = if (strategy.hasBusiness) resultSet.getInt("capacity_business") else 0
+            val first = if (strategy.hasFirst) resultSet.getInt("capacity_first") else 0
+            LinkClassValues.getInstance(economy, business, first)
+          }
           val link = {
             import TransportType._
             transportType match {
@@ -121,7 +129,7 @@ object LinkSource {
                   airline.get,
                   LinkClassValues.getInstance(resultSet.getInt("price_economy"), resultSet.getInt("price_business"), resultSet.getInt("price_first")),
                   resultSet.getInt("distance"),
-                  LinkClassValues.getInstance(resultSet.getInt("capacity_economy"), resultSet.getInt("capacity_business"), resultSet.getInt("capacity_first")),
+                  capacity,
                   resultSet.getInt("quality"),
                   resultSet.getInt("duration"),
                   resultSet.getInt("frequency"),

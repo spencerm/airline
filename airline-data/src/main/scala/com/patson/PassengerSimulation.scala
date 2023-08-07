@@ -535,28 +535,6 @@ object PassengerSimulation {
     airportGroups
   }
   
-//  def generateFlightLinks(airports : List[Airport]) = {
-//      val dummyAirline = Airline("dummy")
-//      val distinationCount = 100
-//      val sourcePermutation = (0 until airports.size).foldLeft(List[Int]())((list, integer) => integer :: list) //for random number
-//      val validFromAirportCount = 200
-//      airports.takeRight(validFromAirportCount).map { fromAirport =>
-//        val randomArray = Random.shuffle(sourcePermutation).take(distinationCount)
-//        randomArray.foldLeft(List[Link]()) { 
-//          case (list, randomNumber) => 
-//            val toAirport = airports(randomNumber)
-//            if (fromAirport != toAirport) {
-//              val distance = Util.calculateDistance(fromAirport.latitude, fromAirport.longitude, toAirport.latitude, toAirport.longitude)
-//              val price = computePrice(distance)
-//              //println(distance + " km, $" + price)
-//              Link(fromAirport, toAirport, dummyAirline, LinkClassValues(Map(ECONOMY -> price)), distance.toInt, LinkClassValues(Map(ECONOMY -> 100)), 10, distance.toInt * 60 / 500, 1) :: list  
-//            } else {
-//              list
-//            }
-//        }
-//      }.flatten
-//  }
-  
   def computePrice(distance : Double) = {
     val priceBracket = 2000
     var multiplier = 1.0
@@ -567,28 +545,6 @@ object PassengerSimulation {
     }
     cost.toInt
   }
-  
-  
-  
-  
-//  def generateFlightLinks(airportGroups : List[List[Airport]]) = {
-//    val links = ListBuffer[Link]()
-//    
-//    for (i <- 0 until (airportGroups.length - 1)) {
-//      val iAirports = airportGroups(i)
-//      val jAirports = airportGroups(i + 1)
-//      links.appendAll(iAirports.collect{ 
-//        case iAirport => jAirports.collect { 
-//          case jAirport =>
-//            val distance = Util.calculateDistance(iAirport.latitude, iAirport.longitude, jAirport.latitude, jAirport.longitude)
-//            Link(iAirport, jAirport, 1, distance, distance) 
-//        }
-//      }.flatten)
-//    }
-//    
-//    links.toList
-//  }
-
 
   /**
    * Find the shortest routes from the fromAirport to ALL the toAirport

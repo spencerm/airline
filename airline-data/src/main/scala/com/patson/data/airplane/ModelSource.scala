@@ -15,7 +15,7 @@ object ModelSource {
   def loadAllModels() = {
       loadModelsByCriteria(List.empty)
   }
-  
+
   def loadModelsByCriteria(criteria : List[(String, Any)]) = {
     val queryString = new StringBuilder(BASE_QUERY) 
       
