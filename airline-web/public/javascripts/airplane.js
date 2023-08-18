@@ -234,13 +234,16 @@ function promptBuyNewAirplane(modelId, fromPlanLink, explicitHomeAirportId) {
     promptBuyAirplane(modelId, 100, loadedModelsById[modelId].price, loadedModelsById[modelId].constructionTime, explicitHomeAirportId, true, buyAirplaneFunction)
 }
 
-function updateAirplaneTotalPrice(totalPrice) {
+function updateAirplaneTotalPrice(totalPrice, qt) {
     $('#buyAirplaneModal .totalPrice .value').text("$" + commaSeparateNumber(totalPrice))
     if (totalPrice == 0) {
         disableButton($('#buyAirplaneModal .add'), "Amount should not be 0")
     } else if (totalPrice > activeAirline.balance) {
         $('#buyAirplaneModal .add')
         disableButton($('#buyAirplaneModal .add'), "Not enough cash")
+    } else if (qt > 20) {
+        $('#buyAirplaneModal .add')
+        disableButton($('#buyAirplaneModal .add'), "Buying excessive aircraft is against game rules")
     } else {
         enableButton($('#buyAirplaneModal .add'))
     }
@@ -295,11 +298,11 @@ function promptBuyAirplane(modelId, condition, price, deliveryTime, explicitHome
 	    $('#buyAirplaneModal .quantity .input').val(1)
 	    $('#buyAirplaneModal .quantity .input').on('input', function(e){
 	        var quantity = validateAirplaneQuantity()
-            updateAirplaneTotalPrice(quantity * price)
+            updateAirplaneTotalPrice(quantity * price, quantity)
         });
 	    $('#buyAirplaneModal .quantity').show()
 
-	    updateAirplaneTotalPrice(1 * price)
+	    updateAirplaneTotalPrice(1 * price, 1)
 	    $('#buyAirplaneModal .totalPrice').show()
 	} else {
 	    $('#buyAirplaneModal .quantity').hide()
