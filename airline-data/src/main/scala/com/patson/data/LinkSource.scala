@@ -8,7 +8,7 @@ import com.patson.data.UserSource.dateFormat
 import com.patson.model._
 import com.patson.model.airplane._
 import com.patson.model.history.LinkChange
-import com.patson.util.{AirlineCache, AirplaneModelCache, AirportCache}
+import com.patson.util.{AirlineCache, AirlineStrategyCache, AirplaneModelCache, AirportCache}
 
 import scala.collection.mutable
 import scala.collection.mutable.{HashMap, HashSet, ListBuffer, Set}
@@ -109,7 +109,7 @@ object LinkSource {
           case Some(fullLoad) => AirlineCache.getAirline(airlineId, fullLoad).orElse(Some(Airline.fromId(airlineId)))
           case None => Some(Airline.fromId(airlineId))
         }
-        val strategy = AirlineStrategySource.loadAirlineStrategy(airlineId)
+        val strategy = AirlineStrategyCache.getAirlineStrategy(airlineId)
         
         if (fromAirport.isDefined && toAirport.isDefined && airline.isDefined) {
           val transportType = TransportType(resultSet.getInt("transport_type"))

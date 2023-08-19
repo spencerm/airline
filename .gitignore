@@ -3,3 +3,4 @@
 *.metals
 *.scala-build
 .vscode
+.idea
