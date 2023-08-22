@@ -634,6 +634,9 @@ function highlightLink(linkId, refocus) {
 function toHoursAndMinutes(totalMinutes) {
 	const hours = Math.floor(totalMinutes / 60);
 	const minutes = totalMinutes % 60;
+	if(minutes < 10) {
+		return { hours, minutes: "0" + minutes };
+	}
 	return { hours, minutes };
 }
 
