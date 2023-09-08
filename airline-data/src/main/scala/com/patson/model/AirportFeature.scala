@@ -170,13 +170,13 @@ sealed case class GatewayAirportFeature() extends AirportFeature {
 object IsolatedTownFeature {
   val ISOLATION_MAX_POP = 50000 //MAX pop to be consider isolated. Otherwise it has the right mass to be alone
   val HUB_MIN_POP = 100000 //Not considered as isolated if there's a HUB within HUB_RANGE
-  val HUB_RANGE_BRACKETS = Array(300, 500, 1000, 2000) //if couldn't find a major airport within
+  val HUB_RANGE_BRACKETS = Array(300, 500, 1000, 2000, 5000) //if couldn't find a major airport within
 }
 
 sealed case class IsolatedTownFeature(strength : Int) extends AirportFeature {
   val featureType = AirportFeatureType.ISOLATED_TOWN
   val boostRange =
-    if (strength < HUB_RANGE_BRACKETS.size) { //up to 4
+    if (strength < HUB_RANGE_BRACKETS.size) { //up to 5
       HUB_RANGE_BRACKETS(strength)
     } else {
       HUB_RANGE_BRACKETS.last + 1000
