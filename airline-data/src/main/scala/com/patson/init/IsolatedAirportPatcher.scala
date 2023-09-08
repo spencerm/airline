@@ -1,4 +1,5 @@
 package com.patson.init
+package com.patson.patch
 
 import com.patson.model._
 import com.patson.data._
