@@ -131,16 +131,16 @@ object DemandGenerator {
       }
         
       val fromAirportAdjustedPower =
-	if (fromAirport.population > 50000) fromAirportAdjustedIncome * fromAirport.population
-	else fromAirportAdjustedIncome * 50000
+        if (fromAirport.population > 50000) fromAirportAdjustedIncome * fromAirport.population
+        else fromAirportAdjustedIncome * 50000
 
       val ADJUST_FACTOR = 0.35
 
-      val population_adjusted = 
-	if (toAirport.population.doubleValue > 50000) toAirport.population.doubleValue
-	else 50000
+      val populationWithFloor = 
+        if (toAirport.population.doubleValue > 50000) toAirport.population.doubleValue
+        else 50000
 	    
-      var baseDemand: Double = (fromAirportAdjustedPower.doubleValue() / 1000000 / 50000) * (population_adjusted / 1000000 * toAirportIncomeLevel / 10) * (passengerType match {
+      var baseDemand: Double = (fromAirportAdjustedPower.doubleValue() / 1000000 / 50000) * (populationWithFloor / 1000000 * toAirportIncomeLevel / 10) * (passengerType match {
       case PassengerType.BUSINESS => 6
       case PassengerType.TOURIST | PassengerType.OLYMPICS => 1
       }) * ADJUST_FACTOR
@@ -239,7 +239,18 @@ object DemandGenerator {
         adjustedDemand = 75 + Math.pow(adjustedDemand - 100, 0.3)
       }
 
-      if( adjustedDemand < 0) {
+      //adjustments : diminished demand for long routes, regardless of type
+      if (distance > 6000) {
+        adjustedDemand = adjustedDemand * 0.95
+      }
+      if (distance > 8000) {
+        adjustedDemand = adjustedDemand * 0.95
+      }
+      if (distance > 10000) {
+        adjustedDemand = adjustedDemand * 0.95
+      }
+
+      if(adjustedDemand < 1) {
         adjustedDemand = 0
       }
       

@@ -321,8 +321,10 @@ object Computation {
         400
       } else if (distance <= 2000) {
         600
-      } else {
+      } else if (distance <= 8000) {
         800
+      } else {
+        700 //slower for long distances to allow for stops
       }
     Computation.calculateDuration(standardSpeed, distance)
   }
