@@ -82,7 +82,6 @@ abstract class FlightPreference(homeAirport : Airport) {
   val frequencyThreshold : Int
   val frequencySensitivity : Double
   val flightDurationSensitivity : Double
-  val loungeSensitivity : Double = 0
   val loungeLevelRequired : Int = 0
 
   lazy val appealList : Map[Int, AirlineAppeal] = homeAirport.getAirlineAdjustedAppeals
@@ -177,7 +176,7 @@ abstract class FlightPreference(homeAirport : Airport) {
   }
 
   def loungeAdjustRatio(link : Transport, loungeLevelRequired : Int, linkClass: LinkClass) = {
-    if (loungeSensitivity == 0 || linkClass.level < BUSINESS.level) {
+    if (linkClass.level < BUSINESS.level) {
       1.0
     } else {
       val fromLounge = link.from.getLounge(link.airline.id, link.airline.getAllianceId, activeOnly = true)
@@ -275,7 +274,7 @@ case class SpeedPreference(homeAirport : Airport, preferredLinkClass: LinkClass)
   override val flightDurationSensitivity = 1.0
 
   def computeCost(baseCost : Double, link : Transport, linkClass : LinkClass) = {
-    val noise = 0.9 + getFlatTopBellRandom(0.3, 0.25)
+    val noise = 0.85 + getFlatTopBellRandom(0.3, 0.25)
     val finalCost = baseCost * noise
     finalCost 
   }
@@ -301,7 +300,6 @@ case class ElitePreference(homeAirport : Airport, preferredLinkClass : LinkClass
     case BUSINESS => 0.5
     case ECONOMY => 0.25
   }
-  override val loungeSensitivity : Double = 1
   override val connectionCostRatio = 2.0
 
   def computeCost(baseCost: Double, link : Transport, linkClass : LinkClass) : Double = {
@@ -340,7 +338,6 @@ case class AppealPreference(homeAirport : Airport, preferredLinkClass : LinkClas
     case BUSINESS => 0.4
     case ECONOMY => 0.25
   }
-  override val loungeSensitivity : Double = 1
   override val frequencySensitivity = 0.2
   override val frequencyThreshold = {
     if (loyaltyRatio > 1) {

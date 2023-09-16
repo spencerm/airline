@@ -241,13 +241,13 @@ object DemandGenerator {
 
       //adjustments : diminished demand for long routes, regardless of type
       if (distance > 6000) {
-        adjustedDemand = adjustedDemand * 0.95
+        adjustedDemand = adjustedDemand * 0.96
       }
       if (distance > 8000) {
-        adjustedDemand = adjustedDemand * 0.95
+        adjustedDemand = adjustedDemand * 0.96
       }
       if (distance > 10000) {
-        adjustedDemand = adjustedDemand * 0.95
+        adjustedDemand = adjustedDemand * 0.96
       }
 
       if(adjustedDemand < 1) {
