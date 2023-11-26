@@ -353,8 +353,6 @@ html[data-theme="dark"] :is(.gm-fullscreen-control img, .gmnoprint div button im
     border-radius: 8px;
     box-shadow: var(--shadow-2) !important;
 }
-
-/*
 #map #toggleMapHeatmapButton {
 	top: 183px
 }
@@ -367,7 +365,6 @@ html[data-theme="dark"] :is(.gm-fullscreen-control img, .gmnoprint div button im
 #map #toggleMapLightButton {
 	top: 321px
 }
-*/
 #map .gm-svpc {
 	position: fixed !important;
 	top: 136px !important;
