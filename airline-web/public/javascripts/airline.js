@@ -625,6 +625,15 @@ function highlightLink(linkId, refocus) {
 //	selectedListItem.addClass("selected")
 }
 
+function toHoursAndMinutes(totalMinutes) {
+	const hours = Math.floor(totalMinutes / 60);
+	const minutes = totalMinutes % 60;
+	if(minutes < 10) {
+		return { hours, minutes: "0" + minutes };
+	}
+	return { hours, minutes };
+}
+
 function refreshLinkDetails(linkId) {
 	var airlineId = activeAirline.id
 	
@@ -650,6 +659,7 @@ function refreshLinkDetails(linkId) {
 	    	}
 	    	$("#linkCurrentPrice").text(toLinkClassValueString(link.price, "$"))
 	    	$("#linkDistance").text(link.distance + " km (" + link.flightType + ")")
+	    	$("#linkDuration").text(toHoursAndMinutes(link.duration).hours + ":" + toHoursAndMinutes(link.duration).minutes)
 	    	$("#linkQuality").html(getGradeStarsImgs(Math.round(link.computedQuality / 10)) + link.computedQuality)
 	    	$("#linkCurrentCapacity").text(toLinkClassValueString(link.capacity))
 	    	if (link.future) {
@@ -2689,6 +2699,30 @@ function changeAssignedDelegateCount(delta) {
     if (!isNaN(negotiationOddsLookup[assignedDelegates + delta])) {
        updateAssignedDelegateCount(assignedDelegates + delta)
     }
+}
+
+function addMinimumRequiredDelegates() {
+	var minimumRequiredDelegates = Object.keys(negotiationOddsLookup).length - 1
+	for (let i = minimumRequiredDelegates; i > 0; i--) {
+		if (negotiationOddsLookup[i] > 0) {
+			minimumRequiredDelegates = i
+		}
+	}
+	if (negotiationOddsLookup[minimumRequiredDelegates] > 0) {
+		updateAssignedDelegateCount(minimumRequiredDelegates)
+	}
+}
+
+function addMaximumRequiredDelegates() {
+	var maximumRequiredDelegates = 0
+	for (let i = 0; i <= Object.keys(negotiationOddsLookup).length; i++) {
+		if (negotiationOddsLookup[i] <= 1) {
+			maximumRequiredDelegates = i
+		}
+	}
+	if (negotiationOddsLookup[maximumRequiredDelegates] > 0) {
+		updateAssignedDelegateCount(maximumRequiredDelegates)
+	}
 }
 
 function updateAssignedDelegateCount(delegateCount) {

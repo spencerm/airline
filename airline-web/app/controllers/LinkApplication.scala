@@ -330,9 +330,9 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
       return BadRequest("Requested capacity exceed the allowed limit, invalid configuration!")
     }
 
-    if (incomingLink.from.id == incomingLink.to.id) {
-      return BadRequest("Same from and to airport!")
-    }
+    // if (incomingLink.from.id == incomingLink.to.id) {
+    //   return BadRequest("Same from and to airport!")
+    // }
     //validate price
     if (incomingLink.price(ECONOMY) < 0 ||
          incomingLink.price(BUSINESS) < 0 ||
@@ -495,7 +495,9 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         val existingStaffRequired = existingLinks.map(_.getFutureOfficeStaffRequired).sum
         val newStaffRequired = existingStaffRequired - existingListOption.map(_.getFutureOfficeStaffRequired).getOrElse(0) + staffRequiredByThisLink
         val extraCompensation = base.getOvertimeCompensation(newStaffRequired) - base.getOvertimeCompensation(existingStaffRequired)
-        if (extraCompensation > 0) { //then we should prompt warning of over limit
+        if( airline.isGenerated ) {
+          0
+        } else if (extraCompensation > 0) { //then we should prompt warning of over limit
           extraCompensation
         } else {
           0
@@ -984,6 +986,27 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
 
     } else {
       BadRequest("Cannot Update service funding")
+    }
+  }
+
+  def setMinimumRenewalBalance(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
+     if (request.body.isInstanceOf[AnyContentAsJson]) {
+      Try(request.body.asInstanceOf[AnyContentAsJson].json.\("minimumRenewalBalance").as[Long]) match {
+        case Success(minimumRenewalBalance) =>
+          if (minimumRenewalBalance < 0) {
+            BadRequest("Cannot have negative minimumRenewalBalance")
+          } else {
+            val airline = request.user
+            airline.setMinimumRenewalBalance(minimumRenewalBalance)
+            AirlineSource.saveAirlineInfo(airline, updateBalance = false)
+            Ok(Json.obj("minimumRenewalBalance" -> JsNumber(minimumRenewalBalance)))
+          }
+        case Failure(_) =>
+          BadRequest("Cannot Update minimum renewal balance - could not cast to long")
+      }
+
+    } else {
+      BadRequest("Cannot Update minimum renewal balance")
     }
   }
 
