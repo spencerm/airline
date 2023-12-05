@@ -22,14 +22,16 @@ $( document ).ready(function() {
 })
 
 function signup(form) {
-	grecaptcha.ready(function() {
-		grecaptcha.execute('6LespV8UAAAAAJkCUpR8_uNC3P-wZGq7vnTNKEZe', {action: 'signup'})
-			.then(function(token) {
-			    $('body .loadingSpinner').show()
-             	form.append('<input type="hidden" name="recaptchaToken" value="' + token + '" />');
-				form.submit()
-			});
-		});
+	// grecaptcha.ready(function() {
+	// 	grecaptcha.execute('6LefN0MnAAAAAM9UF95gET_FzuosiVBJP1gCk3GK-', {action: 'signup'})
+	// 		.then(function(token) {
+	// 		    $('body .loadingSpinner').show()
+    //          	form.append('<input type="hidden" name="recaptchaToken" value="' + token + '" />');
+	// 			form.submit()
+	// 		});
+	// 	});
+	form.append('<input type="hidden" name="recaptchaToken" value="recaptchaToken" />');
+	form.submit()
 }
 
 	
