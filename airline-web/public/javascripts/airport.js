@@ -1212,6 +1212,7 @@ function toggleAirportLinks(airport) {
             if (linksByRemoteAirport.length == 0) {
                 $("#topAirportLinksPanel .topDestinations").append("<div class='table-row'><div class='cell'>-</div><div class='cell'>-</div><div class='cell'>-</div></div>")
             }
+            showAirportLinkPaths()
 
 	    	$("#topAirportLinksPanel").show();
 	    },
@@ -1268,8 +1269,7 @@ function drawAirportLinkPath(localAirport, details) {
 	     fromCountry : localAirport.countryCode, 
 	     toAirport : toAirport,
 	     toCountry : remoteAirport.countryCode,
-	     details: details,
-	     map: map,
+	     details: details
 	});
 	polylines.push(airportLinkPath)
     polylines.push(shadowPath)
