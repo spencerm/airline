@@ -162,6 +162,37 @@ class Application @Inject()(cc: ControllerComponents, val configuration: play.ap
   }
 
 
+  def getAirportsGeoJson() = Action {
+    val airports = cachedAirportsByPower
+    val features = airports.map { airport =>
+      Json.obj(
+        "type" -> "Feature",
+        "geometry" -> Json.obj(
+          "type" -> "Point",
+          "coordinates" -> Json.arr(airport.longitude, airport.latitude)
+        ),
+        "properties" -> Json.obj(
+          "iata" -> airport.iata,
+//          "icao" -> airport.icao,
+          "name" -> airport.name,
+//          "countryCode" -> airport.countryCode,
+//          "city" -> airport.city,
+//          "zone" -> airport.zone,
+          "size" -> airport.size,
+          "income" -> airport.baseIncome,
+          "pop" -> airport.basePopulation,
+//          "runwayLength" -> airport.runwayLength,
+          "id" -> airport.id
+        )
+      )
+    }
+    Ok(Json.obj(
+      "type" -> "FeatureCollection",
+      "features" -> features
+    )).withHeaders(
+      ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:5173"
+    )
+  }
 
 
   def getAirports(@deprecated count : Int) = Action { //count is no longer used
@@ -611,6 +642,7 @@ class Application @Inject()(cc: ControllerComponents, val configuration: play.ap
   
   def options(path: String) = Action {
     Ok("").withHeaders(
+      "Access-Control-Allow-Origin" -> "http://localhost:5173",
       "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With, Authorization",
       "Access-Control-Allow-Credentials" -> "true",

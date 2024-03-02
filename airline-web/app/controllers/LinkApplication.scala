@@ -547,9 +547,39 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         LinkSource.loadFlightLinksByToAirportAndAirlineId(toAirportId, airlineId)
       }
     Ok(Json.toJson(links)).withHeaders(
-      ACCESS_CONTROL_ALLOW_ORIGIN -> "*"
+      ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:5173"
     )
   }
+
+  def getLinksGeoJson(airlineId: Int) = AuthenticatedAirline(airlineId) { request =>
+    val consumptions = LinkSource.loadLinkConsumptionsByAirline(airlineId).foldLeft(immutable.Map[Int, LinkConsumptionDetails]()) { (foldMap, linkConsumptionDetails) =>
+      foldMap + (linkConsumptionDetails.link.id -> linkConsumptionDetails)
+    }
+  val links = LinkSource.loadFlightLinksByAirlineId(airlineId)
+  val features = links.map { link =>
+    Json.obj(
+      "type" -> "Feature",
+      "geometry" -> Json.obj(
+        "type" -> "LineString",
+        "coordinates" -> Json.arr(
+          Json.arr(link.from.longitude, link.from.latitude),
+          Json.arr(link.to.longitude, link.to.latitude),
+        ),
+        "properties" -> Json.obj(
+          "id" -> link.id,
+          "pask" -> consumptions.get(link.id).fold(0)(_.profit) / link.distance,
+          "satisfaction" -> JsNumber(BigDecimal(consumptions.get(link.id).map(_.satisfaction.toDouble).getOrElse(0.0)))
+        )
+      )
+    )
+  }
+  Ok(Json.obj(
+    "type" -> "FeatureCollection",
+    "features" -> features
+  )).withHeaders(
+    ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:5173"
+  )
+}
 
   def getLinksDetails(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     val links = LinkSource.loadFlightLinksByAirlineId(airlineId)
@@ -569,7 +599,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         lastUpdates(link.id))
     }
     Ok(Json.toJson(linksWithProfit)).withHeaders(
-      ACCESS_CONTROL_ALLOW_ORIGIN -> "*"
+      ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:5173"
     )
   }
 
@@ -625,15 +655,15 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
 //     Ok(Json.toJson(linkConsumptions))
 //  }
 
-  def preparePlanLink(airline : Airline, fromAirportId : Int, toAirportId : Int) : Either[String, (Airport, Airport)] = {
+  def preparePlanLink(airline : Airline, fromAirportId : Int, toAirportId : Int) : Either[String, (Airport, Airport, Boolean)] = {
     AirportCache.getAirport(fromAirportId, true) match {
       case Some(fromAirport) =>
         AirportCache.getAirport(toAirportId, true) match {
           case Some(toAirport) =>
             if (airline.getBases().map(_.airport.id).contains(fromAirportId)) { //make sure it has a base for the from Airport
-              Right((fromAirport, toAirport))
+              Right((fromAirport, toAirport, true))
             } else {
-              Left(s"from Airport $fromAirportId is not a base of ${airline.name}")
+              Right((fromAirport, toAirport, false))
             }
           case None =>
             Left(s"from Airport $fromAirportId is not found")
@@ -649,7 +679,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     val PlanLinkData(fromAirportId, toAirportId) = planLinkForm.bindFromRequest.get
     val airline = request.user
     preparePlanLink(airline, fromAirportId, toAirportId) match {
-      case Right((fromAirport, toAirport)) => {
+      case Right((fromAirport, toAirport, airlineHasBase)) => {
         var existingLink: Option[Link] = LinkSource.loadFlightLinkByAirportsAndAirline(fromAirportId, toAirportId, airlineId)
 
         val distance = Util.calculateDistance(fromAirport.latitude, fromAirport.longitude, toAirport.latitude, toAirport.longitude).toInt
@@ -774,6 +804,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
           "toAirportLatitude" -> toAirport.latitude,
           "toAirportLongitude" -> toAirport.longitude,
           "toCountryCode" -> toAirport.countryCode,
+          "airlineHasBase" -> airlineHasBase,
           "flightCode" -> flightCode,
           "mutualRelationship" -> countryRelationship,
           "distance" -> distance,
