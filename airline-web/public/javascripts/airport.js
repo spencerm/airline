@@ -1331,9 +1331,12 @@ function getAirportIcon(airportInfo) {
     var mediumAirportMarkerIcon = $("#map").data("mediumAirportMarker")
     var smallAirportMarkerIcon = $("#map").data("smallAirportMarker")
     var gatewayAirportMarkerIcon = $("#map").data("gatewayAirportMarker")
+    var domesticAirportMarkerIcon = $("#map").data("domesticAirportMarker")
 
     if (airportInfo.isGateway) {
       icon = gatewayAirportMarkerIcon
+    } else if (airportInfo.size <= 3) {
+      icon = domesticAirportMarkerIcon
     } else if (airportInfo.size <= 3) {
       icon = smallAirportMarkerIcon
     } else if (airportInfo.size <= 6) {
