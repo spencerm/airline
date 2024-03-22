@@ -48,6 +48,11 @@ class RankingApplication @Inject()(cc: ControllerComponents) extends AbstractCon
           result = result ++ Json.obj("airport1" -> Json.toJson(airport1)(SimpleAirportWrites), "airport2" -> Json.toJson(airport2)(SimpleAirportWrites))
         case _ =>
       }
+
+      ranking.reputationPrize match {
+        case Some(value) => result = result + ("reputationPrize" -> JsNumber(value))
+        case None =>
+      }
       
       result
     }
@@ -70,7 +75,7 @@ class RankingApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
   def getRankings() = Action {
      var json = Json.obj()
-     RankingUtil.getRankings().foreach {
+    RankingLeaderboards.getRankings().foreach {
        case(rankingType, rankings) =>
          json = json + (rankingType.toString, Json.toJson(rankings.take(MAX_ENTRY)))
      }
@@ -81,7 +86,7 @@ class RankingApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   
   def getRankingsWithAirline(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     var json = Json.obj()
-    RankingUtil.getRankings().foreach {
+    RankingLeaderboards.getRankings().foreach {
       case(rankingType, rankings) =>
         val (topRankings, nonTopRankings) = rankings.splitAt(MAX_ENTRY)
          

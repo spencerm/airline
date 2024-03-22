@@ -330,7 +330,7 @@ function getAirlineModifiersSpan(modifiers) {
     return result
 }
 
-function getRankingImg(ranking) {
+function getRankingImg(ranking, limitToTop3 = false) {
 	var rankingIcon
 	var rankingTitle
 	if (ranking == 1) {
@@ -342,7 +342,7 @@ function getRankingImg(ranking) {
 	} else if (ranking == 3) {
 		rankingIcon = "assets/images/icons/crown-bronze.png"
     	rankingTitle = "3rd place"
-	} else if (ranking <= 10) {
+	} else if (ranking <= 10 && limitToTop3 !== true) {
 		rankingIcon = "assets/images/icons/trophy-" + ranking + ".png"
 		rankingTitle = ranking + "th place"
 	} else if (ranking <= 20) {
