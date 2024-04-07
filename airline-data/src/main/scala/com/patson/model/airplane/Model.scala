@@ -158,7 +158,7 @@ Model("Airbus ZeroE Turbofan","Airbus ZE",175,160,795,3200,250000000,1040,12,Man
 Model("Airbus ZeroE Turboprop","Airbus ZE",85,75,680,1600,100000000,780,8,Manufacturer("Airbus",countryCode = "NL"),2000),
 Model("Antonov An-10","Antonov-A",132,482,680,4075,51000000,1040,8,Manufacturer("Antonov",countryCode = "UA"),1200),
 Model("Antonov An-158","Antonov-A",102,302,835,3500,28500000,1040,8,Manufacturer("Antonov",countryCode = "UA"),1900),
-Model("Antonov An-74","Antonov-A",52,195,705,4325,19200000,1040,0,Manufacturer("Antonov",countryCode = "UA"),700),
+Model("Antonov An-74","Antonov-A",68,198,750,4325,19200000,1040,0,Manufacturer("Antonov",countryCode = "UA"),700),
 Model("Antonov An-148","Antonov-A",75,283,835,5300,30000000,1040,4,Manufacturer("Antonov",countryCode = "UA"),1600),
 Model("ATR 42-600","ATR-Regional",48,76,556,1326,17000000,1040,0,Manufacturer("ATR",countryCode = "FR"),1050, imageUrl = "https://www.norebbo.com/2015/04/bombardier-canadair-regional-jet-200-blank-illustration-templates/"),
 Model("ATR 42-600S","ATR-Regional",48,76,556,1308,19000000,1040,0,Manufacturer("ATR",countryCode = "FR"),750, imageUrl = "https://www.norebbo.com/2015/04/bombardier-canadair-regional-jet-200-blank-illustration-templates/"),
