@@ -22,13 +22,11 @@ function showAirportDetails(airportId) {
 	
 	$.ajax({
 		type: 'GET',
-		url: "airports/" + airportId + "?image=true",
+		url: "airports/" + airportId + "?image=false",
 	    contentType: 'application/json; charset=utf-8',
 	    dataType: 'json',
 	    success: function(airport) {
 	        populateAirportDetails(airport)
-//	    		$("#floatBackButton").show()
-//	    		shimmeringDiv($("#floatBackButton"))
             updateAirportDetails(airport, airport.cityImageUrl, airport.airportImageUrl)
             updateAirportExtendedDetails(airport.id, airport.countryCode)
     		activeAirport = airport
@@ -61,6 +59,24 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
 	} else {
 		$('#airportDetailsIcao').text('-')
 	}
+
+	//loyalist-trend
+//	$.each(result.airlineDeltas, function(index, deltaEntry) {
+//        var airlineName = deltaEntry.airlineName
+//        var airlineId = deltaEntry.airlineId
+//        var deltaText = (deltaEntry.passengers >= 0) ? ("+" + deltaEntry.passengers) : deltaEntry.passengers
+//        var $row = $('<div class="table-row clickable" data-link="rival"><div class="cell">' + getAirlineSpan(airlineId, airlineName) + '</div><div class="cell" style="text-align:right">' + deltaText + '</div></div>')
+//        $row.click(function() {
+//            showRivalsCanvas(deltaEntry.airlineId)
+//        })
+//        $table.append($row)
+//    })
+//
+//    assignAirlineColors(currentData, "airlineId")
+//
+//    plotPie(currentData, activeAirline ? activeAirline.name : null , $("#airportCanvas .loyalistPie"), "airlineName", "amount")
+//    plotLoyalistHistoryChart(result.history, $("#loyalistHistoryModal .loyalistHistoryChart"))
+//    populateNavigation($('#airportCanvas'))
 
 
     var $runwayTable = $('#airportDetails .runwayTable')
@@ -345,8 +361,6 @@ function populateAirportDetails(airport) {
         airportMapCircle.setMap(null)
     }
 
-
-
     if (airport) {
 		addCityMarkers(airportMap, airport)
 		airportMap.setZoom(6)
@@ -390,10 +404,8 @@ function populateAirportDetails(airport) {
             initSantaClaus()
         }
 	}
-
-
-
 }
+
 
 
 function loadAirportStatistics(airport) {
@@ -668,7 +680,7 @@ function addMarkers(airports) {
 				  updateBaseInfo(this.airport.id)
 			  }
 			  $("#airportPopupName").text(this.airport.name)
-			  $("#airportPopupCustomsIcon").html(getOpennessIcon(loadedCountriesByCode[this.airport.countryCode].openness,this.airport.size,this.airport.isDomesticAirport))
+			  $("#airportPopupCustomsIcon").html(getOpennessIcon(loadedCountriesByCode[this.airport.countryCode].openness,this.airport.size,this.airport.isDomesticAirport,this.airport.isGateway))
 			  $("#airportPopupIata").text(this.airport.iata)
 			  $("#airportPopupCity").html(this.airport.city + "&nbsp;" + getCountryFlagImg(this.airport.countryCode))
 			  $("#airportPopupZone").text(zoneById[this.airport.zone])
@@ -744,7 +756,7 @@ function addCityMarkers(airportMap, airport) {
 	cities.sort(sortByProperty("population", false))
 	var count = 0
 	$.each(cities, function( key, city ) {
-		if (++ count > 20) { //do it for top 20 cities only
+		if (++ count > 99) { //do it for top 20 cities only
 			return false
 		}	
 		var icon
