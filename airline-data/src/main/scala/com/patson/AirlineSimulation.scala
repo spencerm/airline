@@ -21,7 +21,8 @@ object AirlineSimulation {
   val MAX_SERVICE_QUALITY_INCREMENT : Double = 0.5
   val MAX_SERVICE_QUALITY_DECREMENT : Double = 10
   val MAX_REPUTATION_DELTA = 1
-  val BANKRUPTCY_THRESHOLD = -10000000 //-10M, based on company value (maybe should be a percent?)
+  val BANKRUPTCY_ASSETS_THRESHOLD = -50000000 //-50M
+  val BANKRUPTCY_PROFIT_THRESHOLD = -10000000 //-10M
 
   def airlineSimulation(cycle: Int, flightLinkResult : List[LinkConsumptionDetails], loungeResult : scala.collection.immutable.Map[Lounge, LoungeConsumptionDetails], airplanes : List[Airplane], airlineStats : List[AirlineStat]) = {
     val allAirlines = AirlineSource.loadAllAirlines(true)
@@ -427,10 +428,30 @@ object AirlineSimulation {
         val oilContract = transactionalCashFlowItems.getOrElse(CashFlowType.OIL_CONTRACT, 0L)
         val assetTransactions = transactionalCashFlowItems.getOrElse(CashFlowType.ASSET_TRANSACTION, 0L)
 
+        val isBankrupt = if (airlineValue.overall < BANKRUPTCY_ASSETS_THRESHOLD && airlineProfit < BANKRUPTCY_PROFIT_THRESHOLD) {
+          true
+        } else {
+          false
+        }
+        if(isBankrupt){
+          val resetBalance = 0
+          //todd: add public notice of bankruptcy with stats
+          println(s"Resetting $airline due to negative value")
+          Airline.resetAirline(airline.id, newBalance = resetBalance)
+        }
+
+
+
         val accountingCashFlow = totalCashFlow + baseConstruction + buyAirplane + sellAirplane + createLink + facilityConstruction + oilContract + assetTransactions
 
         val loanPrincipal = loanPayment - interestPayment
-        val airlineWeeklyCashFlow = AirlineCashFlow(airline.id, cashFlow = accountingCashFlow, operation = operationCashFlow, loanInterest = interestPayment * -1, loanPrincipal = loanPrincipal * -1, baseConstruction = baseConstruction, buyAirplane = buyAirplane, sellAirplane = sellAirplane, createLink = createLink, facilityConstruction = facilityConstruction, oilContract = oilContract, assetTransactions = assetTransactions, cycle = currentCycle)
+        val airlineWeeklyCashFlow = {
+          if (isBankrupt) {
+            AirlineCashFlow(airline.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, cycle = currentCycle)
+          } else {
+            AirlineCashFlow(airline.id, cashFlow = accountingCashFlow, operation = operationCashFlow, loanInterest = interestPayment * -1, loanPrincipal = loanPrincipal * -1, baseConstruction = baseConstruction, buyAirplane = buyAirplane, sellAirplane = sellAirplane, createLink = createLink, facilityConstruction = facilityConstruction, oilContract = oilContract, assetTransactions = assetTransactions, cycle = currentCycle)
+          }
+        }
         allCashFlows += airlineWeeklyCashFlow
         allCashFlows ++= computeAccumulateCashFlow(airlineWeeklyCashFlow)
 
@@ -438,94 +459,6 @@ object AirlineSimulation {
         val targetServiceQuality = airline.getTargetServiceQuality()
         val currentServiceQuality = airline.getCurrentServiceQuality()
         airline.setCurrentServiceQuality(getNewQuality(currentServiceQuality, targetServiceQuality))
-
-        //update reputation
-        val reputationBreakdowns = ListBuffer[ReputationBreakdown]()
-
-        val reputationByCountries = flightLinkResultByAirline.get(airline.id) match {
-          case Some(linkConsumptions) =>
-            val countryCodeSet = linkConsumptions.map(_.link.to.countryCode).toSet
-            val uniqueCountryCount = countryCodeSet.size
-            if (uniqueCountryCount > 12) {
-              20
-            } else {
-              0
-            }
-          case None =>
-            0
-        }
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.MILESTONE_COUNTRIES, reputationByCountries))
-
-        val reputationByPaxKm = flightLinkResultByAirline.get(airline.id) match {
-          case Some(linkConsumptions) =>
-            val totalPassengerKilometers = linkConsumptions.foldLeft(0L) { (accumulator, linkConsumption) =>
-              accumulator + linkConsumption.link.soldSeats.total * linkConsumption.link.distance
-            }
-            if (totalPassengerKilometers > 100_000_000) {
-              60
-            } else if (totalPassengerKilometers > 1_000_000) {
-              40
-            } else if (totalPassengerKilometers > 10_000) {
-              20
-            } else {
-              0
-            }
-          case None =>
-            0
-        }
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.MILESTONE_PASSENGERS, reputationByPaxKm))
-
-        val reputationByAirportChampions = airportChampionsByAirlineId.get(airline.id) match {
-          case Some(airportChampions) => airportChampions.map(_.reputationBoost).sorted.takeRight(MAX_AIRPORT_CHAMPION_BOOST_ENTRIES).sum
-          case None => 0
-        }
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.AIRPORT_LOYALIST_RANKING, reputationByAirportChampions))
-
-        val reputationByStockPrice = 10 * AirlineGradeStockPrice.findGrade(stockPrice).level
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.STOCK_PRICE, reputationByStockPrice))
-
-        val reputationByTourists = 10 * AirlineGradeTourists.findGrade(airlineStat.tourists).level
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.TOURISTS, reputationByTourists))
-
-        val reputationByElites = 10 * AirlineGradeElites.findGrade(airlineStat.elites).level
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.ELITES, reputationByElites))
-
-        val reputationBonusFromAlliance : Double = allianceByAirlineId.get(airline.id) match {
-          case Some(alliance) => allianceRankings.get(alliance) match {
-            case Some((ranking, _)) => Alliance.getReputationBonus(ranking)
-            case None => 0.0
-          }
-          case None => 0.0
-        }
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.ALLIANCE_BONUS, reputationBonusFromAlliance))
-
-        val reputationBonusFromLeaderboards: Double = rankingsByAirlineId.getOrElse(airline.id, 0)
-        reputationBreakdowns.append(ReputationBreakdown(ReputationType.LEADERBOARD_BONUS, reputationBonusFromLeaderboards))
-
-        val finalBreakdowns = ReputationBreakdowns(reputationBreakdowns.toList)
-        AirlineSource.updateReputationBreakdowns(airline.id, finalBreakdowns)
-
-        val currentReputation = airline.getReputation()
-        var targetReputation = finalBreakdowns.total
-        //make sure it increases/decreases gradually based on passenger volume
-        if (targetReputation >  currentReputation && targetReputation - currentReputation > MAX_REPUTATION_DELTA) {
-          targetReputation = currentReputation + MAX_REPUTATION_DELTA
-        } else if (targetReputation <  currentReputation && currentReputation - targetReputation > MAX_REPUTATION_DELTA) {
-          targetReputation = currentReputation - MAX_REPUTATION_DELTA
-        }
-
-        airline.setReputation(targetReputation)
-
-        //check bankruptcy: if total value & total profit is less than -10m, only then reset
-        if (airlineValue.overall < BANKRUPTCY_THRESHOLD) {
-          if (airlineProfit < BANKRUPTCY_THRESHOLD) {
-            val resetBalance = 0
-            //todd: add public notice of bankruptcy with stats
-            println(s"Resetting $airline due to negative value")
-            Airline.resetAirline(airline.id, newBalance = resetBalance)
-            NoticeSource.saveTrackingNotice(airline.id, GameOverNotice())
-          }
-        }
 //        println(airline + " profit is: " + airlineProfit + " existing balance (not updated yet) " + airline.getBalance() + " reputation " +  airline.getReputation() + " cash flow " + totalCashFlow)
     }
     
