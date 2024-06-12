@@ -100,6 +100,19 @@ object DemandGenerator {
     allDemandChunks.toList
   }
 
+  def computeDemandBetweenAirports(fromAirport : Airport, toAirport : Airport, affinity : Int, relationship : Int, distance : Int) : Demand = {
+    val demand = if (fromAirport != toAirport && fromAirport.population != 0 && toAirport.population != 0 && distance >= MIN_DISTANCE) {
+      computeBaseDemandBetweenAirports(fromAirport: Airport, toAirport: Airport, affinity: Int, relationship: Int, distance: Int): Demand
+    } else {
+      Demand(
+        LinkClassValues(0, 0, 0),
+        LinkClassValues(0, 0, 0),
+        LinkClassValues(0, 0, 0)
+      )
+    }
+    demand
+  }
+
   def computeBaseDemandBetweenAirports(fromAirport : Airport, toAirport : Airport, affinity : Int, relationship : Int, distance : Int) : Demand = {
     import FlightType._
     val flightType = Computation.getFlightType(fromAirport, toAirport, distance, relationship)
@@ -134,21 +147,23 @@ object DemandGenerator {
     )
   }
 
-  //add distance,
-  def floorVeryLowIncome(pop: Long): Int = {
-    val minPop = 1e6
-    val minDenominator = 50000
+  //adds more demand, up to 200
+  private def floorVeryLowIncome(pop: Long): Int = {
+    val minPop = 5e5
+    val minDenominator = 20000
 
-    if (pop <= minPop) {
+    val boost = if (pop <= minPop) {
       (pop / minDenominator).toInt
     } else {
       val logFactor = 1 + Math.log10(pop / minPop)
       val adjustedDenominator = (minDenominator * logFactor)
       (pop / adjustedDenominator).toInt
     }
+    Math.min(200, boost)
   }
 
-  def computeRawDemandBetweenAirports(fromAirport : Airport, toAirport : Airport, affinity : Int, distance : Int) : Int = {
+
+  private def computeRawDemandBetweenAirports(fromAirport : Airport, toAirport : Airport, affinity : Int, distance : Int) : Int = {
     val fromPopIncomeAdjusted = if (fromAirport.popMiddleIncome > 0) fromAirport.popMiddleIncome else 1
 
     val distanceReducerExponent: Double =
@@ -198,13 +213,13 @@ object DemandGenerator {
       } else 1.0
 
     //set very low income floor, specifically traffic to/from central airports that is otherwise missing
-    val buffLowIncomeAirports = if (fromAirport.income <= 5000 && toAirport.income <= 8000 && distance <= 2000 && (toAirport.size >= 4 || fromAirport.size >= 4)) floorVeryLowIncome(fromAirport.population) else 0
+    val buffLowIncomeAirports = if (fromAirport.income <= 5000 && toAirport.income <= 8000 && distance <= 3000 && (toAirport.size >= 4 || fromAirport.size >= 4)) floorVeryLowIncome(fromAirport.population) else 0
 
     val baseDemand : Double = specialCountryModifier * airportAffinityMutliplier * fromPopIncomeAdjusted * toAirport.population.toDouble / 225_000 / 225_000 + buffLowIncomeAirports
     (Math.pow(baseDemand, distanceReducerExponent)).toInt
   }
 
-  def computeClassCompositionFromIncome(demand: Double, income: Int, passengerType: PassengerType.Value, hasFirstClass: Boolean) : LinkClassValues = {
+  private def computeClassCompositionFromIncome(demand: Double, income: Int, passengerType: PassengerType.Value, hasFirstClass: Boolean) : LinkClassValues = {
     val firstClassDemand = if (hasFirstClass) {
         if (income > FIRST_CLASS_INCOME_MAX) {
           demand * FIRST_CLASS_PERCENTAGE_MAX(passengerType)
@@ -224,14 +239,14 @@ object DemandGenerator {
     val businessClassCutoff = if (businessClassDemand > 1) businessClassDemand else 0
     val discountClassCutoff = if (discountClassDemand > 6) discountClassDemand else 0
 
-    val economyClassDemand = demand - firstClassDemand - businessClassCutoff - discountClassCutoff
+    val economyClassDemand = Math.max(0, demand - firstClassDemand - businessClassCutoff - discountClassCutoff)
     LinkClassValues.getInstance(economyClassDemand.toInt, businessClassCutoff.toInt, firstClassDemand.toInt, discountClassCutoff.toInt)
   }
 
   val ELITE_MIN_GROUP_SIZE = 6
   val ELITE_MAX_GROUP_SIZE = 10
 
-  def generateEliteDemand(airports : List[Airport]) : List[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])] = {
+  private def generateEliteDemand(airports : List[Airport]) : List[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])] = {
     val eliteDemands = new ArrayList[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])]()
     val destinationList = DestinationSource.loadAllEliteDestinations()
     val eliteAirports = airports.filter(_.popElite > 0)
