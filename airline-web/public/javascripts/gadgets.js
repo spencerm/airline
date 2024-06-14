@@ -877,11 +877,7 @@ function averageFromSubKey(array, ...subKeys) {
 
 function formatNumberInput(_obj) {
     var num = parseNumber(_obj.val());
-    if (num == 0) {
-        _obj.val('');
-    } else {
-        _obj.val(commaSeparateNumber(num));
-        });
+    _obj.val(commaSeparateNumber(num));
 }
 
 function parseNumber(_str) {
