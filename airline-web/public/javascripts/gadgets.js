@@ -880,10 +880,7 @@ function formatNumberInput(_obj) {
     if (num == 0) {
         _obj.val('');
     } else {
-        _obj.val(Intl.NumberFormat('en-US', {
-                useGrouping: true,
-                maximumFractionDigits: 0
-            }).format(num));
+        _obj.val(commaSeparateNumber(num));
         });
 }
 
