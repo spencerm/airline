@@ -883,7 +883,7 @@ function formatNumberInput(_obj) {
         _obj.val(Intl.NumberFormat('en-US', {
                 useGrouping: true,
                 maximumFractionDigits: 0
-            }).format(num);
+            }).format(num));
         });
 }
 
