@@ -881,12 +881,16 @@ function formatNumberInput(_obj) {
 }
 
 function parseNumber(_str) {
-    var arr = _str.split('');
-    var out = new Array();
-    for (var cnt = 0; cnt < arr.length; cnt++) {
-        if (isNaN(arr[cnt]) == false) {
-            out.push(arr[cnt]);
+    if (typeof(_str) !== 'number') {
+        var arr = _str.split('');
+        var out = new Array();
+        for (var cnt = 0; cnt < arr.length; cnt++) {
+            if (isNaN(arr[cnt]) == false) {
+                out.push(arr[cnt]);
+            }
         }
+        return Number(out.join(''));
+    } else {
+        return _str
     }
-    return Number(out.join(''));
 }
