@@ -64,8 +64,7 @@ function loadNewLoanDetails() {
 }
 
 function loadLoanOptions(amount) {
-	formatNumberInput($("#newLoanAmount"))
-	var url = "airlines/" + activeAirline.id + "/loan-options?loanAmount=" + parseNumber(amount)
+	var url = "airlines/" + activeAirline.id + "/loan-options?loanAmount=" + amount
 	$.ajax({
 		type: 'GET',
 		url: url,
