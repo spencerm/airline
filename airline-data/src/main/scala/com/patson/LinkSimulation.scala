@@ -218,7 +218,7 @@ object LinkSimulation {
         } else {
           Math.min(50, flightLink.duration.toDouble / 3 * 2)
         }
-        val fuelBurn = ascendTime * model.fuelBurn * 5 + (flightLink.duration - ascendTime) * model.fuelBurn
+        val fuelBurn = ascendTime * model.fuelBurn * 4.5 + (flightLink.duration - ascendTime) * model.fuelBurn
 
         (fuelBurn * FUEL_UNIT_COST * (flightLink.frequency - flightLink.cancellationCount) * loadFactor * distanceFactor).toInt
       case None => 0

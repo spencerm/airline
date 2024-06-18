@@ -102,7 +102,10 @@ object CountryMutualRelationshipGenerator extends App {
       "KH", "PK", "RU"
     )),
     Relation("CN", Direction.BI, 2, List(
-      "KP", "ET", "DJ", "VN", "IR", "SG", "MY", "MM"
+      "KP", "ET", "DJ", "HU", "VN", "IR", "SG", "MY", "MM"
+    )),
+    Relation("HK", Direction.BI, 2, List(
+      "KR", "JP", "GB"
     )),
     Relation("JP", Direction.BI, 2, List(
       "PE", "BR", "IN", "VN", "TH", "FJ", "PG", "SB"
@@ -206,7 +209,7 @@ object CountryMutualRelationshipGenerator extends App {
     )),
     //UK territories
     Relation("GB", Direction.BI, 5, List(
-      "IM", "BM", "GI", "FK", "GG", "SH"
+      "IM", "JE", "BM", "GI", "FK", "GG", "SH"
     )),
     Relation("GB", Direction.BI, 4, List(
       "AU", "NZ"
