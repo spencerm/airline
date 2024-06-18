@@ -20,8 +20,8 @@ object DemandGenerator {
   private[this] val FIRST_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0, PassengerType.BUSINESS -> 0.14, PassengerType.TOURIST -> 0, PassengerType.ELITE -> 1, PassengerType.OLYMPICS -> 0)
   private[this] val BUSINESS_CLASS_INCOME_FLOOR = 8_000 //effectively boost low-income
   private[this] val BUSINESS_CLASS_INCOME_MAX = 135_000
-  private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.09, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.15)
-  private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.34, PassengerType.BUSINESS -> 0.0, PassengerType.TOURIST -> 0.68, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.15)
+  private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
+  private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.34, PassengerType.BUSINESS -> 0.05, PassengerType.TOURIST -> 0.62, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
   val MIN_DISTANCE = 50
   
   import scala.collection.JavaConverters._

@@ -321,7 +321,7 @@ case object FIRST extends LinkClass("F", spaceMultiplier = 6, resourceMultiplier
 case object BUSINESS extends LinkClass("J", spaceMultiplier = 2.5, resourceMultiplier = 1.5, priceMultiplier = 2.7, priceSensitivity = 0.8, level = 2, basePrice = 50) {
   override def label = "business"
 }
-case object ECONOMY extends LinkClass("Y", spaceMultiplier = 1, resourceMultiplier = 1, priceMultiplier = 1.15, priceSensitivity = 0.95, level = 1, basePrice = 5) {
+case object ECONOMY extends LinkClass("Y", spaceMultiplier = 1, resourceMultiplier = 1, priceMultiplier = 1.15, priceSensitivity = 0.95, level = 1, basePrice = 10) {
   override def label = "economy"
 }
 case object DISCOUNT_ECONOMY extends LinkClass("D", spaceMultiplier = 1, resourceMultiplier = 0.9, priceMultiplier = 0.95, priceSensitivity = 1, level = 0, basePrice = 0) {
