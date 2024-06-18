@@ -1253,7 +1253,8 @@ function calculateDemand() {
         first: parseFloat($('#planLinkFirstPrice').val()),
     }
     const suggestedPrice = planLinkInfo.suggestedPrice
-    /** breakpoints manually copied from DemandGenerator...  */
+    /** adding more estimation to capture base pax profile prices
+    breakpoints manually copied from DemandGenerator...  */
     for (const passengerType in suggestedPrice) {
         if (currentPrices.economy <= suggestedPrice[passengerType].discountEconomy) {
             totalDemand.economy += Math.floor(planLinkInfo.demands[passengerType].discountEconomy);
