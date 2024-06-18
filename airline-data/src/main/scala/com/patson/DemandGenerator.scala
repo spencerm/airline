@@ -21,7 +21,7 @@ object DemandGenerator {
   private[this] val BUSINESS_CLASS_INCOME_FLOOR = 8_000 //effectively boost low-income
   private[this] val BUSINESS_CLASS_INCOME_MAX = 135_000
   private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.09, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.15)
-  private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.34, PassengerType.BUSINESS -> 0.0, PassengerType.TOURIST -> 0.76, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.15)
+  private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.34, PassengerType.BUSINESS -> 0.0, PassengerType.TOURIST -> 0.68, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.15)
   val MIN_DISTANCE = 50
   
   import scala.collection.JavaConverters._
@@ -128,7 +128,7 @@ object DemandGenerator {
       1.0
     }
     //lower demand to (boosted) poor places, but not for tourists
-    val toIncomeAdjust = Math.min(1.0, (toAirport.income.toDouble + 11_500) / 42_000)
+    val toIncomeAdjust = Math.min(1.0, (toAirport.income.toDouble + 11_500) / 44_000)
 
     val percentTraveler = Math.min(0.7, fromAirport.income.toDouble / 42_000)
 
@@ -215,7 +215,7 @@ object DemandGenerator {
     //set very low income floor, specifically traffic to/from central airports that is otherwise missing
     val buffLowIncomeAirports = if (fromAirport.income <= 5000 && toAirport.income <= 8000 && distance <= 3000 && (toAirport.size >= 4 || fromAirport.size >= 4)) floorVeryLowIncome(fromAirport.population) else 0
 
-    val baseDemand : Double = specialCountryModifier * airportAffinityMutliplier * fromPopIncomeAdjusted * toAirport.population.toDouble / 225_000 / 225_000 + buffLowIncomeAirports
+    val baseDemand : Double = specialCountryModifier * airportAffinityMutliplier * fromPopIncomeAdjusted * toAirport.population.toDouble / 220_000 / 220_000 + buffLowIncomeAirports
     (Math.pow(baseDemand, distanceReducerExponent)).toInt
   }
 

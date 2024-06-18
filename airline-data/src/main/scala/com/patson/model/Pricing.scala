@@ -18,7 +18,7 @@ object Pricing {
   }
   def computeStandardPrice(distance : Int, flightType : FlightType, linkClass : LinkClass) : Int = {
     var remainDistance = distance
-    var price = linkClass.basePrice
+    var price = linkClass.basePrice.toDouble
     for (priceBracket <- modifierBrackets if(remainDistance > 0)) {
       if (priceBracket._1 >= remainDistance) {
         price += remainDistance * priceBracket._2
