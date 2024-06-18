@@ -883,17 +883,9 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     }
   }
 
+  //used to enforce interconnected network
   def getDeleteLinkRejection(link : Link, airline : Airline) : Option[String] = {
-    if (airline.getBases().filterNot(_.headquarter).map { _.airport.id}.contains(link.to.id)) {
-      //then make sure there's still some link other then this pointing to the target
-      if (LinkSource.loadFlightLinksByAirlineId(airline.id).filter(_.to.id == link.to.id).size == 1) {
-        Some("Cannot delete this route as this flies to a base. Must remove the base before this can be deleted")
-      } else { //ok, more than 1 link
-        None
-      }
-    } else {
-      None
-    }
+    None
   }
 
 
