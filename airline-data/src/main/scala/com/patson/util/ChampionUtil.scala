@@ -86,7 +86,7 @@ object ChampionUtil {
         case GATEWAY_AIRPORT => 3
         case ELITE_CHARM => Math.max(feature.strength.toDouble / 4.0, 0.5)
         case FINANCIAL_HUB => feature.strength.toDouble / 5.0
-        case ISOLATED_TOWN => feature.strength.toDouble / 2.0
+        case ISOLATED_TOWN => 0.25 + feature.strength.toDouble / 4.0
         case _ => 0
       }
 
