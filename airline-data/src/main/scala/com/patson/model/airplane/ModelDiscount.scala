@@ -3,7 +3,7 @@ package com.patson.model.airplane
 import com.patson.data.AirplaneSource
 import com.patson.data.airplane.ModelSource
 import com.patson.model.airplane.Model.Category
-import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, REGIONAL, SMALL, SUPERSONIC, X_LARGE, PROPELLER, AIRSHIP}
+import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, REGIONAL, SMALL}
 import com.patson.util.{AirplaneModelCache, AirplaneModelDiscountCache, AirplaneOwnershipCache}
 
 import scala.collection.MapView
@@ -28,7 +28,6 @@ object ModelDiscount {
       case REGIONAL => 0.05
       case MEDIUM => 0.04
       case LARGE => 0.03
-      case X_LARGE => 0.02
       case JUMBO => 0.02
       case _ => 0.05
     }
@@ -86,11 +85,11 @@ object ModelDiscount {
           if (currentSuppliers.length == 1) {
             val discount = category match {
               case Category.SPECIAL => 0.05
-              case Category.PROPELLER => 0.05
               case Category.SMALL => 0.05
+              case Category.REGIONAL => 0.05
               case Category.MEDIUM => 0.03
               case Category.LARGE => 0.02
-              case Category.SUPERSONIC => 0.02
+              case Category.EXTRAORDINARY => 0.02
             }
             if (discount > 0) {
               PreferredSupplierDiscountInfo(Some(discount), category, Some(currentSuppliers(0)), s"${(discount * 100).toInt}% discount")

@@ -40,12 +40,12 @@ object Computation {
 
   def calculateDuration(airplaneModel: Model, distance : Int) : Int = {
     val speed =
-      if (airplaneModel.category == com.patson.model.airplane.Model.Category.SUPERSONIC) {
+      if (airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.SUPERSONIC) {
         (airplaneModel.speed * 1.5).toInt //up adjusted for SST
       } else {
         airplaneModel.speed
       }
-    val speedLimits = if (airplaneModel.category == com.patson.model.airplane.Model.Category.PROPELLER) {
+    val speedLimits = if (airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_MEDIUM || airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_SMALL) {
       List((250, 400), (350, 525))
     } else {
       List((300, 350), (400, 500), (400, 700))

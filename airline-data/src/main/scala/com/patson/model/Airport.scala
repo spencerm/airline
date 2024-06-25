@@ -222,7 +222,7 @@ case class Airport(iata : String, icao : String, name : String, latitude : Doubl
   }
 
   def getZoneAffinities() : String = {
-    val affinites = zone.split("-")
+    val affinites = zone.split("-").filter(_ != "None|")
     val domestics = affinites.filterNot(_.startsWith("|")).filterNot(_.endsWith("|"))
     val internationals = affinites.filter(_.endsWith("|")).map(_.dropRight(1))
     val diasporas = affinites.filter(_.startsWith("|")).map(_.drop(4) + " diaspora").toSet
@@ -421,8 +421,7 @@ case class Airport(iata : String, icao : String, name : String, latitude : Doubl
     import Model.Type._
     val multiplier = airplaneModel.airplaneType match {
       case MEDIUM => 5
-      case LARGE => 10
-      case X_LARGE => 18
+      case LARGE => 12
       case JUMBO => 24
       case SUPERSONIC => 12
       case _ => 2
