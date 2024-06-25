@@ -239,22 +239,6 @@
 	<div style="position: relative;" id="mainContainer" > <!-- Main container for the contents + the landing masks-->
 		<div id="landing">
 			<div id="landing-content">
-<!--				<div class="title" style="display: flex; ">-->
-<!--					<span class="text write" data-splitting="lines">-->
-<!--					The most sophisticated airline sim ever made.<br/>-->
-<!--					Track pax movement throughout your network,<br/>-->
-<!--					join an alliance and become the Ultimate airline!<br/>-->
-<!--					<br/>-->
-<!--					100% free and open source!-->
-<!--				 </span>-->
-<!--					<span aria-hidden="true" class="text laser" data-splitting="lines">-->
-<!--					The most sophisticated airline sim ever made.<br/>-->
-<!--					Track pax movement throughout your network,<br/>-->
-<!--					join an alliance and become the Ultimate airline!<br/>-->
-<!--					<br/>-->
-<!--					100% free and open source!-->
-<!--				</span>-->
-<!--				</div>-->
 				<div style="width: 100%; position: relative; padding-bottom: min(540px, 0%);">
     <img src="https://myfly.club/assets/images/front/banner.png" alt="Banner Image" style="width: 100%; max-width: 960px; height: auto; display: block; margin: 0 auto;">
 </div>
@@ -567,7 +551,7 @@
 											</div></div>
 										</div>
 										<div class="table-row">
-											<div class="label">Service Costs:</div>
+											<div class="label">Service Cost / Profit:</div>
 											<div class="value"><span id="linkServiceSupplies"></span> <div class="tooltip">
 												<img src='@routes.Assets.versioned("images/icons/information.png")'>
 												<span class="tooltiptext below" style="width: 280px;">
@@ -738,7 +722,7 @@
 									<input type="hidden" id="planLinkToAirportId"/>
 									<div class="table-row">
 										<div class="label" style="width:30%">Setup Cost:</div>
-										<div class="value" id="planLinkCost"></div>
+										<div class="value" style="width:70%" id="planLinkCost"></div>
 									</div>
 									<div class="table-row">
 										<div class="label">Estimated Difficulty:</div>
@@ -801,8 +785,8 @@
 										<div class="value">
 											<div class="frequencyDetail table colored" style="width: 100%">
 												<div class="table-header"/>
-													<div class="cell" style="width: 15%; min-width: 100px;">Airplane</div>
-													<div class="cell" style="width: 25%">Seats Config</div>
+													<div class="cell" style="width: 15%; min-width: 60px;">Airplane</div>
+													<div class="cell" style="width: 25%">Config</div>
 													<div class="cell" style="width: 60%">Flight Frequency</div>
 												</div>
 											</div>
@@ -1561,9 +1545,9 @@
 									<div class="table data" style="height: 20px; min-width: 980px;">
 										<div class="table-header" id="airplaneModelSortHeader">
 											<div class="cell clickable" style="width: 18%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
-											<div class="cell clickable" style="width: 10%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
+											<div class="cell clickable" style="width: 11%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
 											<div class="cell clickable selected" style="width: 9%" align="right" data-sort-property="price" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Price</div>
-											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="capacity" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Capacity<br><i class="text-hint">max seats</i></div>
+											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="capacity" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Capacity<br><i class="text-hint">max seats</i></div>
 											<div class="cell clickable" style="width: 10%" align="right" data-sort-property="quality" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Passenger Experience</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="range" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Range</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="fuelPerPax" title="Per Passenger" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Fuel Burn</div>
@@ -1571,7 +1555,7 @@
 											<div class="cell clickable" style="width: 9%" align="right" data-sort-property="speed" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Speed</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="runwayRequirement" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Runway</div>
 											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalOwned" data-sort-order="descending" onclick="toggleAirplaneModelTableSortOrder($(this))">Roster</div>
-											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="total" title="Total in Circulation" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">#</div>
+											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="total" title="Total in Circulation" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">#</div>
 										</div>
 									</div>
 									<div class="table-container-y" style="min-width: 980px;">
@@ -4803,7 +4787,7 @@
 		<div class="modal-content"  style="width : 800px; height: 800px; margin: 5% auto; overflow:auto;">
 			<span class="close" onclick="closeModal($('#modelConfigurationModal'))">&times;</span>
 			<h4><span class="modelName"></span>&nbsp;Configuration</h4>
-			<p class="pb-2"><b class="modelCapacity"></b> Capacity | <b class="modelMaxSeats"></b> Person Limit</p>
+			<p class="pb-2"><b class="modelCapacity"></b> Capacity | <b class="modelMaxSeats"></b> Seat Limit</p>
 			<div class="flex-row gap-4">
 				<div class="flex-align-center">
 					<input type="checkbox" onclick="toggleUtilizationRate($('#modelConfigurationModal'), $(this))" class="toggleUtilizationRateBox">
@@ -4904,11 +4888,11 @@
 	<div id="ownedAirplaneDetailModal" class="modal">
 		<div class="modal-content py-2" style="max-width: 560px;">
 			<span class="close" onclick="closeModal($('#ownedAirplaneDetailModal'))">&times;</span>
-			<h4>Owned Airplane Details</h4>
+			<h4>Aircraft Details</h4>
 			<div id="ownedAirplaneDetail" style="width: 100%;">
 				<div class="modelIllustration pb-4" style="width:100%; position: relative; max-width: 500px;">
 					<img src='#' style="width: 100%;">
-					<div class="label" style="right: 0px; bottom: 0px; position: absolute; font-style: italic;"><a href='#' target="_blank">Illustration courtesy of Norebbo</a></div>
+					<p class="label small" style="right: 0px; bottom: 0px; position: absolute; font-style: italic;"><a href='#' target="_blank">Illustration courtesy of Norebbo</a></p>
 				</div>
 				<div class="table" style="width: 100%">
 					<div class="table-header">
@@ -4932,7 +4916,7 @@
 						<div class="cell" id="airplaneDetailsDelivery" style="font-weight: bold;"></div>
 					</div>
 					<div class="table-row">
-						<div class="cell"><p>Selling value:</p></div>
+						<div class="cell"><p>Sell value:</p></div>
 						<div class="cell" id="airplaneDetailsSellValue"></div>
 					</div>
 					<div class="table-row">
@@ -5730,6 +5714,9 @@
   <script src='@routes.Assets.versioned("javascripts/color.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/mobile.js")' defer></script>
   <script src='@routes.Assets.versioned("javascripts/ui-theme.js")'></script>
+
+  <script src='@routes.Assets.versioned("javascripts/aircraft-config.umd.js")' defer></script>
+  <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/index-CKPGaino.css")'>
 
 	
 	<audio id="christmasMusic" preload="none" loop>

@@ -167,10 +167,10 @@ function updateAirlineBases() {
                     var capacityInfo = officeCapacity[base.airportId]
                     var required = (capacityInfo.staffCapacity < capacityInfo.currentStaffRequired) ? "<span class='fatal'>" + capacityInfo.currentStaffRequired + "</span>" : capacityInfo.currentStaffRequired
 
-                    row.append($("<div class='cell'>" + required + " | " + capacityInfo.staffCapacity + "</div>"))
-
                     if (capacityInfo.currentStaffRequired != capacityInfo.futureStaffRequired) {
-                        $capacityDiv.append("<span>(future : " + capacityInfo.futureStaffRequired + ")</span>")
+                        row.append($("<div class='cell'>" + required + " | " + capacityInfo.staffCapacity + "<span>(future: " + capacityInfo.futureStaffRequired + ")</span></div>"))
+                    } else {
+                        row.append($("<div class='cell'>" + required + " | " + capacityInfo.staffCapacity + "</div>"))
                     }
 
                     var $overtimeCompensationDiv
