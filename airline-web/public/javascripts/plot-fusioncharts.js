@@ -202,13 +202,9 @@ function plotSeatConfigurationGauge(container, configuration, maxSeats, spaceMul
 	}
 	
 	function updateDataSource(configuration) {
-		var businessPosition = configuration.economy / maxSeats * 100
-		var firstPosition
-		 if (configuration.business == 0) {
-		    firstPosition = businessPosition
-		 } else {
-		    firstPosition = (maxSeats - configuration.first * spaceMultipliers.first) / maxSeats * 100
-		 }
+		var businessPosition = configuration.economy * spaceMultipliers.economy
+		var firstPosition = businessPosition + configuration.business * spaceMultipliers.business
+		var emptyPosition = firstPosition + configuration.first * spaceMultipliers.first
 		dataSource["colorRange"] = {
             "color": [
                       {
@@ -227,11 +223,18 @@ function plotSeatConfigurationGauge(container, configuration, maxSeats, spaceMul
                       },
                       {
                           "minValue": firstPosition,
-                          "maxValue": "100",
+                          "maxValue": emptyPosition,
                           "label": "F : " + configuration.first,
                           "tooltext": "First Class",
                           "code": "#FFE62B"
-                      }
+                      },
+                      {
+                          "minValue": emptyPosition,
+                          "maxValue": "100",
+                          "label": configuration.empty,
+                          "tooltext": "Empty space",
+                          "code": "#D9534F"
+                    },
                   ]
               }
 //	    dataSource["pointers"]["pointer"][0].value = firstPosition
