@@ -175,7 +175,11 @@ def calculateAffinityValue(fromZone : String, toZone : String, relationship : In
 
 def countX2(strings: Array[String]): Int = {
   strings.count { str =>
-    str.length >= 5 && str.substring(str.length - 3, str.length - 1) == "x2"
+    if (str.endsWith("|")) {
+      str.length >= 5 && str.substring(str.length - 3, str.length - 1) == "x2"
+    } else {
+      str.length >= 5 && str.substring(str.length - 2, str.length) == "x2"
+    }
   }
 }
 
