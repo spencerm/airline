@@ -131,8 +131,9 @@ abstract class FlightPreference(homeAirport : Airport) {
   def qualityAdjustRatio(homeAirport : Airport, link : Transport, linkClass : LinkClass, paxType: PassengerType.Value) : Double = {
     val qualitySensitivity = paxType match {
       case PassengerType.BUSINESS => 1.0
-      case PassengerType.ELITE => 1.0
+      case PassengerType.ELITE => 1.2
       case PassengerType.OLYMPICS => 0.75
+      case PassengerType.TRAVELER => 0.75
       case _ => 0.5
     }
     val qualityDelta = link.computedQuality - homeAirport.expectedQuality(link.flightType, linkClass)
@@ -161,7 +162,7 @@ abstract class FlightPreference(homeAirport : Airport) {
   val priceAdjustedByLinkClassDiff = (link : Transport, linkClass : LinkClass) => {
     val cost = link.cost(linkClass) //use cost here
     if (preferredLinkClass.level != 0 && linkClass.level < preferredLinkClass.level) { //ignore discount_economy
-      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.2
+      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.33
       preferredLinkClass.basePrice - linkClass.basePrice + (cost / linkClass.priceMultiplier * preferredLinkClass.priceMultiplier * classDiffMultiplier).toInt //have to normalize the price to match the preferred link class, * classDiffMultiplier for unwillingness to downgrade
     } else {
       cost

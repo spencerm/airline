@@ -40,10 +40,13 @@ and (max-device-width : 640px) {
     }
 
     .sidePanel {
-        width: calc(100% - 8px);
+        width: calc(100% - 2px);
         position: absolute;
-        top: calc(75vh - 36px);
-        left: 4px;
+        top: calc(75dvh - 36px);
+        left: 2px;
+    }
+    .table-container-y {
+        max-height: calc(75dvh - 30px - 32px - 20px - 32px); /*adding all other divs...*/
     }
 
     #linkCharts {

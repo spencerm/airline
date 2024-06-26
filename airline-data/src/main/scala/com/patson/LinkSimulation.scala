@@ -211,14 +211,14 @@ object LinkSimulation {
       case Some(model) =>
         val distanceFactor = 0.5 + 0.012 * Math.pow(flightLink.duration.toDouble / 60, 2)
         val loadFactor = 0.6 + 0.4 * flightLink.getTotalSoldSeats.toDouble / flightLink.getTotalCapacity
-        val ascendTime = if (model.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER) {
+        val ascendTime = if (model.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_SMALL || model.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_MEDIUM) {
           18
         } else if (model.airplaneType == com.patson.model.airplane.Model.Type.HELICOPTER) {
           0
         } else {
           Math.min(50, flightLink.duration.toDouble / 3 * 2)
         }
-        val fuelBurn = ascendTime * model.fuelBurn * 4.5 + (flightLink.duration - ascendTime) * model.fuelBurn
+        val fuelBurn = ascendTime * model.fuelBurn * 5.25 + (flightLink.duration - ascendTime) * model.fuelBurn
 
         (fuelBurn * FUEL_UNIT_COST * (flightLink.frequency - flightLink.cancellationCount) * loadFactor * distanceFactor).toInt
       case None => 0
@@ -260,7 +260,7 @@ object LinkSimulation {
         depreciation += (airplane.depreciationRate * assignmentWeights(airplane)).toInt
     }
 
-    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 40, 2.5)
+    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 34, 2.1)
     var crewCost = CREW_BASE_COST
     var inflightCost, revenue = 0
     LinkClass.values.foreach { linkClass =>
@@ -329,9 +329,9 @@ object LinkSimulation {
     val star = link.rawQuality / 20
     val durationCostPerHour =
       if (star == 1) {
-        -2 //selling food & credit cards :)
+        -3 //selling food & credit cards :)
       } else if (star == 2) {
-        1
+        0
       } else if (star == 3) {
         2
       } else if (star == 4) {
@@ -341,7 +341,7 @@ object LinkSimulation {
       }
 
     val costPerPassenger = classMultiplier * durationCostPerHour * link.duration.toDouble / 60
-    (costPerPassenger * soldSeats * 2).toInt //Roundtrip X 2
+    (costPerPassenger * soldSeats).toInt
   }
 
   val LOAD_FACTOR_ALERT_LINK_COUNT_THRESHOLD = 3 //how many airlines before load factor is checked

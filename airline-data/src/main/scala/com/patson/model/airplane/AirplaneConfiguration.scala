@@ -12,11 +12,15 @@ object AirplaneConfiguration {
       AirplaneConfiguration(economyVal = model.capacity, 0, 0, airline, model, isDefault = true)
     } else {
       val ratio =  model.capacity.toDouble / model.maxSeats
-      val firstVal = if (ratio > BUSINESS.spaceMultiplier) (model.capacity / FIRST.spaceMultiplier * (ratio / FIRST.spaceMultiplier)).toInt else 0
-      var businessVal = if (ratio <= BUSINESS.spaceMultiplier) (model.capacity / BUSINESS.spaceMultiplier * (ratio / BUSINESS.spaceMultiplier)).toInt else 0
-      var economyVal = (model.capacity - businessVal * BUSINESS.spaceMultiplier + firstVal * FIRST.spaceMultiplier).toInt
+      val firstVal = if (ratio > BUSINESS.spaceMultiplier) {
+        Math.floor(Math.ceil(ratio / FIRST.spaceMultiplier * 10) / 10 * model.capacity / FIRST.spaceMultiplier).toInt
+      } else 0
+      var businessVal = if (ratio > 1.0 && ratio <= BUSINESS.spaceMultiplier) {
+        Math.floor(Math.ceil(ratio / BUSINESS.spaceMultiplier * 10) / 10 * model.capacity / BUSINESS.spaceMultiplier).toInt
+      } else 0
+      var economyVal = (model.capacity - (businessVal * BUSINESS.spaceMultiplier + firstVal * FIRST.spaceMultiplier)).toInt
       if (model.quality > 3.5 && economyVal > 10) {
-        businessVal = businessVal + (economyVal / 2 / 2.5).toInt
+        businessVal = businessVal + (economyVal / BUSINESS.spaceMultiplier).toInt
         economyVal = (model.capacity - businessVal * BUSINESS.spaceMultiplier + firstVal * FIRST.spaceMultiplier).toInt
       }
       AirplaneConfiguration(economyVal, businessVal, firstVal, airline, model, isDefault = true)
