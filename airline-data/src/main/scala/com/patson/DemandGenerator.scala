@@ -17,8 +17,7 @@ import scala.util.Random
 object DemandGenerator {
 
   private[this] val FIRST_CLASS_INCOME_MAX = 135_000
-  private[this] val FIRST_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0, PassengerType.BUSINESS -> 0.14, PassengerType.TOURIST -> 0, PassengerType.ELITE -> 1, PassengerType.OLYMPICS -> 0)
-  private[this] val BUSINESS_CLASS_INCOME_FLOOR = 8_000 //effectively boost low-income
+  private[this] val FIRST_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0, PassengerType.BUSINESS -> 0.13, PassengerType.TOURIST -> 0, PassengerType.ELITE -> 1, PassengerType.OLYMPICS -> 0)
   private[this] val BUSINESS_CLASS_INCOME_MAX = 135_000
   private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
   private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.34, PassengerType.BUSINESS -> 0.05, PassengerType.TOURIST -> 0.62, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
@@ -121,7 +120,7 @@ object DemandGenerator {
     val demand = computeRawDemandBetweenAirports(fromAirport : Airport, toAirport : Airport, affinity : Int, distance : Int)
 
     //modeling provincial travel dynamics where folks go from small city to big city, but not for tourists
-    val maxBonus = 2.0
+    val maxBonus = 1.5
     val populationRatio = if (distance < 2500 && toAirport.population > fromPopIncomeAdjusted) {
       math.min(maxBonus, math.pow(toAirport.population / fromPopIncomeAdjusted.toDouble, .125))
     } else {
@@ -198,9 +197,9 @@ object DemandGenerator {
         0.8 //pops are just very large
       } else if (fromAirport.countryCode == "CN" && toAirport.countryCode == "CN") {
         if(distance < 900) {
-          0.7 //China has a very extensive highspeed rail network, pops are just very large
+          0.67 //China has a very extensive highspeed rail network, pops are just very large
         } else {
-          0.85
+          0.81
         }
       } else if (fromAirport.countryCode == "JP" && toAirport.countryCode == "JP" && distance < 500) {
         0.4 //also interconnected by HSR / intercity rail
