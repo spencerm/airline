@@ -40,12 +40,12 @@ object Computation {
 
   def calculateDuration(airplaneModel: Model, distance : Int) : Int = {
     val speed =
-      if (airplaneModel.category == com.patson.model.airplane.Model.Category.SUPERSONIC) {
+      if (airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.SUPERSONIC) {
         (airplaneModel.speed * 1.5).toInt //up adjusted for SST
       } else {
         airplaneModel.speed
       }
-    val speedLimits = if (airplaneModel.category == com.patson.model.airplane.Model.Category.PROPELLER) {
+    val speedLimits = if (airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_MEDIUM || airplaneModel.airplaneType == com.patson.model.airplane.Model.Type.PROPELLER_SMALL) {
       List((250, 400), (350, 525))
     } else {
       List((300, 350), (400, 500), (400, 700))
@@ -175,7 +175,11 @@ def calculateAffinityValue(fromZone : String, toZone : String, relationship : In
 
 def countX2(strings: Array[String]): Int = {
   strings.count { str =>
-    str.length >= 5 && str.substring(str.length - 3, str.length - 1) == "x2"
+    if (str.endsWith("|")) {
+      str.length >= 5 && str.substring(str.length - 3, str.length - 1) == "x2"
+    } else {
+      str.length >= 5 && str.substring(str.length - 2, str.length) == "x2"
+    }
   }
 }
 

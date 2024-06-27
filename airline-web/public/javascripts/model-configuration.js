@@ -1,3 +1,5 @@
+var configStore
+
 function showAirplaneModelConfigurationsFromPlanLink(modelId) {
     showAirplaneModelConfigurations(modelId)
     $('#modelConfigurationModal').data('closeCallback', function() {
@@ -29,78 +31,51 @@ function refreshConfigurationAfterAirplaneUpdate() {
     showAirplaneModelConfigurations(selectedModelId)
 }
 
-
 function showAirplaneModelConfigurationsModal(modelConfigurationInfo) {
     $("#modelConfigurationModal .configContainer").empty()
     var spaceMultipliers = modelConfigurationInfo.spaceMultipliers
     var model = modelConfigurationInfo.model
+    configStore = modelConfigurationInfo.configurations[0]
 
     $("#modelConfigurationModal .modelName").text(model.name)
     $("#modelConfigurationModal .modelCapacity").text(model.capacity)
     $("#modelConfigurationModal .modelMaxSeats").text(model.maxSeats)
 
     $.each(modelConfigurationInfo.configurations, function(index, configuration) {
-        var total = {seats: configuration.economy + configuration.business + configuration.first, capacity: configuration.economy * spaceMultipliers.economy + configuration.business * spaceMultipliers.business + configuration.first * spaceMultipliers.first}
-        var configurationDiv = $("<div style='width : 95%; min-height : 130px;' class='section config'><div class='current-seats'>using " + total.capacity + " capacity | " + total.seats + " seats</div></div>")
-        configurationDiv.data("existingConfiguration", { "economy" : configuration.economy, "business" : configuration.business, "first" : configuration.first}) //for revert
-        configurationDiv.data("spaceMultipliers", spaceMultipliers) //for revert
+        var configurationDiv = $(`<div style='width : 98%; min-height : 130px;' class='config' id='config-${configuration.id}'></div>`)
         configurationDiv.data("configuration", configuration)
-        configurationDiv.data("model", model) //for revert
-
-
-        var controllerDiv = $("<div class='flex-row pb-1'></div>")
-        configurationDiv.append(controllerDiv)
-
-        var assignedAirplanesCount = getAssignedAirplanesCount("configurationId", configuration.id, model.id)
-        var seatConfigurationDiv = $("<div class='seatConfigurationGauge' style='width: 80%;'></div>")
-        controllerDiv.append(seatConfigurationDiv)
-
-        var iconsDiv = $("<div style='width: 20%;'></div>")
-
-        if (configuration.isDefault) {
-         iconsDiv.append($('<img src="assets/images/icons/24px/star.png" title="This is the default configuration" style="padding: 2px;">'))
-        } else {
-         iconsDiv.append($('<span class="button" onclick="promptConfirm(\'Do you want to save and set this configuration as default?\', saveAndSetDefaultConfiguration, $(this).closest(\'.config\').data(\'configuration\'))" style="padding: 2px;"><img src="assets/images/icons/24px/star-empty.png" title="Set as default"></span>'))
-        }
-        iconsDiv.append($('<span class="button" onclick="promptConfirm(\'Do you want to change this configuration? This will affect ' + assignedAirplanesCount + ' airplane(s)\', saveConfiguration, $(this).closest(\'.config\').data(\'configuration\'))" style="padding: 2px;"><img src="assets/images/icons/24px/tick.png" title="Save this configuration"></span>'))
-        iconsDiv.append($('<span class="button" onclick="refreshConfiguration($(this).closest(\'.config\'), $(this).closest(\'.config\').data(\'existingConfiguration\'), true)" style="padding: 2px;"><img src="assets/images/icons/24px/arrow-circle-135.png" title="Revert changes"></span>'))
-        if (configuration.isDefault) {
-            iconsDiv.append($('<span style="padding: 2px;"><img src="assets/images/icons/24px/cross-grey.png" title="Cannot delete default configuration"></span>'))
-        } else {
-            iconsDiv.append($('<span class="button" onclick="promptConfirm(\'Do you want to delete this configuration? ' + assignedAirplanesCount + ' airplane(s) with this configuration will be switched to default configuration\', deleteConfiguration, $(this).closest(\'.config\').data(\'configuration\'))" style="margin: 2px;"><img src="assets/images/icons/24px/cross.png" title="Delete this configuration"></span>'))
-        }
-
-        controllerDiv.append(iconsDiv)
-        var manualInputDiv = $("<div class='manual-inputs pb-2'></div>")
-        var perInputSpan
-        perInputSpan = $('<div style="margin-left: 10px; margin-right: 10px; display: inline-block;" class="economy">Economy: <input type="number" size="6" class="economyInput" onInput="onManualInputUpdate($(this).closest(\'.config\'), \'economy\', $(this).val())"></div>')
-        perInputSpan.append($('<span class="button" onclick="toggleInputLock($(this).closest(\'.config\'), \'economy\')"><img src="assets/images/icons/lock-unlock.png" title="Lock this value"></span>'))
-        manualInputDiv.append(perInputSpan)
-        perInputSpan = $('<div style="margin-left: 10px; margin-right: 10px; display: inline-block;" class="business">Business: <input type="number" size="6" class="businessInput" onInput="onManualInputUpdate($(this).closest(\'.config\'), \'business\', $(this).val())"></div>')
-        perInputSpan.append($('<span class="button" onclick="toggleInputLock($(this).closest(\'.config\'), \'business\')"><img src="assets/images/icons/lock-unlock.png" title="Lock this value"></span>'))
-        manualInputDiv.append(perInputSpan)
-        perInputSpan = $('<div style="margin-left: 10px; margin-right: 10px; display: inline-block;" class="first">First: <input type="number" size="6" class="firstInput" onInput="onManualInputUpdate($(this).closest(\'.config\'), \'first\', $(this).val())"></div>')
-        perInputSpan.append($('<span class="button" onclick="toggleInputLock($(this).closest(\'.config\'), \'first\')"><img src="assets/images/icons/lock-unlock.png" title="Lock this value"></span>'))
-        manualInputDiv.append(perInputSpan)
-        configurationDiv.append(manualInputDiv)
-
 
         addAirplaneInventoryDivByConfiguration(configurationDiv, model.id)
         configurationDiv.attr("ondragover", "allowAirplaneIconDragOver(event)")
         configurationDiv.attr("ondrop", "onAirplaneIconConfigurationDrop(event, " + configuration.id + ")");
-
         $("#modelConfigurationModal .configContainer").append(configurationDiv)
 
-        //set values of the injected elements here
-        configurationDiv.find('.economyInput').val(configuration.economy)
-        configurationDiv.find('.businessInput').val(configuration.business)
-        configurationDiv.find('.firstInput').val(configuration.first)
-        plotSeatConfigurationGauge(seatConfigurationDiv, configuration, model.capacity, spaceMultipliers, updateConfigurationGauge(configurationDiv))
+        const ComponentAircraftConfig = window.ComponentAircraftConfig;
+        let config = { isValid: true, type: "Airbus A320", economy: 0, business: 0, firstClass: 0,  maxCapacity: 194, maxSeats: 180 }
+        config = modelConfigurationInfo.configurations[index]
+        config.name = modelConfigurationInfo.model.name
+//        config.isDefault = modelConfigurationInfo.isDefault
+        config.maxSeats = modelConfigurationInfo.model.maxSeats
+        config.maxCapacity = modelConfigurationInfo.model.capacity
+        config.original = {economy: config.economy, business: config.business, first: config.first}
+        config.airplaneCount = getAssignedAirplanesCount("configurationId", configuration.id, model.id)
+        console.log(config)
+
+        new ComponentAircraftConfig({
+            target: document.getElementById(`config-${configuration.id}`),
+            props: {
+                config
+            }
+        });
+
+
+
+
     })
 
     for (i = 0 ; i < modelConfigurationInfo.maxConfigurationCount - modelConfigurationInfo.configurations.length; i ++) { //pad the rest with empty div
-        var configurationDiv = $("<div style='width : 95%; min-height : 130px; position: relative;' class='section config'></div>")
-        var promptDiv = ("<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);'><span class='button' onclick='toggleNewConfiguration(selectedModel, " + (modelConfigurationInfo.configurations.length == 0 ? "true" : "false") + ")'><img src='assets/images/icons/24px/plus.png' title='Add new configuration'><div style='float:right'><h3 class='pl-2'>Add New Configuration</h3></div></span></div>")
+        var configurationDiv = $("<div style='width : 98%; min-height : 130px; position: relative;' class='config'></div>")
+        var promptDiv = ("<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);'><button class='button' onclick='toggleNewConfiguration(selectedModel, " + (modelConfigurationInfo.configurations.length == 0 ? "true" : "false") + ")'><img src='assets/images/icons/24px/plus.png' title='Add new configuration'><div style='float:right'><h3 class='pl-2'>Add New Configuration</h3></div></span></div>")
 
         configurationDiv.append(promptDiv)
         $("#modelConfigurationModal .configContainer").append(configurationDiv)
@@ -111,12 +86,8 @@ function showAirplaneModelConfigurationsModal(modelConfigurationInfo) {
     $('#modelConfigurationModal').fadeIn(200)
 }
 
-
-
-
-
 function addAirplaneInventoryDivByConfiguration(configurationDiv, modelId) {
-    var airplanesDiv = $("<div style= 'width : 100%; height : 50px; overflow: auto;'></div>")
+    var airplanesDiv = $("<div style='max-height: 60px; min-height: 20px; overflow: auto; box-shadow: inset 0 0 2px #ffffff82, 0 0 3px rgba(0, 0, 0, 0.2); padding: 3px 6px; border-radius: 12px; justify-content: center; display: flex;'></div>")
     var configurationId = configurationDiv.data("configuration").id
     var info = loadedModelsById[modelId]
     if (!info.isFullLoad) {
@@ -124,10 +95,11 @@ function addAirplaneInventoryDivByConfiguration(configurationDiv, modelId) {
     }
 
     var allAirplanes = $.merge($.merge($.merge([], info.assignedAirplanes), info.availableAirplanes), info.constructingAirplanes)
+    console.log(allAirplanes)
     $.each(allAirplanes, function( key, airplane ) {
         if (airplane.configurationId == configurationId) {
             var airplaneId = airplane.id
-            var li = $("<div style='float: left;' class='clickable' onclick='loadOwnedAirplaneDetails(" + airplaneId + ", $(this), refreshConfigurationAfterAirplaneUpdate)'></div>").appendTo(airplanesDiv)
+            var li = $("<div class='clickable' onclick='loadOwnedAirplaneDetails(" + airplaneId + ", $(this), refreshConfigurationAfterAirplaneUpdate)'></div>").appendTo(airplanesDiv)
             var airplaneIcon = getAirplaneIcon(airplane, info.badConditionThreshold)
             enableAirplaneIconDrag(airplaneIcon, airplaneId)
             enableAirplaneIconDrop(airplaneIcon, airplaneId, "refreshConfigurationAfterAirplaneUpdate")
@@ -139,49 +111,9 @@ function addAirplaneInventoryDivByConfiguration(configurationDiv, modelId) {
     configurationDiv.append(airplanesDiv)
 }
 
-function toggleInputLock(configurationDiv, newLockedClass) {
-    var existingLockedClass = configurationDiv.data("locked-class")
-    if (existingLockedClass != newLockedClass) {
-        if (existingLockedClass) {
-            configurationDiv.find('.manual-inputs .' + existingLockedClass + ' img').attr("src", "assets/images/icons/lock-unlock.png") //unlock this
-            configurationDiv.find('.manual-inputs .' + existingLockedClass + ' input').prop("disabled", false)
-        }
-
-        configurationDiv.find('.manual-inputs .' + newLockedClass + ' img').attr("src", "assets/images/icons/lock.png") //lock this
-        configurationDiv.find('.manual-inputs .' + newLockedClass + ' input').prop("disabled", true)
-        configurationDiv.data("locked-class", newLockedClass)
-    } else { //was locked, now unlock it
-        configurationDiv.find('.manual-inputs .' + newLockedClass + ' img').attr("src", "assets/images/icons/lock-unlock.png") //unlock this
-        configurationDiv.find('.manual-inputs .' + newLockedClass + ' input').prop("disabled", false)
-        configurationDiv.removeData("locked-class")
-    }
-}
-
 function toggleNewConfiguration(model, isDefault) {
-       var configuration = { "id" : 0, "model" : model, "economy" : model.capacity, "business" : 0, "first" : 0 , "isDefault" : isDefault}
+       var configuration = { "id" : 0, "model" : model, "economy" : configStore.economy, "business" : configStore.business, "first" : configStore.first , "isDefault" : isDefault}
        saveConfiguration(configuration)
-}
-
-function refreshConfiguration(configurationDiv, values, resetLocks) {
-     var seatConfigurationDiv = configurationDiv.find(".seatConfigurationGauge")
-
-     var configuration = configurationDiv.data("configuration")
-     configuration.economy = values.economy
-     configuration.business = values.business
-     configuration.first = values.first
-     configurationDiv.find('.economyInput').val(values.economy)
-     configurationDiv.find('.businessInput').val(values.business)
-     configurationDiv.find('.firstInput').val(values.first)
-
-     var model = configurationDiv.data("model")
-     var spaceMultipliers = configurationDiv.data("spaceMultipliers")
-
-     plotSeatConfigurationGauge(seatConfigurationDiv, configuration, model.capacity, spaceMultipliers, updateConfigurationGauge(configurationDiv))
-
-     if (resetLocks) {
-        configurationDiv.find('.manual-inputs img').attr("src", "assets/images/icons/lock-unlock.png") //unlock this
-        configurationDiv.removeData('locked-class')
-     }
 }
 
 function saveAndSetDefaultConfiguration(configuration) {
@@ -223,96 +155,6 @@ function deleteConfiguration(configuration) {
                     console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
             }
         });
-}
-
-function updateConfigurationGauge(configurationDiv) {
-    return function(configuration) {
-       configurationDiv.find('.economyInput').val(configuration.economy)
-       configurationDiv.find('.businessInput').val(configuration.business)
-       configurationDiv.find('.firstInput').val(configuration.first)
-    }
-}
-
-function onManualInputUpdate(configurationDiv, changedClass, newValue) {
-    var model = configurationDiv.data("model")
-    var spaceMultipliers = configurationDiv.data("spaceMultipliers")
-    var configuration = configurationDiv.data("configuration")
-    var lockedClass = configurationDiv.data("locked-class")
-
-    var totalSpace = 0
-    var totalSeats = 0
-    var linkClasses = ["economy", "business", "first"]
-    $.each(linkClasses, function(index, linkClass){
-        console.log(linkClass)
-        totalSpace += configuration[linkClass] * spaceMultipliers[linkClass]
-        totalSeats += configuration[linkClass]
-    })
-
-
-    var success = computeConfiguration(configuration, model, spaceMultipliers, lockedClass, changedClass, newValue)
-    refreshConfiguration(configurationDiv, configuration, false)
-}
-
-function computeConfiguration(existingConfiguration, model, spaceMultipliers, lockedClass, changedClass, newValue) {
-    var newValue
-    if (newValue === "") {
-        newValue = 0
-    } else {
-        newValue = parseInt(newValue)
-    }
-
-    if (isNaN(newValue)) {
-        return false
-    }
-
-    if (newValue < 0) {
-        return false
-    }
-    var maxSpace = model.capacity
-    var oldValue = existingConfiguration[changedClass]
-
-    if (spaceMultipliers[changedClass] * newValue > maxSpace || newValue > model.maxSeats) { //reject
-        $("#modelConfigurationModal .current-seats").text("new value is greater than plane capacity")
-        return false
-    }
-
-
-    var linkClasses = ["economy", "business", "first"]
-    var newConfig = {}
-    newConfig[changedClass] = newValue
-    var remainingSpace = maxSpace - spaceMultipliers[changedClass] * newValue
-    if (lockedClass) { //if there's locked class, then it always has priority
-         newConfig[lockedClass] = existingConfiguration[lockedClass]
-         remainingSpace -= existingConfiguration[lockedClass] * spaceMultipliers[lockedClass]
-    }
-
-    $.each(linkClasses, function(index, linkClass){
-        if (linkClass != changedClass) {
-            var existingValue = existingConfiguration[linkClass]
-            if (linkClass != lockedClass) { //then we can adjust
-                var newValue = Math.floor(remainingSpace / spaceMultipliers[linkClass])
-                newConfig[linkClass] = newValue
-                remainingSpace -= newValue * spaceMultipliers[linkClass]
-            }
-        }
-    })
-    //verify result
-    var totalSpace = 0
-    var totalSeats = 0
-    $.each(linkClasses, function(index, linkClass){
-        totalSpace += newConfig[linkClass] * spaceMultipliers[linkClass]
-        totalSeats += newConfig[linkClass]
-    })
-    if (totalSpace > model.capacity || totalSeats > model.maxSeats) { //failed
-        $("#modelConfigurationModal .current-seats").text("using " + totalSpace + " capacity | " + totalSeats + " persons");
-        return false;
-    } else {
-       $.each(linkClasses, function(index, linkClass){
-           existingConfiguration[linkClass] = newConfig[linkClass]
-       })
-       $("#modelConfigurationModal .current-seats").text("using " + totalSpace + " capacity | " + totalSeats + " persons")
-       return true
-    }
 }
 
 function onAirplaneIconConfigurationDrop(event, configurationId) {

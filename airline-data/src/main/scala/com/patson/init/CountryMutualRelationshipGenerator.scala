@@ -12,7 +12,7 @@ object CountryMutualRelationshipGenerator extends App {
    *
    * Some relations set in the computation function!
    */
-  lazy val OECDish = List("CA","US","FR","DE","AT","CH","IT","GB","ES","NL","BE","PL","DK","SE","TR","IE","JP","KR","AU","SG")
+  lazy val OECDish = List("CA","US","FR","DE","AT","CH","IT","GB","ES","NL","BE","PL","DK","SE","IE","JP","KR","AU","SG")
 
   lazy val AFFILIATIONS = List(
 
@@ -180,11 +180,11 @@ object CountryMutualRelationshipGenerator extends App {
     Relation("TR", Direction.BI, 4, List(
       "AZ"
     )),
-    Relation("TR", Direction.BI, 3, List(
+    Relation("TR", Direction.BI, 3, OECDish ++ List(
       "QA", "KZ", "UZ"
     )),
     Relation("TR", Direction.BI, 2, List(
-      "RU", "DE", "UA", "BG", "GB", "GE", "FR", "IQ", "IR", "AZ", "US", "CA", "PK"
+      "RU", "UA", "GE", "IQ", "IR", "PK"
     )),
     Relation("GR", Direction.TO, 3, List(
       "DE", "BG", "GB", "IT", "FR"
@@ -202,7 +202,7 @@ object CountryMutualRelationshipGenerator extends App {
       "TN", "DZ", "MA", "SN", "CI"
     )),
     Relation("IT", Direction.BI, 2, List(
-      "TN", "MA", "DZ", "IL", "TR",
+      "TN", "MA", "DZ", "IL"
     )),
     Relation("CH", Direction.BI, 4, List(
       "FR","DE","AT","IT","ES","NL","BE","DK","SE"
@@ -303,7 +303,10 @@ object CountryMutualRelationshipGenerator extends App {
       "UA", "MD", "EE", "LT", "LV", "BG"
     )),
     Relation("IR", Direction.BI, -1, OECDish ++ List(
-      "SA", "EG", "PK"
+      "EG", "PK"
+    )),
+    Relation("IR", Direction.BI, -3, List(
+      "SA"
     )),
     Relation("IL", Direction.BI, -2, List(
       "IQ", "YE", "LY", "SD", "KW", "SA", "EG"

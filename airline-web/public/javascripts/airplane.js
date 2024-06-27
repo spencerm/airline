@@ -98,6 +98,10 @@ function loadAirplaneModelOwnerInfo() {
 	});
 }
 
+function showLoyalistHistoryModal() {
+    $("#loyalistHistoryModal").fadeIn(500)
+}
+
 function updateAirplaneModelTable(sortProperty, sortOrder) {
     if (!sortProperty && !sortOrder) {
         var selectedSortHeader = $('#airplaneModelSortHeader .cell.selected')
@@ -106,12 +110,26 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
     }
 	//sort the list
 	loadedModelsOwnerInfo.sort(sortByProperty(sortProperty, sortOrder == "ascending"))
+
+	//filter
+    rangeRequirement = $('#AMTFrange').val()
+    capacityRequirement = $('#AMTFcapacity').val()
+    runwayRequirement = $('#AMTFrunway').val()
+    console.log(rangeRequirement, capacityRequirement, runwayRequirement)
+	const modelsFiltered = loadedModelsOwnerInfo.filter(airplane => {
+        return (
+            airplane.capacity >= capacityRequirement &&
+            airplane.runwayRequirement <= runwayRequirement &&
+            airplane.range >= rangeRequirement
+        );
+    });
+	console.log(modelsFiltered)
 	
 	var airplaneModelTable = $("#airplaneModelTable")
 	airplaneModelTable.children("div.table-row").remove()
 	
 	
-	$.each(loadedModelsOwnerInfo, function(index, modelOwnerInfo) {
+	$.each(modelsFiltered, function(index, modelOwnerInfo) {
 		var row = $("<div class='table-row clickable' data-model-id='" + modelOwnerInfo.id + "' onclick='selectAirplaneModel(loadedModelsById[" + modelOwnerInfo.id + "])'></div>")
 		var stars = $("<div class='cell' align='right'>").append(getGradeStarsImgs(modelOwnerInfo.quality * 2)).append("</div>")
 		var capacity = modelOwnerInfo.capacity === modelOwnerInfo.maxSeats ? modelOwnerInfo.capacity : modelOwnerInfo.capacity + "<br><i class='text-hint'>" + modelOwnerInfo.maxSeats + "</i>";
@@ -1335,15 +1353,30 @@ function showAirplaneMarket() {
     updateAirplaneModelTable()
 }
 
+function showAircraftInfoModal() {
+    $("#aircraftInfoModal").fadeIn(500)
+}
+
+function showAirplaneModelTableFilters() {
+    $("#airplaneModelTableFilters").fadeIn(100)
+}
+
+function hideAirplaneModelTableFilters() {
+    $("#airplaneModelTableFilters").hide()
+}
+
 function selectAirplaneTab($selectedTab) {
     $selectedTab.siblings().removeClass('selected')
     $selectedTab.addClass('selected')
     var selectedType = $selectedTab.data('type')
 
+    hideAirplaneModelTableFilters()
+
     loadAirplaneModels()
     loadAirplaneModelOwnerInfo()
     if (selectedType === 'market') {
       showAirplaneMarket()
+      showAirplaneModelTableFilters()
     } else if (selectedType === 'hangar') {
       showAirplaneHangar()
     }
