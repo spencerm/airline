@@ -2,7 +2,7 @@ package com.patson
 
 import com.patson.data._
 import com.patson.data.airplane.ModelSource
-import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, REGIONAL, SMALL, X_LARGE, PROPELLER}
+import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, PROPELLER_MEDIUM, PROPELLER_SMALL, REGIONAL, SMALL}
 import com.patson.model.airplane._
 
 import scala.collection.mutable.ListBuffer
@@ -59,14 +59,13 @@ object AirplaneModelSimulation {
 
   val getModelLowDemandDiscountThreshold = (model: Model) => { //smaller model has higher threshold. as the volume is supposed to be higher
     model.airplaneType match {
-      case SMALL => 250
-      case PROPELLER => 500
+      case SMALL => 160
+      case PROPELLER_SMALL => 160
       case REGIONAL => 500
-      case MEDIUM => 300
-      case LARGE => 225
-      case X_LARGE => 175
-      case JUMBO => 75
-      case _ => 60
+      case PROPELLER_MEDIUM => 500
+      case MEDIUM => 320
+      case LARGE => 160
+      case _ => 80
     }
   }
 

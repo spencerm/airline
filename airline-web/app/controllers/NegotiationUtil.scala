@@ -205,12 +205,17 @@ object NegotiationUtil {
     //val odds = new NegotiationOdds()
 
     if (FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL) {
-      val country = CountryCache.getCountry(newLink.to.countryCode).get
-      var baseForeignAirline = (12 - country.openness) * 0.5
-      if (existingLinkOption.isDefined) { //cheaper if it's already established
-        baseForeignAirline = baseForeignAirline * 0.5
+      val airport = newLink.to
+      val country = CountryCache.getCountry(airport.countryCode).get
+      airline.getCountryCode().foreach { homeCountryCode =>
+        if (homeCountryCode != airport.countryCode) {
+          var baseForeignAirline = (14 - country.openness) * 0.5
+          if (existingLinkOption.isDefined) { //cheaper if it's already established
+            baseForeignAirline = baseForeignAirline * 0.5
+          }
+          requirements.append(NegotiationRequirement(FOREIGN_AIRLINE, baseForeignAirline, "Foreign Airline"))
+        }
       }
-      requirements.append(NegotiationRequirement(FOREIGN_AIRLINE, baseForeignAirline, "Foreign Airline"))
     }
 
     newLink.to.getFeatures().find(_.featureType == AirportFeatureType.GATEWAY_AIRPORT) match {

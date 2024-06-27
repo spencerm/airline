@@ -377,13 +377,13 @@ object GeoDataGenerator extends App {
          */
         val elitePopAdjusted : Int = if (List("GVA", "NCE", "LCY", "SYD", "MEL", "AVV").contains(airport.iata)) {
             ((elitePop + 349) * 11.9).toInt
-          } else if (List("SZG", "ACH", "BRN", "LUG", "INN", "MIA", "PER", "BNE", "OOL", "YYZ", "YVR").contains(airport.iata)) {
+          } else if (List("DOH", "SZG", "ACH", "BRN", "LUG", "INN", "MIA", "PER", "BNE", "OOL", "YYZ", "YVR").contains(airport.iata)) {
             ((elitePop + 279) * 4.9).toInt
           } else if (List("NRT", "ITM", "KIX", "FUK", "CTS", "BSL", "VCE", "BZO", "TRN", "FLO", "BRU", "AKL", "CNS", "SJC", "SBA", "PBI", "XNA", "PSP", "HTO", "PBI", "HNL", "OGG", "KOA", "CPT", "SIN").contains(airport.iata)) {
             (elitePop + 179) * 3
           } else if (List("HKG", "PEK", "PVG", "ARN", "ZRH", "MXP", "LIN", "BGY", "FCO", "SEA", "IAH", "ASE", "JAC", "YUL", "YYC", "TLV").contains(airport.iata)) {
             ((elitePop + 149) * 2.25).toInt
-          } else if (List("HND", "ICN", "HGH", "PKX", "BOM", "SHA", "LIS", "MAD", "BCN", "CPH", "FRA", "CDG", "AMS", "LHR", "LGW", "LTN", "STN", "BOS", "HOU", "SFO", "STS", "SNA", "BUR", "ISP", "HTO", "HPN", "HVN", "BDL").contains(airport.iata)) {
+          } else if (List("HND", "ICN", "HGH", "PKX", "SHA", "BOM", "AUH", "LIS", "MAD", "BCN", "CPH", "FRA", "CDG", "AMS", "LHR", "LGW", "LTN", "STN", "BOS", "HOU", "SFO", "STS", "SNA", "BUR", "ISP", "HTO", "HPN", "HVN", "BDL").contains(airport.iata)) {
             ((elitePop + 99) * 1.5).toInt
           } else if (elitePop > 0 && elitePop < 100 && underRepresentedCountries.contains(airport.countryCode)) {
             Math.max(Random.nextInt(10) * 10, elitePop * 5)

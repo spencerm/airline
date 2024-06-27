@@ -1079,6 +1079,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 		$('#planLinkExtendedDetails').hide()
 		$('#planLinkModelRow').hide()
 		$('#extendedPanel').hide()
+		calculateDemand()
 		return
 	} else {
 		$('.linkRejection').hide()
@@ -1285,36 +1286,92 @@ function calculateDemand() {
 }
 
 function resetPrice() {
-	updatePrice(1)
+	updatePrice(
+	    newPercentage = {
+                        economy: 1,
+                        business: 1,
+                        first: 1
+                    }, "all")
 }
 
-function increasePrice() {
-	var currentPrice = parseFloat($('#planLinkEconomyPrice').val()) * 20
-	var currentPercentage = Math.round(currentPrice / planLinkInfo.suggestedPrice.Traveler.economy) / 20
-	var newPercentage = currentPercentage + 0.05
-	updatePrice(newPercentage)
-	$('#planLinkPricePercentage').val(newPercentage)
+function updatePrice(percentage, classType = "all") {
+    const economyInput = $('#planLinkEconomyPrice');
+    const businessInput = $('#planLinkBusinessPrice');
+    const firstInput = $('#planLinkFirstPrice');
+
+    if (classType === "economy" || classType === "all") {
+        economyInput.val(Math.round(planLinkInfo.suggestedPrice.Traveler.economy * percentage.economy));
+    }
+    if (classType === "business" || classType === "all") {
+        businessInput.val(Math.round(planLinkInfo.suggestedPrice.Traveler.business * percentage.business));
+    }
+    if (classType === "first" || classType === "all") {
+        firstInput.val(Math.round(planLinkInfo.suggestedPrice.Traveler.first * percentage.first));
+    }
+
+    updateMarkup();
+    calculateDemand();
 }
 
-function decreasePrice() {
-	var currentPrice = parseFloat($('#planLinkEconomyPrice').val()) * 20
-	var currentPercentage = Math.round(currentPrice / planLinkInfo.suggestedPrice.Traveler.economy) / 20
-	var newPercentage = currentPercentage
-	if (currentPercentage > 0) {
-		newPercentage -= 0.05
-	}
-	updatePrice(newPercentage)
 
-	$('#planLinkPricePercentage').val(newPercentage)
+function increasePrice(classType = "all") {
+    const economyInput = $('#planLinkEconomyPrice');
+    const businessInput = $('#planLinkBusinessPrice');
+    const firstInput = $('#planLinkFirstPrice');
+
+    const currentPercentageEconomy = parseFloat(economyInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.economy / 20;
+    const currentPercentageBusiness = parseFloat(businessInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.business / 20;
+    const currentPercentageFirst = parseFloat(firstInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.first / 20;
+
+    const newPercentage = {
+        economy: currentPercentageEconomy,
+        business: currentPercentageBusiness,
+        first: currentPercentageFirst
+    };
+
+    if (classType === "economy" || classType === "all") {
+        newPercentage.economy += 0.05;
+    }
+    if (classType === "business" || classType === "all") {
+        newPercentage.business += 0.05;
+    }
+    if (classType === "first" || classType === "all") {
+        newPercentage.first += 0.05;
+    }
+
+    updatePrice(newPercentage, classType); // Pass classType to updatePrice
+    $('#planLinkPricePercentage').val(newPercentage);
 }
 
-function updatePrice(percentage) {
-	$('#planLinkEconomyPrice').val(Math.round(planLinkInfo.suggestedPrice.Traveler.economy * percentage))
-	$('#planLinkBusinessPrice').val(Math.round(planLinkInfo.suggestedPrice.Traveler.business * percentage))
-	$('#planLinkFirstPrice').val(Math.round(planLinkInfo.suggestedPrice.Traveler.first * percentage))
-	updateMarkup();
-	calculateDemand();
+function decreasePrice(classType = "all") { // Add classType parameter
+    const economyInput = $('#planLinkEconomyPrice');
+    const businessInput = $('#planLinkBusinessPrice');
+    const firstInput = $('#planLinkFirstPrice');
+
+    const currentPercentageEconomy = parseFloat(economyInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.economy / 20;
+    const currentPercentageBusiness = parseFloat(businessInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.business / 20;
+    const currentPercentageFirst = parseFloat(firstInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.first / 20;
+
+    const newPercentage = {
+        economy: currentPercentageEconomy,
+        business: currentPercentageBusiness,
+        first: currentPercentageFirst
+    };
+
+    if (classType === "economy" || classType === "all") {
+        newPercentage.economy = Math.max(0, newPercentage.economy - 0.05); // Ensure not negative
+    }
+    if (classType === "business" || classType === "all") {
+        newPercentage.business = Math.max(0, newPercentage.business - 0.05);
+    }
+    if (classType === "first" || classType === "all") {
+        newPercentage.first = Math.max(0, newPercentage.first - 0.05);
+    }
+
+    updatePrice(newPercentage, classType); // Pass classType to updatePrice
+    $('#planLinkPricePercentage').val(newPercentage);
 }
+
 
 function updateMarkup(){
     $('#planMarkupEconomy').text(($('#planLinkEconomyPrice').val()/planLinkInfo.suggestedPrice.Traveler.economy*100).toFixed(0)+"%")

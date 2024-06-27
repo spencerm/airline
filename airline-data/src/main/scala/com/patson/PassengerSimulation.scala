@@ -667,7 +667,9 @@ object PassengerSimulation {
             } else if (predecessorLink.transportType == TransportType.GENERIC_TRANSIT || linkConsideration.link.transportType == TransportType.GENERIC_TRANSIT) {
               connectionCost = 12
             } else {
-              connectionCost += 15 //base cost for connection
+              connectionCost += 5 //base cost for connection
+              connectionCost += passengerGroup.preference.preferredLinkClass.basePrice //plus class type base cost
+
               //now look at the frequency of the link arriving at this FromAirport and the link (current link) leaving this FromAirport. check frequency
               val frequency = Math.max(predecessorLink.frequencyByClass(predecessorLinkConsideration.linkClass), linkConsideration.link.frequencyByClass(linkConsideration.linkClass))
               //if the bigger of the 2 is less than 21, impose extra layover time (if either one is frequent enough, then consider that as ok)

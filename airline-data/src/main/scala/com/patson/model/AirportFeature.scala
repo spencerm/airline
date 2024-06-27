@@ -141,11 +141,9 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         } else if (
           fromAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB) && toAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB)
         ) {
-          0.00008 * strengthFactor
-        } else if (toAirport.population >= 100_000) {
-          0.00001 * strengthFactor
+          0.00014 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
         } else {
-          0
+          0.00004 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
         }
       val distanceModifier = if (distance < 275) {
         (distance - 25).toDouble / 275
@@ -234,9 +232,9 @@ sealed case class IsolatedTownFeature(strength : Int) extends AirportFeature {
   override def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType.Value, affinity : Int, distance : Int) : Int = {
     val isolatedNeighbor = (boostRange.toDouble / 3).toInt
     val populationAdjust = if (distance <= isolatedNeighbor) {
-      Math.min(1, Math.max(0.25, toAirport.population.toDouble / 100).toInt)
+      Math.min(1, Math.max(0.20, toAirport.population.toDouble / 100).toInt)
     } else { //don't create so much demand between very distant very small airports
-      Math.min(1, Math.max(0.25, toAirport.population.toDouble / 5000).toInt)
+      Math.min(1, Math.max(0.20, toAirport.population.toDouble / 5000).toInt)
     }
 
     val mod = if (distance <= boostRange && affinity >= 3) {
