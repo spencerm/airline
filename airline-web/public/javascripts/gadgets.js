@@ -235,7 +235,7 @@ function getCountryFlagUrl(countryCode) {
 	} if ($.inArray(countryCode, noFlags) != -1) {
 		return '';
 	} else {
-		return "assets/images/flags/" + countryCode + ".png"
+		return "assets/images/flags/" + countryCode + ".svg"
 	}
 }
 
