@@ -938,6 +938,7 @@ var existingLink
 
 function updatePlanLinkInfo(linkInfo, isRefresh) {
 	$('#planLinkFromAirportName').attr("onclick", "showAirportDetails(" + linkInfo.fromAirportId + ")").html(getCountryFlagImg(linkInfo.fromCountryCode) + linkInfo.fromAirportCity + "<i class='pl-2 iata'>" + linkInfo.fromAirportCode + "</i>")
+	planLinkInfo = linkInfo
 
 	if (activeAirline.baseAirports.length > 1) { //only allow changing from airport if this is a new link and there are more than 1 base
 		$('#planLinkFromAirportEditIcon').show()
@@ -966,7 +967,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
     $('.planToIata').text(linkInfo.toAirportCode)
     $('.planFromIata').text(linkInfo.fromAirportCode)
 	$('#planLinkMutualRelationship').html(getCountryFlagImg(linkInfo.fromCountryCode) + " ⇄ " + getCountryFlagImg(linkInfo.toCountryCode) + getCountryRelationshipDescription(linkInfo.mutualRelationship))
-	$('#planLinkAffinity').html(linkInfo.affinity)
+	$('#planLinkAffinity').text(linkInfo.affinity)
 
 	var relationship = linkInfo.toCountryRelationship
     var relationshipSpan = getAirlineRelationshipDescriptionSpan(relationship.total)
@@ -1066,26 +1067,6 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 		highlightLink(linkInfo.existingLink.id, false)
 	}
 
-    $('#planLinkDetails .titleCue').removeClass('glow')
-	if (linkInfo.rejection) {
-	    document.getElementById('linkRejectionReason').textContent = linkInfo.rejection.description
-		if (linkInfo.rejection.type === "TITLE_REQUIREMENT") {
-		    $('#planLinkDetails .titleCue').addClass('glow')
-		}
-		$('.linkRejection').show()
-		$('#addLinkButton').hide()
-		$('#updateLinkButton').hide()
-		$('#deleteLinkButton').hide()
-		$('#planLinkExtendedDetails').hide()
-		$('#planLinkModelRow').hide()
-		$('#extendedPanel').hide()
-		calculateDemand()
-		return
-	} else {
-		$('.linkRejection').hide()
-		$('#planLinkModelRow').show()
-	}
-
     var initialPrice = {}
 	if (!linkInfo.existingLink) {
 	    initialPrice.economy = linkInfo.suggestedPrice.Traveler.economy
@@ -1127,13 +1108,33 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
         calculateDemand()
 	})
 
-
     //reset/display warnings
     $("#planLinkDetails .warningList").empty()
     if (linkInfo.warnings) {
         $.each(linkInfo.warnings, function(index, warning) {
             $("#planLinkDetails .warningList").append("<div class='warning'><img src='assets/images/icons/exclamation-red-frame.png'>&nbsp;" + warning + "</div>")
         })
+    }
+
+    $('#planLinkDetails .titleCue').removeClass('glow')
+    if (linkInfo.rejection) {
+        document.getElementById('linkRejectionReason').textContent = linkInfo.rejection.description
+        if (linkInfo.rejection.type === "TITLE_REQUIREMENT") {
+            $('#planLinkDetails .titleCue').addClass('glow')
+        }
+        $('.linkRejection').show()
+        $('#addLinkButton').hide()
+        $('#updateLinkButton').hide()
+        $('#deleteLinkButton').hide()
+        $('#planLinkExtendedDetails').hide()
+        $('#planLinkModelRow').hide()
+        $('#extendedPanel').hide()
+        updateMarkup()
+        calculateDemand()
+        return
+    } else {
+        $('.linkRejection').hide()
+        $('#planLinkModelRow').show()
     }
 
 
@@ -1148,7 +1149,6 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 
 	$("#planLinkModelSelect").children('option').remove()
 
-	planLinkInfo = linkInfo
 	spaceMultipliers = {
                 economy : planLinkInfo.economySpaceMultiplier,
                 business : planLinkInfo.businessSpaceMultiplier,
