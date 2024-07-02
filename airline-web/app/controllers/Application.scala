@@ -529,7 +529,7 @@ class Application @Inject()(cc: ControllerComponents, val configuration: play.ap
       case (airports, links) =>
         Json.obj(
           "fromAirport" -> Json.toJson(airports(0))(AirportSimpleWrites),
-          "toAirport" -> Json.toJson(airports(1))(AirportSimpleWrites),
+          "remoteAirport" -> Json.toJson(airports(1))(AirportSimpleWrites),
           "capacity" -> links.map(_.futureCapacity()).foldLeft(LinkClassValues.getInstance())((x, y) => x + y),
           "frequency" -> links.map(_.futureFrequency()).sum,
           "operators" -> Json.toJson( links.sortBy(_.futureCapacity().total).reverse.map { link =>
