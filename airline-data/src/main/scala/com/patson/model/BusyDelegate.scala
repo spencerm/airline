@@ -68,9 +68,9 @@ abstract class LevelingDelegateTask(startCycle : Int, delegateTaskType: Delegate
     level(currentCycle) match {
       case 0 => "Trainee"
       case 1 => "Novice"
-      case 2 => "Established"
-      case 3 => "Experienced"
-      case _ => "Veteran"
+      case 2 => "Junior"
+      case 3 => "Senior"
+      case _ => "Director"
     }
 
   }

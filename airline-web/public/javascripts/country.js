@@ -1,6 +1,5 @@
 var loadedCountries = []
 var loadedCountriesByCode = {}
-var zoneById = { "AS" : "Asia", "NA" : "North America", "SA" : "South America", "AF" : "Africa", "OC" : "Oceania", "EU" : "Europe" }
 
 function showCountryView(selectedCountry) {
 	highlightTab($('.countryCanvasTab'))
@@ -79,8 +78,8 @@ function updateCountryTable(sortProperty, sortOrder, selectedCountry) {
 		row.append("<div class='cell' align='right'>$" + country.income.toLocaleString() + "</div>")
 		row.append("<div class='cell' align='right'>" + country.openness + "</div>")
 		row.append("<div class='cell' align='right'>" + country.gini + "</div>")
-//		var baseCount = country.baseCount ? country.baseCount : "-"
-//		row.append("<div class='cell' align='right'>" + baseCount + "</div>")
+        var countryRelationship = country.countryRelationship ? "<div class='cell' align='right'>" + country.CountryTitle.description + ", " + country.countryRelationship + "</div>" : "<div class='cell' align='right'>" + "-" + "</div>"
+        row.append(countryRelationship)
         var delegatesCount = country.delegatesCount ? country.delegatesCount : "-"
         row.append("<div class='cell' align='right'>" + delegatesCount + "</div>")
 		
@@ -264,7 +263,7 @@ function loadCountryDetails(countryCode) {
 function getCountryRelationshipDescription(value) {
 	var description;
 	if (value >= 5) {
-		description = "Domestic / Home Market"
+		description = "Home Market"
     } else if (value == 4) {
 		description = "Alliance"
 	} else if (value == 3) {

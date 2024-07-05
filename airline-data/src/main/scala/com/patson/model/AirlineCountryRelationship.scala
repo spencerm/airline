@@ -74,7 +74,7 @@ object AirlineCountryRelationship {
         //home country vs target country
         val relationship = countryRelationships.getOrElse((homeCountryCode, countryCode), 0)
         val multiplier = if (relationship >= 0) HOME_COUNTRY_POSITIVE_RELATIONSHIP_MULTIPLIER else HOME_COUNTRY_NEGATIVE_RELATIONSHIP_MULTIPLIER
-        val home_country_bonus = if (relationship >= 5) 10 else 0
+        val home_country_bonus = if (relationship >= 5) 20 else 0
           factors.put(HOME_COUNTRY(countryMap(homeCountryCode), targetCountry, relationship), relationship * multiplier + home_country_bonus)
 
 
@@ -137,10 +137,12 @@ object AirlineCountryRelationship {
   }
 
   val getDelegateBonusMultiplier = (country : Country) => {
-    val ratioToModelPower = (country.airportPopulation * country.income.toDouble).toLong / Computation.MODEL_COUNTRY_POWER
-    val logRatio = Math.max(0.1, Math.log10(ratioToModelPower * 100) / 2) //0.1 to 1
-    val levelMultiplier = 1 / logRatio * 0.5 // >= 0.5, inverse of logRatio : lower multiplier for more powerful country
-    Math.min(2, BigDecimal(levelMultiplier).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
+//    val ratioToModelPower = (country.airportPopulation * country.income.toDouble).toLong / Computation.MODEL_COUNTRY_POWER
+//    val logRatio = Math.max(0.1, Math.log10(ratioToModelPower * 100) / 2) //0.1 to 1
+//    val levelMultiplier = 1 / logRatio * 0.5 // >= 0.5, inverse of logRatio : lower multiplier for more powerful country
+//    Math.min(1.5, BigDecimal(levelMultiplier).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
+// removing
+    1
   }
 }
 

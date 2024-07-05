@@ -29,11 +29,11 @@ object Title extends Enumeration {
   type Title = Value
   val NATIONAL_AIRLINE, PARTNERED_AIRLINE, PRIVILEGED_AIRLINE, ESTABLISHED_AIRLINE, APPROVED_AIRLINE, NONE = Value
   val description = (title : Title.Value) => title match {
-    case Title.NATIONAL_AIRLINE => "National Airline"
-    case Title.PARTNERED_AIRLINE => "Partnered Airline"
-    case Title.PRIVILEGED_AIRLINE => "Privileged Airline"
-    case Title.ESTABLISHED_AIRLINE => "Established Airline"
-    case Title.APPROVED_AIRLINE => "Approved Airline"
+    case Title.NATIONAL_AIRLINE => "National"
+    case Title.PARTNERED_AIRLINE => "Partnered"
+    case Title.PRIVILEGED_AIRLINE => "Privileged"
+    case Title.ESTABLISHED_AIRLINE => "Established"
+    case Title.APPROVED_AIRLINE => "Approved"
     case Title.NONE => "None"
   }
 
@@ -57,7 +57,7 @@ object CountryAirlineTitle {
   }
 
   val PRIVILEGED_AIRLINE_RELATIONSHIP_THRESHOLD = 40
-  val ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD = 20
+  val ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD = 25
   val APPROVED_AIRLINE_RELATIONSHIP_THRESHOLD = 5
 
   val getTitle : (String, Airline) => CountryAirlineTitle = (countryCode : String, airline : Airline) => {
