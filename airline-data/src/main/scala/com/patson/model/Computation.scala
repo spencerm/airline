@@ -110,7 +110,7 @@ object Computation {
     //hard-coding some home markets into the computation function to allow for independent relation values
     //https://en.wikipedia.org/wiki/European_Common_Aviation_Area
     val ECAA = List("AL", "AM", "AT", "BA", "BE", "BG", "CH", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "LT", "LU", "LV", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "SI", "SK", "ES", "SE", "UA", "XK")
-    val ANZAC = List("AU", "NZ", "CX", "CK", "NU", "CC")
+    val ANZAC = List("AU", "NZ", "CX", "CK", "NU", "CC", "NF")
     val USA = List("US", "PR", "VI", "GU", "AS", "MP", "MH", "PW", "FM") //US & COFA Pacific
     if (fromAirport.countryCode == toAirport.countryCode || relationship == 5 || ECAA.contains(fromAirport.countryCode) && ECAA.contains(toAirport.countryCode) || ANZAC.contains(fromAirport.countryCode) && ANZAC.contains(toAirport.countryCode) || USA.contains(fromAirport.countryCode) && USA.contains(toAirport.countryCode)){
       if (distance <= 1000) {
