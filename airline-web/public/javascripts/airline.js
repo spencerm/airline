@@ -1005,7 +1005,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 
 	$("#planLinkCompetitons .data-row").remove()
 	$.each(linkInfo.otherLinks, function(index, linkConsumption) {
-		if (linkConsumption.airlineId != activeAirline.id) {
+		if (linkConsumption.linkId != linkInfo.id) {
 			$("#planLinkCompetitons").append("<div class='table-row data-row'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
 				    	    			   + "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
 				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity)
@@ -1092,14 +1092,27 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
     $('#planLinkBusinessPrice').val(initialPrice.business)
     $('#planLinkFirstPrice').val(initialPrice.first)
 
+
 	$('.planLinkPrice').off(".priceChange").on("focusout.priceChange", function() {
-        var defaultPrice = initialPrice[$(this).data('class')]
+	    const currentClass = $(this).data('class')
+        const defaultPrice = initialPrice[currentClass]
+        const priceFloor = (function() {
+            let lowestPrice = initialPrice[currentClass];
+            linkInfo.otherLinks.forEach(link => {
+                if (link.price && link.price[currentClass] < lowestPrice) {
+                    lowestPrice = link.price[currentClass];
+                }
+            });
+            return Math.ceil(lowestPrice * 0.65);
+        })();
         if (isNaN($(this).val())) {
             $(this).val(defaultPrice)
         } else {
             var inputPrice = Number($(this).val());
-            if (inputPrice < 0) {
+            if (inputPrice < 1) {
                 $(this).val(defaultPrice)
+            } else if (inputPrice < priceFloor) {
+                $(this).val(priceFloor)
             } else {
                 $(this).val(Math.floor(inputPrice))
             }

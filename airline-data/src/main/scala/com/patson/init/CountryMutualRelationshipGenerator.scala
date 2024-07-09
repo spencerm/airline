@@ -64,6 +64,9 @@ object CountryMutualRelationshipGenerator extends App {
     Affiliation("Comunidad Andina", 4, List(
       "BO", "EC", "PE", "CO"
     )),
+    Affiliation("ALBA", 3, List(
+      "VE", "CU", "BO", "NI"
+    )),
 //    Affiliation("ECOWAS", 2, List(
 //      "BJ", "BF", "CV", "CI", "GM", "GH", "GN", "GW", "LR", "NE", "NG", "SN", "TG"
 //    )),
@@ -317,7 +320,7 @@ object CountryMutualRelationshipGenerator extends App {
       "MX", "BR", "BO"
     )),
     Relation("VE", Direction.BI, 2, List(
-      "IR", "RU", "BO", "CU", "CN"
+      "IR", "RU", "BR", "CN"
     )),
     Relation("PE", Direction.BI, 2, List(
       "CL", "BO", "EC", "CO", "MX", "US", "CN", "JP"
