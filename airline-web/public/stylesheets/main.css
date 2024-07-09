@@ -254,8 +254,15 @@ h1, h2, h3, h4, h5, h6, .font-display {
     float: left; */
 }
 
+#linkQuality {
+    display: inline;
+}
+
 .value:has(#linkQuality) {
     display: flex;
+    width: auto;
+    align-content: end;
+    justify-content: flex-start;
 }
 
 .airplaneCanvasLeftGroup {
@@ -1041,7 +1048,6 @@ div.future {
     width: 100%;
     display: block;
     position: relative;
-    overflow: hidden;
 }
 
 
