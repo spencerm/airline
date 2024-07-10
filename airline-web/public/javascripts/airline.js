@@ -30,7 +30,7 @@ function updateAirlineInfo(airlineId) {
 	    	$(".currentAirline").html(getAirlineLogoImg(airline.id) + airline.name)
 
 	    	if (airline.headquarterAirport) {
-                        $("#currentAirlineCountry").html("<img class='flag' src='assets/images/flags/" + airline.headquarterAirport.countryCode + ".src' />")
+                        $("#currentAirlineCountry").html("<img class='flag' src='assets/images/flags/" + airline.headquarterAirport.countryCode + ".svg' />")
 	    	} else {
                         $("#currentAirlineCountry").empty()
 	    	}
