@@ -186,7 +186,7 @@ object Constants {
   val DB_HOST = if (configFactory.hasPath("mysqldb.host")) configFactory.getString("mysqldb.host") else "localhost:3306"
   val dbParams = if (configFactory.hasPath("mysqldb.dbParams")) configFactory.getString("mysqldb.dbParams") else ""
   println("!!!!!!!!!!!!!!!DB HOST IS " + DB_HOST)
-  val SCHEMA_NAME = if (configFactory.hasPath("mysqldb.schema")) configFactory.getString("mysqldb.schema") else "airline_v2_1"
+  val SCHEMA_NAME = if (configFactory.hasPath("mysqldb.schema")) configFactory.getString("mysqldb.schema") else "airline"
 
   //val DATABASE_CONNECTION = "jdbc:mysql://" + DB_HOST + "/airline?rewriteBatchedStatements=true&useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8"
   val DATABASE_CONNECTION = "jdbc:mysql://" + DB_HOST + "/" + SCHEMA_NAME +"?rewriteBatchedStatements=true&useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true" + dbParams
