@@ -1085,6 +1085,15 @@ img.flag {
     margin-right: 3px;
 }
 
+/* sets all SVG flags to 16px width and 11px height 
+    must be kept in directory that contains ".../flags/" in the path */
+img[src*="/flags/"],
+object[data*="/flags/"][type="image/svg+xml"],
+embed[src*="/flags/"][type="image/svg+xml"] {
+    width: 16px;
+    height: 11px;
+}
+
 .airlineColorDot {
     width:          15px;
     height:         15px;
