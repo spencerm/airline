@@ -213,12 +213,12 @@ function commaSeparateNumber(val){
     return isNegative ? ('(' + val + ')') : val;
 }
 
-function getCountryFlagImg(countryCode) {
+function getCountryFlagImg(countryCode, height = "11px") {
 	if (countryCode) {
 		var countryFlagUrl = getCountryFlagUrl(countryCode);
 		var countryName = loadedCountriesByCode[countryCode].name
 		if (countryFlagUrl) {
-            return `<img width='16px' height='11px' class='flag' loading='lazy' src='${countryFlagUrl}' title='${countryName}' alt='${countryName} flag' style='border-radius:0;'/>`;
+            return `<img width='auto' height='${height}' class='flag' loading='lazy' src='${countryFlagUrl}' title='${countryName}' alt='${countryName} flag' style='border-radius:0;'/>`;
 		} else {
 			return ""
 		}
