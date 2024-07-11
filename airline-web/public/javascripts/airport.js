@@ -112,8 +112,7 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
 	$(".airportCountryName").text(loadedCountriesByCode[airport.countryCode].name)
 	$(".airportCountryFlag").empty()
 	$(".airportCountryFlag").append(() => {
-        const countryFlagUrl = getCountryFlagUrl(airport.countryCode)
-        return countryFlagUrl ? "<img src='" + countryFlagUrl + "' />" : ""
+        return getCountryFlagImg(airport.countryCode)
 	})
 	$("#airportDetailsAffinityZone").text(airport.zone)
 	$("#airportDetailsOpenness").html(getOpennessSpan(loadedCountriesByCode[airport.countryCode].openness, airport.size, airport.isDomesticAirport, airport.isGateway))
@@ -781,7 +780,7 @@ function addCityMarkers(airportMap, airport) {
 			  $("#cityPopupPopulation").text(commaSeparateNumber(city.population))
 			  $("#cityPopupIncomeLevel").text(city.incomeLevel)
 			  $("#cityPopupCountryCode").text(city.countryCode)
-			  $("#cityPopupCountryCode").append("<img class='flag' src='assets/images/flags/" + city.countryCode + ".png' />")
+			  $("#cityPopupCountryCode").append("<img class='flag' src='assets/images/flags/" + city.countryCode + ".svg' />")
 			  $("#cityPopupId").val(city.id)
 			   
 			  
