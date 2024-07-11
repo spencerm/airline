@@ -65,6 +65,7 @@ object RankingLeaderboards {
 //    updatedRankings.put(RankingType.UNIQUE_IATA, getIataRanking(links, airlinesById))
     updatedRankings.put(RankingType.STOCK_PRICE, getStockRanking(airlinesById))
     updatedRankings.put(RankingType.LINK_PROFIT, getLinkProfitRanking(flightConsumptions, airlinesById))
+    updatedRankings.put(RankingType.LINK_LOSS, getLinkLossRanking(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_FREQUENCY, getLinkFrequent(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_DISTANCE, getLinkLongest(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LOUNGE, getLoungeRanking(LoungeHistorySource.loadAll, airlinesById))
@@ -74,6 +75,7 @@ object RankingLeaderboards {
     updatedRankings.put(RankingType.INTERNATIONAL_PAX, getAirportPairRanking(paxByAirportPair, (airport1, airport2) => airport1.countryCode != airport2.countryCode))
     updatedRankings.put(RankingType.DOMESTIC_PAX, getAirportPairRanking(paxByAirportPair, (airport1, airport2) => airport1.countryCode == airport2.countryCode))
     updatedRankings.put(RankingType.PASSENGER_MILE, getPassengerMileRanking(flightConsumptionsByAirline, airlinesById))
+    updatedRankings.put(RankingType.LINK_PROFIT_TOTAL, getLinkProfitTotalRanking(flightConsumptions, airlinesById))
 
     updateMovements(cachedRankings, updatedRankings.toMap)
 
@@ -192,6 +194,44 @@ object RankingLeaderboards {
     }.toList.sortBy(_.ranking).take(200)
   }
 
+  private[this] def getLinkLossRanking(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
+    val leastProfitableLinks: List[LinkConsumptionDetails] = linkConsumptions
+      .filter(_.profit < 0).sortBy(_.profit)(Ordering[Int])
+
+    leastProfitableLinks.zipWithIndex.map {
+      case (linkConsumption, index) => {
+        val airlineId = linkConsumption.link.airline.id
+        val ranking = Ranking(
+          RankingType.PASSENGER_MILE,
+          key = airlineId,
+          entry = linkConsumption.link.asInstanceOf[Link].copy(airline = airlinesById.getOrElse(airlineId, Airline.fromId(airlineId))),
+          ranking = index + 1,
+          rankedValue = linkConsumption.profit,
+          reputationPrize = reputationBonus(-8, index)
+        )
+        ranking
+      }
+
+    }.toList.sortBy(_.ranking).take(200)
+  }
+
+  private[this] def getLinkProfitTotalRanking(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
+    val mostProfitableLinks: List[LinkConsumptionDetails] = linkConsumptions.sortBy(_.profit)(Ordering[Int].reverse)
+
+    mostProfitableLinks.zipWithIndex.map {
+      case (linkConsumption, index) => {
+        val airlineId = linkConsumption.link.airline.id
+        val ranking = Ranking(RankingType.PASSENGER_MILE,
+          key = linkConsumption.link.id,
+          entry = linkConsumption.link.asInstanceOf[Link].copy(airline = airlinesById.getOrElse(airlineId, Airline.fromId(airlineId))),
+          ranking = index + 1,
+          rankedValue = linkConsumption.profit)
+        ranking
+      }
+
+    }.toList.sortBy(_.ranking).take(500)
+  }
+
   private[this] def getLinkLongest(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
     val longestLinkPerAirline = linkConsumptions
       .filter(_.link.soldSeats.total > 200)
@@ -219,7 +259,7 @@ object RankingLeaderboards {
         ranking
       }
 
-    }.toList.sortBy(_.ranking).take(200)
+    }.sortBy(_.ranking).take(200)
   }
 
   private[this] def getLinkFrequent(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
@@ -444,7 +484,7 @@ object RankingLeaderboards {
 
 object RankingType extends Enumeration {
   type RankingType = Value
-  val PASSENGER_MILE, PASSENGER_COUNT, PASSENGER_QUALITY, ELITE_COUNT, TOURIST_COUNT, BUSINESS_COUNT, STOCK_PRICE, PASSENGER_SATISFACTION, UNIQUE_COUNTRIES, UNIQUE_IATA, LINK_COUNT, LINK_COUNT_SMALL_TOWN, LINK_COUNT_LOW_INCOME, LINK_PROFIT, LINK_DISTANCE, LINK_FREQUENCY, LOUNGE, AIRPORT, AIRPORT_TRANSFERS, INTERNATIONAL_PAX, DOMESTIC_PAX = Value
+  val PASSENGER_MILE, PASSENGER_COUNT, PASSENGER_QUALITY, ELITE_COUNT, TOURIST_COUNT, BUSINESS_COUNT, STOCK_PRICE, PASSENGER_SATISFACTION, UNIQUE_COUNTRIES, LINK_COUNT_SMALL_TOWN, LINK_COUNT_LOW_INCOME, LINK_LOSS, LINK_PROFIT, LINK_PROFIT_TOTAL, LINK_DISTANCE, LINK_FREQUENCY, LOUNGE, AIRPORT, AIRPORT_TRANSFERS, INTERNATIONAL_PAX, DOMESTIC_PAX = Value
 }
 
 
