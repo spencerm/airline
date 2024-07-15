@@ -1,5 +1,3 @@
-var noFlags = ["BL", "CW", "IM", "GG", "JE", "BQ", "MF", "SS", "SX", "XK"]
-
 function htmlEncode(str){
   return String(str).replace(/[^\w. ]/gi, function(c){
      return '&#'+c.charCodeAt(0)+';';
@@ -215,12 +213,12 @@ function commaSeparateNumber(val){
     return isNegative ? ('(' + val + ')') : val;
 }
 
-function getCountryFlagImg(countryCode) {
+function getCountryFlagImg(countryCode, height = "11px") {
 	if (countryCode) {
 		var countryFlagUrl = getCountryFlagUrl(countryCode);
 		var countryName = loadedCountriesByCode[countryCode].name
 		if (countryFlagUrl) {
-			return "<img class='flag' src='" + countryFlagUrl + "' title='" + countryName +"' style='border-radius:0;'/>"
+            return `<img width='auto' height='${height}' class='flag' loading='lazy' src='${countryFlagUrl}' title='${countryName}' alt='${countryName} flag' style='border-radius:0;'/>`;
 		} else {
 			return ""
 		}
@@ -230,13 +228,7 @@ function getCountryFlagImg(countryCode) {
 }
 
 function getCountryFlagUrl(countryCode) {
-	if (!countryCode) {
-		return '';
-	} if ($.inArray(countryCode, noFlags) != -1) {
-		return '';
-	} else {
-		return "assets/images/flags/" + countryCode + ".png"
-	}
+    return countryCode ? `assets/images/flags/${countryCode}.svg` : '';
 }
 
 function getAirlineLogoImg(airlineId) {
