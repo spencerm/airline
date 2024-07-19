@@ -123,8 +123,7 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
             airplane.range >= rangeRequirement
         );
     });
-	console.log(modelsFiltered)
-	
+
 	var airplaneModelTable = $("#airplaneModelTable")
 	airplaneModelTable.children("div.table-row").remove()
 	
@@ -133,6 +132,7 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 		var row = $("<div class='table-row clickable' data-model-id='" + modelOwnerInfo.id + "' onclick='selectAirplaneModel(loadedModelsById[" + modelOwnerInfo.id + "])'></div>")
 		var stars = $("<div class='cell' align='right'>").append(getGradeStarsImgs(modelOwnerInfo.quality * 2)).append("</div>")
 		var capacity = modelOwnerInfo.capacity === modelOwnerInfo.maxSeats ? modelOwnerInfo.capacity : modelOwnerInfo.capacity + "<br><i class='text-hint'>" + modelOwnerInfo.maxSeats + "</i>";
+        modelOwnerInfo.costPerPax = calculateCostPerPax(modelOwnerInfo, rangeRequirement)
 
 		if (modelOwnerInfo.isFavorite) {
 		    row.append("<div class='cell'>" + modelOwnerInfo.name + "<img src='assets/images/icons/heart.png' height='10px'></div>")
@@ -140,6 +140,7 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
             row.append("<div class='cell'>" + modelOwnerInfo.name + "</div>")
 		}
 		row.append("<div class='cell'>" + modelOwnerInfo.family + "</div>")
+		row.append("<div class='cell'>" + modelOwnerInfo.airplaneType + "</div>")
 		row.append("<div class='cell' align='right'>$" + commaSeparateNumber(modelOwnerInfo.price) + "</div>")
 		row.append("<div class='cell' align='right'>" + capacity + "</div>")
 		row.append(stars)
@@ -150,6 +151,7 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.runwayRequirement + " m</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.assignedAirplanes.length + "/" + modelOwnerInfo.availableAirplanes.length + "/" + modelOwnerInfo.constructingAirplanes.length + "</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.total + "</div>")
+		row.append("<div class='cell' align='right'>" + (modelOwnerInfo.costPerPax).toFixed(1) + "</div>")
 		
 		if (selectedModelId == modelOwnerInfo.id) {
 			row.addClass("selected")
@@ -157,7 +159,52 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 		}
 		airplaneModelTable.append(row)
 	});
-	
+}
+
+function calculateCostPerPax(airplane, distance) {
+    const maxFlightMinutes = 4 * 24 * 60;
+    const flightTime = calcFlightTime(airplane, distance);
+    const frequency = Math.floor(maxFlightMinutes / ((flightTime + airplane.turnaroundTime) * 2));
+    const aircraftFlightTime = frequency * 2 * (flightTime + airplane.turnaroundTime);
+    const availableFlightMinutes = maxFlightMinutes - aircraftFlightTime;
+    const utilisation = aircraftFlightTime / (maxFlightMinutes - availableFlightMinutes);
+    const planeUtilisation = (maxFlightMinutes - availableFlightMinutes) / maxFlightMinutes;
+
+    const decayRate = 100 / (airplane.lifespan * 3) * (1 + 2 * planeUtilisation);
+    const depreciationRate = Math.floor(airplane.price * (decayRate / 100) * utilisation);
+
+    const fuelCost = calcFuelBurn(airplane, distance) * 0.08;
+
+    const cost = (fuelCost * frequency + depreciationRate) / (airplane.capacity * frequency);
+    return cost;
+}
+
+function calcFlightTime(airplane, distance){
+    const min = Math.min;
+    const max = Math.max;
+    const speed = airplane.speed * (airplane.airplaneType.toUpperCase() == "SUPERSONIC" ? 1.5 : 1);
+    const a = min(distance, 300);
+    const b = min(max(0, distance-a), 400);
+    const c = min(max(0, distance-(a+b)), 400);
+    const d = max(0, distance-(a+b+c));
+    //prop
+    const x = min(distance, 250);
+    const y = min(max(0, distance-x), 350);
+    const z = max(0, distance-(x+y));
+    const time_flight = airplane.airplaneType.toUpperCase() == "PROP" ? x / min(speed, 425) + y / min(speed, 550) + z / speed : a / min(speed, 350) + b / min(speed, 500) + c / min(speed, 700) + d / speed;
+    return time_flight * 60;
+}
+
+function calcFuelBurn(airplane, distance){
+    const flightTime = calcFlightTime(airplane, distance);
+    const distanceFactor = 0.5 + 0.05 * Math.pow(flightTime / 60, 1.4)
+    const ascentTimes = {
+      "HELICOPTER": 0,
+      "PROP": 18
+    };
+    const ascendTime = ascentTimes[airplane.airplaneType.toUpperCase()] || Math.min(50, flightTime / 3 * 2);
+    const fuelBurn = parseInt((ascendTime * airplane.fuelBurn * 4.75 + (flightTime - ascendTime) * airplane.fuelBurn) * distanceFactor);
+    return fuelBurn;
 }
 
 function updateUsedAirplaneTable(sortProperty, sortOrder) {

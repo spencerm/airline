@@ -584,7 +584,7 @@
 									</div>
 									<div class="divider"></div>
 									<h4 class="pt-2">
-										<span>Direct Competitions</span>
+										<span>Operators</span>
 										<img src='@routes.Assets.versioned("images/icons/chart-up.png")' class="clickable" title="View Rival History"onclick="showLinkRivalHistory($('#actionLinkId').val())" style="vertical-align: text-bottom">
 										<img src='@routes.Assets.versioned("images/icons/magnifier.png")' class="clickable" title="View Rival Details"onclick="showLinkRivalDetails($('#actionLinkId').val())" style="vertical-align: text-bottom">
 									</h4>
@@ -1556,7 +1556,7 @@
 						<div id="airplaneModelTableFilters">
 							<p><a class='button flex-align-center' onclick="showAircraftInfoModal()" title="Aircraft info">info <img src='@routes.Assets.versioned("images/icons/information.png")'/></a></p>
 							<div style="display: flex; height: fit-content;">
-								<p>Range >=</p>
+								<p>Distance >=</p>
 								<input type="number" id="AMTFrange" value="500" size="6" oninput="updateAirplaneModelTable()"/>
 							</div>
 							<div style="display: flex; height: fit-content;">
@@ -1577,36 +1577,40 @@
 						<div class="section tight">
 							<div class="detailsGroup border-radius-cut">
 								<div class="market details table-container-x">
-									<div class="table data" style="height: 20px; min-width: 980px;">
+									<div class="table data" style="height: 20px; min-width: 1120px;">
 										<div class="table-header" id="airplaneModelSortHeader">
-											<div class="cell clickable" style="width: 18%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
-											<div class="cell clickable" style="width: 11%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
+											<div class="cell clickable" style="width: 16%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
+											<div class="cell clickable" style="width: 10%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
+											<div class="cell clickable" style="width: 9%" data-sort-property="size" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Category</div>
 											<div class="cell clickable selected" style="width: 9%" align="right" data-sort-property="price" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Price</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="capacity" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Capacity<br><i class="text-hint">max seats</i></div>
 											<div class="cell clickable" style="width: 10%" align="right" data-sort-property="quality" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Passenger Experience</div>
-											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="range" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Range</div>
+											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="range" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Range</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="fuelPerPax" title="Per Passenger" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Fuel Burn</div>
-											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="lifespan" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Lifespan</div>
-											<div class="cell clickable" style="width: 9%" align="right" data-sort-property="speed" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Speed</div>
-											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="runwayRequirement" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Runway</div>
-											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalOwned" data-sort-order="descending" onclick="toggleAirplaneModelTableSortOrder($(this))">Roster</div>
-											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="total" title="Total in Circulation" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">#</div>
+											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="lifespan" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Lifespan</div>
+											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="speed" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Speed</div>
+											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="runwayRequirement" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Runway</div>
+											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalOwned" data-sort-order="descending" onclick="toggleAirplaneModelTableSortOrder($(this))">Hangar</div>
+											<div class="cell clickable" style="width: 3%" align="right" data-sort-property="total" title="Total in Circulation" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">#</div>
+											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="costPerPax" title="Cost per pax per km" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Pax $</div>
 										</div>
 									</div>
-									<div class="table-container-y" style="min-width: 980px;">
+									<div class="table-container-y" style="min-width: 1120px;">
 										<div class="table data" id="airplaneModelTable">
 											<div class="table-header">
-												<div class="cell" style="width: 18%; border-bottom: none;"></div>
-												<div class="cell" style="width: 11%; border-bottom: none;"></div>
+												<div class="cell" style="width: 16%; border-bottom: none;"></div>
+												<div class="cell" style="width: 10%; border-bottom: none;"></div>
+												<div class="cell" style="width: 9%; border-bottom: none;"></div>
 												<div class="cell" style="width: 9%; border-bottom: none;"></div>
 												<div class="cell" style="width: 7%; border-bottom: none;"></div>
 												<div class="cell" style="width: 10%; border-bottom: none;"></div>
-												<div class="cell" style="width: 8%; border-bottom: none;"></div>
+												<div class="cell" style="width: 7%; border-bottom: none;"></div>
 												<div class="cell" style="width: 5%; border-bottom: none;"></div>
+												<div class="cell" style="width: 6%; border-bottom: none;"></div>
 												<div class="cell" style="width: 7%; border-bottom: none;"></div>
-												<div class="cell" style="width: 9%; border-bottom: none;"></div>
-												<div class="cell" style="width: 7%; border-bottom: none;"></div>
-												<div class="cell" style="width: 4%; border-bottom: none;"></div>
+												<div class="cell" style="width: 6%; border-bottom: none;"></div>
+												<div class="cell" style="width: 5%; border-bottom: none;"></div>
+												<div class="cell" style="width: 3%; border-bottom: none;"></div>
 												<div class="cell" style="width: 4%; border-bottom: none;"></div>
 											</div>
 										</div>
@@ -1652,13 +1656,13 @@
 												<div style="margin-top: 8px; font-weight:bold;"><span class="discount"></span></div>
 											</div>
 											<div style='min-width: 240px; flex: 1; position: relative;' class='MEDIUM pb-4'>
-												<h4 class="m-0">Medium</h4>
+												<h4 class="m-0">Narrow-body</h4>
 												<p class="pb-2"><i class="remarks"><span class="capacityRange"></span></i></p>
 												<div class="supplierList"></div>
 												<div style="margin-top: 8px; font-weight:bold;"><span class="discount"></span></div>
 											</div>
 											<div style='min-width: 240px; flex: 1; position: relative;' class='LARGE pb-4'>
-												<h4 class="m-0">Large / Wide-Body</h4>
+												<h4 class="m-0">Wide-Body</h4>
 												<p class="pb-2"><i class="remarks"><span class="capacityRange"></span></i></p>
 												<div class="supplierList"></div>
 												<div style="margin-top: 8px; font-weight:bold;"><span class="discount"></span></div>
@@ -2794,7 +2798,16 @@
 							<div class="table-header">
 								<div class="cell" style="width: 7%">Rank</div>
 								<div class="cell" style="width: 9%">Change</div>
-								<div class="cell" style="width: 55%">Longest Route <br><small>With more than 200 sold seats</small></div>
+								<div class="cell" style="width: 55%">Longest Profitable Route <br><small>With more than 200 sold seats</small></div>
+								<div class="cell" style="width: 22%" align="right">Distance</div>
+								<div class="cell" style="width: 7%" align="right">Prize</div>
+							</div>
+						</div>
+						<div class="table data section tight rankingTable" id="linkShortestRank">
+							<div class="table-header">
+								<div class="cell" style="width: 7%">Rank</div>
+								<div class="cell" style="width: 9%">Change</div>
+								<div class="cell" style="width: 55%">Shortest Profitable Route <br><small>With more than 2000 sold seats</small></div>
 								<div class="cell" style="width: 22%" align="right">Distance</div>
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
@@ -4567,8 +4580,8 @@
 				  <div class="cell updating price"></div>
 			  </div>
 		  </div>
-		  <div class="negotiationInfo">
-			  <h4 style="margin-bottom: 10px; margin-top: 30px; display: flex; align-items: center;">Negotiation Difficulty :&nbsp;
+		  <div class="negotiationInfo flex-container-width-half">
+			  <h4 style="margin-bottom: 10px; margin-top: 30px; display: flex; align-items: center;">Negotiation Difficulty:&nbsp;
 			      <span class="negotiationDifficultyTotal"></span>
              	  <img class="clickable info" src='@routes.Assets.versioned("images/icons/information-24.png")' onmouseover="$('#negotiationDifficultyModal').fadeIn(500)">
 				  <span class="error">
@@ -4620,8 +4633,8 @@
           <div style="clear: both;"></div>
 		  <div class="negotiationInfo">
           <!-- requirements list-->
-              <div>
-                  <div style="width: 48%; float:left">
+              <div class="flex-container-width-half">
+                  <div>
 					  <h4 style="margin-bottom: 10px; margin-top: 30px;"><span class="fromAirport"></span>&nbsp;-&nbsp;Factors</h4>
 					  <div style="width: 100%" class="negotiationRequirements table data fromAirport">
 						  <div class="table-header">
@@ -4630,7 +4643,7 @@
 						  </div>
 					  </div>
 				  </div>
-                  <div style="width: 48%; float:right" class="negotiationRequirements table data toAirport">
+                  <div class="negotiationRequirements table data toAirport">
 					  <h4 style="margin-bottom: 10px; margin-top: 30px;"><span class="toAirport"></span>&nbsp;-&nbsp;Factors</h4>
 					  <div style="width: 100%" class="negotiationRequirements table data toAirport">
 						  <div class="table-header">
@@ -4639,7 +4652,6 @@
 						  </div>
 					  </div>
                   </div>
-                  <div style="clear: both;"></div>
               </div>
               <!-- requirements total-->
               <div class="pt-2">
@@ -4667,8 +4679,8 @@
               </div>
 
 			  <!-- discounts-->
-              <div>
-                  <div style="width: 48%; float: left;">
+              <div class="flex-container-width-half">
+                  <div>
                       <h4 style="margin-bottom: 10px; margin-top: 30px;"><span class="fromAirport"></span>&nbsp;-&nbsp;Adjustments</h4>
                       <div style="width: 100%; float: left;" class="negotiationFromDiscounts table data">
                           <div class="table-header">
@@ -4677,7 +4689,7 @@
                           </div>
                       </div>
                   </div>
-                  <div style="width: 48%; float: right;">
+                  <div>
                       <h4 style="margin-bottom: 10px; margin-top: 30px;"><span class="toAirport"></span>&nbsp;-&nbsp;Adjustments</h4>
                       <div style="width: 100%; float: left;" class="negotiationToDiscounts table data">
                           <div class="table-header">
@@ -4686,7 +4698,6 @@
                           </div>
                       </div>
                   </div>
-                  <div style="clear: both;"></div>
               </div>
               <!-- discounts total-->
               <div class="pt-2">

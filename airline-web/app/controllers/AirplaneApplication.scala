@@ -161,8 +161,8 @@ class AirplaneApplication @Inject()(cc: ControllerComponents) extends AbstractCo
   
   def getAirplaneModelsByAirline(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     val originalModelsById = AirplaneModelCache.allModels
-    val allAirplanes = AirplaneSource.loadAllAirplanes()
-    val allModelsAndCount = allAirplanes.groupBy(_.model).map {
+    val allAirplanes = AirplaneSource.loadAllAirplanes() //todo: create & move to a cache
+    val allModelsAndCount = allAirplanes.filter(_.constructedCycle > 0).groupBy(_.model).map {
       case (model, airplanes) =>
         (model.id, airplanes.length)
     }.toMap

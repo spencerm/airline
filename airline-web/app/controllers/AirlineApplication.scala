@@ -778,9 +778,12 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
   def getFleet(airlineId : Int) = Action { request =>
     var result = Json.arr()
-    AirplaneSource.loadAirplanesByOwner(airlineId).groupBy(_.model).toList.sortBy(_._1.name).foreach {
-      case(model, airplanes) => result = result.append(Json.obj("name" -> model.name, "quantity" -> airplanes.size))
-    }
+    AirplaneSource.loadAirplanesByOwner(airlineId)
+      .filter(_.constructedCycle != 0) //filtering out non-player airplanes
+      .groupBy(_.model).toList
+      .sortBy(_._1.name).foreach {
+        case(model, airplanes) => result = result.append(Json.obj("name" -> model.name, "quantity" -> airplanes.size))
+      }
 
     Ok(result)
   }

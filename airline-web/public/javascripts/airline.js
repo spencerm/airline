@@ -1096,6 +1096,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 	$('.planLinkPrice').off(".priceChange").on("focusout.priceChange", function() {
 	    const currentClass = $(this).data('class')
         const defaultPrice = initialPrice[currentClass]
+        const hasCompetitor = linkInfo.otherLinks.length > 1
         const priceFloor = (function() {
             let lowestPrice = initialPrice[currentClass];
             linkInfo.otherLinks.forEach(link => {
@@ -1111,7 +1112,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
             var inputPrice = Number($(this).val());
             if (inputPrice < 1) {
                 $(this).val(defaultPrice)
-            } else if (inputPrice < priceFloor) {
+            } else if (hasCompetitor && inputPrice < priceFloor) {
                 $(this).val(priceFloor)
             } else {
                 $(this).val(Math.floor(inputPrice))
@@ -2982,8 +2983,8 @@ function getLinkNegotiation(callback) {
 
                 if (negotiationInfo.fromAirportRequirements.length > 0 || negotiationInfo.toAirportRequirements.length > 0) {
                     checkTutorial("negotiation")
-                    $('#negotiationDifficultyModal div.negotiationInfo .requirement').empty()
-                    $('#negotiationDifficultyModal div.negotiationInfo .discount').empty()
+                    $('#negotiationDifficultyModal div.negotiationInfo .requirement').remove()
+                    $('#negotiationDifficultyModal div.negotiationInfo .discount').remove()
 
                     var currentRow = $('#negotiationDifficultyModal div.negotiationRequirements.fromAirport .table-header')
                     var fromAirportRequirementValue = 0
