@@ -431,10 +431,10 @@ object AirlineGrades {
     500 -> "Ultimate",
     550 -> "Legendary",
     600 -> "Mythic",
-    650 -> "Celestial",
-    700 -> "Empyrean",
-    800 -> "Transcendent",
-    1000 -> "Apex Rat"
+    700 -> "Celestial",
+    800 -> "Empyrean",
+    1000 -> "Transcendent",
+    1200 -> "Apex Rat"
   )
 
   def findGrade(reputation: Double): AirlineGrade = {
