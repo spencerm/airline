@@ -68,6 +68,7 @@ object RankingLeaderboards {
     updatedRankings.put(RankingType.LINK_LOSS, getLinkLossRanking(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_FREQUENCY, getLinkFrequent(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_DISTANCE, getLinkLongest(flightConsumptions, airlinesById))
+    updatedRankings.put(RankingType.LINK_SHORTEST, getLinkLongest(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LOUNGE, getLoungeRanking(LoungeHistorySource.loadAll, airlinesById))
     //informational rankings
     val (paxByAirport, paxByAirportPair) = getPaxStat(flightConsumptions)
@@ -232,9 +233,45 @@ object RankingLeaderboards {
     }.toList.sortBy(_.ranking).take(500)
   }
 
+  private[this] def getLinkShortest(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
+    val longestLinkPerAirline = linkConsumptions
+      .filter(_.link.soldSeats.total > 2000)
+      .filter(_.profit > 0)
+      .sortBy(_.link.distance)(Ordering[Int])
+      .foldLeft(List.empty[LinkConsumptionDetails]) { (acc, linkDetail) =>
+        if (acc.exists(_.link.airline.id == linkDetail.link.airline.id)) {
+          acc
+        } else {
+          linkDetail :: acc // Add to the front of the accumulator
+        }
+      }
+      .reverse
+
+    var prevValue: Int = 0
+    var prevRanking: Int = 0
+    longestLinkPerAirline.zipWithIndex.map {
+      case (linkConsumption, index) => {
+        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index + 1
+        prevValue = linkConsumption.link.distance
+        val airlineId = linkConsumption.link.airline.id
+        val ranking = Ranking(
+          RankingType.LINK_SHORTEST,
+          key = airlineId,
+          entry = linkConsumption.link.asInstanceOf[Link].copy(airline = airlinesById.getOrElse(airlineId, Airline.fromId(airlineId))),
+          ranking = prevRanking + 1,
+          rankedValue = linkConsumption.link.distance,
+          reputationPrize = reputationBonus(16, prevRanking)
+        )
+        ranking
+      }
+
+    }.sortBy(_.ranking).take(200)
+  }
+
   private[this] def getLinkLongest(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
     val longestLinkPerAirline = linkConsumptions
       .filter(_.link.soldSeats.total > 200)
+      .filter(_.profit > 0)
       .sortBy(_.link.distance)(Ordering[Int].reverse)
       .foldLeft(List.empty[LinkConsumptionDetails]) { (acc, linkDetail) =>
         if (acc.exists(_.link.airline.id == linkDetail.link.airline.id)) {
@@ -245,16 +282,20 @@ object RankingLeaderboards {
       }
       .reverse
 
+    var prevValue: Int = 0
+    var prevRanking: Int = 0
     longestLinkPerAirline.zipWithIndex.map {
       case (linkConsumption, index) => {
+        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index + 1
+        prevValue = linkConsumption.link.distance
         val airlineId = linkConsumption.link.airline.id
         val ranking = Ranking(
           RankingType.LINK_DISTANCE,
           key = airlineId,
           entry = linkConsumption.link.asInstanceOf[Link].copy(airline = airlinesById.getOrElse(airlineId, Airline.fromId(airlineId))),
-          ranking = index + 1,
+          ranking = prevRanking + 1,
           rankedValue = linkConsumption.link.distance,
-          reputationPrize = reputationBonus(16, index)
+          reputationPrize = reputationBonus(16, prevRanking)
         )
         ranking
       }
@@ -484,7 +525,7 @@ object RankingLeaderboards {
 
 object RankingType extends Enumeration {
   type RankingType = Value
-  val PASSENGER_MILE, PASSENGER_COUNT, PASSENGER_QUALITY, ELITE_COUNT, TOURIST_COUNT, BUSINESS_COUNT, STOCK_PRICE, PASSENGER_SATISFACTION, UNIQUE_COUNTRIES, LINK_COUNT_SMALL_TOWN, LINK_COUNT_LOW_INCOME, LINK_LOSS, LINK_PROFIT, LINK_PROFIT_TOTAL, LINK_DISTANCE, LINK_FREQUENCY, LOUNGE, AIRPORT, AIRPORT_TRANSFERS, INTERNATIONAL_PAX, DOMESTIC_PAX = Value
+  val PASSENGER_MILE, PASSENGER_COUNT, PASSENGER_QUALITY, ELITE_COUNT, TOURIST_COUNT, BUSINESS_COUNT, STOCK_PRICE, PASSENGER_SATISFACTION, UNIQUE_COUNTRIES, LINK_COUNT_SMALL_TOWN, LINK_COUNT_LOW_INCOME, LINK_LOSS, LINK_PROFIT, LINK_PROFIT_TOTAL, LINK_DISTANCE, LINK_SHORTEST, LINK_FREQUENCY, LOUNGE, AIRPORT, AIRPORT_TRANSFERS, INTERNATIONAL_PAX, DOMESTIC_PAX = Value
 }
 
 
