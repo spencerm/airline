@@ -57,7 +57,7 @@ object CountryAirlineTitle {
   }
 
   val PRIVILEGED_AIRLINE_RELATIONSHIP_THRESHOLD = 40
-  val ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD = 25
+  val ESTABLISHED_AIRLINE_RELATIONSHIP_THRESHOLD = 20
   val APPROVED_AIRLINE_RELATIONSHIP_THRESHOLD = 5
 
   val getTitle : (String, Airline) => CountryAirlineTitle = (countryCode : String, airline : Airline) => {
@@ -116,19 +116,17 @@ object CountryAirlineTitle {
   val getTitleBonus = (title : Title.Value, country : Country) => title match {
     case NATIONAL_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), NATIONAL_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
-        s"Relationship +${Title.relationshipBonus(NATIONAL_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Relationship +${Title.relationshipBonus(NATIONAL_AIRLINE)} with ${country.name}"
       )
     case PARTNERED_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), PARTNERED_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
-        s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}"
       )
     case PRIVILEGED_AIRLINE =>
-      List(s"Allow building airport bases in any airports in ${country.name}"
+      List(s"May build bases anywhere in ${country.name}."
       )
     case ESTABLISHED_AIRLINE =>
-      List(s"Allow building airport bases in only Gateway airports in ${country.name}"
+      List(s"Easier negotiations in ${country.name} and may build bases in ${country.name}'s gateway airports."
       )
     case APPROVED_AIRLINE =>
       List()
