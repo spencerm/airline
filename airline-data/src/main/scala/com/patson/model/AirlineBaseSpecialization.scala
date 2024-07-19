@@ -33,7 +33,7 @@ object AirlineBaseSpecialization extends Enumeration {
   case class DelegateSpecialization() extends Specialization {
     override val getType = BaseSpecializationType.DELEGATE
     override val label = "Delegates Recruiter"
-    val delegateBoost = 1
+    val delegateBoost = 2
     override val free = true
     override val scaleRequirement : Int = 13
     override def descriptions(airport : Airport) = List(s"$delegateBoost extra delegates")
