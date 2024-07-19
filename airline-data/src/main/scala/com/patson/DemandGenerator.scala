@@ -244,7 +244,7 @@ object DemandGenerator {
 
   val ELITE_MIN_GROUP_SIZE = 5
   val ELITE_MAX_GROUP_SIZE = 9
-  val CLOSE_DESTINATIONS_RADIUS = 9
+  val CLOSE_DESTINATIONS_RADIUS = 1800
 
   private def generateEliteDemand(airports : List[Airport]) : List[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])] = {
     val eliteDemands = new ArrayList[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])]()
@@ -263,7 +263,7 @@ object DemandGenerator {
         distance > CLOSE_DESTINATIONS_RADIUS
       }
 
-      var numberDestinations = Math.ceil(0.82 * fromAirport.popElite / groupSize.toDouble).toInt
+      var numberDestinations = Math.ceil(0.8 * fromAirport.popElite / groupSize.toDouble).toInt
 
       while (numberDestinations >= 0) {
         val destination = if (numberDestinations % 2 == 1 && closeDestinations.length > 5) {
