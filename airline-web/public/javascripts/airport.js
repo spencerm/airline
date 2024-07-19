@@ -928,6 +928,9 @@ function refreshAirportExtendedDetails(airport) {
             $(".airportLoyalty").text("0")
         }
 
+				// Ensure the gear icon on the nav-airport page for the campaign modal is always visible
+				$(".campaignGear").css({"visibility": "visible", "display": "inline-block"});
+
         var relationshipValue = loadedCountriesByCode[airport.countryCode].mutualRelationship
         if (typeof relationshipValue != 'undefined') {
             $(".airportRelationship").text(getCountryRelationshipDescription(relationshipValue))
