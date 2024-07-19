@@ -17,22 +17,31 @@ object IsolatedAirportPatcher {
     val allAirports = AirportSource.loadAllAirports(true)
     val isolationByAirport = Map[Airport, Int]()
     val ISOLATED_ISLAND_AIRPORTS = Array(
-      "KOI", "SYY", "BEB", "TRE", "ILY", "CAL", "ISC", "GCI", "JER",
       //carribean
-      "PVA", "ADZ", "CYB", "RTB", "UII", "GJA",
+      "PVA", "ADZ", "CYB", "RTB", "UII", "GJA", "CPX", "VQS", "SPR", "CYC", "CUK",
       //europe
-      "IDY", "ACI", "ISC", "OUI",
-      "EGH", //Tresco Heliport
-      "BYR", //DK
-      "HGL", //DE
+      "IDY", "ACI", "ISC", "OUI", //FR
+      "PNL", "LMP", //IT
+      "HGL", "BMK", "GWT", "BMR", //DE
+      "EGH", "EOI", "FIE", "FOA", "LWK", "LSI", "ACI", "TRE", "BRR", "BEB", "SYY", "KOI", "ILY", "CAL", "ISC", "GCI", "JER", //GB
+      "BYR", "RNN", //DK
+      "MHQ", "KDL", "URE", //FI
       "IOR","INQ","IIA", //IE
-      //USA
-      "FRD", "ESD", "ACK", "MVY", "BID",
+      "EN9","EN1","EN2", "SKN", "SSJ", "BNN", "MOL", //NO
+      "HZK", //IS
+      "AOK", "JMK", "JNX", "JSI", "JTR", "KIT", "LKS", "MLO", "SMI", "JIK", "KGS", "RHO", //GR
+      //americas
+      "FRD", "ESD", "ACK", "MVY", "BID", "AVX", //US
       //oceania
-      "WSZ"
-      //add more greek, usa, japan, australia?
+      "WSZ",
+      //asia
+      "KUM", "TNE", "MYE", "MK1", "OIM", "HAC", "AO1", "SDS", "OIR", "RIS", "OKI", "TSJ", "FUJ", "KKX", "TKN", "OKE", "RNJ", "UEO", "OKA", "MMY", "TRA", "ISG", "OGN", //JP
+      "BSO",
+      "TNJ",
+      //africa
+      "MMO",
     )
-    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "MU", "MV", "CC", "CK") //always add 1 level, because island countries and islands are inherently isolated
+    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "VN", "MU", "MV", "CC", "CK", "CV") //always add 1 level, because island countries and islands are inherently isolated
 
 
     allAirports.foreach { airport =>

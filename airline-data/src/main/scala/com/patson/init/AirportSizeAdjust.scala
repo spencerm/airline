@@ -302,6 +302,10 @@ object AirportSizeAdjust {
         "RVN" -> 4,
         //https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Greece
         "CFU" -> 5,
+        "JMK" -> 3,
+        "JSI" -> 3,
+        "JTR" -> 3,
+        "SMI" -> 3,
         "JIK" -> 2,
         //https://en.wikipedia.org/wiki/List_of_airports_in_Guinea
         //https://en.wikipedia.org/wiki/List_of_airports_in_Guatemala
