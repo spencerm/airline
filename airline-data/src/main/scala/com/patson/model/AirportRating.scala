@@ -10,10 +10,10 @@ case class AirportRating(economicPowerRating : Int, competitionRating : Int, cou
   val COMPETITION_WEIGHT = 0.5
   val featureRating = features.map { feature =>
     feature.featureType match {
-//      case INTERNATIONAL_HUB => feature.strength.toDouble / 3
+      case INTERNATIONAL_HUB => feature.strength.toDouble / 9
       case FINANCIAL_HUB => feature.strength.toDouble / 5
       case VACATION_HUB => feature.strength.toDouble  / 10
-      case ISOLATED_TOWN => feature.strength.toDouble  / 2
+      case ISOLATED_TOWN => feature.strength.toDouble  / 3
       case ELITE_CHARM => Math.max(1, feature.strength.toDouble / 3)
       case GATEWAY_AIRPORT => 3
       case _ => 0
@@ -28,7 +28,7 @@ object AirportRating {
   val modelAirportPower : Long = 26_475_285L * 36194 //Use static value here, HND before boost
   val modelCountryPower : Long = 141_882_566L * 54629 //Use static value here, USA before boost
 
-  val MAX_COMPETITION_RATIO = 0.0001 //ratio of departingPassenger / airport power. If the ratio reaches this ratio, competition rating is considered 100
+  val MAX_COMPETITION_RATIO = 0.00005 //ratio of departingPassenger / airport power. If the ratio reaches this ratio, competition rating is considered 100
 
   def rateAirport(airport : Airport) : AirportRating = {
     val detailedAirport =

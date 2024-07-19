@@ -39,12 +39,16 @@ class CountryApplication @Inject()(cc: ControllerComponents) extends AbstractCon
               }
               delegatesByCountryCode.get(country.countryCode).foreach { delegatesAssignedToThisCountry =>
                 countryJson = countryJson + ("delegatesCount" -> JsNumber(delegatesAssignedToThisCountry.length))
-
               }
 
               if (airline.getHeadQuarter().isDefined) {
                 val relationship : Int = mutualRelationships.get(country.countryCode).getOrElse(0)
                 countryJson = countryJson + ("mutualRelationship" -> JsNumber(relationship))
+
+                val airlineCountryRelationship = AirlineCountryRelationship.getAirlineCountryRelationship(country.countryCode, airline).relationship
+                countryJson = countryJson + ("countryRelationship" -> Json.toJson(airlineCountryRelationship))
+                val title = CountryAirlineTitle.getTitle(country.countryCode, airline)
+                countryJson = countryJson + (("CountryTitle")-> Json.toJson(title))
               }
 
               result = result.append(countryJson)

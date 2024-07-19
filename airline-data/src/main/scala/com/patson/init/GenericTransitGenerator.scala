@@ -65,18 +65,29 @@ object GenericTransitGenerator {
     "DME" -> "SVO"
   )
   val ISLANDS = List(
-    "MVY", "ACK", "ISP", "FRD", "ESD", "MKK", "LNY", "GST", "VQS", "CPX", "STT", "EIS", "AXA", "PLS", "GDT", "SVD", "HID", "APW", "PPT", "TCB", "JIK", "ESD", "HHH", "SAQ", "TIQ", "HOR", "PIX", "KOI", "HTI"
+    "MQS", "GST", "VQS", "CPX", "GBJ", "SBH", "SAB", "UNI", "STT", "EIS", "AXA", "PLS", "GDT", "SVD", "HID", "APW", "PPT", "TCB", "JIK", "ESD", "HHH", "SAQ", "TIQ", "HOR", "PIX", "KOI", "HTI",
+    "SKN", "SSJ", "BNN", "MOL", //europe
+    "ISC", "EG1", "FIE", "LSI", "ILY", "FOA",  //gb
+    "NNR", //ie
+    "GRW", "CVU", //pt
+    "JNX", //gr
+    "KUM", //jp
+    "TBH", //ph
+    "NMF", "HRF", "KDM", "NAN", "MEE", "PTF", //oceania
+    "HRF", "HDK", "PRI", //indian ocean
+    "WRG", "MQC", //ca
+    "MVY", "ACK", "ISP", "FRD", "ESD", "MKK", "LNY",  //us
   )
 
   def main(args : Array[String]) : Unit = {
     generateGenericTransit()
     Await.result(actorSystem.terminate(), Duration.Inf)
   }
-  def generateGenericTransit(airportCount : Int = 4000, range : Int = 50) : Unit = {
+  def generateGenericTransit(range : Int = 50) : Unit = {
     //purge existing generic transit
     LinkSource.deleteLinksByCriteria(List(("transport_type", TransportType.GENERIC_TRANSIT.id)))
 
-    val airports = AirportSource.loadAllAirports(true).filter(_.size >= 2).filter { airport => !ISLANDS.contains(airport.iata) }.sortBy { _.power }
+    val airports = AirportSource.loadAllAirports(true).filter(_.population >= 500).filter(_.runwayLength >= 500).filter { airport => !ISLANDS.contains(airport.iata) }.sortBy { _.power }
 
     var counter = 0;
     var progressCount = 0;
@@ -94,7 +105,7 @@ object GenericTransitGenerator {
           val distance = Util.calculateDistance(airport.latitude, airport.longitude, targetAirport.latitude, targetAirport.longitude).toInt
           airportsInRange += Tuple2(targetAirport, distance)
         } else if (airport.id != targetAirport.id &&
-            airport.popMiddleIncome > 1000 && targetAirport.popMiddleIncome > 1000 &&
+            targetAirport.popMiddleIncome > 2500 &&
             !processed.contains((targetAirport.id, airport.id)) && //check the swap pairs are not processed already to avoid duplicates
             airport.longitude >= boundaryLongitude._1 && airport.longitude <= boundaryLongitude._2 &&
             countryRelationships.getOrElse((airport.countryCode, targetAirport.countryCode), 0) >= 2

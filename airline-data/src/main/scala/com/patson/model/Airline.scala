@@ -431,10 +431,10 @@ object AirlineGrades {
     500 -> "Ultimate",
     550 -> "Legendary",
     600 -> "Mythic",
-    650 -> "Celestial",
-    700 -> "Empyrean",
-    800 -> "Transcendent",
-    1000 -> "Apex Rat"
+    700 -> "Celestial",
+    800 -> "Empyrean",
+    1000 -> "Transcendent",
+    1200 -> "Apex Rat"
   )
 
   def findGrade(reputation: Double): AirlineGrade = {
@@ -497,29 +497,29 @@ object AirlineGradeStockPrice {
 
 object AirlineGradeElites {
   val grades = List(
-    10 -> "None",
-    25 -> "Deformed Plastic",
-    50 -> "Chunky Plastic",
-    75 -> "Plywood",
-    100 -> "Rusted Iron",
-    150 -> "Stainless Steel",
-    225 -> "Aluminum",
-    325 -> "Copper",
-    475 -> "Nickel",
-    700 -> "Bronze",
-    1025 -> "Silver plated",
-    1500 -> "Silver",
-    2200 -> "Gold",
-    3225 -> "Rose Gold",
-    4750 -> "Platinum",
-    6975 -> "Palladium",
-    10250 -> "Rhenium",
-    15075 -> "Painite",
-    22150 -> "Diamond",
-    32550 -> "Money Printing Epic",
-    47850 -> "Unobtainium",
-    70350 -> "Antimatter",
-    110000 -> "Rat Fur"
+    50 -> "None",
+    100 -> "Deformed Plastic",
+    200 -> "Chunky Plastic",
+    400 -> "Plywood",
+    700 -> "Rusted Iron",
+    1300 -> "Stainless Steel",
+    2200 -> "Aluminum",
+    3100 -> "Copper",
+    3900 -> "Nickel",
+    4900 -> "Bronze",
+    5800 -> "Silver plated",
+    6845 -> "Silver",
+    8075 -> "Gold",
+    9550 -> "Rose Gold",
+    11250 -> "Platinum",
+    13300 -> "Palladium",
+    15700 -> "Rhenium",
+    18500 -> "Painite",
+    21800 -> "Diamond",
+    25700 -> "Money Printing Epic",
+    30000 -> "Unobtainium",
+    35000 -> "Antimatter",
+    41000 -> "Rat Fur"
   )
 
   def findGrade(pax: Double): AirlineGrade = {
@@ -539,28 +539,28 @@ object AirlineGradeElites {
 
 object AirlineGradeTourists {
   val grades = List(
-    200 -> "Unknown",
-    400 -> "Discount Disaster",
-    650 -> "Leisure Loser II",
-    975 -> "Recreation Disapointment",
-    1400 -> "Semi Bargain Bin",
-    2050 -> "Resort Runner",
-    3000 -> "Bargain Bin",
-    4400 -> "Deal Seeker Favorite",
-    6450 -> "Bargain Bin Bonanza",
-    9500 -> "Theme Park Express",
-    13950 -> "Detours Delight",
-    20500 -> "Package Deal Pal",
-    30150 -> "Tourist Favorite",
-    44300 -> "Mega Mover",
-    65100 -> "Mega Mega Mover",
-    95700 -> "Cheapo Champion",
-    140700 -> "Budget Behemoth",
-    206850 -> "Travel + Leisure Best Airline Nominee",
-    304050 -> "The Tourist Trap Transport",
-    446950 -> "Mega Mega Mega Mover",
-    657000 -> "Penny Pinchers Paradise",
-    965800 -> "Travel + Leisure Best Airline Winner"
+    1000 -> "Unknown",
+    2000 -> "Discount Disaster",
+    4000 -> "Leisure Loser II",
+    7000 -> "Recreation Disapointment",
+    13000 -> "Semi Bargain Bin",
+    22000 -> "Resort Runner",
+    31000 -> "Bargain Bin",
+    39000 -> "Deal Seeker Favorite",
+    49000 -> "Bargain Bin Bonanza",
+    58000 -> "Theme Park Express",
+    68450 -> "Detours Delight",
+    80750 -> "Package Deal Pal",
+    95500 -> "Tourist Favorite",
+    112500 -> "Mega Mover",
+    133000 -> "Mega Mega Mover",
+    157000 -> "Cheapo Champion",
+    185000 -> "Budget Behemoth",
+    218000 -> "Travel + Leisure Best Airline Nominee",
+    257000 -> "The Tourist Trap Transport",
+    300000 -> "Mega Mega Mega Mover",
+    350000 -> "Penny Pinchers Paradise",
+    410000 -> "Travel + Leisure Best Airline Winner"
   )
 
   def findGrade(pax: Double): AirlineGrade = {

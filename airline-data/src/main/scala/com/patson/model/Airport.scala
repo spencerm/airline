@@ -13,7 +13,7 @@ import scala.jdk.CollectionConverters._
 import AirportFeatureType._
 import com.patson.model.airplane.Model.Type.HELICOPTER
 
-case class Airport(iata : String, icao : String, name : String, latitude : Double, longitude : Double, countryCode : String, city : String, zone : String, var size : Int, baseIncome : Int, basePopulation : Long, popMiddleIncome : Int, popElite : Int, var runwayLength : Int = Airport.MIN_RUNWAY_LENGTH, var id : Int = 0) extends IdObject {
+case class Airport(iata : String, icao : String, name : String, latitude : Double, longitude : Double, countryCode : String, city : String, zone : String, var size : Int, baseIncome : Int, basePopulation : Long, popMiddleIncome : Int = 0, popElite : Int = 0, var runwayLength : Int = Airport.MIN_RUNWAY_LENGTH, var id : Int = 0) extends IdObject {
   var shouldLoadCities = false
   lazy val citiesServed = loadCitiesServed()
   private[this] val airlineBaseAppeals = new java.util.HashMap[Int, AirlineAppeal]() //base appeals
@@ -151,7 +151,11 @@ case class Airport(iata : String, icao : String, name : String, latitude : Doubl
       this.runwayLength = maxRunwayLength.toInt
     }
     if (this.runwayLength < Airport.MIN_RUNWAY_LENGTH) {
-      this.runwayLength = Airport.MIN_RUNWAY_LENGTH
+      if (this.name.contains("Heli")) {
+        10
+      } else {
+        this.runwayLength = Airport.MIN_RUNWAY_LENGTH
+      }
     }
   }
 
@@ -421,9 +425,11 @@ case class Airport(iata : String, icao : String, name : String, latitude : Doubl
     import Model.Type._
     val multiplier = airplaneModel.airplaneType match {
       case MEDIUM => 5
+      case MEDIUM_XL => 10
       case LARGE => 12
+      case EXTRA_LARGE => 18
       case JUMBO => 24
-      case SUPERSONIC => 12
+      case SUPERSONIC => 16
       case _ => 2
     }
 
@@ -544,7 +550,7 @@ object Airport {
   }
 
   val MAJOR_AIRPORT_LOWER_THRESHOLD = 5
-  val MIN_RUNWAY_LENGTH = 10
+  val MIN_RUNWAY_LENGTH = 750
 
   import FlightType._
   val qualityExpectationFlightTypeAdjust =

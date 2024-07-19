@@ -29,11 +29,11 @@ object Title extends Enumeration {
   type Title = Value
   val NATIONAL_AIRLINE, PARTNERED_AIRLINE, PRIVILEGED_AIRLINE, ESTABLISHED_AIRLINE, APPROVED_AIRLINE, NONE = Value
   val description = (title : Title.Value) => title match {
-    case Title.NATIONAL_AIRLINE => "National Airline"
-    case Title.PARTNERED_AIRLINE => "Partnered Airline"
-    case Title.PRIVILEGED_AIRLINE => "Privileged Airline"
-    case Title.ESTABLISHED_AIRLINE => "Established Airline"
-    case Title.APPROVED_AIRLINE => "Approved Airline"
+    case Title.NATIONAL_AIRLINE => "National"
+    case Title.PARTNERED_AIRLINE => "Partnered"
+    case Title.PRIVILEGED_AIRLINE => "Privileged"
+    case Title.ESTABLISHED_AIRLINE => "Established"
+    case Title.APPROVED_AIRLINE => "Approved"
     case Title.NONE => "None"
   }
 
@@ -116,19 +116,17 @@ object CountryAirlineTitle {
   val getTitleBonus = (title : Title.Value, country : Country) => title match {
     case NATIONAL_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), NATIONAL_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
-        s"Relationship +${Title.relationshipBonus(NATIONAL_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Relationship +${Title.relationshipBonus(NATIONAL_AIRLINE)} with ${country.name}"
       )
     case PARTNERED_AIRLINE =>
       List(s"Loyalty +${CountryAirlineTitle(country, Airline.fromId(0), PARTNERED_AIRLINE).loyaltyBonus} on all airports in ${country.name}",
-        s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}",
-        s"Allow building airport bases in any airports in ${country.name}"
+        s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}"
       )
     case PRIVILEGED_AIRLINE =>
-      List(s"Allow building airport bases in any airports in ${country.name}"
+      List(s"May build bases anywhere in ${country.name}."
       )
     case ESTABLISHED_AIRLINE =>
-      List(s"Allow building airport bases in only Gateway airports in ${country.name}"
+      List(s"Easier negotiations in ${country.name} and may build bases in ${country.name}'s gateway airports."
       )
     case APPROVED_AIRLINE =>
       List()

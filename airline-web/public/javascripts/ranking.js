@@ -53,6 +53,8 @@ function updateRankingTable(rankingType, rankings) {
         rankingTable = $('#passengerMileQualityRank')
     } else if (rankingType == "LINK_DISTANCE") {
         rankingTable = $('#linkDistanceRank')
+    } else if (rankingType == "LINK_SHORTEST") {
+        rankingTable = $('#linkShortestRank')
 	} else if (rankingType == "PASSENGER_SATISFACTION") {
           rankingTable = $('#satisfactionRank')
     } else if (rankingType == "REPUTATION") {
@@ -65,6 +67,10 @@ function updateRankingTable(rankingType, rankings) {
 		rankingTable = $('#linkFrequency')
 	} else if (rankingType == "LINK_PROFIT") {
 		rankingTable = $('#linkProfitRank')
+    } else if (rankingType == "LINK_PROFIT_TOTAL") {
+        rankingTable = $('#linkProfitTotalRank')
+    }else if (rankingType == "LINK_LOSS") {
+        rankingTable = $('#linkLossRank')
     } else if (rankingType == "UNIQUE_IATA") {
         rankingTable = $('#uniqueIataRank')
     } else if (rankingType == "UNIQUE_COUNTRIES") {
