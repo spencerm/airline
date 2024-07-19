@@ -679,7 +679,7 @@ function addMarkers(airports) {
 			  $("#airportPopupCustomsIcon").html(getOpennessIcon(loadedCountriesByCode[this.airport.countryCode].openness,this.airport.size,this.airport.isDomesticAirport,this.airport.isGateway))
 			  $("#airportPopupIata").text(this.airport.iata)
 			  $("#airportPopupCity").html(this.airport.city + "&nbsp;" + getCountryFlagImg(this.airport.countryCode))
-			  $("#airportPopupZone").text(zoneById[this.airport.zone])
+//			  $("#airportPopupZone").text(zoneById[this.airport.zone])
 			  $("#airportPopupSize").text(this.airport.size)
 			  $("#airportPopupPopulation").text('-') //wait for extended details
 			  $("#airportPopupIncomeLevel").text('-') //wait for extended details
