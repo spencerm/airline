@@ -84,8 +84,10 @@ object ChampionUtil {
     airport.getFeatures().foreach { feature =>
       val featureBoost = feature.featureType match {
         case GATEWAY_AIRPORT => 3
-        case ELITE_CHARM => Math.max(feature.strength.toDouble / 4.0, 0.5)
-        case FINANCIAL_HUB => feature.strength.toDouble / 5.0
+        case VACATION_HUB => Math.min(feature.strength.toDouble / 5.0, 5.0)
+        case INTERNATIONAL_HUB => Math.min(feature.strength.toDouble / 5.0, 5.0)
+        case ELITE_CHARM => Math.max(feature.strength.toDouble / 5.0, 0.5)
+        case FINANCIAL_HUB => Math.max(feature.strength.toDouble / 5.0, 0.5)
         case ISOLATED_TOWN => 0.25 + feature.strength.toDouble / 5.0
         case _ => 0
       }
