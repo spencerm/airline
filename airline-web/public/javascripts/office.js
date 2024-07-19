@@ -265,10 +265,10 @@ function updateMilestones(breakdowns) {
     if (breakdown.description.toLowerCase().includes("milestone")) {
       total += breakdown.value;
       if(breakdown.description === "Milestone Aircraft Types" && breakdown.value >= 0){
-        if(breakdown.value >= 5){
+        if(breakdown.value >= 10){
             document.getElementById("m-aircraft1").src = "/assets/images/icons/tick.png"
         }
-        if(breakdown.value >= 10){
+        if(breakdown.value >= 15){
             document.getElementById("m-aircraft2").src = "/assets/images/icons/tick.png"
         }
         if(breakdown.value >= 20){
@@ -288,10 +288,10 @@ function updateMilestones(breakdowns) {
         if(breakdown.value >= 20){
             document.getElementById("m-pax1").src = "/assets/images/icons/tick.png"
         }
-        if(breakdown.value >= 30){
+        if(breakdown.value >= 40){
             document.getElementById("m-pax2").src = "/assets/images/icons/tick.png"
         }
-        if(breakdown.value >= 50){
+        if(breakdown.value >= 60){
             document.getElementById("m-pax3").src = "/assets/images/icons/tick.png"
         }
       }

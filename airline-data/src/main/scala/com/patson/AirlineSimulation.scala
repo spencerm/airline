@@ -89,9 +89,9 @@ object AirlineSimulation {
             if (modelSet.size >= 12) {
               20
             } else if (modelSet.size >= 6) {
-              10
+              15
             } else if (modelSet.size >= 3) {
-              5
+              10
             } else {
               0
             }
@@ -123,10 +123,10 @@ object AirlineSimulation {
             val totalPassengerKilometers = linkConsumptions.foldLeft(0L) { (accumulator, linkConsumption) =>
               accumulator + linkConsumption.link.soldSeats.total * linkConsumption.link.distance
             }
-            if (totalPassengerKilometers > 1_000_000_000) {
-              50
-            } else if (totalPassengerKilometers > 5_000_000) {
-              30
+            if (totalPassengerKilometers > 100_000_000) {
+              60
+            } else if (totalPassengerKilometers > 1_000_000) {
+              40
             } else if (totalPassengerKilometers > 10_000) {
               20
             } else {

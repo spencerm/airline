@@ -68,7 +68,7 @@ object RankingLeaderboards {
     updatedRankings.put(RankingType.LINK_LOSS, getLinkLossRanking(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_FREQUENCY, getLinkFrequent(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LINK_DISTANCE, getLinkLongest(flightConsumptions, airlinesById))
-    updatedRankings.put(RankingType.LINK_SHORTEST, getLinkLongest(flightConsumptions, airlinesById))
+    updatedRankings.put(RankingType.LINK_SHORTEST, getLinkShortest(flightConsumptions, airlinesById))
     updatedRankings.put(RankingType.LOUNGE, getLoungeRanking(LoungeHistorySource.loadAll, airlinesById))
     //informational rankings
     val (paxByAirport, paxByAirportPair) = getPaxStat(flightConsumptions)
@@ -251,7 +251,7 @@ object RankingLeaderboards {
     var prevRanking: Int = 0
     longestLinkPerAirline.zipWithIndex.map {
       case (linkConsumption, index) => {
-        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index + 1
+        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index
         prevValue = linkConsumption.link.distance
         val airlineId = linkConsumption.link.airline.id
         val ranking = Ranking(
@@ -286,7 +286,7 @@ object RankingLeaderboards {
     var prevRanking: Int = 0
     longestLinkPerAirline.zipWithIndex.map {
       case (linkConsumption, index) => {
-        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index + 1
+        prevRanking = if (prevValue == linkConsumption.link.distance) prevRanking else index
         prevValue = linkConsumption.link.distance
         val airlineId = linkConsumption.link.airline.id
         val ranking = Ranking(
