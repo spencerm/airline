@@ -4,9 +4,9 @@ import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 import com.patson.Util
+import com.patson.model.FlightPreferenceType.{BRAND, FREQUENT}
 
 import java.util.concurrent.ThreadLocalRandom
-
 import com.patson.model.{PassengerType, _}
 
 /**
@@ -22,8 +22,8 @@ abstract class FlightPreference(homeAirport : Airport) {
 
   def computeCost(link : Transport, linkClass : LinkClass, paxType: PassengerType.Value, externalCostModifier : Double = 1.0) : Double = {
     val standardPrice = link.standardPrice(preferredLinkClass)
-    var cost = standardPrice * priceAdjustRatio(link, linkClass, paxType)
-    cost = (cost * qualityAdjustRatio(homeAirport, link, linkClass, paxType)).toInt
+    var cost = standardPrice * priceAdjustRatio(link, linkClass)
+    cost = (cost * qualityAdjustRatio(homeAirport, link, preferredLinkClass, paxType)).toInt
 
     cost = (cost * frequencyAdjustRatio(link, linkClass, paxType)).toInt
 
@@ -33,7 +33,7 @@ abstract class FlightPreference(homeAirport : Airport) {
       cost = (cost * loyaltyAdjustRatio(link)).toInt
     }
 
-    cost = cost * loungeAdjustRatio(link, loungeLevelRequired, linkClass)
+    cost = cost * loungeAdjustRatio(link, loungeLevelRequired, preferredLinkClass)
 
     cost *= externalCostModifier
 
@@ -48,13 +48,13 @@ abstract class FlightPreference(homeAirport : Airport) {
     */
   def computeCostBreakdown(link : Transport, linkClass : LinkClass, paxType: PassengerType.Value) : CostBreakdown = {
     val standardPrice = link.standardPrice(preferredLinkClass)
-    val priceAdjust = priceAdjustRatio(link, linkClass, paxType)
+    val priceAdjust = priceAdjustRatio(link, linkClass)
     var cost = standardPrice * priceAdjust
 
-    val qualityAdjust = qualityAdjustRatio(homeAirport, link, linkClass, paxType)
+    val qualityAdjust = qualityAdjustRatio(homeAirport, link, preferredLinkClass, paxType)
     cost = (cost * qualityAdjust).toInt
 
-    val tripDurationAdjust = tripDurationAdjustRatio(link, linkClass, paxType)
+    val tripDurationAdjust = tripDurationAdjustRatio(link, preferredLinkClass, paxType)
     cost = (cost * tripDurationAdjust).toInt
 
     var loyaltyAdjust = 1.0
@@ -106,17 +106,15 @@ abstract class FlightPreference(homeAirport : Airport) {
    * 
    * Take note that 0 would means a preference that totally ignore the price difference (could be dangerous as very expensive ticket will get through)
    */
-  def priceAdjustRatio(link: Transport, linkClass: LinkClass, paxType: PassengerType.Value) = {
-    val priceSensitivityModifier = paxType match {
-      case PassengerType.ELITE => 0.8
-      case PassengerType.BUSINESS => 0.7
-      case PassengerType.TOURIST => priceSensitivity + 0.1
-      case _ => priceSensitivity
-    }
+  def priceAdjustRatio(link: Transport, linkClass: LinkClass) = {
     val standardPrice = link.standardPrice(preferredLinkClass)
     val deltaFromStandardPrice = priceAdjustedByLinkClassDiff(link, linkClass) - standardPrice
-    val sfBuffer = 0.05
-
+    val priceSensitivityModifier = if (deltaFromStandardPrice < 0.0 && getPreferenceType == FREQUENT || deltaFromStandardPrice < 0.0 && getPreferenceType == BRAND) {
+        priceSensitivity * Math.max(0.5, link.cost(linkClass) / standardPrice)
+      } else {
+        priceSensitivity
+      }
+    val sfBuffer = 0.04
     1 - sfBuffer + deltaFromStandardPrice * priceSensitivityModifier / standardPrice
   }
 
@@ -128,7 +126,7 @@ abstract class FlightPreference(homeAirport : Airport) {
     1 / base
   }
 
-  def qualityAdjustRatio(homeAirport : Airport, link : Transport, linkClass : LinkClass, paxType: PassengerType.Value) : Double = {
+  def qualityAdjustRatio(homeAirport : Airport, link : Transport, preferredLinkClass : LinkClass, paxType: PassengerType.Value) : Double = {
     val qualitySensitivity = paxType match {
       case PassengerType.BUSINESS => 1.0
       case PassengerType.ELITE => 1.2
@@ -136,7 +134,7 @@ abstract class FlightPreference(homeAirport : Airport) {
       case PassengerType.TRAVELER => 0.75
       case _ => 0.5
     }
-    val qualityDelta = link.computedQuality - homeAirport.expectedQuality(link.flightType, linkClass)
+    val qualityDelta = link.computedQuality - homeAirport.expectedQuality(link.flightType, preferredLinkClass)
 
     val GOOD_QUALITY_DELTA = paxType match {
       case PassengerType.TOURIST => 10
@@ -162,7 +160,7 @@ abstract class FlightPreference(homeAirport : Airport) {
   val priceAdjustedByLinkClassDiff = (link : Transport, linkClass : LinkClass) => {
     val cost = link.cost(linkClass) //use cost here
     if (preferredLinkClass.level != 0 && linkClass.level < preferredLinkClass.level) { //ignore discount_economy
-      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.33
+      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.4
       preferredLinkClass.basePrice - linkClass.basePrice + (cost / linkClass.priceMultiplier * preferredLinkClass.priceMultiplier * classDiffMultiplier).toInt //have to normalize the price to match the preferred link class, * classDiffMultiplier for unwillingness to downgrade
     } else {
       cost
@@ -171,8 +169,8 @@ abstract class FlightPreference(homeAirport : Airport) {
 
   val connectionCostRatio = 1.0
 
-  val tripDurationAdjustRatio = (link : Transport, linkClass : LinkClass, paxType: PassengerType.Value) => {
-    val classModifier = linkClass match {
+  val tripDurationAdjustRatio = (link : Transport, preferredLinkClass : LinkClass, paxType: PassengerType.Value) => {
+    val classModifier = preferredLinkClass match {
       case FIRST => 0.4
       case BUSINESS => 0.3
       case _ => 0.1
@@ -282,7 +280,7 @@ object FlightPreferenceType extends Enumeration {
 import FlightPreferenceType._
 
 case class DealPreference(homeAirport : Airport, preferredLinkClass: LinkClass, override val priceModifier: Double) extends FlightPreference(homeAirport : Airport) {
-  override val priceSensitivity = preferredLinkClass.priceSensitivity + 0.1
+  override val priceSensitivity = preferredLinkClass.priceSensitivity + 0.2
   override val frequencyThreshold = 3
   def computeCost(baseCost : Double, link : Transport, linkClass : LinkClass) = {
     baseCost
