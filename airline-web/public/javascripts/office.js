@@ -281,8 +281,11 @@ function updateMilestones(breakdowns) {
         if(breakdown.value >= 30){
             document.getElementById("m-country2").src = "/assets/images/icons/tick.png"
         }
-        if(breakdown.value >= 60){
+        if(breakdown.value >= 45){
             document.getElementById("m-country3").src = "/assets/images/icons/tick.png"
+        }
+        if(breakdown.value >= 75){
+            document.getElementById("m-country4").src = "/assets/images/icons/tick.png"
         }
       } else if(breakdown.description === "Milestone Passenger Miles" && breakdown.value >= 0){
         if(breakdown.value >= 20){
@@ -293,6 +296,9 @@ function updateMilestones(breakdowns) {
         }
         if(breakdown.value >= 60){
             document.getElementById("m-pax3").src = "/assets/images/icons/tick.png"
+        }
+        if(breakdown.value >= 80){
+            document.getElementById("m-pax4").src = "/assets/images/icons/tick.png"
         }
       }
     }

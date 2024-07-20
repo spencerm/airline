@@ -194,7 +194,7 @@ object NegotiationUtil {
     }
 
     if (existingLinkOption.nonEmpty && aircraftSizeDelta > 0) {
-      requirements.append(NegotiationRequirement(UPSIZE_GATE, aircraftSizeDelta * newFrequency * flightTypeMultiplier, s"Increase gate size to ${newModel.airplaneTypeLabel}"))
+      requirements.append(NegotiationRequirement(UPSIZE_GATE, aircraftSizeDelta * existingFrequency * flightTypeMultiplier, s"Increase gate size to ${newModel.airplaneTypeLabel}"))
     }
 
     if (frequencyDelta > 0) {
@@ -213,20 +213,12 @@ object NegotiationUtil {
       requirements.append(NegotiationRequirement(LACK_COUNTRY_TITLE, 1.0, s"Extra regulatory scrutiny! (Does not apply if you have Established country title)"))
     }
 
-//    getMaxFrequencyByModel(newLink.getAssignedModel().get, newLink.to).foreach { entry =>
-//      if (frequencyDelta > 0 && newFrequency > entry.frequencyRestriction) {
-//        requirements.append(NegotiationRequirement(EXCESSIVE_FREQUENCY, newFrequency - entry.frequencyRestriction, s"${newLink.to.displayText} prefers not to have airplane < ${entry.threshold} capacity with frequency > ${entry.frequencyRestriction}"))
-//      }
-//    }
-
-    //val odds = new NegotiationOdds()
-
     if (FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL) {
       val airport = newLink.to
       val country = CountryCache.getCountry(airport.countryCode).get
       airline.getCountryCode().foreach { homeCountryCode =>
         if (homeCountryCode != airport.countryCode) {
-          var baseForeignAirline = (14 - country.openness) * 0.5
+          var baseForeignAirline = (12 - country.openness) * 0.5
           if (existingLinkOption.isDefined) { //cheaper if it's already established
             baseForeignAirline = baseForeignAirline * 0.5
           }
@@ -237,7 +229,7 @@ object NegotiationUtil {
 
     newLink.to.getFeatures().find(_.featureType == AirportFeatureType.GATEWAY_AIRPORT) match {
       case Some(_) =>
-        val gatewayCost = 0.75
+        val gatewayCost = 0.5
         requirements.append(NegotiationRequirement(GATEWAY, gatewayCost, "Tough Gateway Airport Negotiation"))
       case None =>
     }

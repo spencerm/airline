@@ -105,7 +105,9 @@ object AirlineSimulation {
             val countryCodeSet = linkConsumptions.map(_.link.to.countryCode).toSet
             val uniqueCountryCount = countryCodeSet.size
             if (uniqueCountryCount >= 120) {
-              60
+              75
+            } else if (uniqueCountryCount >= 90) {
+              45
             } else if (uniqueCountryCount >= 60) {
               30
             } else if (uniqueCountryCount >= 12) {
@@ -123,7 +125,9 @@ object AirlineSimulation {
             val totalPassengerKilometers = linkConsumptions.foldLeft(0L) { (accumulator, linkConsumption) =>
               accumulator + linkConsumption.link.soldSeats.total * linkConsumption.link.distance
             }
-            if (totalPassengerKilometers > 100_000_000) {
+            if (totalPassengerKilometers > 1_000_000_000) {
+              80
+            } else if (totalPassengerKilometers > 50_000_000) {
               60
             } else if (totalPassengerKilometers > 1_000_000) {
               40
@@ -266,10 +270,8 @@ object AirlineSimulation {
             case None => None
           }
           val staffCapacity = base.getOfficeStaffCapacity
-          val compensationOfThisBase = if(airline.isGenerated) 0 else base.getOvertimeCompensation(staffRequired)
-//          if (compensationOfThisBase > 0) {
-//            println(s"${airline.name} Overtime compensation $compensationOfThisBase : capacity $staffCapacity ; required $staffRequired")
-//          }
+          val compensationOfThisBase = base.getOvertimeCompensation(staffRequired)
+//          val compensationOfThisBase = if(airline.isGenerated) 0 else base.getOvertimeCompensation(staffRequired)
           overtimeCompensation += compensationOfThisBase
         }
 

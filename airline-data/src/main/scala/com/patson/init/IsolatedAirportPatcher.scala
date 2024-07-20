@@ -41,7 +41,7 @@ object IsolatedAirportPatcher {
       //africa
       "MMO",
     )
-    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "VN", "MU", "MV", "CC", "CK", "CV") //always add 1 level, because island countries and islands are inherently isolated
+    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "VC", "VU", "WF", "MU", "MV", "CC", "CK", "CV") //always add 1 level, because island countries and islands are inherently isolated
 
 
     allAirports.foreach { airport =>
