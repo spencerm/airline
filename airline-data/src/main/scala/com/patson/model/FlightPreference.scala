@@ -160,7 +160,7 @@ abstract class FlightPreference(homeAirport : Airport) {
   val priceAdjustedByLinkClassDiff = (link : Transport, linkClass : LinkClass) => {
     val cost = link.cost(linkClass) //use cost here
     if (preferredLinkClass.level != 0 && linkClass.level < preferredLinkClass.level) { //ignore discount_economy
-      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.4
+      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.35
       preferredLinkClass.basePrice - linkClass.basePrice + (cost / linkClass.priceMultiplier * preferredLinkClass.priceMultiplier * classDiffMultiplier).toInt //have to normalize the price to match the preferred link class, * classDiffMultiplier for unwillingness to downgrade
     } else {
       cost
