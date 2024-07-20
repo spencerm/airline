@@ -132,7 +132,8 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 		var row = $("<div class='table-row clickable' data-model-id='" + modelOwnerInfo.id + "' onclick='selectAirplaneModel(loadedModelsById[" + modelOwnerInfo.id + "])'></div>")
 		var stars = $("<div class='cell' align='right'>").append(getGradeStarsImgs(modelOwnerInfo.quality * 2)).append("</div>")
 		var capacity = modelOwnerInfo.capacity === modelOwnerInfo.maxSeats ? modelOwnerInfo.capacity : modelOwnerInfo.capacity + "<br><i class='text-hint'>" + modelOwnerInfo.maxSeats + "</i>";
-        modelOwnerInfo.costPerPax = calculateCostPerPax(modelOwnerInfo, rangeRequirement)
+        modelOwnerInfo.costPerPax = calcCostPerPax(modelOwnerInfo, rangeRequirement)
+        modelOwnerInfo.trips = calcFreq(modelOwnerInfo, rangeRequirement)
 
 		if (modelOwnerInfo.isFavorite) {
 		    row.append("<div class='cell'>" + modelOwnerInfo.name + "<img src='assets/images/icons/heart.png' height='10px'></div>")
@@ -145,13 +146,14 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + capacity + "</div>")
 		row.append(stars)
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.range + " km</div>")
+		row.append("<div class='cell' align='right'>" + modelOwnerInfo.trips + "</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.fuelPerPax + "</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.lifespan / 52 + " yrs</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.speed + " km/h</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.runwayRequirement + " m</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.assignedAirplanes.length + "/" + modelOwnerInfo.availableAirplanes.length + "/" + modelOwnerInfo.constructingAirplanes.length + "</div>")
 		row.append("<div class='cell' align='right'>" + modelOwnerInfo.total + "</div>")
-		row.append("<div class='cell' align='right'>" + (modelOwnerInfo.costPerPax).toFixed(1) + "</div>")
+		row.append("<div class='cell' align='right'>$" + (modelOwnerInfo.costPerPax).toFixed(1) + "</div>")
 		
 		if (selectedModelId == modelOwnerInfo.id) {
 			row.addClass("selected")
@@ -161,7 +163,16 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
 	});
 }
 
-function calculateCostPerPax(airplane, distance) {
+function calcFreq(airplane, distance) {
+    if (airplane.range < distance) {
+        return "-"
+    }
+    const maxFlightMinutes = 4 * 24 * 60;
+    const flightTime = calcFlightTime(airplane, distance);
+    return Math.floor(maxFlightMinutes / ((flightTime + airplane.turnaroundTime) * 2));
+}
+
+function calcCostPerPax(airplane, distance) {
     const maxFlightMinutes = 4 * 24 * 60;
     const flightTime = calcFlightTime(airplane, distance);
     const frequency = Math.floor(maxFlightMinutes / ((flightTime + airplane.turnaroundTime) * 2));

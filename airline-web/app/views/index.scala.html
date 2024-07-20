@@ -982,34 +982,36 @@
 								<img src='@routes.Assets.versioned("images/icons/clock-frame.png")' class="button" title="Sort by last updated" onclick="toggleLinksTableSortOrder($('#hiddenLinkSortBy'))" style="vertical-align: text-bottom">
 							</div>
 								<div class="table-container-x">
-									<div class="table data" style="min-width: 840px; height: 20px;">
+									<div class="table data" style="min-width: 880px; height: 20px;">
 										<div class="table-header" id="linksTableSortHeader">
 											<div class="cell clickable selected" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
 											<div class="cell clickable" style="width: 0%" data-sort-property="lastUpdate" data-sort-order="ascending" id="hiddenLinkSortBy"></div> <!--hidden column for last update (cannot be first otherwise the left round corner would not work -->
 											<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport</div>
-											<div class="cell clickable" style="width: 15%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
+											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="distance" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Distance</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="totalCapacity" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Capacity (Freq.)</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalPassengers" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Pax</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalLoadFactor" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Load Factor">LF</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="satisfaction" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Satisfaction Factor">SF</div>
-											<div class="cell clickable" style="width: 11%" align="right" data-sort-property="revenue" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Revenue</div>
-											<div class="cell clickable" style="width: 11%" align="right" data-sort-property="profit" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Profit</div>
+											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="revenue" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Revenue</div>
+											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="profit" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Profit</div>
+											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="profitMargin" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Margin</div>
 										</div>
 									</div>
-									<div class="table-container-y" style="min-width: 840px;">
+									<div class="table-container-y" style="min-width: 880px;">
 									<div class="table data" id="linksTable">
 										<div class="table-header">
 											<div class="cell" style="width: 16%; border-bottom: none;"></div>
 											<div class="cell" style="width: 16%; border-bottom: none;"></div>
-											<div class="cell" style="width: 15%; border-bottom: none;"></div>
+											<div class="cell" style="width: 14%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
 											<div class="cell" style="width: 5%; border-bottom: none;"></div>
 											<div class="cell" style="width: 5%; border-bottom: none;"></div>
 											<div class="cell" style="width: 5%; border-bottom: none;"></div>
-											<div class="cell" style="width: 11%; border-bottom: none;"></div>
-											<div class="cell" style="width: 11%; border-bottom: none;"></div>
+											<div class="cell" style="width: 8%; border-bottom: none;"></div>
+											<div class="cell" style="width: 8%; border-bottom: none;"></div>
+											<div class="cell" style="width: 6%; border-bottom: none;"></div>
 										</div>
 									</div>
 									<div style="height: 100px; width: 100%; min-width: 600px; display:none;" class="noLinkTips">
@@ -1579,13 +1581,14 @@
 								<div class="market details table-container-x">
 									<div class="table data" style="height: 20px; min-width: 1120px;">
 										<div class="table-header" id="airplaneModelSortHeader">
-											<div class="cell clickable" style="width: 16%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
+											<div class="cell clickable" style="width: 15%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
 											<div class="cell clickable" style="width: 10%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
 											<div class="cell clickable" style="width: 9%" data-sort-property="size" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Category</div>
-											<div class="cell clickable selected" style="width: 9%" align="right" data-sort-property="price" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Price</div>
+											<div class="cell clickable selected" style="width: 8%" align="right" data-sort-property="price" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Price</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="capacity" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Capacity<br><i class="text-hint">max seats</i></div>
 											<div class="cell clickable" style="width: 10%" align="right" data-sort-property="quality" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Passenger Experience</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="range" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Range</div>
+											<div class="cell clickable" style="width: 3%" align="right" data-sort-property="trips" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">↻</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="fuelPerPax" title="Per Passenger" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Fuel Burn</div>
 											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="lifespan" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Lifespan</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="speed" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Speed</div>
@@ -1598,13 +1601,14 @@
 									<div class="table-container-y" style="min-width: 1120px;">
 										<div class="table data" id="airplaneModelTable">
 											<div class="table-header">
-												<div class="cell" style="width: 16%; border-bottom: none;"></div>
+												<div class="cell" style="width: 15%; border-bottom: none;"></div>
 												<div class="cell" style="width: 10%; border-bottom: none;"></div>
 												<div class="cell" style="width: 9%; border-bottom: none;"></div>
-												<div class="cell" style="width: 9%; border-bottom: none;"></div>
+												<div class="cell" style="width: 8%; border-bottom: none;"></div>
 												<div class="cell" style="width: 7%; border-bottom: none;"></div>
 												<div class="cell" style="width: 10%; border-bottom: none;"></div>
 												<div class="cell" style="width: 7%; border-bottom: none;"></div>
+												<div class="cell" style="width: 3%; border-bottom: none;"></div>
 												<div class="cell" style="width: 5%; border-bottom: none;"></div>
 												<div class="cell" style="width: 6%; border-bottom: none;"></div>
 												<div class="cell" style="width: 7%; border-bottom: none;"></div>
@@ -1956,12 +1960,17 @@
 										</div>
 										<div style="width: 150px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono flex-center">
-												5 million<img height="16" id="m-pax2" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">10 <img height="16" src="/assets/images/icons/reputation.svg">
+												1 million<img height="16" id="m-pax2" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">20 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 										<div style="width: 150px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono flex-center">
-												1 billion<img height="16" id="m-pax3" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">20 <img height="16" src="/assets/images/icons/reputation.svg">
+												50 million<img height="16" id="m-pax3" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">20 <img height="16" src="/assets/images/icons/reputation.svg">
+											</div>
+										</div>
+										<div style="width: 150px;justify-content: space-between;" class="flex-row py-1">
+											<div class="font-mono flex-center">
+												1 billion<img height="16" id="m-pax4" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">20 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 									</div>
@@ -1979,7 +1988,12 @@
 										</div>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono flex-center">
-												120<img height="16" id="m-country3" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">30 <img height="16" src="/assets/images/icons/reputation.svg">
+												90<img height="16" id="m-country3" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">15 <img height="16" src="/assets/images/icons/reputation.svg">
+											</div>
+										</div>
+										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">
+											<div class="font-mono flex-center">
+												120<img height="16" id="m-country4" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">30 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 									</div>

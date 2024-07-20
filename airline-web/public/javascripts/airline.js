@@ -1906,6 +1906,7 @@ function loadLinksTable() {
 	    success: function(links) {
 	    	updateLoadedLinks(links);
 	    	$.each(links, function(key, link) {
+	    	    link.profitMargin = link.profit / link.revenue * 100
 				link.totalCapacity = link.capacity.economy + link.capacity.business + link.capacity.first
 				link.totalCapacityHistory = link.capacityHistory.economy + link.capacityHistory.business + link.capacityHistory.first
 				link.totalPassengers = link.passengers.economy + link.passengers.business + link.passengers.first
@@ -1963,6 +1964,7 @@ function updateLinksTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + Math.round(link.satisfaction * 100) + '%' + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.revenue) + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.profit) + "</div>")
+		row.append("<div class='cell' align='right'>" + link.profitMargin.toFixed(2) + "%" + "</div>")
 
 		if (selectedLink == link.id) {
 			row.addClass("selected")
