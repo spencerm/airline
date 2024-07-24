@@ -1269,7 +1269,7 @@
 
 			  <div class="section-grid">
 				  <div class="section tight">
-					  <h4 class="pt-2 inline-icons"><img src='@routes.Assets.versioned("images/icons/crown.png")'> Rankings</h4>
+					  <h4 class="pt-2 inline-icons"><img src='@routes.Assets.versioned("images/icons/crown.png")'> Rankings <span class="rep-value text-xs opacity-80 pr-1 font-normal">max rep: <i id="maxRep"></i></span></h4>
 					  <div id="airportDetailsChampionList" style="width: 100%; margin-bottom: 15px;" class="table data">
 						  <div class="table-header">
 							  <div class="cell" style="width: 5%">&nbsp;</div>
@@ -1588,14 +1588,14 @@
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="capacity" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Capacity<br><i class="text-hint">max seats</i></div>
 											<div class="cell clickable" style="width: 10%" align="right" data-sort-property="quality" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Passenger Experience</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="range" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Range</div>
-											<div class="cell clickable" style="width: 3%" align="right" data-sort-property="trips" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">↻</div>
+											<div class="cell clickable" title="roundtrips" style="width: 3%" align="right" data-sort-property="trips" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">↻</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="fuelPerPax" title="Per Passenger" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Fuel Burn</div>
 											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="lifespan" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Lifespan</div>
 											<div class="cell clickable" style="width: 7%" align="right" data-sort-property="speed" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Speed</div>
 											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="runwayRequirement" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Runway</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalOwned" data-sort-order="descending" onclick="toggleAirplaneModelTableSortOrder($(this))">Hangar</div>
 											<div class="cell clickable" style="width: 3%" align="right" data-sort-property="total" title="Total in Circulation" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">#</div>
-											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="costPerPax" title="Cost per pax per km" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Pax $</div>
+											<div class="cell clickable" title="Cost per pax per km" style="width: 4%" align="right" data-sort-property="costPerPax" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Pax $</div>
 										</div>
 									</div>
 									<div class="table-container-y" style="min-width: 1120px;">
@@ -2001,7 +2001,7 @@
 										<h5>Aircraft Types</h5>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono text-sm flex-center">
-												3<img height="16" id="m-aircraft1" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">5 <img height="16" src="/assets/images/icons/reputation.svg">
+												3<img height="16" id="m-aircraft1" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">10 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">

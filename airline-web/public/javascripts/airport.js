@@ -286,6 +286,7 @@ function updateAirportChampionDetails(airport) {
 	    contentType: 'application/json; charset=utf-8',
 	    dataType: 'json',
 	    success: function(result) {
+	        document.getElementById('maxRep').textContent = result.maxRep;
 	        var champions = result.champions
 	    	$(champions).each(function(index, championDetails) {
 	    		var row = $("<div class='table-row clickable' data-link='rival' onclick=\"showRivalsCanvas('" + championDetails.airlineId + "');\"></div>")

@@ -1481,6 +1481,9 @@ i, .italic {
 .font-extralight {
     font-weight: 200;
 }
+.font-normal {
+    font-weight: 400;
+}
 .capitalize {
     text-transform: capitalize;
 }
@@ -1583,6 +1586,9 @@ i, .italic {
 .max-w-32 {max-width: 8rem;}
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem !important; }
+.opacity-70 { opacity: 0.7; }
+.opacity-80 { opacity: 0.8; }
+.opacity-90 { opacity: 0.9; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }

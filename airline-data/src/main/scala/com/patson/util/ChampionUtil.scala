@@ -4,6 +4,7 @@ import com.patson.model._
 import com.patson.data.{AirlineSource, AirportSource, Constants, CountrySource, LoyalistSource}
 
 import scala.collection.mutable.ListBuffer
+import scala.math.BigDecimal.RoundingMode
 
 case class CountryChampionInfo(airline : Airline, country : Country, passengerCount : Long, ranking : Int)
 case class AirportChampionInfo(loyalist : Loyalist, ranking : Int, reputationBoost : Double)
@@ -88,7 +89,7 @@ object ChampionUtil {
         case INTERNATIONAL_HUB => Math.min(feature.strength.toDouble / 5.0, 5.0)
         case ELITE_CHARM => Math.max(feature.strength.toDouble / 5.0, 0.5)
         case FINANCIAL_HUB => Math.max(feature.strength.toDouble / 5.0, 0.5)
-        case ISOLATED_TOWN => 0.25 + feature.strength.toDouble / 5.0
+        case ISOLATED_TOWN => feature.strength.toDouble / 5.0
         case _ => 0
       }
 
@@ -97,7 +98,7 @@ object ChampionUtil {
 
     boost += airport.size
 
-    boost * reputationBoostTop10(ranking)
+    BigDecimal(boost * reputationBoostTop10(ranking)).setScale(2, RoundingMode.HALF_EVEN).toDouble
   }
 
 //  def updateAirportChampionInfo(loyalists: List[Loyalist]) = {
