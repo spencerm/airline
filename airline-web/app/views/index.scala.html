@@ -1579,7 +1579,7 @@
 						<div class="section tight">
 							<div class="detailsGroup border-radius-cut">
 								<div class="market details table-container-x">
-									<div class="table data" style="height: 20px; min-width: 1120px;">
+									<div class="table data" style="height: 20px; min-width: 1140px;">
 										<div class="table-header" id="airplaneModelSortHeader">
 											<div class="cell clickable" style="width: 15%" data-sort-property="name" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Name</div>
 											<div class="cell clickable" style="width: 10%" data-sort-property="family" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Family</div>
@@ -1598,7 +1598,7 @@
 											<div class="cell clickable" title="Cost per pax per km" style="width: 4%" align="right" data-sort-property="costPerPax" data-sort-order="ascending" onclick="toggleAirplaneModelTableSortOrder($(this))">Pax $</div>
 										</div>
 									</div>
-									<div class="table-container-y" style="min-width: 1120px;">
+									<div class="table-container-y" style="min-width: 1140px;">
 										<div class="table data" id="airplaneModelTable">
 											<div class="table-header">
 												<div class="cell" style="width: 15%; border-bottom: none;"></div>
@@ -3522,17 +3522,17 @@
 
 					  <!-- shared for route and research-->
 					  <div class="searchFieldContainer" style="margin-top: 10px">
-						  <div style="padding: 10px; margin: 10px 0px;"> <!--from and to box-->
-							  <div style="float: left; width : 50%; position: relative;">
+						  <div class="flex-container-width-half gap-8 px-8"> <!--from and to box-->
+							  <div style="position: relative;">
 								  <div class="searchInput" data-search-type="airport">
-									  <input type="text" style="width: 80%" tabindex="101" class="fromAirport" placeholder="From" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.fromAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.fromAirport'))">
+									  <input type="text" style="width: 99%" tabindex="101" class="fromAirport" placeholder="From" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.fromAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.fromAirport'))">
 									  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>
 								  </div>
 								  <div class="searchResult"></div>
 							  </div>
-							  <div style="float: left; width : 50%; position: relative;">
+							  <div style="position: relative;">
 								  <div class="searchInput" data-search-type="airport">
-									  <input type="text" style="width: 80%" tabindex="102" class="toAirport" placeholder="To" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.toAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.toAirport'))">
+									  <input type="text" style="width: 99%" tabindex="102" class="toAirport" placeholder="To" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.searchFieldContainer input.toAirport'))" onkeydown="searchKeyDown(event, $('div.searchFieldContainer input.toAirport'))">
 									  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>
 								  </div>
 								  <div class="searchResult"></div>
@@ -3646,7 +3646,7 @@
 									<div class="cell clickable" style="width: 14%" data-sort-property="airlineName" data-sort-order="ascending">Airline</div>
 									<div class="cell clickable" style="width: 16%" data-sort-property="fromAirportIata" data-sort-order="descending">From Airport</div>
 									<div class="cell clickable" style="width: 16%" data-sort-property="toAirportIata" data-sort-order="descending">To Airport</div>
-<!--									<div class="cell clickable" style="width: 12%" data-sort-property="model" data-sort-order="ascending">Model</div>-->
+									<div class="cell clickable" style="width: 12%" data-sort-property="model" data-sort-order="ascending">Model</div>
 									<div class="cell clickable" style="width: 8%" align="right" data-sort-property="capacityTotal" data-sort-order="ascending">Capacity (Freq.)</div>
 									<div class="cell clickable" style="width: 8%" align="right" data-sort-property="capacityDeltaTotal" data-sort-order="descending">Cap Chg.</div>
 									<div class="cell" style="width: 15%">Price</div>
@@ -3673,8 +3673,8 @@
 
 					  <div class="research searchContainer" style="display: flex; flex-flow: column; flex-grow : 1;">
 						  <div id="researchSearchResult" style="overflow-y: auto; flex-grow: 1; padding: 10px; height: 0px;"><!-- need height otherwise the scroll would not work -->
-							  <div style="width: 600px; max-width:100%; margin: auto;">
-								  <div style=" float: left; width:50%; min-width: 200px; padding-left: 10%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center;" class="fromAirport">
+							  <div class="flex-container-width-half gap-8 py-4 mx-auto" style="width: 600px; max-width:100%;">
+								  <div style="max-width: 200px; display: flex; flex-direction: column; align-items: center;" class="fromAirport">
 									  <img class="fromAirport roundImage" style="height: 150px; width:150px; max-height: 30vw; max-width: 30vw;">
 									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="fromAirportText"></div>
 									  <div class="table" style="width: 100%">
@@ -3688,7 +3688,7 @@
 										  </div>
 									  </div>
 								  </div>
-								  <div style=" float: right; width:50%; min-width: 200px; padding-right: 10%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center;" class="toAirport">
+								  <div style="max-width: 200px; display: flex; flex-direction: column; align-items: center;" class="toAirport">
 									  <img class="toAirport roundImage" style="height: 150px; width:150px; max-height: 30vw; max-width: 30vw;">
 									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="toAirportText"></div>
 									  <div class="table" style="width: 100%">
@@ -3702,47 +3702,46 @@
 										  </div>
 									  </div>
 								  </div>
-								  <div style="clear:both;"></div>
-								  <div class="table" style="margin:auto; width: 380px; max-width:100%; margin-top: 20px;">
-									  <div class="table-row">
-										  <p class="label" style="width:40%">Relationship</p>
-										  <div class="value" style="text-align:right; width:60%"><span class="relationship"></span></div>
-									  </div>
-									  <div class="table-row">
-										  <p class="label" style="width:50%">Affinities</p>
-										  <div class="value" style="text-align:right; width:50%"><span class="affinities"></span></div>
-									  </div>
-									  <div class="table-row">
-										  <p class="label" style="width:50%">Distance</p>
-										  <div class="value" style="text-align:right; width:50%"><span class="distance"></span>&nbsp;km</div>
-									  </div>
-									  <div class="table-row">
-										  <p class="label" style="width:50%">Flight Type</p>
-										  <div class="value" style="text-align:right; width:50%"><span class="flightType"></span></div>
-									  </div>
-									  <div class="table-row">
-										  <p class="label" style="width:50%">Direct Demand</p>
-										  <div class="value" style="width:50%">
-											  <div style="display: flex; align-items: center">
-												  <span class="demand" style="text-align:right;">
-												  </span>
-												  <div class="tooltip">
-													  <img src='@routes.Assets.versioned("images/icons/information.png")'>
-													  <span class="tooltiptext below directDemandBreakdown" style="width: 200px;">
-															<div class="fromAirport">
-																<h4>From <span class="airportLabel"></span></h4>
-																<div> Traveler: <span class="travelerDemand"></span></div>
-																<div> Business: <span class="businessDemand"></span></div>
-																<div> Tourist: <span class="touristDemand"></span></div>
-															</div>
-															<div class="toAirport" style="margin-top: 8px;">
-																<h4>From <span class="airportLabel"></span></h4>
-																<div> Traveler: <span class="travelerDemand"></span></div>
-																<div> Business: <span class="businessDemand"></span></div>
-																<div> Tourist: <span class="touristDemand"></span></div>
-															</div>
-														</span>
-												  </div>
+							  </div>
+							  <div class="table" style="margin:auto; width: 380px; max-width:100%; margin-top: 20px;">
+								  <div class="table-row">
+									  <p class="label" style="width:40%">Relationship</p>
+									  <div class="value" style="text-align:right; width:60%"><span class="relationship"></span></div>
+								  </div>
+								  <div class="table-row">
+									  <p class="label" style="width:50%">Affinities</p>
+									  <div class="value" style="text-align:right; width:50%"><span class="affinities"></span></div>
+								  </div>
+								  <div class="table-row">
+									  <p class="label" style="width:50%">Distance</p>
+									  <div class="value" style="text-align:right; width:50%"><span class="distance"></span>&nbsp;km</div>
+								  </div>
+								  <div class="table-row">
+									  <p class="label" style="width:50%">Flight Type</p>
+									  <div class="value" style="text-align:right; width:50%"><span class="flightType"></span></div>
+								  </div>
+								  <div class="table-row">
+									  <p class="label" style="width:50%">Direct Demand</p>
+									  <div class="value" style="width:50%">
+										  <div style="display: flex; align-items: center">
+											  <span class="demand" style="text-align:right;">
+											  </span>
+											  <div class="tooltip">
+												  <img src='@routes.Assets.versioned("images/icons/information.png")'>
+												  <span class="tooltiptext below directDemandBreakdown" style="width: 200px;">
+														<div class="fromAirport">
+															<h4>From <span class="airportLabel"></span></h4>
+															<div> Traveler: <span class="travelerDemand"></span></div>
+															<div> Business: <span class="businessDemand"></span></div>
+															<div> Tourist: <span class="touristDemand"></span></div>
+														</div>
+														<div class="toAirport" style="margin-top: 8px;">
+															<h4>From <span class="airportLabel"></span></h4>
+															<div> Traveler: <span class="travelerDemand"></span></div>
+															<div> Business: <span class="businessDemand"></span></div>
+															<div> Tourist: <span class="touristDemand"></span></div>
+														</div>
+													</span>
 											  </div>
 										  </div>
 									  </div>
