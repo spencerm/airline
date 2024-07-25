@@ -395,7 +395,7 @@ function getOpennessIcon(openness, size=null, isDomesticAirport=false, isGateway
         description = "No International Flights"
         icon = "prohibition.png"
     } else if (isDomesticAirport){
-	    description = "Limited International Flights"
+	    description = "Only Small-sized International Flights"
         icon = "prohibition.png"
 	} else if (openness >= 7 || size >= 7) {
 		description = "All International Transfers"
@@ -414,7 +414,7 @@ function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway
         description = "No International Flights"
         icon = "prohibition.png"
     } else if (isDomesticAirport){
-        description = "Limited International Flights"
+        description = "Only Small-sized International Flights"
         icon = "prohibition.png"
 	} else if (openness >= 7 || size >= 7) {
 		description = "All International Connections"
