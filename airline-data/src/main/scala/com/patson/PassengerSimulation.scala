@@ -69,7 +69,7 @@ object PassengerSimulation {
   def passengerConsume[T <: Transport](demand : List[(PassengerGroup, Airport, Int)], links : List[T]) : PassengerConsumptionResult = {
     val consumptionResult = Collections.synchronizedList(new ArrayList[(PassengerGroup, Airport, Int, Route)]())
     val missedDemandChunks = Collections.synchronizedList(new ArrayList[(PassengerGroup, Airport, Int)]())
-    val consumptionCycleMax = 12; //try and rebuild routes 10 times
+    val consumptionCycleMax = 11; //try and rebuild routes 10 times
     var consumptionCycleCount = 0;
     //start consumption cycles
 

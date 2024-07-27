@@ -236,14 +236,14 @@ object DemandGenerator {
     val discountClassDemand = demand * DISCOUNT_CLASS_PERCENTAGE_MAX(passengerType) * (1 - Math.min(income.toDouble / 30_000, 0.5))
     //adding cutoffs to reduce the tail and have fewer passenger groups to calculate
     val businessClassCutoff = if (businessClassDemand > 1) businessClassDemand else 0
-    val discountClassCutoff = if (discountClassDemand > 6) discountClassDemand else 0
+    val discountClassCutoff = if (discountClassDemand > 9) discountClassDemand else 0
 
     val economyClassDemand = Math.max(0, demand - firstClassDemand - businessClassCutoff - discountClassCutoff)
     LinkClassValues.getInstance(economyClassDemand.toInt, businessClassCutoff.toInt, firstClassDemand.toInt, discountClassCutoff.toInt)
   }
 
-  val ELITE_MIN_GROUP_SIZE = 5
-  val ELITE_MAX_GROUP_SIZE = 9
+  val ELITE_MIN_GROUP_SIZE = 6
+  val ELITE_MAX_GROUP_SIZE = 10
   val CLOSE_DESTINATIONS_RADIUS = 1800
 
   private def generateEliteDemand(airports : List[Airport]) : List[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])] = {
