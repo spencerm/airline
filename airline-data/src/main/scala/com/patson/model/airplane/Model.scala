@@ -125,9 +125,9 @@ object Model {
     val size: Type => Double = {
       case HELICOPTER => 0.03
       case PROPELLER_SMALL => 0.055
-      case PROPELLER_MEDIUM => 0.95
+      case PROPELLER_MEDIUM => 0.095
       case SMALL => 0.055
-      case REGIONAL => 0.95
+      case REGIONAL => 0.095
       case MEDIUM => 0.14
       case MEDIUM_XL => 0.18
       case AIRSHIP => 0.2
