@@ -146,12 +146,20 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
 	    			$('#baseDetailsModal').removeData('scale')
 	    		} else {
 	    		    const baseType = airportBase.headquarter ? "Headquarters" : "Base"
-                    var specializationList = ""
-	    		    if (airportBase.specializations) {
-                        specializationList = $('<div></div>')
-                        $.each(airportBase.specializations, function(index, specialization) {
-                            specializationList.append($('<img src="assets/images/icons/specialization/' + specialization.id + '.png" title="' + specialization.label + '" style="vertical-align: middle;">'))
-                        })
+                    let specializationList = "";
+                    if (airportBase.specializations) {
+                        specializationList = document.createElement('span');
+
+
+                        airportBase.specializations.forEach(specialization => {
+                            const img = document.createElement('img');
+                            img.src = `assets/images/icons/specialization/${specialization.id}.png`;
+                            img.title = specialization.label;
+                            img.style.verticalAlign = 'middle';
+                            img.classList.add("px-1");
+
+                            specializationList.appendChild(img);
+                        });
                     }
                     const smallTextUnderLine = document.createElement("small")
                     smallTextUnderLine.classList.add('text-underline',"pl-2")
@@ -163,7 +171,7 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
                     if (specializationList) {
                         const specializationListELM = document.createElement('span');
                         specializationListELM.innerHTML = specializationList;
-                        airportBaseDetailsHeadingELM.appendChild(specializationListELM);
+                        airportBaseDetailsHeadingELM.appendChild(specializationList);
                     }
 
 	    			if (airportBase.delegatesRequired == 0) {
