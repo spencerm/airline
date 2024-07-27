@@ -357,10 +357,10 @@ object DemandGenerator {
     val travelerMod = PassengerType.priceAdjust(PassengerType.TRAVELER)
     val defaultMod = PassengerType.priceAdjust(PassengerType.BUSINESS)
     //modding price (sometimes) by class
-    val discountPlus = 0.1
-    val economyPlus = 0.05
-    val businessPlus = 0.1
-    val firstPlus = 0.1
+    val discountPlus = 0.08
+    val economyPlus = 0.04
+    val businessPlus = 0.08
+    val firstPlus = 0.08
     val flightPreferences = Map(
       PassengerType.BUSINESS -> List( //is default, i.e. also elite & olympic
         (DealPreference(homeAirport, DISCOUNT_ECONOMY, defaultMod), 3),
