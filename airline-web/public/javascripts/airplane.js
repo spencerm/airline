@@ -115,7 +115,7 @@ function updateAirplaneModelTable(sortProperty, sortOrder) {
     rangeRequirement = $('#AMTFrange').val()
     capacityRequirement = $('#AMTFcapacity').val()
     runwayRequirement = $('#AMTFrunway').val()
-    console.log(rangeRequirement, capacityRequirement, runwayRequirement)
+    //console.log(rangeRequirement, capacityRequirement, runwayRequirement)
 	const modelsFiltered = loadedModelsOwnerInfo.filter(airplane => {
         return (
             airplane.capacity >= capacityRequirement &&
@@ -1424,6 +1424,7 @@ function hideAirplaneModelTableFilters() {
 }
 
 function selectAirplaneTab($selectedTab) {
+    selectedModelId = null
     $selectedTab.siblings().removeClass('selected')
     $selectedTab.addClass('selected')
     var selectedType = $selectedTab.data('type')

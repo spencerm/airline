@@ -140,7 +140,7 @@ object AirlineCountryRelationship {
     val ratioToModelPower = Computation.MODEL_COUNTRY_POWER / (country.airportPopulation * country.income.toDouble).toLong
     val logRatio = Math.max(0.1, Math.log10(ratioToModelPower * 100) / 2) //0.1 to 1
     val levelMultiplier = 1 / logRatio
-    Math.min(1.0, BigDecimal(levelMultiplier).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
+    Math.min(1.5, BigDecimal(levelMultiplier).setScale(2, BigDecimal.RoundingMode.HALF_UP).toDouble)
   }
 }
 

@@ -25,9 +25,10 @@ object IsolatedAirportPatcher {
       "HGL", "BMK", "GWT", "BMR", //DE
       "EGH", "EOI", "FIE", "FOA", "LWK", "LSI", "ACI", "TRE", "BRR", "BEB", "SYY", "KOI", "ILY", "CAL", "ISC", "GCI", "JER", //GB
       "BYR", "RNN", //DK
-      "MHQ", "KDL", "URE", //FI
+      "MHQ", "KDL", "URE", "ENF", "KTT", //FI
       "IOR","INQ","IIA", //IE
-      "EN9","EN1","EN2", "SKN", "SSJ", "BNN", "MOL", //NO
+      "PJA", //SE
+      "EN9","EN1","EN2", "SKN", "SSJ", "BNN", "MOL", "OSY", "RVK", "SDN", "SOG", //NO
       "HZK", //IS
       "AOK", "JMK", "JNX", "JSI", "JTR", "KIT", "LKS", "MLO", "SMI", "JIK", "KGS", "RHO", //GR
       //americas

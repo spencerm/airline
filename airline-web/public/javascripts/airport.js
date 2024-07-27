@@ -145,12 +145,20 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
 	    			$('#baseDetailsModal').removeData('scale')
 	    		} else {
 	    		    const baseType = airportBase.headquarter ? "Headquarters" : "Base"
-                    var specializationList = ""
-	    		    if (airportBase.specializations) {
-                        specializationList = $('<div></div>')
-                        $.each(airportBase.specializations, function(index, specialization) {
-                            specializationList.append($('<img src="assets/images/icons/specialization/' + specialization.id + '.png" title="' + specialization.label + '" style="vertical-align: middle;">'))
-                        })
+                    let specializationList = "";
+                    if (airportBase.specializations) {
+                        specializationList = document.createElement('span');
+
+
+                        airportBase.specializations.forEach(specialization => {
+                            const img = document.createElement('img');
+                            img.src = `assets/images/icons/specialization/${specialization.id}.png`;
+                            img.title = specialization.label;
+                            img.style.verticalAlign = 'middle';
+                            img.classList.add("px-1");
+
+                            specializationList.appendChild(img);
+                        });
                     }
                     const smallTextUnderLine = document.createElement("small")
                     smallTextUnderLine.classList.add('text-underline',"pl-2")
@@ -162,7 +170,7 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
                     if (specializationList) {
                         const specializationListELM = document.createElement('span');
                         specializationListELM.innerHTML = specializationList;
-                        airportBaseDetailsHeadingELM.appendChild(specializationListELM);
+                        airportBaseDetailsHeadingELM.appendChild(specializationList);
                     }
 
 	    			if (airportBase.delegatesRequired == 0) {
@@ -285,6 +293,7 @@ function updateAirportChampionDetails(airport) {
 	    contentType: 'application/json; charset=utf-8',
 	    dataType: 'json',
 	    success: function(result) {
+	        document.getElementById('maxRep').textContent = result.maxRep;
 	        var champions = result.champions
 	    	$(champions).each(function(index, championDetails) {
 	    		var row = $("<div class='table-row clickable' data-link='rival' onclick=\"showRivalsCanvas('" + championDetails.airlineId + "');\"></div>")

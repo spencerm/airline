@@ -411,24 +411,25 @@ case class Airport(iata : String, icao : String, name : String, latitude : Doubl
       32
     } else {
       size match {
-        case 1 => 2 //small airport
-        case 2 => 4
-        case 3 => 8
-        case 4 => 16
-        case 5 => 32
-        case 6 => 64
-        case 7 => 128
-        case _ => 256 //mega
+        case 1 => 4 //small airport
+        case 2 => 8
+        case 3 => 16
+        case 4 => 32
+        case 5 => 64
+        case 6 => 96
+        case 7 => 144
+        case _ => 216 //mega
       }
     }
 
     import Model.Type._
     val multiplier = airplaneModel.airplaneType match {
       case MEDIUM => 5
-      case MEDIUM_XL => 10
+      case MEDIUM_XL => 8
       case LARGE => 12
       case EXTRA_LARGE => 18
       case JUMBO => 24
+      case JUMBO_XL => 24
       case SUPERSONIC => 16
       case _ => 2
     }

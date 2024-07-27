@@ -6,7 +6,6 @@ case class LinkClassValues(economyVal : Int, businessVal : Int, firstVal : Int, 
 //  val businessClassVal = map.getOrElse(BUSINESS, 0)
 //  val economyClassVal = map.getOrElse(ECONOMY, 0)
   override def toString() = {
-    val economy = discountVal + economyVal
     s"$discountVal / $economyVal / $businessVal / $firstVal"
   }
 }

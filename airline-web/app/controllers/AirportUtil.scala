@@ -63,7 +63,7 @@ object AirportUtil {
     visibleAirports = getVisibleAirports(airportByPowerCount)
   }
 
-  private val airportByPowerCount = 4000
+  private val airportByPowerCount = 4200
   var visibleAirports = getVisibleAirports(airportByPowerCount)
 
   private[this] def getVisibleAirports(airportByPowerCount : Int) : List[AirportWithChampion] = {

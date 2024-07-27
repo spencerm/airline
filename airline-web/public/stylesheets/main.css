@@ -1027,6 +1027,10 @@ div.future {
     background-color: var(--modal-background-color); /* Black w/ opacity */
 }
 
+#airplaneBaseModal .modal {
+    overflow: hidden;
+}
+
 @media (min-width: 768px) {
     padding: 20px 20px 20px 24px;
 }
@@ -1138,6 +1142,10 @@ img.flag {
                 url('/assets/images/icons/spinning-wheel.gif')
                 50% 50%
                 no-repeat;
+}
+.searchInput .spinner {
+    position: absolute;
+    margin: auto;
 }
 
 .snowflake {
@@ -1275,6 +1283,17 @@ input:disabled, .button.disabled, .clickable.disabled, .round-button.disabled {
 
 input:disabled:hover, .button.disabled:hover, .clickable.disabled:hover, .round-button.disabled:hover {
   cursor: not-allowed;
+}
+
+.svg {
+    width: 14px;
+    height: auto;
+}
+
+.info.svg {
+  width: 16px;
+  padding: 2px;
+  margin-top: -2px;
 }
 
 input[type='number'] {
@@ -1481,6 +1500,9 @@ i, .italic {
 .font-extralight {
     font-weight: 200;
 }
+.font-normal {
+    font-weight: 400;
+}
 .capitalize {
     text-transform: capitalize;
 }
@@ -1580,9 +1602,14 @@ i, .italic {
 .h-7 { height: 28px; }
 .h-8 { height: 32px; }
 .w-full { width: 100% !important; }
+.w-half { width: 50% !important; }
 .max-w-32 {max-width: 8rem;}
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem !important; }
+.gap-8 { gap: 2rem !important; }
+.opacity-70 { opacity: 0.7; }
+.opacity-80 { opacity: 0.8; }
+.opacity-90 { opacity: 0.9; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
@@ -1619,6 +1646,7 @@ i, .italic {
     width: 100%;
     justify-content: space-between;
     gap: 1rem;
+    box-sizing: border-box;
 }
 .flex-container-width-half.gap-2 > div, .flex-container-width-half.gap-2 > button {
     flex: 1 1 calc(50% - 0.5rem);

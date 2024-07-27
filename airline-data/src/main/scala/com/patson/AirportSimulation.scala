@@ -253,13 +253,13 @@ object AirportSimulation {
         loyalistIncrementOfAirlines.foreach {
           case (gainAirlineId, increment) => //split into chunks for better randomness
             if (increment > 0) {
-              var unclaimedLoyalist = (fromAirport.population - totalLoyalist).toInt
+              var unclaimedLoyalist = (fromAirport.popMiddleIncome - totalLoyalist).toInt
               var remainingIncrement = increment
               while (remainingIncrement > 0) {
                 val chunk = if (remainingIncrement <= CHUNK_SIZE) remainingIncrement else CHUNK_SIZE
 
                 //Has to compare pop vs total, as  in rare scenario fromAirport.population < existingLoyalistOfThisAirport.values.sum, for example demolished property that +pop
-                val flipTrigger = ThreadLocalRandom.current().nextInt(Math.max(fromAirport.population, totalLoyalist).toInt)
+                val flipTrigger = ThreadLocalRandom.current().nextInt(Math.max(fromAirport.popMiddleIncome, totalLoyalist).toInt)
 
                 val flippedAirlineIdOption = loyalistDistribution.find {
                   case (airlineId : Int, threshold : Int) => flipTrigger < threshold

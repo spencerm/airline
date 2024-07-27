@@ -1,7 +1,8 @@
 package controllers
 
 import com.patson.data.{AirplaneSource, LinkSource}
-import com.patson.model.{Airline, Link}
+import com.patson.model.{Airline, Computation, Link, LinkClass, LinkClassValues}
+import com.patson.util.AirportCache
 
 import scala.collection.mutable.ListBuffer
 
@@ -38,5 +39,24 @@ object LinkUtil {
 
   def getFlightCode(airline : Airline, flightNumber : Int) = {
     airline.getAirlineCode + " " + (1000 + flightNumber).toString.substring(1, 4)
+  }
+
+  def findExpectedQuality(fromAirportId: Int, toAirportId: Int, queryAirportId: Int): Option[LinkClassValues] = {
+    AirportCache.getAirport(fromAirportId) match {
+      case Some(fromAirport) =>
+        AirportCache.getAirport(toAirportId) match {
+          case Some(toAirport) =>
+            val flightType = Computation.getFlightType(fromAirport, toAirport)
+            val airport = if (fromAirportId == queryAirportId) fromAirport else toAirport
+            val classMap: List[(LinkClass, Int)] = LinkClass.values.map { linkClass =>
+              linkClass -> airport.expectedQuality(flightType, linkClass)
+            }
+            Some(LinkClassValues.getInstanceByMap(classMap.toMap))
+          case None =>
+            None
+        }
+      case None =>
+        None
+    }
   }
 }
