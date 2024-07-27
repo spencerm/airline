@@ -450,6 +450,25 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
 
     val directDemand = directTravelerDemand + directBusinessDemand + directTouristDemand
 
+    val fromQualitySearch = LinkUtil.findExpectedQuality(fromAirportId: Int, toAirportId: Int, fromAirportId: Int)
+    val fromExpectedQualities = fromQualitySearch match {
+      case Some(classes) =>
+        var result = Json.obj()
+        LinkClass.values.foreach { linkClass: LinkClass =>
+          result += (linkClass.code -> JsNumber(classes(linkClass)))
+        }
+        result
+    }
+    val toQualitySearch = LinkUtil.findExpectedQuality(fromAirportId: Int, toAirportId: Int, fromAirportId: Int)
+    val toExpectedQualities = toQualitySearch match {
+      case Some(classes) =>
+        var result = Json.obj()
+        LinkClass.values.foreach { linkClass: LinkClass =>
+          result += (linkClass.code -> JsNumber(classes(linkClass)))
+        }
+        result
+    }
+
 
     //basic details
     var result = Json.obj(
@@ -468,6 +487,8 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
       "toAirportBusinessDemand" -> directToAirportBusinessDemand,
       "fromAirportTouristDemand" -> directFromAirportTouristDemand,
       "toAirportTouristDemand" -> directToAirportTouristDemand,
+      "fromExpectedQualities" -> fromExpectedQualities,
+      "toExpectedQualities" -> toExpectedQualities,
     )
 
 

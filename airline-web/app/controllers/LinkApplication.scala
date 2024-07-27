@@ -517,29 +517,23 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
 
 
   def getExpectedQuality(airlineId : Int, fromAirportId : Int, toAirportId : Int, queryAirportId : Int) = AuthenticatedAirline(airlineId) { request =>
-    AirportCache.getAirport(fromAirportId) match {
-      case Some(fromAirport) =>
-        AirportCache.getAirport(toAirportId) match {
-          case Some(toAirport) =>
-            val flightType = Computation.getFlightType(fromAirport, toAirport)
-            val airport = if (fromAirportId == queryAirportId) fromAirport else toAirport
-            var result = Json.obj()
-            LinkClass.values.foreach { linkClass : LinkClass =>
-              result += (linkClass.code -> JsNumber(airport.expectedQuality(flightType, linkClass)))
-            }
-            Ok(result)
-          case None =>
-          NotFound
+    val expectedQualities = LinkUtil.findExpectedQuality(fromAirportId : Int, toAirportId : Int, queryAirportId : Int)
+    expectedQualities match {
+      case Some(classes) => {
+        var result = Json.obj()
+        LinkClass.values.foreach { linkClass: LinkClass =>
+          result += (linkClass.code -> JsNumber(classes(linkClass)))
         }
-      case None =>
-        NotFound
+        Ok(result)
+      }
+      case None => NotFound
     }
   }
 
-  def getAllLinks() = Action {
-     val links = LinkSource.loadAllFlightLinks()
-    Ok(Json.toJson(links))
-  }
+//  def getAllLinks() = Action {
+//     val links = LinkSource.loadAllFlightLinks()
+//    Ok(Json.toJson(links))
+//  }
 
   def getLinks(airlineId : Int, toAirportId : Int) = Action {
 
