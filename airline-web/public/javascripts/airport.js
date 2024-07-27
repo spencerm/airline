@@ -112,8 +112,7 @@ function updateAirportDetails(airport, cityImageUrl, airportImageUrl) {
 	$(".airportCountryName").text(loadedCountriesByCode[airport.countryCode].name)
 	$(".airportCountryFlag").empty()
 	$(".airportCountryFlag").append(() => {
-        const countryFlagUrl = getCountryFlagUrl(airport.countryCode)
-        return countryFlagUrl ? "<img src='" + countryFlagUrl + "' />" : ""
+        return getCountryFlagImg(airport.countryCode)
 	})
 	$("#airportDetailsAffinityZone").text(airport.zone)
 	$("#airportDetailsOpenness").html(getOpennessSpan(loadedCountriesByCode[airport.countryCode].openness, airport.size, airport.isDomesticAirport, airport.isGateway))
@@ -790,7 +789,7 @@ function addCityMarkers(airportMap, airport) {
 			  $("#cityPopupPopulation").text(commaSeparateNumber(city.population))
 			  $("#cityPopupIncomeLevel").text(city.incomeLevel)
 			  $("#cityPopupCountryCode").text(city.countryCode)
-			  $("#cityPopupCountryCode").append("<img class='flag' src='assets/images/flags/" + city.countryCode + ".png' />")
+			  $("#cityPopupCountryCode").append("<img class='flag' src='assets/images/flags/" + city.countryCode + ".svg' />")
 			  $("#cityPopupId").val(city.id)
 			   
 			  
@@ -937,6 +936,9 @@ function refreshAirportExtendedDetails(airport) {
         if (!hasMatch) {
             $(".airportLoyalty").text("0")
         }
+
+				// Ensure the gear icon on the nav-airport page for the campaign modal is always visible
+				$(".campaignGear").css({"visibility": "visible", "display": "inline-block"});
 
         var relationshipValue = loadedCountriesByCode[airport.countryCode].mutualRelationship
         if (typeof relationshipValue != 'undefined') {
@@ -1235,7 +1237,6 @@ function toggleAirportLinks(airport) {
             if (linksByRemoteAirport.length == 0) {
                 $("#topAirportLinksPanel .topDestinations").append("<div class='table-row'><div class='cell'>-</div><div class='cell'>-</div><div class='cell'>-</div></div>")
             }
-            showAirportLinkPaths()
 
 	    	$("#topAirportLinksPanel").show();
 	    },
@@ -1258,14 +1259,24 @@ function drawAirportLinkPath(localAirport, details) {
     var from = new google.maps.LatLng({lat: localAirport.latitude, lng: localAirport.longitude})
 	var to = new google.maps.LatLng({lat: remoteAirport.latitude, lng: remoteAirport.longitude})
 	var pathKey = remoteAirport.id
+
+    var totalCapacity = details.capacity.total
+
+    var opacity
+    if (totalCapacity < 2000) {
+        opacity = 0.2 + totalCapacity / 2000 * (0.6)
+    } else {
+        opacity = 0.8
+    }
 	
 	var airportLinkPath = new google.maps.Polyline({
 			 geodesic: true,
 		     strokeColor: "#DC83FC",
-		     strokeOpacity: 0.8,
+		     strokeOpacity: opacity,
 		     strokeWeight: 2,
 		     path: [from, to],
 		     zIndex : 1100,
+		     map: map,
 		});
 		
 	var fromAirport = getAirportText(localAirport.city, localAirport.iata)
@@ -1283,8 +1294,11 @@ function drawAirportLinkPath(localAirport, details) {
 	     fromCountry : localAirport.countryCode, 
 	     toAirport : toAirport,
 	     toCountry : remoteAirport.countryCode,
-	     details: details
+	     details: details,
+	     map: map,
 	});
+	polylines.push(airportLinkPath)
+    polylines.push(shadowPath)
 	
 	airportLinkPath.shadowPath = shadowPath
 	
@@ -1319,21 +1333,6 @@ function drawAirportLinkPath(localAirport, details) {
 	})
 	
 	airportLinkPaths[pathKey] = airportLinkPath
-}
-
-function showAirportLinkPaths() {
-	$.each(airportLinkPaths, function(key, airportLinkPath) {
-		var totalPassengers = airportLinkPath.shadowPath.passengers
-		if (totalPassengers < 2000) {
-			var newOpacity = 0.2 + totalPassengers / 2000 * (airportLinkPath.strokeOpacity - 0.2)
-			airportLinkPath.setOptions({strokeOpacity : newOpacity})
-		}
-			
-		airportLinkPath.setMap(map)
-		airportLinkPath.shadowPath.setMap(map)
-		polylines.push(airportLinkPath)
-		polylines.push(airportLinkPath.shadowPath)
-	})
 }
 	
 function clearAirportLinkPaths() {
