@@ -107,14 +107,14 @@ abstract class FlightPreference(homeAirport : Airport) {
    * Take note that 0 would means a preference that totally ignore the price difference (could be dangerous as very expensive ticket will get through)
    */
   def priceAdjustRatio(link: Transport, linkClass: LinkClass) = {
-    val standardPrice = link.standardPrice(preferredLinkClass)
+    val standardPrice = link.standardPrice(preferredLinkClass) * priceModifier
     val deltaFromStandardPrice = priceAdjustedByLinkClassDiff(link, linkClass) - standardPrice
     val priceSensitivityModifier = if (deltaFromStandardPrice < 0.0 && getPreferenceType == FREQUENT || deltaFromStandardPrice < 0.0 && getPreferenceType == BRAND) {
-        priceSensitivity * Math.max(0.5, link.cost(linkClass) / standardPrice)
+        priceSensitivity * Math.max(0.4, link.cost(linkClass).toDouble / standardPrice)
       } else {
         priceSensitivity
       }
-    val sfBuffer = 0.04
+    val sfBuffer = 0.03
     1 - sfBuffer + deltaFromStandardPrice * priceSensitivityModifier / standardPrice
   }
 
@@ -148,7 +148,7 @@ abstract class FlightPreference(homeAirport : Airport) {
         1 - qualityDelta.toDouble / Link.MAX_QUALITY * 0.5
       } else { //reduced benefit on extremely high quality
         val extraDelta = qualityDelta - GOOD_QUALITY_DELTA
-        1 - GOOD_QUALITY_DELTA.toDouble / Link.MAX_QUALITY * 0.5 - extraDelta.toDouble / Link.MAX_QUALITY * 0.3
+        1 - GOOD_QUALITY_DELTA.toDouble / Link.MAX_QUALITY * 0.5 - extraDelta.toDouble / Link.MAX_QUALITY * 0.25
       }
 
     1 + (priceAdjust - 1) * qualitySensitivity
@@ -160,7 +160,8 @@ abstract class FlightPreference(homeAirport : Airport) {
   val priceAdjustedByLinkClassDiff = (link : Transport, linkClass : LinkClass) => {
     val cost = link.cost(linkClass) //use cost here
     if (preferredLinkClass.level != 0 && linkClass.level < preferredLinkClass.level) { //ignore discount_economy
-      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.35
+      val shortDistanceModified = 0.5 + Math.min(1, link.distance / 1000) / 2
+      val classDiffMultiplier: Double = 1 + (preferredLinkClass.level - linkClass.level) * 0.35 * shortDistanceModified
       preferredLinkClass.basePrice - linkClass.basePrice + (cost / linkClass.priceMultiplier * preferredLinkClass.priceMultiplier * classDiffMultiplier).toInt //have to normalize the price to match the preferred link class, * classDiffMultiplier for unwillingness to downgrade
     } else {
       cost
@@ -280,7 +281,7 @@ object FlightPreferenceType extends Enumeration {
 import FlightPreferenceType._
 
 case class DealPreference(homeAirport : Airport, preferredLinkClass: LinkClass, override val priceModifier: Double) extends FlightPreference(homeAirport : Airport) {
-  override val priceSensitivity = preferredLinkClass.priceSensitivity + 0.2
+  override val priceSensitivity = preferredLinkClass.priceSensitivity + 0.1
   override val frequencyThreshold = 3
   def computeCost(baseCost : Double, link : Transport, linkClass : LinkClass) = {
     baseCost
