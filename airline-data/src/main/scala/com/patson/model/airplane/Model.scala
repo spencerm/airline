@@ -37,8 +37,10 @@ case class Model(name : String, family : String = "", capacity : Int, maxSeats :
       LARGE
     } else if (capacity <= 475) {
       EXTRA_LARGE
-    } else {
+    } else if (capacity <= 800) {
       JUMBO
+    } else {
+      JUMBO_XL
     }
   }
 
@@ -56,6 +58,7 @@ case class Model(name : String, family : String = "", capacity : Int, maxSeats :
         case LARGE => maxSeats / 2.5
         case EXTRA_LARGE => maxSeats / 2.5
         case JUMBO => maxSeats / 2.5
+        case JUMBO_XL => maxSeats / 2.5
         case _ => maxSeats / 3
       }).toInt
   }
@@ -101,7 +104,7 @@ object Model {
 
   object Type extends Enumeration {
     type Type = Value
-    val AIRSHIP, HELICOPTER, PROPELLER_SMALL, PROPELLER_MEDIUM, SMALL, REGIONAL, MEDIUM, MEDIUM_XL, LARGE, EXTRA_LARGE, JUMBO, SUPERSONIC = Value
+    val AIRSHIP, HELICOPTER, PROPELLER_SMALL, PROPELLER_MEDIUM, SMALL, REGIONAL, MEDIUM, MEDIUM_XL, LARGE, EXTRA_LARGE, JUMBO, JUMBO_XL, SUPERSONIC = Value
 
     val label: Type => String = {
       case AIRSHIP => "Airship"
@@ -115,22 +118,24 @@ object Model {
       case LARGE => "Wide-body"
       case EXTRA_LARGE => "Wide-body XL"
       case JUMBO => "Jumbo Jet"
+      case JUMBO_XL => "Jumbo XL"
       case SUPERSONIC => "Supersonic"
     }
 
     val size: Type => Double = {
-      case HELICOPTER => 0.02
-      case PROPELLER_SMALL => 0.05
-      case PROPELLER_MEDIUM => 0.09
-      case SMALL => 0.05
-      case REGIONAL => 0.09
+      case HELICOPTER => 0.03
+      case PROPELLER_SMALL => 0.055
+      case PROPELLER_MEDIUM => 0.95
+      case SMALL => 0.055
+      case REGIONAL => 0.95
       case MEDIUM => 0.14
       case MEDIUM_XL => 0.18
-      case AIRSHIP => 0.19
+      case AIRSHIP => 0.2
       case SUPERSONIC => 0.24
       case LARGE => 0.20
       case EXTRA_LARGE => 0.25
       case JUMBO => 0.3
+      case JUMBO_XL => 0.33
     }
   }
 
@@ -142,7 +147,7 @@ object Model {
       REGIONAL -> List(Type.REGIONAL, Type.PROPELLER_MEDIUM),
       MEDIUM -> List(Type.MEDIUM, Type.MEDIUM_XL),
       LARGE -> List(Type.LARGE, Type.EXTRA_LARGE),
-      EXTRAORDINARY -> List(Type.JUMBO, Type.SUPERSONIC),
+      EXTRAORDINARY -> List(Type.JUMBO, Type.JUMBO_XL, Type.SUPERSONIC),
       SPECIAL -> List(Type.AIRSHIP, Type.HELICOPTER),
     )
 

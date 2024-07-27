@@ -3,7 +3,7 @@ package com.patson.model.airplane
 import com.patson.data.AirplaneSource
 import com.patson.data.airplane.ModelSource
 import com.patson.model.airplane.Model.Category
-import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, REGIONAL, SMALL}
+import com.patson.model.airplane.Model.Type.{JUMBO, LARGE, MEDIUM, MEDIUM_XL, REGIONAL, SMALL}
 import com.patson.util.{AirplaneModelCache, AirplaneModelDiscountCache, AirplaneOwnershipCache}
 
 import scala.collection.MapView
@@ -27,9 +27,9 @@ object ModelDiscount {
       case SMALL => 0.05
       case REGIONAL => 0.05
       case MEDIUM => 0.04
+      case MEDIUM_XL => 0.04
       case LARGE => 0.03
-      case JUMBO => 0.02
-      case _ => 0.05
+      case _ => 0.02
     }
     List(ModelDiscount(model.id, priceDiscount, DiscountType.PRICE, DiscountReason.FAVORITE, None), constructionTimeDiscount)
   }
