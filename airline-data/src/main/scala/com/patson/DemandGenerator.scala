@@ -169,7 +169,7 @@ object DemandGenerator {
       if (distance < 350 && !List("BS", "TC", "VI", "VG", "GR", "CY", "CO").contains(fromAirport.countryCode)) {
         distance.toDouble / 350
       } else if (distance > 5000) {
-        1.0 - distance.toDouble / 35000 * (1 - affinity.toDouble / 15.0) //affinity affects perceived distance
+        1.0 - distance.toDouble / 36000 * (1 - affinity.toDouble / 15.0) //affinity affects perceived distance
       } else if (distance > 2000) { //bit less than medium-distance, with a 0.01 boost
         1.11 - distance.toDouble / 20000 * (1 - affinity.toDouble / 20.0) //affinity affects perceived distance
       } else 1
@@ -197,9 +197,9 @@ object DemandGenerator {
         0.8 //pops are just very large
       } else if (fromAirport.countryCode == "CN" && toAirport.countryCode == "CN") {
         if(distance < 900) {
-          0.65 //China has a very extensive highspeed rail network, pops are just very large
+          0.64 //China has a very extensive highspeed rail network, pops are just very large
         } else {
-          0.80
+          0.79
         }
       } else if (fromAirport.countryCode == "JP" && toAirport.countryCode == "JP" && distance < 500) {
         0.5 //also interconnected by HSR / intercity rail
@@ -376,8 +376,8 @@ object DemandGenerator {
         (LastMinutePreference(homeAirport, BUSINESS, defaultMod + businessPlus, loungeLevelRequired = 0), 1),
         (LastMinutePreference(homeAirport, BUSINESS, defaultMod + businessPlus + 0.16, loungeLevelRequired = 0), 1),
         (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, defaultMod, loungeLevelRequired = 2), 1),
-        (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, defaultMod, loungeLevelRequired = 2, loyaltyRatio = 1.1), 1),
-        (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, defaultMod + firstPlus, loungeLevelRequired = 3, loyaltyRatio = 1.2), 1),
+        (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, defaultMod, loungeLevelRequired = 2, loyaltyRatio = 1.15), 1),
+        (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, defaultMod + firstPlus, loungeLevelRequired = 3, loyaltyRatio = 1.25), 1),
         (LastMinutePreference(homeAirport, FIRST, defaultMod + firstPlus, loungeLevelRequired = 1), 1),
         (LastMinutePreference(homeAirport, FIRST, defaultMod + firstPlus + 0.2, loungeLevelRequired = 0), 1),
       ),
@@ -390,7 +390,7 @@ object DemandGenerator {
         (LastMinutePreference(homeAirport, ECONOMY, touristMod - 0.01, loungeLevelRequired = 0), 2),
         (DealPreference(homeAirport, BUSINESS, touristMod), 2),
         (AppealPreference.getAppealPreferenceWithId(homeAirport, BUSINESS, touristMod + businessPlus, loungeLevelRequired = 1), 1),
-        (AppealPreference.getAppealPreferenceWithId(homeAirport, BUSINESS, touristMod + businessPlus + 0.16, loungeLevelRequired = 2, loyaltyRatio = 1.1), 1),
+        (AppealPreference.getAppealPreferenceWithId(homeAirport, BUSINESS, touristMod + businessPlus + 0.16, loungeLevelRequired = 2, loyaltyRatio = 1.15), 1),
         (LastMinutePreference(homeAirport, BUSINESS, touristMod - 0.01, loungeLevelRequired = 1), 1),
         (AppealPreference.getAppealPreferenceWithId(homeAirport, FIRST, touristMod, loungeLevelRequired = 2, loyaltyRatio = 1.1), 1),
       ),
