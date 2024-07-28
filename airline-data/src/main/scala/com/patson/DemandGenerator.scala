@@ -22,8 +22,8 @@ object DemandGenerator {
   val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
   val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.38, PassengerType.BUSINESS -> 0.09, PassengerType.TOURIST -> 0.6, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
   val MIN_DISTANCE = 50
-//  val launchDemandFactor : Double = Math.min(1, (30 + CycleSource.loadCycle().toDouble / 24) / 100)
-  val launchDemandFactor : Double = 1.0
+  val launchDemandFactor : Double = Math.min(1, (30 + CycleSource.loadCycle().toDouble / 24) / 100)
+//  val launchDemandFactor : Double = 1.0
 
   import scala.collection.JavaConverters._
 
