@@ -962,6 +962,8 @@ object AirportFeaturePatcher extends App {
 "MB1" -> 1, //AQ
 "SP1" -> 1, //AQ
 "EG1" -> 1, //AQ
+"EG9" -> 1, //AQ
+"YW9" -> 1, //AQ
     ), 
     DOMESTIC_AIRPORT -> Map(
       "LGA" -> 0,

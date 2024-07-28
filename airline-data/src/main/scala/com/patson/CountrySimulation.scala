@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 
 
 object CountrySimulation {
-  val MAX_NATIONAL_AIRLINE_COUNT = 2 //What US will have
+  val MAX_NATIONAL_AIRLINE_COUNT = 3 //What US will have
   val MAX_PARTNERED_AIRLINE_COUNT = 5 //What US will have
 
   def computeNationalAirlineCount(country: Country) : Int = {

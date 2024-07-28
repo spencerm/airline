@@ -26,7 +26,7 @@ object AirlineBaseSpecialization extends Enumeration {
     override val getType = BaseSpecializationType.NEGOTIATION
     override val label = "Negotiation Expert II"
     override val free = true
-    override val scaleRequirement : Int = 12
+    override val scaleRequirement : Int = 11
     override def descriptions(airport : Airport) = List(s"Further increased frequency cap gain per scale")
   }
 
@@ -35,7 +35,7 @@ object AirlineBaseSpecialization extends Enumeration {
     override val label = "Delegates Recruiter"
     val delegateBoost = 2
     override val free = true
-    override val scaleRequirement : Int = 13
+    override val scaleRequirement : Int = 12
     override def descriptions(airport : Airport) = List(s"$delegateBoost extra delegates")
   }
 
@@ -43,7 +43,7 @@ object AirlineBaseSpecialization extends Enumeration {
     override val getType = BaseSpecializationType.AIRPORT_POWER
     override val label = "Powerhouse"
     override val free = true
-    override val scaleRequirement : Int = 14
+    override val scaleRequirement : Int = 13
     val populationBoost = 30000
     private[this] val minIncomeBoost = 3000 //should at least boost income by $3000
     private[this] val percentageBoost = 20 //20% if lower than minIncomeBoost then minIncomeBoost

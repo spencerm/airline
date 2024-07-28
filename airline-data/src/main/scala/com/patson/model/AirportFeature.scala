@@ -3,9 +3,10 @@ package com.patson.model
 import com.patson.model.airplane.Model
 import com.patson.model.airplane.Model.Type
 import FlightType._
-import com.patson.model.AirportFeatureType.{AirportFeatureType, DOMESTIC_AIRPORT, FINANCIAL_HUB, ELITE_CHARM, GATEWAY_AIRPORT, INTERNATIONAL_HUB, ISOLATED_TOWN, OLYMPICS_IN_PROGRESS, OLYMPICS_PREPARATIONS, UNKNOWN, VACATION_HUB}
+import com.patson.DemandGenerator
+import com.patson.data.CycleSource
+import com.patson.model.AirportFeatureType.{AirportFeatureType, DOMESTIC_AIRPORT, ELITE_CHARM, FINANCIAL_HUB, GATEWAY_AIRPORT, INTERNATIONAL_HUB, ISOLATED_TOWN, OLYMPICS_IN_PROGRESS, OLYMPICS_PREPARATIONS, UNKNOWN, VACATION_HUB}
 import com.patson.model.IsolatedTownFeature.HUB_RANGE_BRACKETS
-
 
 abstract class AirportFeature {
   val MAX_STRENGTH = 100
@@ -13,7 +14,7 @@ abstract class AirportFeature {
   //def airportId : Int
   def featureType : AirportFeatureType.Value
   val strengthFactor : Double = strength.toDouble / MAX_STRENGTH
-  
+
   def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType.Value, affinity : Int, distance : Int) : Int
 
   lazy val getDescription = {
@@ -54,7 +55,7 @@ sealed case class InternationalHubFeature(baseStrength : Int, boosts : List[Airp
   override def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType, affinity : Int, distance : Int) : Int = {
     if (airportId == toAirport.id  && passengerType == PassengerType.TOURIST) { //only affect if as a destination
       val charmStrength = 0.00045 * strengthFactor
-      val incomeModifier = Math.max(fromAirport.income / 50000, 0.2)
+      val incomeModifier = Math.max(fromAirport.income.toDouble / 50000, 0.2)
       val distanceModifier = if (distance < 500) {
         (distance - 25).toDouble / 500
       } else if (distance < 6000) {
@@ -75,7 +76,7 @@ sealed case class InternationalHubFeature(baseStrength : Int, boosts : List[Airp
           2.0 //they travel a lot; difficult to model
         } else 1.0
 
-      (fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier * incomeModifier * specialCountryModifier).toInt
+      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier * incomeModifier * specialCountryModifier).toInt
     } else {
       0
     }
@@ -122,7 +123,7 @@ sealed case class VacationHubFeature(baseStrength : Int, boosts : List[AirportBo
         else if (affinity == 1) 0.05
         else 0
 
-      (fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier).toInt
+      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier).toInt
     } else {
       0
     }
@@ -141,9 +142,9 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         } else if (
           fromAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB) && toAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB)
         ) {
-          0.00014 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
+          0.00014 * strengthFactor * Math.min(1.5, toAirport.population.toDouble / fromAirport.population)
         } else {
-          0.00004 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
+          0.00004 * strengthFactor * Math.min(1.5, toAirport.population.toDouble / fromAirport.population)
         }
       val distanceModifier = if (distance < 275) {
         (distance - 25).toDouble / 275
@@ -152,6 +153,7 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
       } else {
         7000 / distance.toDouble
       }
+      val incomeModifier = 1 + DemandGenerator.BUSINESS_CLASS_PERCENTAGE_MAX(passengerType) * fromAirport.income.toDouble / DemandGenerator.BUSINESS_CLASS_INCOME_MAX //adjust up for capacity given to biz seats
       val airportAffinityMutliplier: Double =
         if (affinity >= 5) (affinity - 5) * 0.1 + 1 //domestic+
         else if (affinity == 4) 0.625
@@ -161,7 +163,7 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         else if (affinity == 0) 0.225
         else 0.1
 
-      (fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier).toInt
+      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * incomeModifier * distanceModifier * airportAffinityMutliplier).toInt
     } else {
       0
     }
@@ -174,7 +176,7 @@ sealed case class DomesticAirportFeature() extends AirportFeature {
   def strength = 0
   override def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType.Value, affinity : Int, distance : Int) : Int = {
     if (affinity >= 5) {//domestic
-      (rawDemand / 3).toInt
+      (DemandGenerator.launchDemandFactor * rawDemand / 3).toInt
     } else {
        (-1 * rawDemand / 2).toInt
     }
