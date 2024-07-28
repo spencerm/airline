@@ -55,7 +55,7 @@ sealed case class InternationalHubFeature(baseStrength : Int, boosts : List[Airp
   override def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType, affinity : Int, distance : Int) : Int = {
     if (airportId == toAirport.id  && passengerType == PassengerType.TOURIST) { //only affect if as a destination
       val charmStrength = 0.00045 * strengthFactor
-      val incomeModifier = Math.max(fromAirport.income / 50000, 0.2)
+      val incomeModifier = Math.max(fromAirport.income.toDouble / 50000, 0.2)
       val distanceModifier = if (distance < 500) {
         (distance - 25).toDouble / 500
       } else if (distance < 6000) {
@@ -142,9 +142,9 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         } else if (
           fromAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB) && toAirport.hasFeature(AirportFeatureType.FINANCIAL_HUB)
         ) {
-          0.00014 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
+          0.00014 * strengthFactor * Math.min(1.5, toAirport.population.toDouble / fromAirport.population)
         } else {
-          0.00004 * strengthFactor * Math.min(1.5, toAirport.population / fromAirport.population)
+          0.00004 * strengthFactor * Math.min(1.5, toAirport.population.toDouble / fromAirport.population)
         }
       val distanceModifier = if (distance < 275) {
         (distance - 25).toDouble / 275
@@ -153,6 +153,7 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
       } else {
         7000 / distance.toDouble
       }
+      val incomeModifier = 1 + DemandGenerator.BUSINESS_CLASS_PERCENTAGE_MAX(passengerType) * fromAirport.income.toDouble / DemandGenerator.BUSINESS_CLASS_INCOME_MAX //adjust up for capacity given to biz seats
       val airportAffinityMutliplier: Double =
         if (affinity >= 5) (affinity - 5) * 0.1 + 1 //domestic+
         else if (affinity == 4) 0.625
@@ -162,7 +163,7 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         else if (affinity == 0) 0.225
         else 0.1
 
-      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier).toInt
+      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * incomeModifier * distanceModifier * airportAffinityMutliplier).toInt
     } else {
       0
     }

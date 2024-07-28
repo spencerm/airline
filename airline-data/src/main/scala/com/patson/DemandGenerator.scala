@@ -16,14 +16,15 @@ import scala.util.Random
 
 object DemandGenerator {
 
-  private[this] val FIRST_CLASS_INCOME_MAX = 135_000
-  private[this] val FIRST_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0, PassengerType.BUSINESS -> 0.12, PassengerType.TOURIST -> 0, PassengerType.ELITE -> 1, PassengerType.OLYMPICS -> 0)
-  private[this] val BUSINESS_CLASS_INCOME_MAX = 135_000
-  private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
-  private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.38, PassengerType.BUSINESS -> 0.09, PassengerType.TOURIST -> 0.6, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
+  val FIRST_CLASS_INCOME_MAX = 125_000
+  val FIRST_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0, PassengerType.BUSINESS -> 0.12, PassengerType.TOURIST -> 0, PassengerType.ELITE -> 1, PassengerType.OLYMPICS -> 0)
+  val BUSINESS_CLASS_INCOME_MAX = 125_000
+  val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
+  val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.38, PassengerType.BUSINESS -> 0.09, PassengerType.TOURIST -> 0.6, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
   val MIN_DISTANCE = 50
-  val launchDemandFactor : Double = Math.min(1, (30 + CycleSource.loadCycle().toDouble / 24) / 100)
-  
+//  val launchDemandFactor : Double = Math.min(1, (30 + CycleSource.loadCycle().toDouble / 24) / 100)
+  val launchDemandFactor : Double = 1.0
+
   import scala.collection.JavaConverters._
 
 
@@ -224,7 +225,7 @@ object DemandGenerator {
         if (income > FIRST_CLASS_INCOME_MAX) {
           demand * FIRST_CLASS_PERCENTAGE_MAX(passengerType)
         } else {
-          demand * FIRST_CLASS_PERCENTAGE_MAX(passengerType) * income / FIRST_CLASS_INCOME_MAX
+          demand * FIRST_CLASS_PERCENTAGE_MAX(passengerType) * income.toDouble / FIRST_CLASS_INCOME_MAX
         }
       } else {
         0
@@ -232,7 +233,7 @@ object DemandGenerator {
     val businessClassDemand = if (income > BUSINESS_CLASS_INCOME_MAX) {
         demand * BUSINESS_CLASS_PERCENTAGE_MAX(passengerType)
       } else {
-        demand * BUSINESS_CLASS_PERCENTAGE_MAX(passengerType) * income / BUSINESS_CLASS_INCOME_MAX
+        demand * BUSINESS_CLASS_PERCENTAGE_MAX(passengerType) * income.toDouble / BUSINESS_CLASS_INCOME_MAX
       }
     val discountClassDemand = demand * DISCOUNT_CLASS_PERCENTAGE_MAX(passengerType) * (1 - Math.min(income.toDouble / 30_000, 0.5))
     //adding cutoffs to reduce the tail and have fewer passenger groups to calculate
