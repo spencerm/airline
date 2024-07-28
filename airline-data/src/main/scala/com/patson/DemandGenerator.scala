@@ -1,7 +1,7 @@
 package com.patson
 
 import java.util.{ArrayList, Collections}
-import com.patson.data.{AirportSource, CountrySource, DestinationSource, EventSource}
+import com.patson.data.{AirportSource, CountrySource, CycleSource, DestinationSource, EventSource}
 import com.patson.model.event.{EventType, Olympics}
 import com.patson.model.{PassengerType, _}
 import com.patson.model.AirportFeatureType.{AirportFeatureType, DOMESTIC_AIRPORT, FINANCIAL_HUB, GATEWAY_AIRPORT, INTERNATIONAL_HUB, ISOLATED_TOWN, OLYMPICS_IN_PROGRESS, OLYMPICS_PREPARATIONS, UNKNOWN, VACATION_HUB}
@@ -22,6 +22,7 @@ object DemandGenerator {
   private[this] val BUSINESS_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.16, PassengerType.BUSINESS -> 0.49, PassengerType.TOURIST -> 0.1, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0.25)
   private[this] val DISCOUNT_CLASS_PERCENTAGE_MAX: Map[PassengerType.Value, Double] = Map(PassengerType.TRAVELER -> 0.38, PassengerType.BUSINESS -> 0.09, PassengerType.TOURIST -> 0.6, PassengerType.ELITE -> 0, PassengerType.OLYMPICS -> 0)
   val MIN_DISTANCE = 50
+  val launchDemandFactor : Double = Math.min(1, (30 + CycleSource.loadCycle().toDouble / 24) / 100)
   
   import scala.collection.JavaConverters._
 
@@ -184,9 +185,9 @@ object DemandGenerator {
       if (fromAirport.countryCode == "AU" || fromAirport.countryCode == "NZ") {
         9.0 //they travel a lot; difficult to model
       } else if (fromAirport.countryCode == "NO" && toAirport.countryCode == "NO") {
-        4.0 //very busy domestic routes
+        4.5 //very busy domestic routes
       } else if (List("NO", "IS", "FO", "GL", "GR", "CY", "FJ", "KR").contains(fromAirport.countryCode)) {
-        2.0 //very high per capita flights https://ourworldindata.org/grapher/air-trips-per-capita
+        2.25 //very high per capita flights https://ourworldindata.org/grapher/air-trips-per-capita
       } else if (List("SE", "GB", "CL", "BS").contains(fromAirport.countryCode)) {
         1.5 // high per capita flights
       } else if (List("CD", "CG", "CV", "CI", "GN", "GW", "LR", "ML", "MR", "NE", "SD", "SO", "SS", "TD", "TG").contains(fromAirport.countryCode)) {
@@ -194,12 +195,12 @@ object DemandGenerator {
       } else if (List("AO", "BI", "BJ", "BW", "CM", "CV", "DJ", "ET", "GA", "GH", "GM", "GQ", "KE", "KM", "LS", "MG", "MU", "MW", "MZ", "NA", "NG", "RW", "SC", "SL", "SN", "ST", "SZ", "TZ", "UG", "ZA", "ZM", "ZW").contains(fromAirport.countryCode)) {
         6.0 //very poor roads
       } else if (fromAirport.countryCode == "IN" && toAirport.countryCode == "IN") {
-        0.8 //pops are just very large
+        0.72 //pops are just very large
       } else if (fromAirport.countryCode == "CN" && toAirport.countryCode == "CN") {
         if(distance < 900) {
-          0.64 //China has a very extensive highspeed rail network, pops are just very large
+          0.6 //China has a very extensive highspeed rail network, pops are just very large
         } else {
-          0.79
+          0.75
         }
       } else if (fromAirport.countryCode == "JP" && toAirport.countryCode == "JP" && distance < 500) {
         0.5 //also interconnected by HSR / intercity rail
@@ -214,7 +215,7 @@ object DemandGenerator {
     //set very low income floor, specifically traffic to/from central airports that is otherwise missing
     val buffLowIncomeAirports = if (fromAirport.income <= 5000 && toAirport.income <= 8000 && distance <= 3000 && (toAirport.size >= 4 || fromAirport.size >= 4)) addToVeryLowIncome(fromAirport.population) else 0
 
-    val baseDemand : Double = specialCountryModifier * airportAffinityMutliplier * fromPopIncomeAdjusted * toAirport.population.toDouble / 220_000 / 220_000 + buffLowIncomeAirports
+    val baseDemand : Double = specialCountryModifier * airportAffinityMutliplier * fromPopIncomeAdjusted * toAirport.population.toDouble / 225_000 / 225_000 + buffLowIncomeAirports
     (Math.pow(baseDemand, distanceReducerExponent)).toInt
   }
 
@@ -242,8 +243,8 @@ object DemandGenerator {
     LinkClassValues.getInstance(economyClassDemand.toInt, businessClassCutoff.toInt, firstClassDemand.toInt, discountClassCutoff.toInt)
   }
 
-  val ELITE_MIN_GROUP_SIZE = 6
-  val ELITE_MAX_GROUP_SIZE = 10
+  val ELITE_MIN_GROUP_SIZE = 5
+  val ELITE_MAX_GROUP_SIZE = 9
   val CLOSE_DESTINATIONS_RADIUS = 1800
 
   private def generateEliteDemand(airports : List[Airport]) : List[(Airport, List[(Airport, (PassengerType.Value, LinkClassValues))])] = {
@@ -263,7 +264,7 @@ object DemandGenerator {
         distance > CLOSE_DESTINATIONS_RADIUS
       }
 
-      var numberDestinations = Math.ceil(0.8 * fromAirport.popElite / groupSize.toDouble).toInt
+      var numberDestinations = Math.ceil(launchDemandFactor * 0.8 * fromAirport.popElite / groupSize.toDouble).toInt
 
       while (numberDestinations >= 0) {
         val destination = if (numberDestinations % 2 == 1 && closeDestinations.length > 5) {
