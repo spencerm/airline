@@ -87,7 +87,7 @@ function showAirplaneModelConfigurationsModal(modelConfigurationInfo) {
 }
 
 function addAirplaneInventoryDivByConfiguration(configurationDiv, modelId) {
-    var airplanesDiv = $("<div style='max-height: 60px; min-height: 20px; overflow: auto; box-shadow: inset 0 0 2px #ffffff82, 0 0 3px rgba(0, 0, 0, 0.2); padding: 3px 6px; border-radius: 12px; justify-content: center; display: flex;'></div>")
+    var airplanesDiv = $("<div style='max-height: 60px; min-height: 20px; overflow: auto; box-shadow: inset 0 0 2px #ffffff82, 0 0 3px rgba(0, 0, 0, 0.2); padding: 3px 6px; border-radius: 12px; justify-content: center; display: flex; flex-wrap: wrap;'></div>")
     var configurationId = configurationDiv.data("configuration").id
     var info = loadedModelsById[modelId]
     if (!info.isFullLoad) {
