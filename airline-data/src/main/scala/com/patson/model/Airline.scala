@@ -497,29 +497,18 @@ object AirlineGradeStockPrice {
 
 object AirlineGradeElites {
   val grades = List(
-    50 -> "None",
     100 -> "Deformed Plastic",
-    200 -> "Chunky Plastic",
-    400 -> "Plywood",
-    700 -> "Rusted Iron",
-    1300 -> "Stainless Steel",
-    2200 -> "Aluminum",
-    3100 -> "Copper",
-    3900 -> "Nickel",
-    4900 -> "Bronze",
-    5800 -> "Silver plated",
-    6845 -> "Silver",
-    8075 -> "Gold",
-    9550 -> "Rose Gold",
-    11250 -> "Platinum",
-    13300 -> "Palladium",
-    15700 -> "Rhenium",
-    18500 -> "Painite",
-    21800 -> "Diamond",
-    25700 -> "Money Printing Epic",
-    30000 -> "Unobtainium",
-    35000 -> "Antimatter",
-    41000 -> "Rat Fur"
+    300 -> "Plywood",
+    900 -> "Iron",
+    2000 -> "Stainless Steel",
+    4000 -> "Aluminum",
+    7200 -> "Nickel",
+    11600 -> "Silver",
+    17300 -> "Gold",
+    24200 -> "Palladium",
+    31400 -> "Rhenium",
+    39300 -> "Painite",
+    47200 -> "Rat Fur"
   )
 
   def findGrade(pax: Double): AirlineGrade = {
@@ -539,28 +528,18 @@ object AirlineGradeElites {
 
 object AirlineGradeTourists {
   val grades = List(
-    1000 -> "Unknown",
-    2000 -> "Discount Disaster",
-    4000 -> "Leisure Loser II",
-    7000 -> "Recreation Disapointment",
-    13000 -> "Semi Bargain Bin",
-    22000 -> "Resort Runner",
-    31000 -> "Bargain Bin",
-    39000 -> "Deal Seeker Favorite",
-    49000 -> "Bargain Bin Bonanza",
-    58000 -> "Theme Park Express",
-    68450 -> "Detours Delight",
-    80750 -> "Package Deal Pal",
-    95500 -> "Tourist Favorite",
-    112500 -> "Mega Mover",
-    133000 -> "Mega Mega Mover",
-    157000 -> "Cheapo Champion",
-    185000 -> "Budget Behemoth",
-    218000 -> "Travel + Leisure Best Airline Nominee",
-    257000 -> "The Tourist Trap Transport",
-    300000 -> "Mega Mega Mega Mover",
-    350000 -> "Penny Pinchers Paradise",
-    410000 -> "Travel + Leisure Best Airline Winner"
+    800 -> "Unknown",
+    3000 -> "Discount Disaster",
+    8000 -> "Leisure Loser",
+    18000 -> "Semi Bargain Bin",
+    36000 -> "Package Deal Pal",
+    65000 -> "Resort Runner",
+    104000 -> "Bargain Bin Bonanza",
+    156000 -> "Deal Seeker Favorite",
+    218000 -> "Detours Delight",
+    283000 -> "Cheapo Champion",
+    354000 -> "Budget Behemoth",
+    425000 -> "Penny Pinchers' Paradise"
   )
 
   def findGrade(pax: Double): AirlineGrade = {
