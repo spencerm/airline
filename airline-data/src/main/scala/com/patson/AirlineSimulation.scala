@@ -89,9 +89,9 @@ object AirlineSimulation {
             if (modelSet.size >= 12) {
               20
             } else if (modelSet.size >= 6) {
-              15
-            } else if (modelSet.size >= 3) {
               10
+            } else if (modelSet.size >= 3) {
+              5
             } else {
               0
             }
@@ -126,13 +126,13 @@ object AirlineSimulation {
               accumulator + linkConsumption.link.soldSeats.total * linkConsumption.link.distance
             }
             if (totalPassengerKilometers > 1_000_000_000) {
-              80
-            } else if (totalPassengerKilometers > 50_000_000) {
               60
+            } else if (totalPassengerKilometers > 50_000_000) {
+              45
             } else if (totalPassengerKilometers > 1_000_000) {
-              40
+              30
             } else if (totalPassengerKilometers > 10_000) {
-              20
+              15
             } else {
               0
             }
@@ -147,10 +147,10 @@ object AirlineSimulation {
         }
         reputationBreakdowns.append(ReputationBreakdown(ReputationType.AIRPORT_LOYALIST_RANKING, reputationByAirportChampions))
 
-        val reputationByTourists = 10 * AirlineGradeTourists.findGrade(airlineStat.tourists).level
+        val reputationByTourists = 20 * AirlineGradeTourists.findGrade(airlineStat.tourists).level
         reputationBreakdowns.append(ReputationBreakdown(ReputationType.TOURISTS, reputationByTourists))
 
-        val reputationByElites = 10 * AirlineGradeElites.findGrade(airlineStat.elites).level
+        val reputationByElites = 20 * AirlineGradeElites.findGrade(airlineStat.elites).level
         reputationBreakdowns.append(ReputationBreakdown(ReputationType.ELITES, reputationByElites))
 
         val reputationBonusFromAlliance: Double = allianceByAirlineId.get(airline.id) match {
