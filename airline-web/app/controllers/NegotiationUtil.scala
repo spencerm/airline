@@ -111,7 +111,7 @@ object NegotiationUtil {
     val newFrequency = newLink.futureFrequency()
     val frequencyDelta = newFrequency - existingLinkOption.map(_.futureFrequency()).getOrElse(0)
     if (frequencyDelta > 0) {
-      val helicopterBonus = if(newLink.getAssignedModel().getOrElse(Model.fromId(0)).airplaneType == HELICOPTER) 12 else 0
+      val helicopterBonus = if(newLink.getAssignedModel().getOrElse(Model.fromId(0)).airplaneType == HELICOPTER) 6 else 0
       val baseLevel = baseOption.map(_.scale).getOrElse(0)
       val maxFrequency = getMaxFrequencyByFlightType(baseLevel, newLink.flightType) + helicopterBonus
       val multiplier = getRequirementMultiplier(newLink.flightType)
@@ -209,7 +209,7 @@ object NegotiationUtil {
       requirements.append(NegotiationRequirement(INCREASE_FREQUENCY, frequencyChangeCost, s"$frequencyDelta Landing $slotText"))
     }
 
-    if (FlightType.getCategory(newLink.flightType) == DOMESTIC && CountryAirlineTitle.getTitle(newLink.to.countryCode, airline).title == APPROVED_AIRLINE ) { //inferring "approved" is lowest other possible title
+    if (newLink.from.countryCode == newLink.to.countryCode && CountryAirlineTitle.getTitle(newLink.to.countryCode, airline).title == APPROVED_AIRLINE ) { //inferring "approved" is lowest other possible title
       requirements.append(NegotiationRequirement(LACK_COUNTRY_TITLE, 1.0, s"Extra regulatory scrutiny! (Does not apply if you have Established country title)"))
     }
 
