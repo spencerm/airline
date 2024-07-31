@@ -11,7 +11,7 @@ and (max-device-width : 640px) {
     }
 /*and (orientation : portrait or max-device-width : 1024px) {*/
     .mainPanel, #map {
-        height: calc(75vh - 40px);
+        height: calc(75dvh - 32px);
         width: 100%;
     }
     .mainPanel {
@@ -36,13 +36,13 @@ and (max-device-width : 640px) {
     }
 
     #mainContainer {
-        height: calc(100vh - 40px);
+        height: calc(100dvh - 32px);
     }
 
     .sidePanel {
         width: calc(100% - 2px);
         position: absolute;
-        top: calc(75dvh - 36px);
+        top: calc(75dvh - 32px);
         left: 2px;
     }
     .table-container-y {

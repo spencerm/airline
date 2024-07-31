@@ -203,10 +203,25 @@ function updateAirlineBases() {
 }
 
 function setProgressWidth(elemId, current, past, next){
-    var percent = Math.max((current - past) / (next - past) * 100 - 2.5, 7)
+    var percent = Math.max((current - past) / (next - past) * 100, 0)
     var green = Math.min(percent * 5, 130)
     var red = 210 - (percent * 3).toFixed(0)
     $(elemId).css({'width': percent + "%", 'background-color': "rgb("+red+","+green+",44)"})
+}
+
+function addProgressGrades(track, grades){
+    const progressBar = document.querySelector(`#${track}Progress .threshold-bar`);
+    const maxGrade = Math.max(...grades);
+    grades.forEach((grade, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.title = `Level ${index + 1} at ${grade} ${track}`;
+
+      const positionPercentage = (grade / maxGrade) * 100;
+      dot.style.left = `${positionPercentage}%`;
+
+      progressBar.appendChild(dot);
+    });
 }
 
 function updateProgress(stats, stockPrice){
@@ -246,14 +261,14 @@ function updateProgress(stats, stockPrice){
     $('.touristsValueNext').text(activeAirline.tourists.touristsCeiling)
     $('.elitesValueNext').text(activeAirline.elites.elitesCeiling)
     $('.reputationValuePrev').text(activeAirline.gradeFloor)
-    $('.stockValuePrev').text("$"+activeAirline.stock.stockFloor)
-    $('.touristsValuePrev').text(activeAirline.tourists.touristsFloor)
-    $('.elitesValuePrev').text(activeAirline.elites.elitesFloor)
 
     setProgressWidth("#reputationBar", activeAirline.reputation, activeAirline.gradeFloor, activeAirline.gradeCeiling)
-    setProgressWidth("#stockBar", stockPrice, activeAirline.stock.stockFloor, activeAirline.stock.stockCeiling)
-    setProgressWidth("#touristsBar", activeAirline.tourists.tourists, activeAirline.tourists.touristsFloor, activeAirline.tourists.touristsCeiling)
-    setProgressWidth("#elitesBar", activeAirline.elites.elites, activeAirline.elites.elitesFloor, activeAirline.elites.elitesCeiling)
+//    setProgressWidth("#stockBar", stockPrice, 0, activeAirline.stock.grades.at(-1))
+//    addProgressGrades("stock", activeAirline.stock.grades)
+    setProgressWidth("#touristsBar", activeAirline.tourists.tourists, 0, activeAirline.tourists.grades.at(-1))
+    addProgressGrades("tourists", activeAirline.tourists.grades)
+    setProgressWidth("#elitesBar", activeAirline.elites.elites, 0, activeAirline.elites.grades.at(-1))
+    addProgressGrades("elites", activeAirline.elites.grades)
 
 //    updateMilestones(activeAirline.reputationBreakdowns.breakdowns)
 }
@@ -744,17 +759,21 @@ function editAirlineName() {
 }
 
 function validateAirlineName(airlineName) {
+    var airlineId = activeAirline.id
+    var url = "airlines/" + airlineId + "/airline-name"
+    var data = { "airlineName" : airlineName }
     $.ajax({
-        type: 'GET',
-        url: "signup/airline-name-check?airlineName=" + airlineName,
+        type: 'PUT',
+        url: url,
+        data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(result) {
             if (result.ok) {
-                enableButton('#officeCanvas .airlineNameInputSpan .confirm')
+                document.querySelector('#officeCanvas .airlineNameInputSpan .confirm').disabled = false
                 $('#officeCanvas .airlineNameInputSpan .warning').hide()
             } else {
-                disableButton('#officeCanvas .airlineNameInputSpan .confirm')
+                document.querySelector('#officeCanvas .airlineNameInputSpan .confirm').disabled = true
                 $('#officeCanvas .airlineNameInputSpan .warning').text(result.rejection)
                 $('#officeCanvas .airlineNameInputSpan .warning').show()
             }
@@ -769,29 +788,29 @@ function validateAirlineName(airlineName) {
 function confirmAirlineRename(airlineName) {
     promptConfirm("Change airline name to " + airlineName + " ? Can only rename every 30 days.", function() {
         var airlineId = activeAirline.id
-        	var url = "airlines/" + airlineId + "/airline-name"
-            var data = { "airlineName" : airlineName }
-        	$.ajax({
-        		type: 'PUT',
-        		url: url,
-        	    data: JSON.stringify(data),
-        	    contentType: 'application/json; charset=utf-8',
-        	    dataType: 'json',
-        	    success: function(airline) {
-        	    	loadUser(false)
-        	    	showOfficeCanvas()
-        	    },
-                error: function(jqXHR, textStatus, errorThrown) {
-        	            console.log(JSON.stringify(jqXHR));
-        	            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-        	    },
-                beforeSend: function() {
-                    $('body .loadingSpinner').show()
-                },
-                complete: function(){
-                    $('body .loadingSpinner').hide()
-                }
-        	});
+        var url = "airlines/" + airlineId + "/airline-name"
+        var data = { "airlineName" : airlineName }
+        $.ajax({
+            type: 'PUT',
+            url: url,
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(airline) {
+                loadUser(false)
+                showOfficeCanvas()
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            },
+            beforeSend: function() {
+                $('body .loadingSpinner').show()
+            },
+            complete: function(){
+                $('body .loadingSpinner').hide()
+            }
+        });
     })
 }
 

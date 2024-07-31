@@ -37,6 +37,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       "gradeFloor" -> JsNumber(airline.airlineGrade.reputationFloor),
       "gradeCeiling" -> JsNumber(airline.airlineGrade.reputationCeiling),
       "stock" -> JsObject(List(
+        "grades" -> JsArray(AirlineGradeStockPrice.grades.map { grade => JsNumber(grade._1) }),
         "stockPrice" -> JsNumber(airline.airlineInfo.stockPrice),
         "stockDescription" -> JsString(airline.airlineGradeStockPrice.description),
         "stockLevel" -> JsNumber(airline.airlineGradeStockPrice.level),
@@ -44,6 +45,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
         "stockFloor" -> JsNumber(airline.airlineGradeStockPrice.reputationFloor),
       )),
       "tourists" -> JsObject(List(
+        "grades" -> JsArray(AirlineGradeTourists.grades.map { grade => JsNumber(grade._1) }),
         "tourists" -> JsNumber(airline.stats.tourists),
         "touristsDescription" -> JsString(airline.airlineGradeTourists.description),
         "touristsLevel" -> JsNumber(airline.airlineGradeTourists.level),
@@ -51,6 +53,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
         "touristsFloor" -> JsNumber(airline.airlineGradeTourists.reputationFloor),
       )),
       "elites" -> JsObject(List(
+        "grades" -> JsArray(AirlineGradeElites.grades.map { grade => JsNumber(grade._1) }),
         "elites" -> JsNumber(airline.stats.elites),
         "elitesDescription" -> JsString(airline.airlineGradeElites.description),
         "elitesLevel" -> JsNumber(airline.airlineGradeElites.level),
@@ -779,7 +782,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def getFleet(airlineId : Int) = Action { request =>
     var result = Json.arr()
     AirplaneSource.loadAirplanesByOwner(airlineId)
-      .filter(_.constructedCycle != 0) //filtering out non-player airplanes
+//      .filter(_.constructedCycle != 0) //filtering out non-player airplanes
       .groupBy(_.model).toList
       .sortBy(_._1.name).foreach {
         case(model, airplanes) => result = result.append(Json.obj("name" -> model.name, "quantity" -> airplanes.size))
@@ -972,14 +975,14 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       val newName = request.body.asInstanceOf[AnyContentAsJson].json.\("airlineName").as[String]
       //Validate
       getRenameRejection(request.user, newName) match {
-        case Some(rejection) => BadRequest(Json.obj("reason"-> rejection))
+        case Some(rejection) => Ok(Json.obj("rejection" -> rejection))
         case None =>
           AirlineSource.updateAirlineName(airlineId, request.user.name, newName)
           SearchUtil.updateAirline(AirlineCache.getAirline(airlineId).get)
-          Ok(Json.obj("name" -> newName))
+          Ok(Json.obj("ok" -> true))
       }
     } else {
-      BadRequest("Cannot Set airline Code")
+      BadRequest("Cannot Set airline name")
     }
   }
  def getLogo(airlineId : Int) = Action {
@@ -1207,7 +1210,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     UserSource.loadUserByAirlineId(airline.id) match {
       case Some(user) =>
         if (user.level <= 0) {
-          return Some(s"User is not allowed to rename airline, username ${user.userName}")
+          return Some(s"User is not a pateron and cannot rename airline.")
         }
         val cooldown = getRenameCooldown(airline)
         if (cooldown > 0) {
