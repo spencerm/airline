@@ -1829,7 +1829,7 @@
 				<div id="officeCanvas" class="canvas" style="display: none; min-width: 400px;">
 					<div style="box-sizing: border-box;display: flex;gap: 8px;flex-wrap: wrap;" class="officeCanvasLeftGroup">
 
-						<div class="section min-w-52">
+						<div class="section min-w-52 max-w-72">
 							<h2 class="text-center text-underline">
 								<span class="airlineName">Airline Name</span>
 								<span class="clickable editButton"><img src='@routes.Assets.versioned("images/icons/gear.png")'style="vertical-align: middle;" onclick="editAirlineName()"/></span>
@@ -1863,20 +1863,20 @@
 							<h5 class="pt-4">Airline Settings</h5>
 							<p>Employee Quality:
 								<span id="serviceFundingDisplaySpan">
-										<span id="targetServiceQuality"></span>
-										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
-									</span>
+									<span id="targetServiceQuality"></span>
+									<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
+								</span>
 								<span id="serviceFundingInputSpan">
-										<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
-										<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
-										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
-									</span>
+									<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
+									<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
+									<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
+								</span>
 							</p>
-							<p class="cell label">Current Employee Quality: <span id="currentServiceQuality"></span>
+							<p>Current Employee Quality: <span id="currentServiceQuality"></span>
 								<span class="tooltip">
 									<img src='@routes.Assets.versioned("images/icons/information.svg")'>
 									<span class="tooltiptext alignLeft below" style="width: 280px;">
-										<p>Adjusting this global parameter affects the crew cost and quality of each flight.</p>
+										Adjusting this global parameter affects the crew cost and quality of each flight.
 									</span>
 								</span>
 							</p>
