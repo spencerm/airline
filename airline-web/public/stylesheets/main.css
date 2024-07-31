@@ -607,6 +607,11 @@ div.button, button.button, .ajax-file-upload {
     color: var(--button-hover-color);
 }
 
+.button.small {
+    height: 20px;
+    width: 20px;
+}
+
 div.glow, span.glow, img.glow {
     animation: glow 2s infinite alternate;
 }
@@ -1414,21 +1419,46 @@ iframe.clip {
 }
 
 .threshold-section {
-    max-width: 180px;
+    max-width: 100%;
     margin: 0 auto;
+}
+.threshold-bar-container {
+    overflow: scroll;
+    height: 20px;
+    padding: 12px 4px;
 }
 .threshold-bar {
     position: relative;
-    height: 24px;
-    width: 128px;
-    border: 2px solid #333;
+    height: 4px;
+    width: 100%;
+    border: 1px solid #555;
     border-radius: 25px;
     margin: auto;
-    overflow: hidden;
+    width: 2400px;
+    overflow: visible;
+}
+.threshold-bar.short-fat {
+    width: 128px;
+    height: 24px;
 }
 .threshold-bar .text-center {
     font-size: 1.1rem;
     line-height: 1.25;
+}
+.threshold-bar .dot {
+    position: absolute;
+    top: -6px;
+    width: 10px;
+    height: 12px;
+    padding: 2px;
+    border-radius: 10%;
+    z-index: 1;
+    border-left: 2px solid gold;
+    transition: border-color .4s;
+}
+.dot:hover {
+    border-left-color: whitesmoke;
+    cursor: pointer;
 }
 .threshold-bar-bg {
     background: darkgreen;
@@ -1600,6 +1630,10 @@ i, .italic {
 .h-6 { height: 24px; }
 .h-7 { height: 28px; }
 .h-8 { height: 32px; }
+.min-w-40 { min-width: 10rem; }
+.min-w-52 { min-width: 13rem; }
+.min-w-80 { min-width: 20rem; }
+.min-w-96 { min-width: 24rem; }
 .w-full { width: 100% !important; }
 .w-half { width: 50% !important; }
 .max-w-32 {max-width: 8rem;}
@@ -1621,7 +1655,7 @@ i, .italic {
 .flex-row {
     display: flex;
     width: 100%;
-    gap: 0.5rem;
+    gap: 0 0.5rem;
 }
 .flex-wrap {
     flex-wrap: wrap;
@@ -1679,6 +1713,12 @@ i, .italic {
 .flex-container-width-quarter > div, .flex-container-width-quarter > button {
     flex: 1 1 calc(25% - 0.5rem);
     box-sizing: border-box;
+}
+.items-start {
+    align-items: flex-start;
+}
+.items-end {
+    align-items: flex-end;
 }
 .center {
     margin: 12px auto;

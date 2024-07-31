@@ -1829,14 +1829,27 @@
 				<div id="officeCanvas" class="canvas" style="display: none; min-width: 400px;">
 					<div style="box-sizing: border-box;display: flex;gap: 8px;flex-wrap: wrap;" class="officeCanvasLeftGroup">
 
-						<div class="section" style="min-width:240px;">
-							<h2 class="airlineName text-center text-underline">Airline Name</h2>
+						<div class="section min-w-52">
+							<h2 class="text-center text-underline">
+								<span class="airlineName">Airline Name</span>
+								<span class="clickable editButton"><img src='@routes.Assets.versioned("images/icons/gear.png")'style="vertical-align: middle;" onclick="editAirlineName()"/></span>
+							</h2>
+							<span class="airlineNameInputSpan" style="display: none;">
+								<input class="airlineNameInput" type="text" oninput="validateAirlineName($(this).val())"/>
+								<button onclick="confirmAirlineRename($('#officeCanvas .airlineNameInput').val())" class="confirm">
+									<img src='@routes.Assets.versioned("images/icons/tick.png")'/>
+								</button>
+								<button onclick="cancelAirlineRename()">
+									<img src='@routes.Assets.versioned("images/icons/cross.png")' class='cancel'/>
+								</button>
+								<div class="warning" style="display:none;"></div>
+							</span>
+
 							<div class="reputationStars pb-4 text-center"></div>
 							<div class="threshold-section">
-<!--								<h3 class="text-center leading-tight pb-1">Reputation</h3>-->
 								<p class="text-center leading-tight"><i class="reputationLevel">Level 1</i></p>
 								<p class="text-center leading-tight pb-2 reputationText">Baby Airline</p>
-								<div class="threshold-bar">
+								<div class="threshold-bar short-fat reputation">
 									<p class="text-center font-mono reputationValueCurrent">0</p>
 									<div id="reputationBar" class="threshold-bar-bg"></div>
 								</div>
@@ -1846,115 +1859,113 @@
 									<p class="text-center">Reputation Breakdown</p>
 									<ul class="reputationDetails small"></ul>
 								</div>
-								<p class="small i">(reputation moves slowly towards total)</p>
 							</div>
+							<h5 class="pt-4">Airline Settings</h5>
+							<p>Employee Quality:
+								<span id="serviceFundingDisplaySpan">
+										<span id="targetServiceQuality"></span>
+										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
+									</span>
+								<span id="serviceFundingInputSpan">
+										<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
+										<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
+										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
+									</span>
+							</p>
+							<p class="cell label">Current Employee Quality: <span id="currentServiceQuality"></span>
+								<span class="tooltip">
+									<img src='@routes.Assets.versioned("images/icons/information.svg")'>
+									<span class="tooltiptext alignLeft below" style="width: 280px;">
+										<p>Adjusting this global parameter affects the crew cost and quality of each flight.</p>
+									</span>
+								</span>
+							</p>
+							<p class="">Projected Employee Costs: $<span id="fundingProjection"></span></p>
+
+							<p class="pt-4">Auto Airplane Renewal:
+								<span id="airplaneRenewalDisplaySpan">
+										<span id="airplaneRenewal"></span>
+										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editAirplaneRenewal()"/>
+									</span>
+								<span id="airplaneRenewalInputSpan" style="display:none;">
+										Condition Below&nbsp;<input id="airplaneRenwalInput" type="number" maxlength="2" size="2"/>%
+										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setAirplaneRenewal($('#airplaneRenwalInput').val())"/>
+										<img src='@routes.Assets.versioned("images/icons/cross.png")' class='button' style="vertical-align: middle;" onclick="setAirplaneRenewal()"/>
+									</span>
+							</p>
+							<p class="py-4">Minimum Renewal Balance: <span id="minimumRenewalBalanceDisplaySpan">
+										<span id="minimumRenewalBalance"></span>
+										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editMinimumRenewalBalance()"/>
+									</span>
+								<span id="minimumRenewalBalanceInputSpan" style="display:none;">
+											Minimum Renewal Balance&nbsp;<input id="minimumRenewalBalanceInput" type="number" maxlength="12" size="2" onkeyup="checkEditMinimumRenewalBalanceInput($(this).val())"/>
+											<span class="warning" style="display: none;">Value must be a positive integer less than 999,999,999,999</span>
+											<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setMinimumRenewalBalance($('#minimumRenewalBalanceInput').val())"/>
+									</span>
+							</p>
 						</div>
 
-						<div class="section" style="flex:1">
-							<div class="flex-container-width-third py-2">
-								<div class="threshold-section">
-									<h4 class="text-center leading-tight">Stock Price</h4>
-									<p class="text-center leading-tight"><i class="stockLevel">Level 1</i></p>
-									<p class="text-center leading-tight pb-2 stockText">Worthless</p>
-									<div class="threshold-bar">
-										<p class="text-center font-mono stockValueCurrent">0</p>
-										<p class="text-center font-mono stockValueNext"></p>
-										<div id="stockBar" class="threshold-bar-bg"></div>
-									</div>
-									<p class="small max-w-32 mx-auto flex-container-width-half"><span class="font-mono stockValuePrev text-left">0</span><span class="font-mono stockValueNext text-right">10</span></p>
-									<div class="py-4 text-center">
-										<p>Weekly Dividends:</p>
-										<p id="weeklyDividendsMin">Company value must be > $100m</p>
-										<div id="weeklyDividendsDisplaySpan" style="display:none;">
-											<span id="dividends"></span>
-											<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editDividends()"/>
-											<p><small>(in millions)</small></p>
-										</div>
-										<div id="weeklyDividendsInputSpan" style="display:none;">
-											<input id="weeklyDividendsInput" size="4" type="number" min="0" max="100" title="Weekly Dividends Input" class="text-lg"/>
-											<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setDividendsLevel($('#weeklyDividendsInput').val())"/>
-											<p class="warning" style="display: none;">error</p>
-										</div>
-									</div>
-								</div>
+						<div class="section min-w-80" style="flex:1; max-width: 100%; overflow: hidden;">
+							<h4>Reputation tracks</h4>
+<!--							<div class="threshold-section" id="stockProgress">-->
+<!--								<div class="flex-row items-end">-->
+<!--									<h4 class="leading-tight m-0 pr-2"><span class="stockValueCurrent">0</span> Stock Price</h4>-->
+<!--									<p class="leading-tight pr-2"><i class="stockLevel pr-1">Level 0: </i>: <span class="stockText">Worthless</span></p>-->
+<!--									<p class="leading-tight">Next level at <span class="stockValueNext"></span></p>-->
+<!--								</div>-->
+<!--								<div class="threshold-bar-container">-->
+<!--									<div class="threshold-bar">-->
+<!--										<div id="stockBar" class="threshold-bar-bg"></div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<p class="small max-w-32 mx-auto flex-container-width-half"><span class="font-mono stockValuePrev text-left">0</span><span class="font-mono stockValueNext text-right">10</span></p>-->
+<!--								<div class="py-4 text-center">-->
+<!--									<p>Weekly Dividends:</p>-->
+<!--									<p id="weeklyDividendsMin">Company value must be > $100m</p>-->
+<!--									<div id="weeklyDividendsDisplaySpan" style="display:none;">-->
+<!--										<span id="dividends"></span>-->
+<!--										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editDividends()"/>-->
+<!--										<p><small>(in millions)</small></p>-->
+<!--									</div>-->
+<!--									<div id="weeklyDividendsInputSpan" style="display:none;">-->
+<!--										<input id="weeklyDividendsInput" size="4" type="number" min="0" max="100" title="Weekly Dividends Input" class="text-lg"/>-->
+<!--										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setDividendsLevel($('#weeklyDividendsInput').val())"/>-->
+<!--										<p class="warning" style="display: none;">error</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
 
-								<div class="threshold-section">
-									<h4 class="text-center leading-tight">Tourists Ticketed</h4>
-									<p class="text-center leading-tight"><i class="touristsLevel">Level 1</i></p>
-									<p class="text-center leading-tight pb-2 touristsText">Worthless</p>
+							<div class="threshold-section" id="touristsProgress">
+								<div class="flex-row items-end flex-wrap">
+									<div class="min-w-52 pr-2">
+										<h4 class="leading-tight m-0">Tourists Ticketed: <span class="touristsValueCurrent">0</span></h4>
+										<p class="leading-tight">Next level at <span class="touristsValueNext"></span> tourists ticketed</p>
+									</div>
+									<p class="leading-tight pr-2 min-w-40"><span class="touristsLevel pr-1">Level 0</span>: <i class="touristsText">Worthless</i></p>
+								</div>
+								<div class="threshold-bar-container">
 									<div class="threshold-bar">
-										<p class="text-center font-mono touristsValueCurrent">0</p>
-										<p class="text-center font-mono touristsValueNext"></p>
 										<div id="touristsBar" class="threshold-bar-bg"></div>
 									</div>
-									<p class="small max-w-32 mx-auto flex-container-width-half"><span class="font-mono touristsValuePrev text-left">0</span> <span class="font-mono touristsValueNext text-right">10</span></p>
 								</div>
-
-								<div class="threshold-section">
-									<h4 class="text-center leading-tight">Elites Ticketed</h4>
-									<p class="text-center leading-tight"><i class="elitesLevel">Level 1</i></p>
-									<p class="text-center leading-tight pb-2 elitesText">Worthless</p>
-									<div class="threshold-bar">
-										<p class="text-center font-mono elitesValueCurrent">0</p>
-										<p class="text-center font-mono elitesValueNext"></p>
-										<div id="elitesBar" class="threshold-bar-bg"></div>
-									</div>
-									<p class="text-right small max-w-32 mx-auto flex-container-width-half"><span class="font-mono elitesValuePrev text-left">0</span> <span class="font-mono elitesValueNext">10</span></p>
-									<p class="pt-4">Employee Quality:
-										<span id="serviceFundingDisplaySpan">
-											<span id="targetServiceQuality"></span>
-											<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
-										</span>
-										<span id="serviceFundingInputSpan">
-											<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
-											<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
-											<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
-										</span>
-									</p>
-									<p class="">Projected Employee Costs: $<span id="fundingProjection"></span></p>
-									<p class="cell label">Current Employee Quality: <span id="currentServiceQuality"></span>
-<!--										<span class="tooltip">-->
-<!--											<img src='@routes.Assets.versioned("images/icons/information.png")'>-->
-<!--											<span class="tooltiptext alignLeft below" style="width: 280px;">-->
-<!--												<p><b>Employee quality</b> is 50% of a flight's <b>overall quality</b>.</p>-->
-<!--												<p>Adjusting this global parameter affects the crew cost of each flight.</p>-->
-<!--											</span>-->
-<!--										</span>-->
-									</p>
-									<p class="pt-4">Auto Airplane Renewal:
-										<span id="airplaneRenewalDisplaySpan">
-											<span id="airplaneRenewal"></span>
-											<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editAirplaneRenewal()"/>
-										</span>
-										<span id="airplaneRenewalInputSpan" style="display:none;">
-											Condition Below&nbsp;<input id="airplaneRenwalInput" type="number" maxlength="2" size="2"/>%
-											<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setAirplaneRenewal($('#airplaneRenwalInput').val())"/>
-											<img src='@routes.Assets.versioned("images/icons/cross.png")' class='button' style="vertical-align: middle;" onclick="setAirplaneRenewal()"/>
-										</span>
-									</p>
-									<p class="py-4">Minimum Renewal Balance: <span id="minimumRenewalBalanceDisplaySpan">
-											<span id="minimumRenewalBalance"></span>
-											<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editMinimumRenewalBalance()"/>
-										</span>
-										<span id="minimumRenewalBalanceInputSpan" style="display:none;">
-												Minimum Renewal Balance&nbsp;<input id="minimumRenewalBalanceInput" type="number" maxlength="12" size="2" onkeyup="checkEditMinimumRenewalBalanceInput($(this).val())"/>
-												<span class="warning" style="display: none;">Value must be a positive integer less than 999,999,999,999</span>
-												<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setMinimumRenewalBalance($('#minimumRenewalBalanceInput').val())"/>
-										</span>
-									</p>
-								</div>
-<!--								<span class="clickable editButton"><img src='@routes.Assets.versioned("images/icons/gear.png")'style="vertical-align: middle;" onclick="editAirlineName()"/></span>-->
-<!--								<span class="airlineNameInputSpan" style="display: none;">-->
-<!--										<input class="airlineNameInput" type="text" oninput="validateAirlineName($(this).val())"/>-->
-<!--										<span class="button confirm"><img src='@routes.Assets.versioned("images/icons/tick.png")' style="vertical-align: middle;" onclick="confirmAirlineRename($('#officeCanvas .airlineNameInput').val())"/></span>-->
-<!--										<img src='@routes.Assets.versioned("images/icons/cross.png")' class='button cancel' style="vertical-align: middle;" onclick="cancelAirlineRename()"/>-->
-<!--										<div class="warning" style="display:none;"></div>-->
-<!--									</span>-->
-
-
 							</div>
 
-							<div id="milestones" class="">
+							<div class="threshold-section" id="elitesProgress">
+								<div class="flex-row items-end flex-wrap">
+									<div class="min-w-52 pr-2">
+										<h4 class="leading-tight m-0">Elites Ticketed: <span class="elitesValueCurrent">0</span></h4>
+										<p class="leading-tight">Next level at <span class="elitesValueNext"></span> elites ticketed</p>
+									</div>
+									<p class="leading-tight pr-2 min-w-40"><span class="elitesLevel pr-1">Level 0</span>: <i class="elitesText"></i></p>
+								</div>
+								<div class="threshold-bar-container">
+									<div class="threshold-bar">
+										<div id="elitesBar" class="threshold-bar-bg"></div>
+									</div>
+								</div>
+							</div>
+
+							<div id="milestones" class="pt-8">
 								<h4>Milestones</h4>
 								<div class="flex-container-width-third py-2">
 									<div>
@@ -2007,12 +2018,12 @@
 										<h5>Aircraft Types</h5>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono text-sm flex-center">
-												3<img height="16" id="m-aircraft1" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">5 <img height="16" src="/assets/images/icons/reputation.svg">
+												4<img height="16" id="m-aircraft1" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">5 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">
 											<div class="font-mono flex-center">
-												6<img height="16" id="m-aircraft2" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">5 <img height="16" src="/assets/images/icons/reputation.svg">
+												8<img height="16" id="m-aircraft2" class="pl-1" src="/assets/images/icons/cross.png"></div><div style="color:gold;display: flex;flex-direction: row;" class="">5 <img height="16" src="/assets/images/icons/reputation.svg">
 											</div>
 										</div>
 										<div style="width: 120px;justify-content: space-between;" class="flex-row py-1">

@@ -161,13 +161,14 @@ class ProfileApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       if (!airline.isInitialized) {
         val airport = AirportCache.getAirport(airportId, true).get
         val profile = generateProfiles(airline, airport)(profileId)
+        val targetQuality = Math.max(35, profile.quality)
 
         val base = AirlineBase(airline, airport, airport.countryCode, 1, CycleSource.loadCycle(), true)
         AirlineSource.saveAirlineBase(base)
         airline.setCountryCode(airport.countryCode)
         airline.setReputation(profile.reputation)
         airline.setCurrentServiceQuality(profile.quality)
-        airline.setTargetServiceQuality(35)
+        airline.setTargetServiceQuality(targetQuality)
         airline.setBalance(profile.cash)
         AirportSource.updateAirlineAppeal(airportId, airlineId, AirlineAppeal(loyalty = 0))
 

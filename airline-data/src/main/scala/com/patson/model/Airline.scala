@@ -483,7 +483,7 @@ object AirlineGradeStockPrice {
   def findGrade(stockPrice: Double): AirlineGrade = {
     val indexedGrades = grades.zipWithIndex
     val (gradeInfo, index) = indexedGrades.find(_._1._1 > stockPrice).getOrElse(indexedGrades.last)
-    val ceiling = gradeInfo._1.toDouble
+    val ceiling = gradeInfo._1
     val description = gradeInfo._2
 
     val floor = index match {
@@ -498,17 +498,17 @@ object AirlineGradeStockPrice {
 object AirlineGradeElites {
   val grades = List(
     100 -> "Deformed Plastic",
-    300 -> "Plywood",
-    900 -> "Iron",
-    2000 -> "Stainless Steel",
-    4000 -> "Aluminum",
-    7200 -> "Nickel",
-    11600 -> "Silver",
-    17300 -> "Gold",
-    24200 -> "Palladium",
-    31400 -> "Rhenium",
-    39300 -> "Painite",
-    47200 -> "Rat Fur"
+    400 -> "Plywood",
+    1600 -> "Iron",
+    3900 -> "Stainless Steel",
+    7800 -> "Aluminum",
+    12400 -> "Nickel",
+    17400 -> "Silver",
+    22700 -> "Gold",
+    28300 -> "Palladium",
+    34000 -> "Rhenium",
+    40800 -> "Painite",
+    47900 -> "Rat Fur"
   )
 
   def findGrade(pax: Double): AirlineGrade = {
@@ -528,18 +528,18 @@ object AirlineGradeElites {
 
 object AirlineGradeTourists {
   val grades = List(
-    800 -> "Unknown",
-    3000 -> "Discount Disaster",
-    8000 -> "Leisure Loser",
-    18000 -> "Semi Bargain Bin",
-    36000 -> "Package Deal Pal",
-    65000 -> "Resort Runner",
-    104000 -> "Bargain Bin Bonanza",
-    156000 -> "Deal Seeker Favorite",
-    218000 -> "Detours Delight",
-    283000 -> "Cheapo Champion",
-    354000 -> "Budget Behemoth",
-    425000 -> "Penny Pinchers' Paradise"
+    900 -> "Unknown",
+    4000 -> "Discount Disaster",
+    14000 -> "Leisure Loser",
+    35000 -> "Semi Bargain Bin",
+    70000 -> "Package Deal Pal",
+    112000 -> "Resort Runner",
+    157000 -> "Bargain Bin Bonanza",
+    204000 -> "Deal Seeker Favorite",
+    255000 -> "Detours Delight",
+    306000 -> "Cheapo Champion",
+    367000 -> "Budget Behemoth",
+    431000 -> "Penny Pinchers' Paradise"
   )
 
   def findGrade(pax: Double): AirlineGrade = {

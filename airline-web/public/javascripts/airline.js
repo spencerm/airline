@@ -59,7 +59,7 @@ function refreshTopBar(airline) {
 	$(".reputationStars").empty()
 
 	//mobile
-	$(".reputation").text(airline.reputation)
+	$(".reputation.label").text(airline.reputation)
 	//$(".reputationLevel").text(" " + airline.gradeDescription + " (Next Grade: " + airlineGradeLookup[airline.gradeValue] + ")")
 
 	//desktop

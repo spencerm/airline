@@ -916,7 +916,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         if (!toAirport.isGateway() && toAirport.size <= 2 && relationship != 5) {
           return Some("Destination airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
         }
-        if (!toAirport.isGateway() && fromAirport.size <= 2 && relationship != 5) {
+        if (!fromAirport.isGateway() && fromAirport.size <= 2 && relationship != 5) {
           return Some("Home airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
         }
 

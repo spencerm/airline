@@ -88,9 +88,9 @@ object AirlineSimulation {
             val modelSet = airplanes.map(_.model).toSet
             if (modelSet.size >= 12) {
               20
-            } else if (modelSet.size >= 6) {
+            } else if (modelSet.size >= 8) {
               10
-            } else if (modelSet.size >= 3) {
+            } else if (modelSet.size >= 4) {
               5
             } else {
               0
