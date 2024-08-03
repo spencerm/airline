@@ -107,31 +107,31 @@ object GeoDataGenerator extends App {
       }
 
 
-      val icaoToCsvId = mutable.HashMap[Icao, Int]()
+      val iataToCsvId = mutable.HashMap[Iata, Int]()
       //process patches, unfortunately to avoid flow, we have to load the csv airport ID here
       Await.result(GeoDataGenerator.getAirport(), Duration.Inf).map { csvAirport =>
         val rawAirport = csvAirport.airport
         val csvAirportId = csvAirport.csvAirportId
-        icaoToCsvId.put(rawAirport.icao, csvAirportId)
+        iataToCsvId.put(rawAirport.iata, csvAirportId)
       }
 
       loadPatchRunways().foreach {
-        case (icao, patchRunways) =>
-          icaoToCsvId.get(icao) match {
+        case (iata, patchRunways) =>
+          iataToCsvId.get(iata) match {
             case Some(csvId) =>
               val list = result.getOrElseUpdate(csvId, ListBuffer[Runway]())
               //make sure no duplicates
               patchRunways.foreach { patchRunway =>
                 list.find(_.code.equals(patchRunway.code)) match {
                   case Some(duplicate) =>
-                    println(s"Skipping patch runways for $icao as same code for runway $duplicate is already found for $patchRunway!")
+                    println(s"Skipping patch runways for $iata as same code for runway $duplicate is already found for $patchRunway!")
                   case None =>
                     list += patchRunway
                 }
               }
 
             case None =>
-              println(s"Cannot patch runways for $icao as CSV id not found!")
+              println(s"Cannot patch runways for $iata as CSV id not found!")
           }
 
       }
@@ -139,7 +139,7 @@ object GeoDataGenerator extends App {
     }
   }
 
-  type Icao = String
+  type Iata = String
 
   def getAirport() : Future[List[CsvAirport]] = {
     Future {
@@ -339,7 +339,7 @@ object GeoDataGenerator extends App {
          * Starting with small airports, then larger ones, in arbitrary income bands
          */
         //https://en.wikipedia.org/wiki/List_of_countries_by_number_of_millionaires
-        val underRepresentedCountries = List("ES", "PT", "GB", "FR", "BE", "NL", "LU", "CH", "DE", "AT", "DK", "NO", "SE", "FI", "IT", "GR", "MT", "CA", "AU", "NZ", "CN", "HK", "TW", "KR", "JP", "MA", "NA", "AE")
+        val underRepresentedCountries = List("ES", "PT", "GB", "FR", "BE", "NL", "LU", "CH", "DE", "AT", "DK", "NO", "SE", "FI", "IT", "GR", "MT", "CA", "AU", "NZ", "CN", "HK", "MO", "TW", "KR", "JP", "MA", "NA", "AE")
         //https://www.henleyglobal.com/publications/wealthiest-cities
         val nationalCenters = List("ALA","TAS","IKA","KHI","DEL","BOM","PEK","PVG","FNJ","ICN","GMP","HND","NRT","KIX","ITM","KUL","SGN","CGK","DPS","YYZ","YVR","SFO","MIA","FLL","PBI","MAD","BCN","LIS","LHR","LGW","LTN","EDI","CDG","ORY","CPH","ARN","FCO","CIA","MXP","BGY","LIN","BUD","ACC","KGL","LUN","MPM","NBO")
 
@@ -355,7 +355,7 @@ object GeoDataGenerator extends App {
             giniMap.getOrElse(airport.countryCode, 69.0) + 5
           } else if (nationalCenters.contains(airport.iata)) {
             giniMap.getOrElse(airport.countryCode, 69.0) + 6 //more inequality & wealth in national centers
-          } else if (List("HYD","BLR","MAA","PKX","SHA","CAN","SZX","MNL","BKK","CAI","ADD","MEX","YYC","SJC","JFK","EWR","LGA","IAD","IAH","LAX").contains(airport.iata)) {
+          } else if (List("HYD","BLR","MAA","PKX","SHA","CAN","SZX","MNL","BKK","CAI","ADD","MEX","YYC","SJC","JFK","EWR","LGA","IAD","IAH","LAS","LAX").contains(airport.iata)) {
             giniMap.getOrElse(airport.countryCode, 69.0) + 2.5
           } else {
             giniMap.getOrElse(airport.countryCode, 69.0)
@@ -383,10 +383,10 @@ object GeoDataGenerator extends App {
             (elitePop + 179) * 3
           } else if (List("HKG", "PEK", "PVG", "ARN", "ZRH", "MXP", "LIN", "BGY", "FCO", "SEA", "IAH", "ASE", "JAC", "YUL", "YYC", "TLV").contains(airport.iata)) {
             ((elitePop + 149) * 2.25).toInt
-          } else if (List("HND", "ICN", "HGH", "PKX", "SHA", "BOM", "AUH", "LIS", "MAD", "BCN", "CPH", "FRA", "CDG", "AMS", "LHR", "LGW", "LTN", "STN", "BOS", "HOU", "SFO", "STS", "SNA", "BUR", "ISP", "HTO", "HPN", "HVN", "BDL").contains(airport.iata)) {
+          } else if (List("HND", "ICN", "MFM", "HGH", "PKX", "SHA", "BOM", "AUH", "LIS", "MAD", "BCN", "CPH", "FRA", "CDG", "AMS", "LHR", "LGW", "LTN", "STN", "BOS", "HOU", "SFO", "STS", "SNA", "BUR", "ISP", "HTO", "HPN", "HVN", "BDL").contains(airport.iata)) {
             ((elitePop + 99) * 1.5).toInt
           } else if (elitePop > 0 && elitePop < 100 && underRepresentedCountries.contains(airport.countryCode)) {
-            Math.max(Random.nextInt(10) * 10, elitePop * 5)
+            Math.min((population * 0.6).toInt, Math.max(Random.nextInt(10) * 10, elitePop * 5))
           } else if (elitePop > 0 && elitePop < 10) {
             10
           } else if(elitePop <= 1) {
@@ -570,8 +570,8 @@ object GeoDataGenerator extends App {
   }
 
 
-  def loadPatchRunways() : Map[Icao, List[Runway]] = {
-    val patchRunwayFiles = List("runway-patch-2022-dec.csv")
+  def loadPatchRunways() : Map[Iata, List[Runway]] = {
+    val patchRunwayFiles = List("runway-patch-2024-jul.csv")
 
     val result = scala.collection.mutable.HashMap[String, collection.mutable.ListBuffer[Runway]]()
     patchRunwayFiles.foreach { file =>
@@ -587,11 +587,11 @@ object GeoDataGenerator extends App {
         try {
           val length = info(1).toInt
 
-          val icao = info(0)
+          val iata = info(0)
           val code = info(3)
 
-          val runway = Runway(length, code, RunwayType.withName(info(2)), true)
-          val list = result.getOrElseUpdate(icao, ListBuffer[Runway]())
+          val runway = Runway(length, code, RunwayType.withName(info(2)), lighted = true)
+          val list = result.getOrElseUpdate(iata, ListBuffer[Runway]())
           list += runway
         } catch {
           case _ : NumberFormatException => None
