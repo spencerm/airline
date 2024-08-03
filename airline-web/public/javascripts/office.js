@@ -203,10 +203,10 @@ function updateAirlineBases() {
 }
 
 function setProgressWidth(elemId, current, past, next){
-    var percent = Math.max((current - past) / (next - past) * 100, 0)
-    var green = Math.min(percent * 5, 130)
-    var red = 210 - (percent * 3).toFixed(0)
-    $(elemId).css({'width': percent + "%", 'background-color': "rgb("+red+","+green+",44)"})
+    const percent = Math.max((current - past) / (next - past) * 100, 0)
+    const red = Math.max((250 - percent > 22 ? (percent - 22) * 4 : 0).toFixed(0), 0)
+    const green = Math.min(percent * 11, 230)
+    $(elemId).css({'width': percent + "%", 'background-color': "rgba("+red+","+green+",0,0.8)"})
 }
 
 function addProgressGrades(track, grades){

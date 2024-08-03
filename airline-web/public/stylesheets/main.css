@@ -1440,10 +1440,13 @@ iframe.clip {
 .threshold-bar.short-fat {
     width: 128px;
     height: 24px;
+    overflow: hidden;
 }
 .threshold-bar .text-center {
     font-size: 1.1rem;
     line-height: 1.25;
+    position: relative;
+    z-index: 1;
 }
 .threshold-bar .dot {
     position: absolute;
@@ -1465,7 +1468,6 @@ iframe.clip {
     height: 100%;
     position: absolute;
     top: 0;
-    z-index: -1;
 }
 .reputationDetails {
     margin: 12px auto;
@@ -1634,6 +1636,8 @@ i, .italic {
 .min-w-52 { min-width: 13rem; }
 .min-w-80 { min-width: 20rem; }
 .min-w-96 { min-width: 24rem; }
+.max-w-60 { max-width: 15rem; }
+.max-w-72 { max-width: 19rem; }
 .w-full { width: 100% !important; }
 .w-half { width: 50% !important; }
 .max-w-32 {max-width: 8rem;}

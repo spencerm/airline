@@ -1559,7 +1559,7 @@ function addAirplaneRow(container, airplane, frequency) {
         }
     })
     if (sharedLinkCount > 0) {
-        airplaneCell.append($('<img src="assets/images/icons/information.png" class="px-1 py-05" title="Shared with ' + sharedLinkCount + ' other route(s)">'))
+        airplaneCell.append($('<img src="assets/images/icons/information.svg" class="px-1 py-05 info svg" title="Shared with ' + sharedLinkCount + ' other route(s)">'))
     }
 
     if (!airplane.isReady) {
@@ -1952,7 +1952,8 @@ function updateLinksTable(sortProperty, sortOrder) {
 	loadedLinks = sortPreserveOrder(loadedLinks, sortProperty, sortOrder == "ascending")
 
 	$.each(loadedLinks, function(index, link) {
-		var row = $("<div class='table-row clickable' onclick='selectLinkFromTable($(this), " + link.id + ")'></div>")
+	    const quality = link.computedQuality > 0 ? link.computedQuality : "-"
+		const row = $("<div class='table-row clickable' onclick='selectLinkFromTable($(this), " + link.id + ")'></div>")
 
 		row.append("<div class='cell'>" + getCountryFlagImg(link.fromCountryCode) + getAirportText(link.fromAirportCity, link.fromAirportCode) + "</div>")
 		row.append("<div class='cell'>" + getCountryFlagImg(link.toCountryCode) + getAirportText(link.toAirportCity, link.toAirportCode) + "</div>")
@@ -1961,6 +1962,7 @@ function updateLinksTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + link.totalCapacity + "(" + link.frequency + ")</div>")
 		row.append("<div class='cell' align='right'>" + link.totalPassengers + "</div>")
 		row.append("<div class='cell' align='right'>" + link.totalLoadFactor + '%' + "</div>")
+		row.append("<div class='cell' align='right'>" + quality + "</div>")
 		row.append("<div class='cell' align='right'>" + Math.round(link.satisfaction * 100) + '%' + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.revenue) + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.profit) + "</div>")

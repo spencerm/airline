@@ -707,7 +707,7 @@ function selectAirplaneModel(model) {
 
 function getDiscountsTooltip(discounts) {
     var tooltipDiv = $('<div class="tooltip"></div>')
-    tooltipDiv.append("<img src='assets/images/icons/information.png'>")
+    tooltipDiv.append("<img class='info svg' src='assets/images/icons/information.svg'>")
     var tooltipTextSpan = $('<span class="tooltiptext" style="width: 200px;"></span>')
     tooltipDiv.append(tooltipTextSpan)
     var tooltipList = $('<ul></ul>')
