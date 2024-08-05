@@ -793,7 +793,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
   def getServiceFundingProjection(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     val targetQuality = request.user.getTargetServiceQuality()
-    val targetQualityCost = Math.pow(targetQuality.toDouble / 34, 2.1)
+    val targetQualityCost = Math.pow(targetQuality.toDouble / 25, 1.9)
     val links = LinkSource.loadFlightLinksByAirlineId(airlineId)
     var crewCost = 0
 
@@ -1210,7 +1210,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     UserSource.loadUserByAirlineId(airline.id) match {
       case Some(user) =>
         if (user.level <= 0) {
-          return Some(s"User is not a pateron and cannot rename airline.")
+          return Some(s"User is not a patreon and cannot rename airline.")
         }
         val cooldown = getRenameCooldown(airline)
         if (cooldown > 0) {
