@@ -151,7 +151,11 @@ abstract class FlightPreference(homeAirport : Airport) {
         1 - GOOD_QUALITY_DELTA.toDouble / Link.MAX_QUALITY * 0.5 - extraDelta.toDouble / Link.MAX_QUALITY * 0.25
       }
 
-    1 + (priceAdjust - 1) * qualitySensitivity
+    if  (link.transportType == TransportType.GENERIC_TRANSIT) {
+      1.0 //pax are using their own transport
+    } else {
+      1 + (priceAdjust - 1) * qualitySensitivity
+    }
   }
 
   /**
