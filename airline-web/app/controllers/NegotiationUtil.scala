@@ -164,7 +164,7 @@ object NegotiationUtil {
     }
     val existingFrequency = existingLinkOption.map(_.futureFrequency()).getOrElse(0)
 
-    val aircraftSizeDelta = newModel.airplaneTypeSize - existingModel.airplaneTypeSize
+    val aircraftSizeDelta = newModel.airplaneTypeSize * newFrequency - existingModel.airplaneTypeSize * existingFrequency
     val frequencyDelta = newFrequency - existingFrequency
     val requirements = ListBuffer[NegotiationRequirement]()
 
@@ -194,7 +194,7 @@ object NegotiationUtil {
     }
 
     if (existingLinkOption.nonEmpty && aircraftSizeDelta > 0) {
-      requirements.append(NegotiationRequirement(UPSIZE_GATE, aircraftSizeDelta * existingFrequency * flightTypeMultiplier, s"Increase gate size to ${newModel.airplaneTypeLabel}"))
+      requirements.append(NegotiationRequirement(UPSIZE_GATE, aircraftSizeDelta * flightTypeMultiplier, s"Increase gate size to ${newModel.airplaneTypeLabel}"))
     }
 
     if (frequencyDelta > 0) {
