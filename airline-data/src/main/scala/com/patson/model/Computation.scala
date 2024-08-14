@@ -159,21 +159,25 @@ def calculateAffinityValue(fromZone : String, toZone : String, relationship : In
       0
     }
 
+  val affinitySet = affinityToSet(fromZone : String, toZone : String, relationship : Int)
+  affinityCountX2(affinitySet) + affinitySet.length + relationshipModifier
+}
+
+def affinityToSet(fromZone : String, toZone : String, relationship : Int) = {
   val set1 = if (relationship >= 5) {
     fromZone.split("-").filterNot(_.endsWith("|")).filterNot(_.startsWith("|"))
   } else {
-    fromZone.split("-").filter(_!="None|")
+    fromZone.split("-").filter(_ != "None|")
   }
   val set2 = if (relationship >= 5) {
     toZone.split("-").filterNot(_.endsWith("|")).filterNot(_.startsWith("|"))
   } else {
-    toZone.split("-").filter(_!="None|")
+    toZone.split("-").filter(_ != "None|")
   }
-  val affinitySet = set1.intersect(set2)
-  countX2(affinitySet) + affinitySet.size + relationshipModifier
+  set1.intersect(set2)
 }
 
-def countX2(strings: Array[String]): Int = {
+def affinityCountX2(strings: Array[String]): Int = {
   strings.count { str =>
     if (str.endsWith("|")) {
       str.length >= 5 && str.substring(str.length - 3, str.length - 1) == "x2"
@@ -214,7 +218,7 @@ def constructAffinityText(fromZone : String, toZone : String, fromCountry : Stri
     matchingItems = Array("Good Relations") ++ matchingItems
   }
 
-  val introText = if (affinity == 0 && matchingItems.size == 0){
+  val introText = if (affinity == 0 && matchingItems.length == 0){
     "Neutral"
   } else if (affinity == 0){
     "Neutral:"
@@ -311,7 +315,7 @@ def constructAffinityText(fromZone : String, toZone : String, fromCountry : Stri
 //    val probNormal = 1.0 - normalDistribution.cumulativeProbability(threshold)
 
     // (normalPop * probNormal + lognormalPop * probLognormal).round.toInt
-    (population * probLognormal).round.toInt
+    Math.ceil(population * probLognormal).toInt
   }
 
   def getLinkCreationCost(from : Airport, to : Airport) : Int = {
