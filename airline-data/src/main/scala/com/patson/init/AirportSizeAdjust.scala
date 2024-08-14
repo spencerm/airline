@@ -221,6 +221,7 @@ object AirportSizeAdjust {
         "YDF" -> 4, //Deer Lake
         "YYT" -> 5, //St. John's
         "YXY" -> 4,
+        "YZF" -> 4,
         "YXS" -> 4,
         "YCD" -> 4,
         //downgrades
@@ -690,8 +691,9 @@ object AirportSizeAdjust {
         //alaska
         "FAI" -> 5,
         "JNU" -> 4,
-        "AKN" -> 3,
         "CDB" -> 3,
+        "GAL" -> 2,
+        "SXP" -> 2,
         //washington
         "BLI" -> 4,
         "YKM" -> 2,

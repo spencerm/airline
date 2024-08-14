@@ -378,7 +378,7 @@ object NegotiationUtil {
     val existingFrequency = existingLinkOption.map(_.futureFrequency()).getOrElse(0)
 
     val aircraftSizeFreqDelta = Model.Type.size(newModel.airplaneType) * newFrequency - Model.Type.size(existingModel.airplaneType) * existingFrequency
-    println(s"info size adjust: ${aircraftSizeFreqDelta}")
+//    println(s"info size adjust: ${aircraftSizeFreqDelta}")
     val frequencyDelta = newFrequency - existingFrequency
 
     val airlineLinks = LinkSource.loadFlightLinksByAirlineId(airline.id)
