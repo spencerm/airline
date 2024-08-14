@@ -18,8 +18,6 @@ import scala.io.Source
   * Then rest of the runways (that is not found in import) with pop > 100k were gone through one by one.
   * Only those with decent air traffic (and looks like lighted) will be manually selected
   *
-  * The final patch file is runway-patch-2022-dec.csv
-  *
   */
 object AirportRunwayAnalyzer extends App {
 
