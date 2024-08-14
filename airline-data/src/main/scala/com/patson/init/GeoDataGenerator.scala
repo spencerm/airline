@@ -492,7 +492,7 @@ object GeoDataGenerator extends App {
     airports
   }
 
-  def buildCountryData(airports : Seq[Airport]) {
+  def buildCountryData(airports : Seq[Airport], update : Boolean = false) {
     val airportsByCountry : Map[String, Seq[Airport]] = airports.groupBy { airport => airport.countryCode }
 
     val countryCodeToNameMap = scala.io.Source.fromFile("country-code.txt").getLines().map(_.split(",")).map { tokens =>
@@ -560,11 +560,16 @@ object GeoDataGenerator extends App {
         }
         countries += Country(countryCode, countryCodeToNameMap(countryCode), totalAirportPopulation.toInt, averageIncome.toInt, opennessMap.getOrElse(countryCode,4), giniMap.getOrElse(countryCode,39.0))
     }
+    if (update) {
+      CountrySource.updateCountries(countries.toList)
+      println("Updated all countries!")
 
-    CountrySource.purgeAllCountries()
-    println("Truncated all countries")
-    CountrySource.saveCountries(countries.toList)
-    println(s"Saved ${countries.length} countries")
+    } else {
+      CountrySource.purgeAllCountries()
+      println("Truncated all countries")
+      CountrySource.saveCountries(countries.toList)
+      println(s"Saved ${countries.length} countries")
+    }
 
     CountryMutualRelationshipGenerator.mainFlow()
   }
