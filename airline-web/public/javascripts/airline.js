@@ -6,6 +6,7 @@ var loadedLinks = []
 var loadedLinksById = {}
 var currentAnimationStatus = true
 var currentAirlineAllianceMembers = []
+const CLASSES = ['Economy', 'Business', 'First'];
 
 $( document ).ready(function() {
     $('#linkEventModal .filterCheckboxes input:checkbox').change(function() {
@@ -1353,37 +1354,39 @@ function increasePrice(classType = "all") {
         newPercentage.first += 0.05;
     }
 
-    updatePrice(newPercentage, classType); // Pass classType to updatePrice
-    $('#planLinkPricePercentage').val(newPercentage);
+    updatePrice(newPercentage, classType);
 }
 
-function decreasePrice(classType = "all") { // Add classType parameter
-    const economyInput = $('#planLinkEconomyPrice');
-    const businessInput = $('#planLinkBusinessPrice');
-    const firstInput = $('#planLinkFirstPrice');
+function decreasePrice(classType = "all") {
+    let newPercentages = {};
 
-    const currentPercentageEconomy = parseFloat(economyInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.economy / 20;
-    const currentPercentageBusiness = parseFloat(businessInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.business / 20;
-    const currentPercentageFirst = parseFloat(firstInput.val() || 0) * 20 / planLinkInfo.suggestedPrice.Traveler.first / 20;
+    CLASSES.forEach((paxClass) => {
+        const currentPrice = document.getElementById(`planLink${paxClass}Price`).value ?? 0;
+        const defaultPrice = planLinkInfo.suggestedPrice.Traveler[paxClass.toLowerCase()]
+        const hasCompetitor = planLinkInfo.otherLinks.length > 1
+        const currentPercentage = parseFloat(currentPrice || 0) * 20 / defaultPrice / 20;
+        const priceFloor = (function() {
+                let lowestPrice = defaultPrice;
+                planLinkInfo.otherLinks.forEach(link => {
+                    if (link.price && link.price[paxClass.toLowerCase()] < lowestPrice) {
+                        lowestPrice = link.price[paxClass.toLowerCase()];
+                    }
+                });
+                return Math.ceil(lowestPrice * 0.65);
+            })();
+        const newPercentage = Math.max(0, currentPercentage - 0.05)
+        if (classType === paxClass.toLowerCase() || classType === "all") {
+            if (hasCompetitor && defaultPrice * newPercentage < priceFloor) {
+                newPercentages[`${paxClass.toLowerCase()}`] = priceFloor / defaultPrice;
+            } else {
+                newPercentages[`${paxClass.toLowerCase()}`] = newPercentage;
+            }
+        } else {
+            newPercentages[`${paxClass.toLowerCase()}`] = currentPercentage;
+        }
+    });
 
-    const newPercentage = {
-        economy: currentPercentageEconomy,
-        business: currentPercentageBusiness,
-        first: currentPercentageFirst
-    };
-
-    if (classType === "economy" || classType === "all") {
-        newPercentage.economy = Math.max(0, newPercentage.economy - 0.05); // Ensure not negative
-    }
-    if (classType === "business" || classType === "all") {
-        newPercentage.business = Math.max(0, newPercentage.business - 0.05);
-    }
-    if (classType === "first" || classType === "all") {
-        newPercentage.first = Math.max(0, newPercentage.first - 0.05);
-    }
-
-    updatePrice(newPercentage, classType); // Pass classType to updatePrice
-    $('#planLinkPricePercentage').val(newPercentage);
+    updatePrice(newPercentages, classType);
 }
 
 
@@ -2671,7 +2674,7 @@ function updateTopCountryComposition(countryComposition, selector) {
 }
 
 function updateTopAirportComposition($container, airportComposition) {
-	var maxPerColumn = 10;
+	var maxPerColumn = Math.floor(airportComposition.length / 2);
 	var index = 0;
 	$container.empty()
 	var $table
