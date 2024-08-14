@@ -4,7 +4,7 @@ var flightMarkers = {} //key: link id, value: { markers : array[], animation}
 var tempPath //temp path for new link creation
 var loadedLinks = []
 var loadedLinksById = {}
-var currentAnimationStatus = true
+var currentAnimationStatus = false
 var currentAirlineAllianceMembers = []
 const CLASSES = ['Economy', 'Business', 'First'];
 
