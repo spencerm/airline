@@ -276,6 +276,11 @@ function populateCityVoteModal(candidates, votes, votingActive) {
     table.find(".cityName").each(function(index) {
         $(this).html(getCountryFlagImg(candidates[index].countryCode) + candidates[index].city)
     })
+    table.find(".olympicsAirports").each(function(i) {
+        candidates[i].affectedAirports.forEach(airport => {
+            $(this).append(`<li class=''>${airport.iata} ${airport.name}</span>`)
+        })
+    })
 
     $.each(olympicsMapElements, function() { this.setMap(null)})
     olympicsMapElements = []
@@ -292,10 +297,10 @@ function populateCityVoteModal(candidates, votes, votingActive) {
         }
     })
 
-    $.each(olympicsVoteMaps, function(index, map) {
-        var candidateInfo = candidates[index]
-        populateOlympicsCityMap(map, candidateInfo)
-    })
+//    $.each(olympicsVoteMaps, function(index, map) {
+//        var candidateInfo = candidates[index]
+//        populateOlympicsCityMap(map, candidateInfo)
+//    })
 }
 
 function refreshCityVoteModalButtons() {
@@ -401,7 +406,7 @@ function initVoteLayout(table, candidateCount) {
     var mapDivs = []
     this.candidateCount = candidateCount
     for (i = 0 ; i < candidateCount; i ++) {
-        voteDiv = $("<div style='float: left; width: 33%; padding: 5px; box-sizing: border-box;'></div>")
+        voteDiv = $("<div class='py-2'></div>")
         var titleDiv = $("<div style='display: flex; align-items: center;'></div>") //button + city name
         var numberButton = $("<a href='#' class='round-button number-button' onclick=voteOlympicsCity($(this))></a>")
 
@@ -422,28 +427,27 @@ function initVoteLayout(table, candidateCount) {
         titleDiv.append(numberButton)
         titleDiv.append("<span class='cityName'></span>")
         voteDiv.append(titleDiv)
-        var mapDiv = $("<div class='olympicsMap' style='width: 100%; padding-top: 100%;'></div>")
-        voteDiv.append(mapDiv)
+        voteDiv.append("<ul class='olympicsAirports pt-2 pl-4 list-disc'></ul>")
+//        var mapDiv = $("<div class='olympicsMap' style='width: 100%; padding-top: 100%;'></div>")
+//        voteDiv.append(mapDiv)
         table.append(voteDiv)
 
-        mapDivs.push(mapDiv)
+//        mapDivs.push(mapDiv)
     }
 
-    return mapDivs
+//    return mapDivs
 }
 
 var olympicsVoteMaps
 function initOlympicsVoteMaps(mapDivs) { //only called once, see https://stackoverflow.com/questions/10485582/what-is-the-proper-way-to-destroy-a-map-instance
     olympicsVoteMaps = []
-    for (i = 0 ; i < mapDivs.length; i ++) {
-        olympicsVoteMaps.push(new google.maps.Map(mapDivs[i][0], {
-                        gestureHandling: 'none',
-                        disableDefaultUI: true,
-                        styles: getMapStyles()
-                    }))
-    }
-
-
+//    for (i = 0 ; i < mapDivs.length; i ++) {
+//        olympicsVoteMaps.push(new google.maps.Map(mapDivs[i][0], {
+//                        gestureHandling: 'none',
+//                        disableDefaultUI: true,
+//                        styles: getMapStyles()
+//                    }))
+//    }
 }
 
 

@@ -477,7 +477,7 @@ function updateAllianceAirportChampions(allianceId) {
                 row.append("<div class='cell'>" + getCountryFlagImg(championDetails.countryCode) + championDetails.airportText + "</div>")
                 row.append("<div class='cell'>" + getAirlineLogoImg(championDetails.airlineId) + championDetails.airlineName + "</div>")
                 row.append("<div class='cell' align='right'>" + commaSeparateNumber(championDetails.loyalistCount) + "</div>")
-                row.append("<div class='cell warning' align='right'><img src='assets/images/icons/information.png' title='Points not counted as this airline is not an approved member yet'>" + championDetails.reputationBoost + "</div>")
+                row.append("<div class='cell warning info svg' align='right'><img src='assets/images/icons/information.svg' title='Points not counted as this airline is not an approved member yet'>" + championDetails.reputationBoost + "</div>")
 	    		$('#allianceChampionAirportList').append(row)
 	    	})
 

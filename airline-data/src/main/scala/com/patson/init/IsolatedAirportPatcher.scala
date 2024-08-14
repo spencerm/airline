@@ -20,6 +20,7 @@ object IsolatedAirportPatcher {
       //carribean
       "PVA", "ADZ", "CYB", "RTB", "UII", "GJA", "CPX", "VQS", "SPR", "CYC", "CUK",
       //europe
+      "KGD", //RU
       "IDY", "ACI", "ISC", "OUI", //FR
       "PNL", "LMP", //IT
       "HGL", "BMK", "GWT", "BMR", //DE
@@ -33,16 +34,18 @@ object IsolatedAirportPatcher {
       "AOK", "JMK", "JNX", "JSI", "JTR", "KIT", "LKS", "MLO", "SMI", "JIK", "KGS", "RHO", //GR
       //americas
       "FRD", "ESD", "ACK", "MVY", "BID", "AVX", //US
+      "YGR", "YPN", "YYB", //CA
       //oceania
       "WSZ",
       //asia
-      "KUM", "TNE", "MYE", "MK1", "OIM", "HAC", "AO1", "SDS", "OIR", "RIS", "OKI", "TSJ", "FUJ", "KKX", "TKN", "OKE", "RNJ", "UEO", "OKA", "MMY", "TRA", "ISG", "OGN", //JP
-      "BSO",
+      "KUM", "TNE", "MYE", "MK1", "OIM", "HAC", "AO1", "SDS", "OIR", "RIS", "OKI", "TSJ", "FUJ", "KKX", "TKN", "OKE", "RNJ", "UEO", "OKA", "MMY", "TRA", "ISG", "OGN", "IKI", "MMD", "KTD", //JP
+      "BSO", "CGM", "JOL", "CYU", "TWT", "IAO", "MBT", "USU", "ENI", //PH
       "TNJ",
+      "NAH", //ID
       //africa
-      "MMO",
+      "MMO", "SSG"
     )
-    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "VC", "VU", "WF", "MU", "MV", "CC", "CK", "CV") //always add 1 level, because island countries and islands are inherently isolated
+    val ISOLATED_COUNTRIES = Array("FO", "BS", "KY", "TC", "VC", "GD", "DM", "AG", "MS", "BQ", "BL", "MF", "SX", "AI", "VI", "VG", "VC", "VU", "WF", "MU", "MV", "CC", "CK", "CV", "ST") //always add 1 level, because island countries and islands are inherently isolated
 
 
     allAirports.foreach { airport =>
@@ -59,7 +62,7 @@ object IsolatedAirportPatcher {
           isolationLevel += 3
         } else if (populationWithinRange < 500000) {
           isolationLevel += 2
-        } else if (populationWithinRange < 2500000) { //kinda isolated
+        } else if (populationWithinRange < 3000000) { //kinda isolated
           isolationLevel += 1
         }
       }

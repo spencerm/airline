@@ -238,7 +238,7 @@ function updateRivalBasicsDetails(airlineId) {
 		$("#rivalsCanvas .airlineColorDot").show()
 	}
 	
-	$("#rivalsCanvas .airlineGrade").html(getGradeStarsImgs(rival.gradeValue))
+	$("#rivalsCanvas .airlineGrade").html(getGradeStarsImgs(rival.gradeValue - 2))
 	$("#rivalsCanvas .airlineGrade").attr('title', rival.gradeDescription)
 
 	$("#rivalsCanvas .alliance").data("link", "alliance")

@@ -6,14 +6,7 @@ import com.patson.data.airplane.ModelSource
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-object AirplaneModelInitializer extends App {
-  mainFlow
-  
-  def mainFlow() = {
-    val airlines = populateAirplaneModels()
-    Await.result(actorSystem.terminate(), Duration.Inf)
-  }
-  
+object AirplaneModelInitializer {
   def populateAirplaneModels() = {
     ModelSource.deleteAllModels()
   

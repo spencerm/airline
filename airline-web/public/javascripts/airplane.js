@@ -707,7 +707,7 @@ function selectAirplaneModel(model) {
 
 function getDiscountsTooltip(discounts) {
     var tooltipDiv = $('<div class="tooltip"></div>')
-    tooltipDiv.append("<img src='assets/images/icons/information.png'>")
+    tooltipDiv.append("<img class='info svg' src='assets/images/icons/information.svg'>")
     var tooltipTextSpan = $('<span class="tooltiptext" style="width: 200px;"></span>')
     tooltipDiv.append(tooltipTextSpan)
     var tooltipList = $('<ul></ul>')
@@ -867,6 +867,7 @@ function showAirplaneBase(modelId) {
 
 //inventory for ALL airplanes
 function showAllAirplaneInventory(modelId) {
+    selectedModelId = modelId
     if (!loadedModelsOwnerInfo) {
         loadAirplaneModelOwnerInfo()
     }
@@ -1424,7 +1425,6 @@ function hideAirplaneModelTableFilters() {
 }
 
 function selectAirplaneTab($selectedTab) {
-    selectedModelId = null
     $selectedTab.siblings().removeClass('selected')
     $selectedTab.addClass('selected')
     var selectedType = $selectedTab.data('type')
@@ -1436,6 +1436,7 @@ function selectAirplaneTab($selectedTab) {
     if (selectedType === 'market') {
       showAirplaneMarket()
       showAirplaneModelTableFilters()
+      selectedModelId = null
     } else if (selectedType === 'hangar') {
       showAirplaneHangar()
     }
@@ -1514,7 +1515,7 @@ function populatePreferredSuppliers() {
             $.each(result, function(category, info) {
                 var $categorySection = $container.find('.' + category)
                 if ($categorySection.length > 0) { //Super sonic has no section for now...
-                    $categorySection.find('.capacityRange').text(info.minCapacity + " - " + info.maxCapacity + " capacity; " + info.minSpeed + " - " + info.maxSpeed + "kph")
+                    $categorySection.find('.capacityRange').text(info.minCapacity + " - " + info.maxCapacity + " capacity; " + info.minSpeed + " - " + info.maxSpeed + "km/h")
                     var $supplierList = $categorySection.find('.supplierList')
                     var $discount =  $categorySection.find('.discount')
                     $supplierList.empty()

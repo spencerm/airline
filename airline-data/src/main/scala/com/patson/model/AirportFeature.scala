@@ -153,7 +153,6 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
       } else {
         7000 / distance.toDouble
       }
-      val incomeModifier = 1 + DemandGenerator.BUSINESS_CLASS_PERCENTAGE_MAX(passengerType) * fromAirport.income.toDouble / DemandGenerator.BUSINESS_CLASS_INCOME_MAX //adjust up for capacity given to biz seats
       val airportAffinityMutliplier: Double =
         if (affinity >= 5) (affinity - 5) * 0.1 + 1 //domestic+
         else if (affinity == 4) 0.625
@@ -163,7 +162,7 @@ sealed case class FinancialHubFeature(baseStrength : Int, boosts : List[AirportB
         else if (affinity == 0) 0.225
         else 0.1
 
-      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * incomeModifier * distanceModifier * airportAffinityMutliplier).toInt
+      (DemandGenerator.launchDemandFactor * fromAirport.popMiddleIncome * charmStrength * distanceModifier * airportAffinityMutliplier).toInt
     } else {
       0
     }
@@ -198,9 +197,9 @@ sealed case class GatewayAirportFeature() extends AirportFeature {
         if (base >= 1) {
           val distanceMultiplier = {
             if (distance <= 2000) {
-              3
+              2.25
             } else if (distance <= 5000) {
-              1.5
+              1.25
             } else {
               0.25
             }
@@ -232,23 +231,30 @@ sealed case class IsolatedTownFeature(strength : Int) extends AirportFeature {
 
   import IsolatedTownFeature._
   override def demandAdjustment(rawDemand : Double, passengerType : PassengerType.Value, airportId : Int, fromAirport : Airport, toAirport : Airport, flightType : FlightType.Value, affinity : Int, distance : Int) : Int = {
-    //if very high affinity demand is doubled (assuming fly-in / fly-out workers)
-    if (passengerType == PassengerType.TRAVELER && affinity >= 2 || passengerType == PassengerType.BUSINESS && affinity > 5) {
+    val rangeBoost = 1.2
+    if (passengerType == PassengerType.TRAVELER && affinity >= 2) {
       val affinityMod = if (affinity >= 5) 1.0 else 0.5
-      val mod = if (distance <= boostRange) {
+      val mod = if (distance <= boostRange * rangeBoost) {
         val basis = 100.0
+        val distanceModifier = if (distance >= 1000 && toAirport.size <= 3) {
+          0
+        } else if (distance >= boostRange * (rangeBoost / 2)) {
+          0.5 + 1 - distance / (boostRange * rangeBoost)
+        } else {
+          1.0
+        }
         if (fromAirport.population <= basis || toAirport.population <= basis) {
           1
         } else if (fromAirport.population <= basis * 50 || toAirport.population <= basis * 50) {
           val fromAdjusted = 1 + Math.min(basis - 1, (fromAirport.population.toDouble - basis) / basis)
           val toAdjusted = 1 + Math.min(basis - 1, (toAirport.population.toDouble - basis) / basis)
-          Math.min(fromAdjusted, toAdjusted)
-        } else if (fromAirport.population <= basis * 300 || toAirport.population <= basis * 300) {
-          val fromAdjusted = 50 + Math.min(basis, (fromAirport.population.toDouble - basis * 50) / (basis * 5))
-          val toAdjusted = 50 + Math.min(basis, (toAirport.population.toDouble - basis * 50) / (basis * 5))
-          Math.min(fromAdjusted, toAdjusted)
+          Math.min(fromAdjusted, toAdjusted) * distanceModifier
+        } else if (fromAirport.population <= basis * 400 || toAirport.population <= basis * 400) {
+          val fromAdjusted = 50 + Math.min(basis, (fromAirport.population.toDouble - basis * 50) / (basis * 7))
+          val toAdjusted = 50 + Math.min(basis, (toAirport.population.toDouble - basis * 50) / (basis * 8))
+          Math.min(fromAdjusted, toAdjusted) * distanceModifier
         } else {
-          basis
+          basis * distanceModifier
         }
       } else if (rawDemand > 4 && toAirport.isGateway()) {
         rawDemand * 0.05

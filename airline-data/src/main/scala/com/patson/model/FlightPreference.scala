@@ -151,7 +151,11 @@ abstract class FlightPreference(homeAirport : Airport) {
         1 - GOOD_QUALITY_DELTA.toDouble / Link.MAX_QUALITY * 0.5 - extraDelta.toDouble / Link.MAX_QUALITY * 0.25
       }
 
-    1 + (priceAdjust - 1) * qualitySensitivity
+    if  (link.transportType == TransportType.GENERIC_TRANSIT) {
+      1.0 //pax are using their own transport
+    } else {
+      1 + (priceAdjust - 1) * qualitySensitivity
+    }
   }
 
   /**
@@ -172,8 +176,8 @@ abstract class FlightPreference(homeAirport : Airport) {
 
   val tripDurationAdjustRatio = (link : Transport, preferredLinkClass : LinkClass, paxType: PassengerType.Value) => {
     val classModifier = preferredLinkClass match {
-      case FIRST => 0.4
-      case BUSINESS => 0.3
+      case FIRST => 0.35
+      case BUSINESS => 0.25
       case _ => 0.1
     }
     val flightDurationSensitivity = paxType match {
@@ -185,8 +189,8 @@ abstract class FlightPreference(homeAirport : Airport) {
     val flightDurationRatioDelta = {
       if (flightDurationSensitivity == 0 || link.transportType != TransportType.FLIGHT) {
         0
-      } else if (flightDurationSensitivity < 0.7 && link.duration.toDouble / link.distance < 1.8) {
-        0 //do not apply duration sensitivity if on a slow blimp & pax isn't super sensitive
+      } else if (flightDurationSensitivity <= 0.6 && link.duration.toDouble / link.distance < 1.8) {
+        0 //do not apply duration sensitivity if on a super slow trip (blimp) & pax isn't super sensitive
       } else {
         val flightDurationThreshold = Computation.computeStandardFlightDuration(link.distance)
         Math.min(flightDurationSensitivity, (link.duration - flightDurationThreshold).toFloat / flightDurationThreshold * flightDurationSensitivity)

@@ -652,6 +652,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         var existingLink: Option[Link] = LinkSource.loadFlightLinkByAirportsAndAirline(fromAirportId, toAirportId, airlineId)
 
         val relationship = CountrySource.getCountryMutualRelationship(fromAirport.countryCode, toAirport.countryCode)
+        val relationshipTo = CountrySource.getCountryMutualRelationship(toAirport.countryCode, fromAirport.countryCode)
         val affinity = Computation.calculateAffinityValue(fromAirport.zone, toAirport.zone, relationship)
         val distance = Util.calculateDistance(fromAirport.latitude, fromAirport.longitude, toAirport.latitude, toAirport.longitude).toInt
         val flightType = Computation.getFlightType(fromAirport, toAirport, distance, relationship)
@@ -773,7 +774,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
 
 
         val fromDemand = DemandGenerator.computeDemandBetweenAirports(fromAirport, toAirport, affinity, relationship, distance)
-        val toDemand = DemandGenerator.computeDemandBetweenAirports(toAirport, fromAirport, affinity, relationship, distance)
+        val toDemand = DemandGenerator.computeDemandBetweenAirports(toAirport, fromAirport, affinity, relationshipTo, distance)
 
         val directFromAirportTravelerDemand = fromDemand.travelerDemand
         val directToAirportTravelerDemand = toDemand.travelerDemand
@@ -1185,7 +1186,25 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
   }
 
 
-
+//  GET		 /airlines/:airlineId/link-data/:linkId		controllers.LinkApplication.getLinkData(airlineId: Int, linkId: Int)
+//  def getLinkData(airlineId : Int, linkId : Int) =  AuthenticatedAirline(airlineId) { request =>
+//    val consumptionEntries : List[LinkConsumptionHistory] = ConsumptionHistorySource.loadConsumptionByLinkId(linkId)
+//
+//    val jsonArray = Json.arr(consumptionEntries.map { history =>
+//      Json.obj(
+//        "homeIata" -> history.homeAirport.iata,
+//        "homeCountry" -> history.homeAirport.countryCode,
+//        "destinationIata" -> history.destinationAirport.iata,
+//        "destinationCountry" -> history.destinationAirport.countryCode,
+//        "preferredClass" -> history.preferredLinkClass.toString, // Convert enum to string
+//        "type" -> history.passengerType.toString,
+//        "profile" -> history.preferenceType.toString,
+//        "SF" -> history.satisfaction * 100,
+//        "count" -> history.passengerCount
+//      )
+//    })
+//    Ok(jsonArray)
+//  }
 
 
   def getLinkRivalHistory(airlineId : Int, linkId : Int, cycleCount : Int) =  AuthenticatedAirline(airlineId) {

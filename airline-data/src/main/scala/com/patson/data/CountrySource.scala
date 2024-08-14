@@ -108,8 +108,8 @@ object CountrySource {
           preparedStatement.setInt(2, country.airportPopulation)
           preparedStatement.setInt(3, country.income)
           preparedStatement.setInt(4, country.openness)
-          preparedStatement.setString(5, country.countryCode)
-          preparedStatement.setDouble(6, country.gini)
+          preparedStatement.setDouble(5, country.gini)
+          preparedStatement.setString(6, country.countryCode)
           preparedStatement.executeUpdate()
       }
       preparedStatement.close()

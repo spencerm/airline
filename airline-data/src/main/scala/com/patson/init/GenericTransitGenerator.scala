@@ -24,6 +24,7 @@ object GenericTransitGenerator {
     "PKX" -> "TSN",
     "CTU" -> "TFU",
     "IST" -> "SAW",
+    "SAW" -> "YEI",
     "EWR" -> "TTN",
     "HPN" -> "EWR",
     "HVN" -> "HPN",
@@ -34,13 +35,24 @@ object GenericTransitGenerator {
     "BOS" -> "PVD",
     "MIA" -> "PBI",
     "FLL" -> "PBI",
+    "JAX" -> "UST",
+    "DAB" -> "UST",
+    "VPS" -> "ECP",
+    "VPS" -> "PNS",
+    "ELP" -> "LRU",
+    "SLC" -> "PVU",
+    "MWA" -> "CGI",
+    "MWA" -> "PAH",
     "LAX" -> "ONT",
     "SNA" -> "ONT",
+    "SMF" -> "SCK",
+    "OAK" -> "SCK",
     "STL" -> "BLV",
     "SEA" -> "PAE",
     "KOA" -> "ITO",
     "YYZ" -> "YKF",
     "YYZ" -> "YHM",
+    "YYZ" -> "YKF",
     "YVR" -> "YXX",
     "FAI" -> "CKX",
     "MEX" -> "TLC",
@@ -55,11 +67,16 @@ object GenericTransitGenerator {
     "ARN" -> "NYO",
     "LGW" -> "LTN",
     "CDG" -> "BVA",
+    "MRS" -> "TLN",
+    "MRS" -> "AVN",
     "BCN" -> "REU",
     "ZRH" -> "BRN",
     "GVA" -> "BRN",
     "BSL" -> "BRN",
     "ZRH" -> "BSL",
+    "RMI" -> "AOI",
+    "BLQ" -> "FRL",
+    "NAP" -> "QSR",
     "MEL" -> "AVV",
     "ZIA" -> "SVO",
     "DME" -> "SVO"
@@ -70,6 +87,7 @@ object GenericTransitGenerator {
     "ISC", "EG1", "FIE", "LSI", "ILY", "FOA",  //gb
     "NNR", //ie
     "GRW", "CVU", //pt
+    "ECN", //turkish CY
     "JNX", //gr
     "KUM", //jp
     "TBH", //ph
@@ -128,7 +146,7 @@ object GenericTransitGenerator {
           0
         }
         val minSize = Math.min(airport.size, targetAirport.size)
-        val capacity = minSize * 8000 + domesticAirportBonus //kinda random
+        val capacity = minSize * 9000 + domesticAirportBonus //kinda random
         val genericTransit = GenericTransit(from = airport, to = targetAirport, distance = distance.toInt, capacity = LinkClassValues.getInstance(economy = capacity))
         LinkSource.saveLink(genericTransit)
         println(genericTransit)

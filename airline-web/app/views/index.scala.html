@@ -982,7 +982,7 @@
 								<img src='@routes.Assets.versioned("images/icons/clock-frame.png")' class="button" title="Sort by last updated" onclick="toggleLinksTableSortOrder($('#hiddenLinkSortBy'))" style="vertical-align: text-bottom">
 							</div>
 								<div class="table-container-x">
-									<div class="table data" style="min-width: 880px; height: 20px;">
+									<div class="table data" style="min-width: 920px; height: 20px;">
 										<div class="table-header" id="linksTableSortHeader">
 											<div class="cell clickable selected" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
 											<div class="cell clickable" style="width: 0%" data-sort-property="lastUpdate" data-sort-order="ascending" id="hiddenLinkSortBy"></div> <!--hidden column for last update (cannot be first otherwise the left round corner would not work -->
@@ -990,15 +990,16 @@
 											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="distance" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Distance</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="totalCapacity" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Capacity (Freq.)</div>
-											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalPassengers" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Pax</div>
-											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="totalLoadFactor" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Load Factor">LF</div>
+											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalPassengers" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Pax</div>
+											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalLoadFactor" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Load Factor">LF</div>
+											<div class="cell clickable" style="width: 3%" align="right" data-sort-property="computedQuality" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Quality">Q</div>
 											<div class="cell clickable" style="width: 5%" align="right" data-sort-property="satisfaction" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))" title="Satisfaction Factor">SF</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="revenue" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Revenue</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="profit" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Profit</div>
 											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="profitMargin" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Margin</div>
 										</div>
 									</div>
-									<div class="table-container-y" style="min-width: 880px;">
+									<div class="table-container-y" style="min-width: 920px;">
 									<div class="table data" id="linksTable">
 										<div class="table-header">
 											<div class="cell" style="width: 16%; border-bottom: none;"></div>
@@ -1006,8 +1007,9 @@
 											<div class="cell" style="width: 14%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
-											<div class="cell" style="width: 5%; border-bottom: none;"></div>
-											<div class="cell" style="width: 5%; border-bottom: none;"></div>
+											<div class="cell" style="width: 4%; border-bottom: none;"></div>
+											<div class="cell" style="width: 4%; border-bottom: none;"></div>
+											<div class="cell" style="width: 3%; border-bottom: none;"></div>
 											<div class="cell" style="width: 5%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
 											<div class="cell" style="width: 8%; border-bottom: none;"></div>
@@ -1829,7 +1831,7 @@
 				<div id="officeCanvas" class="canvas" style="display: none; min-width: 400px;">
 					<div style="box-sizing: border-box;display: flex;gap: 8px;flex-wrap: wrap;" class="officeCanvasLeftGroup">
 
-						<div class="section min-w-52">
+						<div class="section min-w-52 max-w-72">
 							<h2 class="text-center text-underline">
 								<span class="airlineName">Airline Name</span>
 								<span class="clickable editButton"><img src='@routes.Assets.versioned("images/icons/gear.png")'style="vertical-align: middle;" onclick="editAirlineName()"/></span>
@@ -1856,27 +1858,34 @@
 								<p class="small max-w-32 mx-auto flex-container-width-half"><span class="font-mono reputationValuePrev text-left">0</span><span class="font-mono reputationValueNext">10</span></p>
 								<p class="text-right small max-w-32 mx-auto pb-4">trending to: <span class="font-mono reputationTrend">10</span></p>
 								<div class="">
-									<p class="text-center">Reputation Breakdown</p>
+									<p class="text-center">Reputation Breakdown
+										<span class="tooltip">
+											<img src='@routes.Assets.versioned("images/icons/information.svg")'>
+											<span class="tooltiptext alignLeft below" style="width: 280px;">
+												Your airline's reputation slowly moves toward the "trending to" reputation. Each reputation level gives your airline 3 additional delegates.
+											</span>
+										</span>
+									</p>
 									<ul class="reputationDetails small"></ul>
 								</div>
 							</div>
 							<h5 class="pt-4">Airline Settings</h5>
 							<p>Employee Quality:
 								<span id="serviceFundingDisplaySpan">
-										<span id="targetServiceQuality"></span>
-										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
-									</span>
+									<span id="targetServiceQuality"></span>
+									<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editTargetServiceQuality()"/>
+								</span>
 								<span id="serviceFundingInputSpan">
-										<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
-										<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
-										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
-									</span>
+									<input id="targetServiceQualityInput" type="number" size="3" maxlength="3" onkeyup="checkTargetServiceQualityInput($(this).val())"/>
+									<span class="warning" style="display: none;">Value must be an integer 0 - 100</span>
+									<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setTargetServiceQuality($('#targetServiceQualityInput').val())"/>
+								</span>
 							</p>
-							<p class="cell label">Current Employee Quality: <span id="currentServiceQuality"></span>
+							<p>Current Employee Quality: <span id="currentServiceQuality"></span>
 								<span class="tooltip">
 									<img src='@routes.Assets.versioned("images/icons/information.svg")'>
 									<span class="tooltiptext alignLeft below" style="width: 280px;">
-										<p>Adjusting this global parameter affects the crew cost and quality of each flight.</p>
+										Adjusting the "employee quality" affects the crew cost and quality of all your flights.
 									</span>
 								</span>
 							</p>
@@ -1894,19 +1903,26 @@
 									</span>
 							</p>
 							<p class="py-4">Minimum Renewal Balance: <span id="minimumRenewalBalanceDisplaySpan">
-										<span id="minimumRenewalBalance"></span>
-										<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editMinimumRenewalBalance()"/>
-									</span>
+								<span id="minimumRenewalBalance"></span>
+									<img src='@routes.Assets.versioned("images/icons/gear.png")' class='button' style="vertical-align: middle;" onclick="editMinimumRenewalBalance()"/>
+								</span>
 								<span id="minimumRenewalBalanceInputSpan" style="display:none;">
-											Minimum Renewal Balance&nbsp;<input id="minimumRenewalBalanceInput" type="number" maxlength="12" size="2" onkeyup="checkEditMinimumRenewalBalanceInput($(this).val())"/>
-											<span class="warning" style="display: none;">Value must be a positive integer less than 999,999,999,999</span>
-											<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setMinimumRenewalBalance($('#minimumRenewalBalanceInput').val())"/>
-									</span>
+										Minimum Renewal Balance&nbsp;<input id="minimumRenewalBalanceInput" type="number" maxlength="12" size="2" onkeyup="checkEditMinimumRenewalBalanceInput($(this).val())"/>
+										<span class="warning" style="display: none;">Value must be a positive integer less than 999,999,999,999</span>
+										<img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setMinimumRenewalBalance($('#minimumRenewalBalanceInput').val())"/>
+								</span>
 							</p>
 						</div>
 
 						<div class="section min-w-80" style="flex:1; max-width: 100%; overflow: hidden;">
-							<h4>Reputation tracks</h4>
+							<h4>Reputation tracks
+								<span class="tooltip">
+									<img src='@routes.Assets.versioned("images/icons/information.svg")'>
+									<span class="tooltiptext alignLeft below" style="width: 280px;">
+										Achieving a level on a reputation track earns an additional 20 reputation.
+									</span>
+								</span>
+							</h4>
 <!--							<div class="threshold-section" id="stockProgress">-->
 <!--								<div class="flex-row items-end">-->
 <!--									<h4 class="leading-tight m-0 pr-2"><span class="stockValueCurrent">0</span> Stock Price</h4>-->
@@ -2838,7 +2854,7 @@
 							<div class="table-header">
 								<div class="cell" style="width: 7%">Rank</div>
 								<div class="cell" style="width: 9%">Change</div>
-								<div class="cell" style="width: 55%">Shortest Profitable Route <br><small>With more than 2000 sold seats</small></div>
+								<div class="cell" style="width: 55%">Shortest Profitable Route <br><small>With more than 3000 sold seats</small></div>
 								<div class="cell" style="width: 22%" align="right">Distance</div>
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
@@ -3085,16 +3101,16 @@
 								<h4>Champion Airline of</h4>
 								<div class="table data" style="width: 100%;">
 									<div class="table-header">
-										<div class="cell" style="width: 5%">&nbsp;</div>
-										<div class="cell" style="width: 70%">Airport</div>
+										<div class="cell" style="width: 8%">&nbsp;</div>
+										<div class="cell" style="width: 67`%">Airport</div>
 										<div class="cell" style="width: 25% align='right'">Reputation Bonus</div>
 									</div>
 								</div>
 								<div style="max-height: 250px; overflow: auto;">
 									<div class="table data" id="rivalChampionedAirportsList" style="width: 100%;">
 										<div class="table-header">
-											<div class="cell" style="width: 5%; border-bottom: none;"></div>
-											<div class="cell" style="width: 70%; border-bottom: none;"></div>
+											<div class="cell" style="width: 8%; border-bottom: none;"></div>
+											<div class="cell" style="width: 67%; border-bottom: none;"></div>
 											<div class="cell" style="width: 25%; border-bottom: none;"></div>
 										</div>
 									</div>
@@ -5096,10 +5112,10 @@
 	  </div>
 
 	<div id="olympicsVoteModal" class="modal">
-		<div class="modal-content"  style="width : 900px; height: 800px; margin: 5% auto; overflow-y: auto;">
+		<div class="modal-content px-4 py-4" style="width: 900px; max-width: 90%; margin: 5% auto; overflow-y: auto;">
 			<span class="close" onclick="closeModal($('#olympicsVoteModal'))">&times;</span>
-			<h4 style="margin-bottom: 10px;">Olympics Host City Voting (1 : highest precedence)</h4>
-			<div class="table data" id="olympicsCityVoteTable" style="width: 100%; min-width: 500px;">
+			<h4 style="margin-bottom: 10px;">Olympics Host City Voting</h4>
+			<div class="three-up-grid py-4" id="olympicsCityVoteTable">
 			</div>
 			<button type="button" class="button confirm" onclick="confirmOlympicsVotes()">Confirm</button>
 			<button type="button" class="button revert" onclick="revertOlympicsVotes()">Revert</button>

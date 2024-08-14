@@ -7,9 +7,11 @@ BVI,AU,78993,Birdsville Airport,115,
 WNR,AU,78993,Windorah Airport,90,
 9PB,BR,29000,Petrobras P-20 Platform Helideck,130,
 AFL,BR,29000,Piloto Osvaldo Marques Dias Airport,4215,
-GR0,BR,160000,Helicentro Morumbí Heliport,5000,750
+GR0,BR,2000,Helicentro Morumbí Heliport,5000,750
 JPY,BR,78993,Paraty Airport,4310,
-CB7,CA,180000,Harbour (Public) Heliport,5000,750
+SW1,BR,29000,Rolim de Moura,55407,
+J3H,BR,90000,Rio,2000,500
+CB7,CA,2000,Harbour (Public) Heliport,5000,550
 MSA,CA,39461,Muskrat Dam Airport,346,
 XLB,CA,39461,Lac Brochet Airport,1026,
 XPP,CA,39461,Poplar River Airport,261,
@@ -44,19 +46,25 @@ ZWL,CA,39461,Wollaston Lake Airport,1272,
 CXH,CA,39461,Vancouver Harbour,2500,250
 RQA,CN,11300,Ruoqiang Loulan Airport,11351,
 TCG,CN,14234,Tacheng Airport,244675,
+LCX,CN,16575,Longyan,2559545,
+GOQ,CN,1945,Golmud,221863,
+DNH,CN,4994,Dunhuang,185231,
+IQM,CN,4994,Qiemo,18893,
 HGL,DE,55000,Heide-Büsum Airport,4929,
 BYR,DK,59000,Læsø Airport,1787,
 GMZ,ES,17000,La Gomera Airport,22947,
 JCU,ES,17000,Ceuta Heliport,85144,
-GDE,ET,17000,Gode Airport,9804,
+GDE,ET,2700,Gode Airport,9804,
+ABK,ET,2700,Kebri Dahar,363000,
 CMF,FR,143100,Mont Blanc,64217,215
-MCM,FR,240862,Monaco,2100,500
 JNX,GR,51454,Naxos Island National Airport,1862,
 KZS,GR,51454,Kastelorizo Airport,492,
+HHP,HK,120000,Hong Kong,500,725
 MKQ,ID,21000,Mopah International Airport,2564,
 NAH,ID,16142,Naha Airport,12425,
 NPO,ID,16142,Nanga Pinoh Airport,42912,
 PSU,ID,16142,Pangsuma Airport,35215,
+NTX,ID,8300,Ranai,8735,
 IIA,IE,103000,Inishmaan Aerodrome,272,
 INQ,IE,103000,Inisheer Aerodrome,262,
 IOR,IE,103000,Inishmore Aerodrome,177,
@@ -77,16 +85,19 @@ RNJ,JP,39134,Yoron Airport,6176,
 TKN,JP,37134,Tokunoshima Airport,23647,
 TSJ,JP,37134,Tsushima Airport,31457,
 UEO,JP,39134,Kumejima Airport,8542,
+HAC,JP,37134,Hachijō-jima,7522,
 KPO,KR,39134,Pohang Airport (G-815/K-3),508198,15
 USN,KR,39134,Ulsan Airport,1177,
 EH1,NO,113000,A12-CPP Platform Helipad,80,
 EN1,NO,113000,Draupner Platform,110,
 EN2,NO,113000,Tambar Platform,110,
 EN3,NO,113000,Valhall Flank South Platform,110,
-EN4,NO,113000,Oslo Heliport,500,240
+EN4,NO,135000,Oslo Heliport,500,270
 EN9,NO,113000,Troll A Platform,110,
 HAA,NO,113000,Hasvik Airport,110,
 SDN,NO,113000,Sandane Airport,110,
+SBT,RU,57454,Sabetta,33000,
+SHW,SA,24411,Sharurah,85977,
 ARK,TZ,3892,Arusha,92450,
 AKN,US,78993,King Salmon Airport,374,
 ARC,US,78993,Arctic Village Airport,152,
@@ -98,11 +109,11 @@ EAA,US,78993,Eagle Airport,8,
 FYU,US,78993,Fort Yukon Airport,616,
 HKB,US,78993,Healy Lake Airport,13,
 HNH,US,78993,Hoonah Airport,760,
-HTO,US,78993,Town of East Hampton Airport,28394,750
-JRA,US,220000,West 30th Street Heliport,5000,750
-JRB,US,220000,Downtown Manhattan Heliport,5000,750
+HTO,US,78993,Town of East Hampton Airport,28394,725
+JRA,US,220000,West 30th Street Heliport,1000,725
+JRB,US,220000,Downtown Manhattan Heliport,1000,725
 KCG,US,78993,Chignik Airport,74,
-LW0,US,190000,London,5000,750
+LW0,US,190000,London,1000,600
 MLY,US,78993,Manley Hot Springs Airport,125,
 NUP,US,78993,Nunapitchuk Airport,539,
 PDB,US,78993,Pedro Bay Airport,48,
@@ -114,7 +125,7 @@ SSW,US,78993,Stuart Island Airpark,208,
 STG,US,78993,St George Airport,150,
 TEK,US,78993,Tatitlek Airport,114,
 TNK,US,78993,Tununak Airport,373,
-TSS,US,220000,East 34th Street Heliport,5000,750
+TSS,US,220000,East 34th Street Heliport,1000,600
 WDN,US,78993,Waldron Airstrip,58,
 PIZ,US,78993,Point Lay LRRS Airport,170,
 HNM,US,78993,Hana Airport,1235,
@@ -139,4 +150,6 @@ EMK,US,78993,Emmonak Airport,802,
 DUT,US,78993,Tom Madsen (Dutch Harbor) Airport,4283,
 DLG,US,78993,Dillingham Airport,2329,
 ADK,US,78993,Adak Airport,326,
+PHO,US,78993,Point Hope,830,
 UNI,VC,62300,Union Island International Airport,2884,
+MCM,,240862,Monaco,1900,700
