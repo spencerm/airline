@@ -235,7 +235,7 @@ object RankingLeaderboards {
 
   private[this] def getLinkShortest(linkConsumptions: List[LinkConsumptionDetails], airlinesById: Map[Int, Airline]): List[Ranking] = {
     val longestLinkPerAirline = linkConsumptions
-      .filter(_.link.soldSeats.total > 2000)
+      .filter(_.link.soldSeats.total > 3000)
       .filter(_.profit > 0)
       .sortBy(_.link.distance)(Ordering[Int])
       .foldLeft(List.empty[LinkConsumptionDetails]) { (acc, linkDetail) =>
