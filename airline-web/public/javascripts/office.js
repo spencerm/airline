@@ -204,9 +204,9 @@ function updateAirlineBases() {
 
 function setProgressWidth(elemId, current, past, next){
     const percent = Math.max((current - past) / (next - past) * 100, 0)
-    const red = Math.max((250 - percent > 22 ? (percent - 22) * 4 : 0).toFixed(0), 0)
-    const green = Math.min(percent * 11, 230)
-    $(elemId).css({'width': percent + "%", 'background-color': "rgba("+red+","+green+",0,0.8)"})
+    const red = Math.max((percent > 15 ? 250 - (percent - 15) * 4 : 250).toFixed(0), 0)
+    const green = Math.min(percent * 3, 230)
+    $(elemId).css({'width': percent + "%", 'background-color': "rgba("+red+","+green+",0,0.65)"})
 }
 
 function addProgressGrades(track, grades){
