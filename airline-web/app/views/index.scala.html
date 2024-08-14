@@ -2854,7 +2854,7 @@
 							<div class="table-header">
 								<div class="cell" style="width: 7%">Rank</div>
 								<div class="cell" style="width: 9%">Change</div>
-								<div class="cell" style="width: 55%">Shortest Profitable Route <br><small>With more than 2000 sold seats</small></div>
+								<div class="cell" style="width: 55%">Shortest Profitable Route <br><small>With more than 3000 sold seats</small></div>
 								<div class="cell" style="width: 22%" align="right">Distance</div>
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
@@ -5112,10 +5112,10 @@
 	  </div>
 
 	<div id="olympicsVoteModal" class="modal">
-		<div class="modal-content"  style="width : 900px; height: 800px; margin: 5% auto; overflow-y: auto;">
+		<div class="modal-content px-4 py-4" style="width: 900px; max-width: 90%; margin: 5% auto; overflow-y: auto;">
 			<span class="close" onclick="closeModal($('#olympicsVoteModal'))">&times;</span>
-			<h4 style="margin-bottom: 10px;">Olympics Host City Voting (1 : highest precedence)</h4>
-			<div class="table data" id="olympicsCityVoteTable" style="width: 100%; min-width: 500px;">
+			<h4 style="margin-bottom: 10px;">Olympics Host City Voting</h4>
+			<div class="three-up-grid py-4" id="olympicsCityVoteTable">
 			</div>
 			<button type="button" class="button confirm" onclick="confirmOlympicsVotes()">Confirm</button>
 			<button type="button" class="button revert" onclick="revertOlympicsVotes()">Revert</button>
