@@ -75,11 +75,6 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     }
   }
 
-  object LoginStatus extends Enumeration {
-    type LoginStatus = Value
-    val ONLINE, ACTIVE_7_DAYS, ACTIVE_30_DAYS, INACTIVE = Value
-  }
-  
   implicit object AirlineWithUserWrites extends Writes[(Airline, User, Option[LoginStatus.Value], Option[Alliance], List[AirlineModifier], Boolean)] {
     def writes(entry: (Airline, User, Option[LoginStatus.Value], Option[Alliance], List[AirlineModifier], Boolean)): JsValue = {
       val (airline, user, loginStatus, alliance, airlineModifiers, isCurrentUserAdmin) = entry
@@ -821,8 +816,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def getChampionedAirports(airlineId : Int) = Authenticated { implicit request =>
     val championedAirportsByThisAirline  = ChampionUtil.loadAirportChampionInfoByAirline(airlineId).sortBy(_.reputationBoost)(Ordering[Double].reverse)
 
-
-    Ok(Json.toJson(championedAirportsByThisAirline))
+    Ok(Json.obj("airports" -> championedAirportsByThisAirline, "maxEntries" -> AirlineSimulation.MAX_AIRPORT_CHAMPION_BOOST_ENTRIES))
   }
 
 

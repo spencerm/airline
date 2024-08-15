@@ -8,6 +8,7 @@ import scala.collection.immutable
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import com.patson.model.airplane.Airplane
+import com.patson.model.notice.GameOverNotice
 import com.patson.model.oil.OilPrice
 import com.patson.model.oil.OilInventoryPolicy
 import com.patson.model.oil.OilConsumptionHistory
@@ -23,6 +24,7 @@ object AirlineSimulation {
   val MINIMUM_CASH_BALANCE_STOCKS = 10000000 //10M
   val BANKRUPTCY_ASSETS_THRESHOLD = -50000000 //-50M
   val BANKRUPTCY_CASH_THRESHOLD = -10000000 //-10M
+  val MAX_AIRPORT_CHAMPION_BOOST_ENTRIES = 120 //per airline, how many airport champ entries can it add up for reputation boost
 
   def airlineSimulation(cycle: Int, flightLinkResult : List[LinkConsumptionDetails], loungeResult : scala.collection.immutable.Map[Lounge, LoungeConsumptionDetails], airplanes : List[Airplane], airlineStats : List[AirlineStat]) = {
     val allAirlines = AirlineSource.loadAllAirlines(true)
@@ -206,6 +208,7 @@ object AirlineSimulation {
           //todd: add public notice of bankruptcy with stats
           println(s"Resetting $airline due to negative value")
           Airline.resetAirline(airline.id, newBalance = resetBalance)
+          NoticeSource.saveTrackingNotice(airline.id, GameOverNotice())
         }
 
         val linksIncome = flightLinkResultByAirline.get(airline.id) match {

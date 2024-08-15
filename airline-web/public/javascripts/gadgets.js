@@ -351,12 +351,15 @@ function getRankingImg(ranking, limitToTop3 = false) {
 	} else if (ranking <= 10 && limitToTop3 !== true) {
 		rankingIcon = "assets/images/icons/trophy-" + ranking + ".png"
 		rankingTitle = ranking + "th place"
+	} else if (ranking <= 20) {
+		rankingIcon = "assets/images/icons/counter-" + ranking + ".png"
+        rankingTitle = ranking + "th place"
 	}
 	
 	if (rankingIcon) {
 		return "<img src='" + rankingIcon + "' title='" + rankingTitle + "' style='vertical-align:middle; padding-right: 2px;'/>"
 	} else {
-		return ""
+		return "<span>" + ranking + "</span>"
 	}
 }
 
@@ -621,11 +624,14 @@ function closeModal(modal) {
 }
 
 function closeAllModals() {
+    var closedModals = []
     $.each($(".modal"), function(index, modal) {
         if ($(modal).is(":visible")) {
             closeModal($(modal))
+             closedModals.push(modal);  // Add the closed modal to the array
         }
     });
+    return closedModals
 }
 
 function disableButton(button, reason) {
