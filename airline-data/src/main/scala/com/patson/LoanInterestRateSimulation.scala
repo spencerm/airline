@@ -68,7 +68,7 @@ object LoanInterestRateSimulation {
     }
   }
 
-  val DEFAULT_ANNUAL_RATE : Double = 0.12 //12% set for default plus used for define 10 years loan but more usage later planned.
+  val DEFAULT_ANNUAL_RATE : Double = 0.12 //12% set for default plus used for define 20 years loan but more usage later planned.
   val MAX_DELTA : BigDecimal = 0.01 // rate can''t change more than 100 basis point per cycle.
   val RATE_STEP : BigDecimal = 0.0005 // 0.05 % is a step
   val MIN_RATE : BigDecimal = -0.042 //min rate is -4.2%
