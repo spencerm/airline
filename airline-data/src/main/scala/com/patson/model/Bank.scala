@@ -8,7 +8,7 @@ import com.patson.data.AirplaneSource
 
 object Bank {
   val WEEKS_PER_YEAR = 52
-  val LOAN_TERMS = List[Int](26, WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 8 * WEEKS_PER_YEAR)
+  val LOAN_TERMS = List[Int](26, WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 8 * WEEKS_PER_YEAR, 10 * WEEKS_PER_YEAR, 15 * WEEKS_PER_YEAR, 20 * WEEKS_PER_YEAR)
   val MAX_LOANS = 10
   val MIN_LOAN_AMOUNT = 10000
   val MAX_LOAN_AMOUNT = 1500000000 //1.5b max
@@ -32,7 +32,7 @@ object Bank {
     //base on previous month
     val previousMonthCycle = currentCycle - currentCycle % 4 - 1
     
-    val creditFromProfit : Option[Long] = IncomeSource.loadIncomeByAirline(airlineId, previousMonthCycle, Period.MONTHLY).map(_.links.profit * 13 * 2)  //2 * yearly link profit
+    val creditFromProfit : Option[Long] = IncomeSource.loadIncomeByAirline(airlineId, previousMonthCycle, Period.MONTHLY).map(_.links.profit * 13 * 2 / 1)  // 2 year link profit with 100 % coverage of futur payment at current profit.
     
     val totalAssets = Computation.getResetAmount(airlineId).overall
     val creditFromAssets = (totalAssets * 0.2).toLong //offer 20% of the assets as credit
@@ -64,15 +64,27 @@ object Bank {
   }
 
   def getLoanOptions(principal : Long, annualRate : BigDecimal, currentCycle : Int) = {
-      val rateIncrementPerYear = 0.004 //0.5% more every extra year
       LOAN_TERMS.map { term =>
-        //Payment = P x (r / n) x (1 + r / n)^n(t)] / ((1 + r / n)^n(t) - 1)
         val years = term / WEEKS_PER_YEAR
         val baseAnnualRate = annualRate
-        val annualRateByTerm = baseAnnualRate + (years - 1) * rateIncrementPerYear
+		val DEFAULT_ANNUAL_RATE : Double = 0.12 // 12% set for default plus used for define 20 years loan but more usage later planned.
+		val annualRateByTerm = ( ( ( DEFAULT_ANNUAL_RATE - baseAnnualRate ) / 1040 ) * term + baseAnnualRate ) // CACULATED FOR MAX TERM OF 20 YEARS!!!
         Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle, lastPaymentCycle = currentCycle, term = term)
       }
   }
+// REALIST CALCULATION
+
+//  def getLoanOptions(principal : Long, annualRate : BigDecimal, currentCycle : Int) = {
+//      val rateIncrementPerYear = 0.004 //0.5% more every extra year
+//      LOAN_TERMS.map { term =>
+//        //Payment = P x (r / n) x (1 + r / n)^n(t)] / ((1 + r / n)^n(t) - 1)
+//        val years = term / WEEKS_PER_YEAR
+//        val baseAnnualRate = annualRate
+//        val annualRateByTerm = baseAnnualRate + (years - 1) * rateIncrementPerYear
+//        Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle, lastPaymentCycle = currentCycle, term = term)
+//      }
+//  }
+// INCREMENTAL CALCULATION
 
   case class LoanReply(maxLoan : Long, rejectionOption : Option[String])
 }
