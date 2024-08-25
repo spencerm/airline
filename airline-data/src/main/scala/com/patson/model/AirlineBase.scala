@@ -117,15 +117,15 @@ object AirlineBase {
   def getOfficeStaffCapacity(scale : Int, isHeadquarters : Boolean) = {
     val base =
       if (isHeadquarters) {
-        200
+        500
       } else {
-        50
+        250
       }
     val scaleBonus =
       if (isHeadquarters) {
-        100 * scale * ( scale / 5 )
+        50 * scale ^ 1.1
       } else {
-        80 * scale * ( scale / 5 )
+        47.5 * scale ^ 1.2
       }
     base + scaleBonus
   }
