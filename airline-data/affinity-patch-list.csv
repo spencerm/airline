@@ -1,2647 +1,2910 @@
-iata,airportZone,,country code
-AAE,|FR|Algerian x2,,DZ
-AAL,Dairy,,DK
-AAL,Healthcare,,DK
-AAL,Jutland capital journeys,,DK
-AAL,Wind Energy,,DK
-AAN,|AE|Malayali,,CN
-AAV,|AU|Italian,,PH
-ABJ,Agriculture,,CI
-ABQ,Academia,,US
-ABQ,Hispanic|,,US
-ABQ,Renewable Energy,,US
-ABQ,UFOs,,US
-ABV,|US|Nigerian,,NG
-ABV,Bureaucracy,,NG
-ABZ,Whiskey,,GB
-ACA,|US|Guerrero & Oaxaca,,MX
-ACC,|NL|Ghanaian,,GH
-ACC,Agriculture,,GH
-ACE,Seafood,,ES
-ACK,Wind Energy,,US
-ACV,|US|Guerrero & Oaxaca,,US
-ACV,Drug trafficking,,US
-ACV,Forestry,Arcata/Eureka,US
-ACY,Casinos,,US
-AD1,Offshore Oil,oil platform,
-ADA,|DK|Turkish,,TR
-ADA,|NL|Turkish,,TR
-ADA,Textiles,,TR
-ADB,|DK|Turkish,,TR
-ADB,|NL|Turkish,,TR
-ADB,Wind Energy,,TR
-ADD,|IE|Ethiopian,,ET
-ADD,|US|Ethiopian,,ET
-ADD,|ZA|Ethiopian,,ET
-ADD,Bureaucracy,,ET
-ADD,Coffee,,ET
-ADD,Logistics MEA,,ET
-ADL,|AU|Indian,,AU
-ADL,Viticulture,,AU
-ADQ,Arctic Fishing,,US
-ADZ,Coffee,,ER
-AEP,|US|Jewish,,AR
-AEP,Agribusiness,,AR
-AEP,Loves Florianopolis x2|,,AR
-AES,Arctic Fishing,,NO
-AEY,Geothermal,,IS
-AGP,|ES|Ecuadorian,,ES
-AGP,Mediterranean agriculture,,ES
-AGP,Telco,,ES
-AGR,Footwear,,IN
-AGS,Golf,,US
-AGT,German|,,GY
-AGT,Spices / Tropical ag,,GY
-AGU,|US|Durango & Zacatecas,,MX
-AHB,|SA|Pakistani,,SA
-AHB,Oil,,SA
-AIP,|CA|Punjabi,,FR
-AJF,Oil,,JO
-AKL,|NZ|Indian,,NZ
-AKL,|NZ|Samoan,,NZ
-AKL,Dairy,,NZ
-AKL,Logistics APAC,,NZ
-AKN,Arctic Fishing,,US
-ALA,LNG,,KZ
-ALA,Logistics CIS,,KZ
-ALA,Oil,,KZ
-ALB,Dairy,,US
-ALB,Loves DR x2|,,US
-ALC,British Sunny Vacay x2|,,ES
-ALC,Mediterranean agriculture,,ES
-ALC,Petrochemicals,,ES
-ALG,|CA|Algerian,,DZ
-ALG,|FR|Algerian x2,,DZ
-ALG,Logistics EU,,DZ
-ALG,Oil,,DZ
-ALO,Wind Energy,,GR
-ALP,|BR|Syrian,,US
-ALP,|NL|Syrian,,US
-AMA,Ranching,,US
-AMA,UFOs,,US
-AMA,Wind Energy,,US
-AMD,|KE|Gujarati,,IN
-AMD,Dairy,,IN
-AMD,Pharma,,IN
-AMD,Textiles,,IN
-AMH,|US|Ethiopian,,CN
-AMH,|ZA|Ethiopian,,CN
-AMM,Healthcare,,JO
-AMS,|NL|Ghanaian,,NL
-AMS,|NL|Indonesian,,NL
-AMS,|NL|Moroccan,,NL
-AMS,|NL|Surinamese,,NL
-AMS,|NL|Turkish,,NL
-AMS,Diamonds,,NL
-AMS,Drug trafficking,,NL
-AMS,Horticulture,,NL
-AMS,Semiconductors,,NL
-ANC,|US|Samoan,,US
-ANC,Arctic Fishing,,US
-ANC,Arctic Oil,Anchorage Alaska,US
-ANC,LNG,,US
-ANF,Copper,Antofagasta Chile,CL
-ANR,Diamonds,,BE
-ANR,Drug trafficking,,BE
-ANR,Global Logistics,,BE
-ANR,Logistics EU,,BE
-ANR,Loves Tiroler Unterlan x2|,,BE
-ANR,Telco,,BE
-ANX,Arctic Fishing,,US
-APL,Agriculture,,MZ
-APN,Maple Syrup,,US
-AQP,Copper,Arequipa Peru,PE
-ARB,Academia,University of Michigan,US
-ARK,Nordic / Lutheran|,,TZ
-ARM,Ranching,,AU
-ARN,|NL|Syrian,,SE
-ARN,|SE|Iraqi,,SE
-ARN,Industrial automation,,SE
-ARN,Software,,SE
-ARN,Telco,,SE
-ARU,Sugar,,BR
-ASB,LNG,,OM
-ASB,Oil,,OM
-ASR,CPG & Retail,,TR
-AT2,Offshore Oil,oil platform,
-ATH,|AU|Greek,,GR
-ATH,Marine,,GR
-ATL,|US|Colombian,,US
-ATL,|US|Korean,,US
-ATL,|US|Nigerian,,US
-ATL,CPG & Retail,Coca Cola,US
-ATL,Defense,,US
-ATL,Logistics NAC,,US
-ATL,Loves DR x2|,,US
-ATQ,|CA|Punjabi,,IN
-ATQ,Agriculture,,IN
-ATQ,Textiles,,IN
-ATW,Nordic / Lutheran|,,US
-AUH,|AE|Malayali,,AE
-AUH,|AE|Pakistani,,AE
-AUH,Banking,,AE
-AUH,Oil,,AE
-AUS,|US|Durango & Zacatecas,,US
-AUS,|US|Pakistani,,US
-AUS,Academia,,US
-AUS,Renewable Energy,,US
-AUS,Semiconductors,,US
-AUS,Software,,US
-AVL,Academia,University of North Carolina at Asheville,US
-AVL,Wood Processing,Asheville,US
-AVV,|AU|Indian,,TW
-AWZ,Oil,,KZ
-AWZ,Petrochemicals,,KZ
-AYT,Russian Vacay Destination x2|,,TR
-AZS,Sugar,,DR
-BAH,LNG,,BH
-BAH,Oil,,BH
-BAQ,|CL|Colombian,,CO
-BAQ,|MX|Colombian,,CO
-BAQ,|US|Colombian,,CO
-BAV,Rare earths,Baotou,KH
-BBK,Gemstones,,BW
-BCN,|ES|Ecuadorian,,ES
-BCN,Textiles,,ES
-BDA,High finance,,BM
-BDB,Sugar,,AU
-BDJ,Diamonds,,ID
-BDL,|US|Irish American,,US
-BDL,|US|Polish,,US
-BDL,|US|Stateside Puerto Ricans,,US
-BDL,Academia,University of Connecticut,US
-BDL,Loves DR x2|,,US
-BDO,Spices / Tropical ag,,ID
-BDQ,Dairy,,BR
-BDU,Defense,,AU
-BEG,|DE|Serbian,,RS
-BEG,|FR|Serbian,,RS
-BEG,Agriculture,,RS
-BEG,Logistics EU,,RS
-BEL,|BR|Nikkei,,BR
-BEL,Agribusiness,,BR
-BEL,Amazonia,,BR
-BER,|DE|Iranian,,DE
-BER,|DE|Serbian,,DE
-BER,|DE|Turkish,,DE
-BER,Entertainment,,DE
-BER,Industrial automation,,DE
-BER,Renewable Energy,,DE
-BER,Telco,,DE
-BES,Marine,,FR
-BET,Arctic Oil,Bethel Alaska,US
-BEY,Shia|,,LB
-BFI,Academia,University Washington,US
-BFI,Aerospace,,US
-BFL,Arctic Oil,Bakersfield CA,US
-BFL,Hispanic|,,US
-BFL,Logistics NAC,Bakersfield CA,US
-BGO,Arctic Fishing,,NO
-BGO,Marine,,NO
-BGO,Oil,,NO
-BGO,Wind Energy,,NO
-BGW,|SE|Iraqi,,IQ
-BGW,|TR|Iraqi,,MY
-BGW,Shia|,,IQ
-BGY,|IT|Romanian,,IT
-BGY,Banking,,IT
-BGY,Dairy,,IT
-BHE,Viticulture,Blenheim New Zealand,CN
-BHE,Viticulture,,CN
-BHJ,|KE|Gujarati,,IN
-BHM,Academia,,US
-BHM,Heavy industry,,US
-BHX,|GB|Indian,,GB
-BIL,Forestry,Billings,US
-BIO,Renewable Energy,,ES
-BIQ,Surfing,,FR
-BIS,Nordic / Lutheran|,,US
-BIU,Geothermal,,IS
-BJA,|FR|Algerian x2,,ID
-BJR,|ZA|Ethiopian,,ML
-BJX,Footwear,,MX
-BJX,Textiles,,MX
-BKI,Spices / Tropical ag,Kota Kinabalu,MY
-BKK,|TH|Chinese,,TH
-BKK,CPG & Retail,,TH
-BKK,Electronics,,TH
-BKK,Banking,,TH
-BKS,Geothermal,,ID
-BLA,Oil,,VE
-BLJ,|FR|Algerian x2,,VN
-BLK,Wind Energy,,US
-BLL,Dairy,,DK
-BLL,Toys,,DK
-BLL,Wind Energy,,DK
-BLQ,Automotive,,IT
-BLQ,CPG & Retail,,IT
-BLR,|AE|Kannada,,IN
-BLR,|OM|Kannada,,IN
-BLR,Software,,IN
-BLR,Sunni|,,IN
-BLR,Telco,,IN
-BMI,Academia,,US
-BNA,Automotive,,US
-BNA,US Finance,,US
-BNA,CPG & Retail,,US
-BNA,Entertainment,,US
-BNA,Healthcare,,US
-BND,Logistics MEA,,IR
-BNE,|AU|Chinese,,AU
-BNE,|AU|Indian,,AU
-BNE,|AU|Vietnamese,,AU
-BNE,Logistics APAC,,AU
-BNE,Renewable Energy,,AU
-BOD,|FR|Algerian x2,,FR
-BOD,Viticulture,,FR
-BOG,|CL|Colombian,,CO
-BOG,|MX|Colombian,,CO
-BOG,|US|Colombian,,CO
-BOG,Andean connect,,CO
-BOG,Coffee,,CO
-BOG,Colonial ties bind,,CO
-BOG,Horticulture,,CO
-BOI,Forestry,Boise,US
-BOI,Healthcare,,US
-BOI,Wood Processing,,US
-BOJ,Agriculture,,JP
-BOM,|SG|Marathi,,IN
-BOM,Banking,,IN
-BOM,Bollywood 2 Bureaucracy x2,,IN
-BOM,Diamonds,,IN
-BOM,Entertainment,,IN
-BOM,Sunni|,,IN
-BOM,Textiles,,IN
-BOS,|US|Brazilian,,US
-BOS,|US|Irish American,,US
-BOS,Academia,Harvard University,US
-BOS,Banking,,US
-BOS,Life sciences,,US
-BOS,Software,,US
-BOS,US Finance,,US
-BPN,Nickel,,ID
-BPN,Oil,Balikpapan Indonesia,ID
-BRD,Wood Processing,Brainerd,US
-BRE,Agribusiness,,DE
-BRE,Loves Arctic|,,DE
-BRE,Loves Bolzano x2|,,DE
-BRE,Nordic / Lutheran|,,DE
-BRE,Wind Energy,,DE
-BRI,Viticulture,,IT
-BRO,Aerospace,,US
-BRO,Hispanic|,,US
-BRS,Aerospace,,BE
-BRU,|CD|Congolese,,BE
-BRU,Bureaucracy,,BE
-BRU,CPG & Retail,,BE
-BRU,Pharma,,BE
-BRW,Arctic Oil,Barrow Alaska,US
-BRW,LNG,,US
-BRX,Sugar,,DR
-BSB,Bureaucracy,,BR
-BSB,Coffee,,BR
-BSB,Agribusiness,,BR
-BSL,Life sciences,,FR
-BSR,|SE|Iraqi,,IQ
-BSR,|TR|Iraqi,,IR
-BSR,Oil,,IR
-BSR,Shia|,,IQ
-BTJ,Surfing,,ID
-BTK,Gold,Bratsk (Lena goldfields) Russia,MY
-BTR,Academia,LSU,US
-BTR,LNG,,US
-BTS,Appliances,,
-BTS,Automotive,,UA
-BTU,LNG,,MY
-BTV,Academia,University of Vermont,US
-BTV,Dairy,,US
-BTV,Maple Syrup,,US
-BUD,Automotive,,HU
-BUD,Pharma,,HU
-BUF,Agribusiness,,US
-BUF,Heavy industry,,US
-BUF,Life sciences,,US
-BUQ,Logistics MEA,,ZW
-BUQ,Zim Connect x2,,AR
-BUR,Aerospace,,US
-BUR,Entertainment,,US
-BUR,Hispanic|,,US
-BUR,SoCal NoCal,,US
-BUW,Nickel,,MM
-BUZ,Logistics MEA,,IR
-BUZ,Marine,,RO
-BUZ,Petrochemicals,,RO
-BVA,|FR|Algerian x2,,FR
-BVA,|FR|Moroccan,,FR
-BVA,|FR|Polish,,FR
-BVA,|FR|Serbian,,FR
-BVA,Aerospace,,FR
-BVA,Software,,FR
-BVA,|FR|Tunisian x2,,FR
-BWI,|US|Guatemalan,,US
-BWI,|US|Nigerian,,US
-BWI,|US|Salvadoran,,US
-BWI,Defense,,US
-BWI,Logistics NAC,,US
-BWN,Forestry,,BN
-BWN,LNG,,BN
-BWN,Oil,,BN
-BWN,Sinophone|,,BN
-BZO,Loves Bolzano x2|,,IT
-CAB,Francophonie|,,AO
-CAE,Academia,,US
-CAE,Healthcare,,US
-CAG,Mediterranean agriculture,,IT
-CAH,Seafood,,VN
-CAI,Agriculture,,EG
-CAK,LNG,,US
-CAN,Automotive,,CN
-CAN,Cantonese|,,CN
-CAN,Chinese Tourism|,,CN
-CAN,Electronics,,CN
-CAN,Footwear,,CN
-CAN,Textiles,,CN
-CAN,Toys,,CN
-CAS,Logistics MEA,,MA
-CAY,Aerospace,,GY
-CAZ,Copper,Cobar,MZ
-CAZ,Gold,Cobar (various mines) New South Wales,MZ
-CBB,|AR|Bolivian,,BO
-CBB,|BR|Bolivian,,BO
-CBL,Gold,,PK
-CBR,Bureaucracy,,AU
-CCD,Gold,Cloncurry (Ernest Henry Mine) Queensland,AU
-CCJ,|AE|Malayali,,BR
-CCJ,|MY|Malayali,,BR
-CCJ,|OM|Malayali,,BR
-CCJ,|SA|Malayali,,BR
-CCJ,Sunni|,,IN
-CCP,Heavy industry,,PH
-CCP,Viticulture,Itata Valley,PH
-CCS,|CL|Venezuelan,,VE
-CCS,|PE|Venezuelan,,VE
-CCS,|US|Venezuelan,,VE
-CCS,Oil,,VE
-CCU,|CA|Bengali,,IN
-CCU,|US|Bengali,,IN
-CCU,Bengali|,,IN
-CCU,Logistics APAC,,IN
-CCU,Sunni|,,IN
-CDG,|FR|Algerian x2,,FR
-CDG,|FR|Jewish,,FR
-CDG,|FR|Moroccan,,FR
-CDG,|FR|Polish,,FR
-CDG,Automotive,,FR
-CDG,Banking,,FR
-CDG,Life sciences,Sciences Po,FR
-CDG,Software,,FR
-CEB,Appliances,,PH
-CEB,Chinese Tourism|,,PH
-CEB,Electronics,,PH
-CEI,Gemstones,,TH
-CFB,Offshore Oil,,BR
-CGB,Sugar,,BR
-CGB,Gold,,BR
-CGB,Ranching,,BR
-CGH,Agribusiness,,BR
-CGH,Banking,,BR
-CGH,Healthcare,,BR
-CGH,Logistics LATAM,,BR
-CGJ,Copper,Chingola Zambia,ZM
-CGK,|ID|Chinese,,ID
-CGK,|ID|Tamil,,ID
-CGK,|NL|Indonesian,,ID
-CGK,Coffee,,ID
-CGK,CPG & Retail,,ID
-CGN,Banking,,DE
-CGN,Life sciences,,DE
-CGN,Loves Arctic|,,DE
-CGN,Loves Bolzano x2|,,DE
-CGO,|CA|Chinese,,CN
-CGO,Agribusiness,,CN
-CGO,Apple,,CN
-CGO,Automotive,,CN
-CGO,Chinese Tourism|,,CN
-CGO,Textiles,,CN
-CGR,|BR|Nikkei,,BR
-CGR,Agribusiness,,BR
-CHC,|NZ|Indian,,NZ
-CHC,|NZ|Samoan,,NZ
-CHC,Agribusiness,,NZ
-CHC,Dairy,,NZ
-CHC,Logistics APAC,,NZ
-CHO,Academia,University of Virginia,US
-CHS,Aerospace,,US
-CIA,|IT|Romanian,,IT
-CID,Academia,University of Iowa,US
-CJB,|AE|Tamil,,BO
-CJB,|ID|Tamil,,BO
-CJB,|MY|Tamil,,BO
-CJC,Copper,Calama Chile,BO
-CJC,Gemstones,,CL
-CJS,Electronics,,MX
-CJS,Logistics NAC,,MX
-CKG,|AU|Chinese,,CN
-CKG,|CA|Chinese,,CN
-CKG,|ID|Chinese,,CN
-CKG,|TH|Chinese,,CN
-CKG,|US|Chinese,,CN
-CKG,Automotive,,CN
-CKG,Chinese Tourism|,,CN
-CKG,Logistics APAC,,CN
-CLE,|US|Stateside Puerto Ricans,,US
-CLE,Aerospace,,US
-CLE,Appliances,Whirlpool,US
-CLE,Healthcare,,US
-CLE,Loves DR x2|,,US
-CLO,|CL|Colombian,,CO
-CLO,|MX|Colombian,,CO
-CLO,|US|Colombian,,CO
-CLO,Agribusiness,,CO
-CLO,Drug trafficking,,CO
-CLQ,|US|Jalisco & Michoacán,,CA
-CLT,Industrial automation,,US
-CLT,Loves DR x2|,,US
-CLT,US Finance,,US
-CLV,Ranching,,BR
-CMB,Gemstones,,LK
-CMB,Textiles,,LK
-CMB,Tea,,LK
-CME,Oil,,MX
-CMG,|BR|Nikkei,,BR
-CMH,|US|Jalisco & Michoacán,,US
-CMH,|US|Somali,,US
-CMH,Academia,Ohio State University,US
-CMH,Logistics NAC,,US
-CMH,US Finance,,US
-CMI,Academia,University of Illinois,US
-CMN,|CA|Moroccan,,MA
-CMN,|FR|Moroccan,,MA
-CMN,|NL|Moroccan,,MA
-CNF,Agribusiness,,BR
-CNF,Automotive,,BR
-CNF,Coffee,,BR
-CNF,Dairy,,BR
-CNN,|AE|Malayali,,BR
-CNN,|MY|Malayali,,BR
-CNN,|OM|Malayali,,BR
-CNN,|SA|Malayali,,BR
-CNS,|AU|Indian,,AU
-CNS,Seafood,,AU
-CNS,Sugar,,AU
-CNX,Chinese Tourism|,,TH
-CNX,Spices / Tropical ag,,TH
-CNX,Sugar,,TH
-COK,|AE|Malayali,,IN
-COK,|MY|Malayali,,IN
-COK,|OM|Malayali,,IN
-COK,|SA|Malayali,,IN
-COK,Marine,,IN
-COK,Rare earths,,IN
-COK,Textiles,,IN
-COR,Agribusiness,,AR
-COR,CPG & Retail,Arcor,AR
-COR,Loves Florianopolis x2|,,AR
-COR,Ranching,,AR
-CPH,|DK|Turkish,,DK
-CPH,Dairy,,DK
-CPH,Jutland capital journeys,,DK
-CPH,Life sciences,,DK
-CPH,Marine,,DK
-CPH,Renewable Energy,,DK
-CPH,Wind Energy,,DK
-CPO,Copper,Copiapó Chile,CL
-CPT,Logistics MEA,,ZA
-CPT,Mediterranean agriculture,,ZA
-CPT,Viticulture,,ZA
-CRK,|IE|Filipino,,PH
-CRK,|IT|Filipino,,PH
-CRK,|US|Filipino,,PH
-CRK,CPG & Retail,,PH
-CRK,Electronics,,PH
-CRP,Hispanic|,,US
-CRP,Offshore Oil,,US
-CRP,Ranching,,US
-CRP,Wind Energy,,US
-CRZ,Oil,,AR
-CSX,Agribusiness,,CN
-CSX,Chinese Tourism|,,CN
-CSX,Electronics,,CN
-CSX,Industrial automation,,CN
-CTA,|AU|Italian,,IT
-CTA,|BR|Italian,,IT
-CTA,|US|Italian,,IT
-CTG,Petrochemicals,,CO
-CTS,Seafood,,JP
-CTS,Whiskey,,JP
-CTU,Automotive,,CN
-CTU,Banking,,CN
-CTU,Electronics,,CN
-CUL,Agriculture,,MX
-CUL,Drug trafficking,,MX
-CUN,|MX|Bolivian,,MX
-CUN,Anglophone|,,MX
-CUN,Loves Cancun x2|,,MX
-CUU,Appliances,,MX
-CUU,Automotive,,MX
-CUU,Logistics NAC,,MX
-CUZ,Colonial ties bind,,PE
-CVG,Industrial automation,,US
-CVG,Logistics NAC,,US
-CVG,US Finance,,US
-CWA,Maple Syrup,,US
-CWB,|BR|Nikkei,,BR
-CWB,Appliances,,BR
-CWB,Dairy,,BR
-CXR,Chinese Tourism|,,VE
-CXR,Russian Vacay Destination x2|,,VE
-CXR,Seafood,,VE
-CZL,|FR|Algerian x2,,MX
-CZM,Loves Cancun x2|,,MX
-CZX,Industrial automation,,CN
-DAC,|SA|Bangladeshi,,BD
-DAC,Banking,,BD
-DAC,Textiles,,BD
-DAD,|AU|Vietnamese,,VN
-DAD,|JP|Vietnamese,,VN
-DAD,|US|Vietnamese,,VN
-DAD,Appliances,,VN
-DAD,Drug trafficking,,VN
-DAD,Seafood,,VN
-DAL,Arctic Oil,,US
-DAL,Industrial automation,,US
-DAL,Logistics NAC,,US
-DAL,Oil,,US
-DAL,Ranching,,US
-DAL,Telco,,US
-DAM,|BR|Syrian,,SY
-DAM,|NL|Syrian,,SY
-DAM,Shia|,,SY
-DAR,Logistics MEA,,TZ
-DAY,Healthcare,,US
-DBV,Mediterranean agriculture,,HR
-DCA,Aerospace,,US
-DCA,Banking,,US
-DCA,Bureaucracy,,US
-DCA,Defense,,US
-DCA,High finance,,US
-DCA,NA Capitols|,,US
-DDC,Grain Belt,,US
-DEL,Banking,,IN
-DEL,Bollywood 2 Bureaucracy x2,,IN
-DEL,Bureaucracy,,IN
-DEL,Sunni|,,IN
-DEL,Telco,,IN
-DEN,|US|Ethiopian,,US
-DEN,Aerospace,,US
-DEN,Gold,,US
-DEN,Renewable Energy,,US
-DEN,Software,,US
-DFW,|US|Chinese,,US
-DFW,|US|Durango & Zacatecas,,US
-DFW,|US|Indian,,US
-DFW,|US|Jalisco & Michoacán,,US
-DFW,Loves DR x2|,,US
-DFW,Semiconductors,,US
-DFW,Telco,,US
-DGO,|US|Durango & Zacatecas,,MX
-DGT,Geothermal,Palinpinon Geothermal Power Plant,PH
-DHA,Oil,,SA
-DLA,Oil,,CM
-DLC,Marine,,CN
-DLC,Petrochemicals,,CN
-DLC,Seafood,,CN
-DLG,Arctic Oil,Dillingham Alaska,US
-DLH,Nordic / Lutheran|,,US
-DME,|RU|Armenian,,RU
-DME,Nickel,,RU
-DME,Petrochemicals,,RU
-DME,Russian Vacay Destination x2|,,RU
-DMK,|TH|Chinese,,TH
-DMK,Chinese Tourism|,,TH
-DMM,|SA|Bangladeshi,,SA
-DMM,|SA|Malayali,,SA
-DMM,|SA|Pakistani,,SA
-DMM,Offshore Oil,,SA
-DMM,Oil,,SA
-DNZ,Geothermal,Kızıldere Geothermal Power Plant,TR
-DOH,LNG,,QA
-DOH,Logistics MEA,,QA
-DOL,Logistics EU,Le Harve,FR
-DOU,Ranching,,BR
-DPS,|ID|Chinese,,ID
-DPS,|ID|Tamil,,ID
-DPS,|NL|Indonesian,,ID
-DPS,Chinese Tourism|,,ID
-DPS,Loves Bali x2|,,ID
-DPS,Surfing,,ID
-DRP,Geothermal,,PH
-DRS,Pharma,,DE
-DRS,Semiconductors,,DE
-DRW,Defense,,AU
-DRW,Seafood,,AU
-DSM,|US|Jalisco & Michoacán,,US
-DSM,Agribusiness,,US
-DSM,Grain Belt,,US
-DSS,Oil,,SN
-DTM,|DE|Serbian,,DE
-DTM,Industrial automation,,DE
-DTM,Logistics EU,,DE
-DTM,Loves Arctic|,,DE
-DTM,Loves Bolzano x2|,,DE
-DTW,Automotive,,US
-DTW,Healthcare,,US
-DTW,Loves DR x2|,,US
-DTW,Sunni|,,US
-DTW,US Finance,,US
-DUB,|IE|Polish,,IE
-DUB,|US|Irish American,,IE
-DUB,Golf,,IE
-DUB,US Finance,,IE
-DUB,High finance,,IE
-DUB,Whiskey,,IE
-DUD,Academia,University of Otago,NZ
-DUR,|ZA|Ethiopian,,ZA
-DUR,Agribusiness,,ZA
-DUR,Logistics MEA,,ZA
-DUS,|DE|Serbian,,DE
-DUS,Banking,,DE
-DUS,Loves Arctic|,,DE
-DUS,Loves Bolzano x2|,,DE
-DUS,Telco,,DE
-DUT,Seafood,,NL
-DVL,Grain Belt,,US
-DVO,|IE|Filipino,,PH
-DVO,|IT|Filipino,,PH
-DVO,|US|Filipino,,PH
-DVO,Spices / Tropical ag,,PH
-DWC,|AE|Pakistani,,AE
-DXB,|AE|Malayali,,AE
-DXB,|AE|Pakistani,,AE
-DXB,Global Logistics,,AE
-DXB,Gold,,AE
-DXB,High finance,,AE
-DXB,Oil,,AE
-DXB,Petrochemicals,,AE
-EAU,|US|Somali,,US
-EAU,Nordic / Lutheran|,,US
-EBL,|SE|Iraqi,,IQ
-EBL,Oil,,GA
-ECN,Sunni|,,CY
-ECN,Turkish|,,CY
-EDI,|UK|Polish,,GB
-EDI,Academia,University of Edinburgh,GB
-EDI,Banking,,GB
-EDI,Golf,,GB
-EDI,Whiskey,,GB
-EG1,Academia,,AQ
-EG9,Academia,,AQ
-EH1,Offshore Oil,oil platform,NO
-EIN,CPG & Retail,,NL
-EIN,Dairy,,DE
-EIS,High finance,,VI
-ELG,Gold,El Gouera (FIFO),DZ
-ELP,Hispanic|,,US
-ELP,Logistics NAC,,US
-ELS,Automotive,,ZA
-EMA,Logistics EU,,GB
-EN1,Offshore Oil,oil platform,NO
-EN2,Offshore Oil,oil platform,NO
-EN3,Offshore Oil,oil platform,NO
-EN4,Offshore Oil,oil platform,NO
-EN9,Offshore Oil,oil platform,NO
-ENA,LNG,,US
-ENO,Grain Belt,,PY
-ESB,|DK|Turkish,,TR
-ESB,|NL|Turkish,,TR
-ESB,|TR|Iraqi,,TR
-ESB,Bureaucracy,,TR
-EUG,Academia,University Oregon,US
-EVN,|FR|Armenian,,AM
-EVN,|RU|Armenian,,AM
-EWR,|US|Brazilian,,US
-EWR,|US|Chinese,,US
-EWR,|US|Indian,,US
-EWR,|US|Jewish,,US
-EWR,|US|Nigerian,,US
-EWR,|US|Pakistani,,US
-EWR,Global Logistics,,US
-EWR,Pharma,,US
-EWR,Software,,US
-EWR,US Finance,,US
-EXT,Wind Energy,,GB
-EZE,|AR|Bolivian,,AR
-EZE,|US|Jewish,,AR
-EZE,Banking,,AR
-EZE,Logistics LATAM,,AR
-EZE,Loves Florianopolis x2|,,AR
-FAI,Arctic Oil,Fairbanks Alaska,US
-FAI,Forestry,Fairbanks,US
-FAI,Loves Arctic|,,US
-FAI,Santa,,US
-FAO,Mediterranean agriculture,,PT
-FAO,Seafood,,PT
-FAR,Grain Belt,,US
-FAR,Nordic / Lutheran|,,US
-FAT,|US|Guerrero & Oaxaca,,US
-FAT,Grain Belt,,US
-FBM,|CD|Congolese,,MY
-FBM,Copper,Lubumbashi DRC,MY
-FBM,Uranium,,MY
-FCO,|AU|Italian,,IT
-FCO,|BR|Italian,,IT
-FCO,|IT|Filipino,,IT
-FCO,|US|Italian,,IT
-FCO,Telco,,IT
-FEZ,|FR|Moroccan,,MA
-FEZ,|NL|Moroccan,,MA
-FEZ,Mediterranean agriculture,,MA
-FIH,|CD|Congolese,,CD
-FIH,Gemstones,,CD
-FJR,|AE|Malayali,,AE
-FKB,Wood Processing,Karlsruhe/Baden-Baden,DE
-FLL,|CU|Cuban,,US
-FLL,|US|Jewish,,US
-FLL,|US|Venezuelan,,US
-FLL,CC|,,US
-FLL,Hispanic|,,US
-FLN,Loves Florianopolis x2|,,BR
-FLN,Surfing,,BR
-FLR,Textiles,,IT
-FLR,Viticulture,,IT
-FMM,Loves Arctic|,,MA
-FMM,Loves Bolzano x2|,,MA
-FMO,Wood Processing,Münster/Osnabrück,DE
-FNT,Automotive,,US
-FOC,|AU|Chinese,,CN
-FOC,|CA|Chinese,,CN
-FOC,|ID|Chinese,,CN
-FOC,|TH|Chinese,,CN
-FOC,|US|Chinese,,CN
-FOC,Chinese Tourism|,,CN
-FOC,Footwear,,CN
-FOC,Logistics APAC,,CN
-FOR,Textiles,,BR
-FRA,|DE|Serbian,,DE
-FRA,|DE|Turkish,,DE
-FRA,Global Logistics,,DE
-FRA,High finance,,DE
-FRA,Industrial automation,,DE
-FRA,Loves Arctic|,,DE
-FRA,Loves Bolzano x2|,,DE
-FRA,Pharma,,DE
-FRC,Footwear,,DE
-FRU,Agriculture,,KG
-FSD,Grain Belt,,US
-FSD,Nordic / Lutheran|,,US
-FSD,US Finance,,US
-FSZ,Appliances,,AT
-FSZ,Heavy industry,,AT
-FUK,Appliances,,JP
-FUK,Electronics,,JP
-FWA,Academia,Purdue University,US
-GAU,Sunni|,,IN
-GAU,Wood Processing,Guwahati,IN
-GBB,Agribusiness,,AZ
-GBE,Diamonds,,BW
-GCK,Wind Energy,,US
-GDL,|US|Jalisco & Michoacán,,MX
-GDL,CPG & Retail,,MX
-GDL,Software,,MX
-GDL,Textiles,,MX
-GDN,|IE|Polish,,PL
-GDN,|US|Polish,,PL
-GDN,Marine,,PL
-GDX,Arctic Fishing,,RU
-GDX,Gold,Magadan (Kolyma region) Russia,RU
-GEG,Forestry,Spokane,US
-GEO,Oil,Georgetown,GY
-GFK,Nordic / Lutheran|,,US
-GIG,Entertainment,,BR
-GIG,Oil,,BR
-GIG,Telco,,BR
-GJL,|FR|Algerian x2,,AF
-GLA,Heavy industry,,GB
-GLA,Marine,,GB
-GLA,Whiskey,,GB
-GLT,LNG,,AU
-GMO,|US|Nigerian,,CA
-GMP,|JP|Korean,,KR
-GMP,|US|Korean,,KR
-GMP,Appliances,,KR
-GMP,CPG & Retail,,KR
-GMP,Electronics,,KR
-GMP,Industrial automation,,KR
-GNV,Academia,,US
-GOA,Logistics EU,,IT
-GOA,Marine,,IN
-GOA,Russian Vacay Destination x2|,,IT
-GOH,Loves Arctic|,,IN
-GOJ,Automotive,,JP
-GOM,Rwanda-Rundi|,,IN
-GOT,Automotive,,SE
-GOT,Life sciences,,SE
-GOT,Marine,,SE
-GPT,Aerospace,,US
-GPT,Casinos,,US
-GRB,Dairy,,US
-GRB,Maple Syrup,,US
-GRK,Ranching,,US
-GRO,Mediterranean agriculture,,ES
-GRR,Industrial automation,,US
-GRU,|BR|Bolivian,,BR
-GRU,|BR|Italian,,BR
-GRU,|BR|Nikkei,,BR
-GRU,|BR|Syrian,,BR
-GRU,|US|Brazilian,,BR
-GRU,Aerospace,,BR
-GRU,Banking,,BR
-GSP,Appliances,Electrolux,US
-GUA,|US|Guatemalan,,GT
-GUW,Oil,,US
-GUW,Uranium,Atyrau,US
-GVA,Banking,,CH
-GVA,Bureaucracy,,CH
-GVA,CPG & Retail,Nestle,CH
-GVA,Francophonie|,,CH
-GVA,High finance,,CH
-GVR,Gemstones,,BR
-GWY,|US|Irish American,,IE
-GYA,Drug trafficking,,MM
-GYD,Horticulture,,AZ
-GYD,LNG,,AZ
-GYD,Offshore Oil,,AZ
-GYE,|ES|Ecuadorian,,EC
-GYE,|US|Ecuadorian,,EC
-GYE,Coffee,,EC
-GYE,Logistics LATAM,,EC
-GYN,Sugar,,BR
-GYN,Ranching,,BR
-HAJ,Automotive,,DE
-HAJ,Loves Arctic|,,DE
-HAJ,Loves Bolzano x2|,,DE
-HAJ,Nordic / Lutheran|,,DE
-HAM,|DE|Afghan,,DE
-HAM,|DE|Iranian,,DE
-HAM,|DE|Turkish,,DE
-HAM,Aerospace,,DE
-HAM,Logistics EU,,DE
-HAM,Loves Arctic|,,DE
-HAM,Loves Bolzano x2|,,DE
-HAM,Marine,,DE
-HAM,Renewable Energy,,DE
-HAN,|AU|Vietnamese,,VN
-HAN,|JP|Vietnamese,,VN
-HAN,|US|Hmong,,VN
-HAN,|US|Vietnamese,,VN
-HAN,CPG & Retail,,VN
-HAN,Electronics,,VN
-HAV,|CU|Cuban,,CU
-HEL,Telco,,FI
-HFA,Marine,Hafia,IL
-HFE,Appliances,Midea Group,CN
-HFE,CPG & Retail,,CN
-HGA,|NO|Somali,,PG
-HGA,|US|Somali,,PG
-HGH,|AU|Chinese,,CN
-HGH,|CA|Chinese,,CN
-HGH,|ID|Chinese,,CN
-HGH,|TH|Chinese,,CN
-HGH,|US|Chinese,,CN
-HGH,Academia,,CN
-HGH,Chinese Tourism|,,CN
-HGH,CPG & Retail,,CN
-HGH,Software,,CN
-HGH,Textiles,,CN
-HHN,Loves Arctic|,,DE
-HHN,Loves Bolzano x2|,,DE
-HHN,Wind Energy,,DE
-HHP,Banking,,TH
-HHP,High finance,,TH
-HIJ,Automotive,,JP
-HIJ,Heavy industry,,JP
-HKG,Cantonese|,,HK
-HKG,Global Logistics,,HK
-HKG,High finance,,HK
-HKG,HK Taiwan Kinship|,,HK
-HKG,Textiles,,HK
-HKG,Toys,,HK
-HKT,Chinese Tourism|,,TH
-HKT,Drug trafficking,,TH
-HKT,Loves Phuket x2|,,TH
-HKT,Russian Vacay Destination x2|,,TH
-HKT,Spices / Tropical ag,,TH
-HLA,Gold,,DE
-HLD,Ranching,,CN
-HLZ,Agribusiness,Hamilton NZ,NZ
-HLZ,Dairy,Hamilton NZ,NZ
-HLZ,Viticulture,Waikato wine region,SA
-HMO,Automotive,,MX
-HMO,Drug trafficking,,MX
-HND,|BR|Nikkei,,JP
-HND,|JP|Korean,,JP
-HND,|JP|Vietnamese,,JP
-HND,|MP|Nikkei,,JP
-HND,|PE|Nikkei,,JP
-HND,|US|Nikkei,,JP
-HND,Automotive,,JP
-HND,Industrial automation,,JP
-HND,Telco,,JP
-HNL,|US|Filipino,,US
-HNL,|US|Nikkei,,US
-HNL,|US|Samoan,,US
-HNL,Defense,,US
-HNL,PIF|,,US
-HNL,Surfing,,US
-HNM,PIF|,,JP
-HOD,Shia|,,YE
-HOG,|CU|Cuban,,GB
-HOM,Arctic Fishing,,US
-HOU,|US|Durango & Zacatecas,,US
-HOU,Aerospace,,US
-HOU,Arctic Oil,,US
-HOU,Healthcare,,US
-HOU,Offshore Oil,,US
-HOU,Oil,,US
-HPH,|JP|Vietnamese,,VN
-HPN,|US|Ecuadorian,,JP
-HPN,|US|Guatemalan,,JP
-HPN,|US|Irish American,,JP
-HPN,Hispanic|,,JP
-HRB,Agribusiness,,CN
-HRB,Chinese Tourism|,,CN
-HRB,Pharma,,CN
-HRE,Platinum,,ZW
-HRE,Rare earths,,ZW
-HRE,Zim Connect x2,,ZW
-HRG,Russian Vacay Destination x2|,,EG
-HRH,Shia|,,IN
-HRH,Sunni|,,IN
-HRL,Hispanic|,,US
-HSV,Academia,University of Alabama in Huntsville,US
-HSV,Aerospace,,US
-HSV,Defense,,US
-HTS,Gemstones,,US
-HUI,Agriculture,,VN
-HUI,Surfing,,VN
-HUX,Surfing,,MX
-HUY,Wind Energy,,BE
-HVN,|US|Stateside Puerto Ricans,,VN
-HVN,Academia,Yale University,VN
-HYD,|CA|Telugu,,IN
-HYD,Pharma,,IN
-HYD,Shia|,,IN
-HYD,Software,,IN
-IAD,|US|Ethiopian,,US
-IAD,|US|Guatemalan,,US
-IAD,|US|Indian,,US
-IAD,|US|Jewish,,US
-IAD,|US|Korean,,US
-IAD,Bureaucracy,,US
-IAD,Defense,,US
-IAD,NA Capitols|,,US
-IAD,Software,,US
-IAH,|US|Chinese,,US
-IAH,|US|Indian,,US
-IAH,|US|Nigerian,,US
-IAH,|US|Pakistani,,US
-IAH,|US|Vietnamese,,US
-IAH,LNG,,US
-IAH,Oil,,US
-IAH,Petrochemicals,,US
-IAH,Software,,US
-IAS,Viticulture,,RO
-ICN,|JP|Korean,,KR
-ICN,|US|Korean,,KR
-ICN,Automotive,,KR
-ICN,Banking,,KR
-ICN,Electronics,,KR
-ICN,Semiconductors,,KR
-ICT,|US|Jalisco & Michoacán,,US
-ICT,Aerospace,,US
-ICT,Heavy industry,,US
-IDA,Gemstones,,US
-IEV,Grain Belt,,UA
-IFN,|DE|Iranian,,IR
-IFN,|TR|Iranian,,IR
-IFN,|US|Iranian,,IR
-IFN,Heavy industry,,IR
-IGS,Automotive,,US
-IGU,|BR|Nikkei,,BR
-IGU,UFOs,,BR
-IKA,|DE|Iranian,,IR
-IKA,|TR|Iranian,,IR
-IKA,|US|Iranian,,IR
-IKA,Automotive,,IR
-IKA,Oil,,IR
-IKT,Forestry,Irkutsk,RU
-IKT,Gold,Irkutsk (Bodaibo) Russia,RU
-ILG,US Finance,,US
-ILM,Forestry,Wilmington,US
-ILR,|US|Nigerian,,NG
-ILY,Seafood,,GB
-IMP,Sugar,,BR
-IMT,Maple Syrup,,US
-IND,|US|Jalisco & Michoacán,,US
-IND,Academia,Indiana University Bloomington,US
-IND,Industrial automation,,US
-IND,Logistics NAC,,US
-IND,Pharma,,US
-INN,Loves Tiroler Unterlan x2|,,AT
-INV,Whiskey,,GB
-INW,UFOs,,US
-IPN,Heavy industry,,BR
-IQM,Gold,Qiemo (various mines) Xinjiang,YE
-IQQ,Copper,Iquique Chile,PE
-IQT,Amazonia,,PE
-ISA,Copper,Mount Isa,AU
-ISB,|US|Pakistani,,PK
-ISP,|US|Salvadoran,,US
-IST,|DK|Turkish,,TR
-IST,|NL|Turkish,,TR
-IST,|TR|Afghan,,TR
-IST,|TR|Iranian,,TR
-IST,|TR|Iraqi,,TR
-IST,Banking,,TR
-IST,CPG & Retail,,TR
-IST,Logistics APAC,,TR
-IST,Logistics CIS,,TR
-ISU,|SE|Iraqi,,IQ
-ISU,|TR|Iraqi,,NG
-ISU,Shia|,,IQ
-ITH,Academia,,US
-ITH,Dairy,,US
-ITM,|JP|Korean,,JP
-ITM,|JP|Korean,,JP
-ITM,|JP|Vietnamese,,JP
-ITM,Electronics,,JP
-ITM,Industrial automation,,JP
-ITO,PIF|,,JP
-IWD,Maple Syrup,,US
-IWK,Petrochemicals,,JP
-IXA,Wood Processing,Agartala,IN
-IXC,|CA|Punjabi,,IN
-IXC,Software,,IN
-IXE,|AE|Kannada,,IN
-IXE,|OM|Kannada,,IN
-IXG,Agriculture,,IN
-IXM,|AE|Tamil,,IN
-IXM,|ID|Tamil,,IN
-IXM,|MY|Tamil,,IN
-IXR,Textiles,,IN
-IXR,Wood Processing,Ranchi,IN
-IXS,Sunni|,,IN
-IXU,|SG|Marathi,,IN
-IXU,Gemstones,,IN
-IXU,Sugar,,IN
-IZO,Agriculture,,BO
-IZO,Seafood,,BO
-JAI,Gemstones,,IN
-JAN,Heavy industry,,US
-JAX,Defense,,US
-JAX,Logistics NAC,,US
-JAX,US Finance,,US
-JBQ,Sugar,,DR
-JED,|SA|Bangladeshi,,SA
-JED,|SA|Malayali,,SA
-JED,|SA|Pakistani,,SA
-JED,Banking,,SA
-JED,Logistics MEA,,SA
-JFK,|US|Jewish,,US
-JFK,|US|Ukrainian,,US
-JFK,Banking,,US
-JFK,Cantonese|,,US
-JFK,CC|,,US
-JFK,Entertainment,,US
-JFK,High finance,,US
-JFK,Hispanic|,,US
-JFK,Software,,US
-JGD,Gemstones,,CN
-JGD,Gold,Jiagedaqi (various mines) Heilongjiang,CN
-JHB,|MY|Malayali,,ZA
-JHB,Electronics,,MY
-JHB,Logistics APAC,,MY
-JLR,Sugar,,IN
-JNB,|ZA|Ethiopian,,ZA
-JNB,Agriculture,,ZA
-JNB,Copper,,ZA
-JNB,Gold,,ZA
-JNB,Logistics MEA,,ZA
-JNB,Platinum,,ZA
-JNB,Rare earths,,ZA
-JNB,Uranium,,ZA
-JNU,Arctic Fishing,,US
-JNZ,Gold,Jinzhou,CN
-JOG,Spices / Tropical ag,,ID
-JOI,Automotive,,BR
-JRA,Banking,,US
-JRA,Banking,,US
-JRA,High finance,,US
-JRB,Banking,,US
-JRB,Banking,,US
-JRB,High finance,,US
-JRO,Coffee,,TZ
-JRO,Nordic / Lutheran|,,TZ
-JRO,Ranching,,TZ
-JRT,Amazonia,,BR
-JTC,Sugar,,BR
-JWA,Diamonds,,US
-JXA,Gemstones,,CN
-KBL,|DE|Afghan,,AF
-KBL,|PK|Afghan,,AF
-KBL,|TR|Afghan,,AF
-KBL,Drug trafficking,,AF
-KBL,Pashto|,,AF
-KBP,Grain Belt,,UA
-KCH,Oil,,MY
-KCH,Forestry,,MY
-KCT,Surfing,Weligama Sri Lanka,SR
-KCZ,Agribusiness,,JP
-KCZ,Forestry,Kochi,JP
-KCZ,Seafood,,JP
-KDH,Drug trafficking,,VN
-KDH,Pashto|,,VN
-KEF,Arctic Fishing,,IS
-KEF,Geothermal,,IS
-KER,Copper,,IR
-KGD,Marine,,RU
-KGI,Gold,Kalgoorlie-Boulder (Super Pit) Western Australia,RU
-KGI,Rare earths,,RU
-KGL,Gold,Kigali,RU
-KHH,Logistics APAC,,TW
-KHH,Seafood,,TW
-KHH,Wood Processing,Kaohsiung,TW
-KHH,HK Taiwan Kinship|,,TW
-KHI,|AE|Pakistani,,PK
-KHI,|PK|Afghan,,PK
-KHI,|SA|Pakistani,,PK
-KHI,|UK|Pakistani,,PK
-KHI,|US|Pakistani,,PK
-KHI,Banking,,PK
-KHI,Heavy industry,,PK
-KHS,Oil,,IR
-KHV,Aerospace,,RU
-KHV,Arctic Fishing,,RU
-KHV,Forestry,Khabarovsk,RU
-KHV,Heavy industry,,RU
-KHV,Russian Vacay Destination x2|,,RU
-KIN,Drug trafficking,,JM
-KIN,Sugar,,JM
-KIR,Seafood,,KI
-KIT,Copper,Kitwe Zambia,KY
-KIV,Agribusiness,,MD
-KIX,|BR|Nikkei,,JP
-KIX,|JP|Korean,,JP
-KIX,|JP|Vietnamese,,JP
-KIX,|MP|Nikkei,,JP
-KIX,|PE|Nikkei,,JP
-KIX,|US|Nikkei,,JP
-KIX,Banking,,JP
-KIX,Electronics,,JP
-KIX,Semiconductors,,JP
-KIX,Whiskey,,JP
-KJA,Aerospace,,RU
-KJA,Forestry,Krasnoyarsk,RU
-KJA,Gold,Krasnoyarsk (various mines) Russia,RU
-KJA,Russian Vacay Destination x2|,,RU
-KKJ,Heavy industry,,JP
-KME,|US|Salvadoran,,RU
-KMG,|AU|Chinese,,CN
-KMG,|CA|Chinese,,CN
-KMG,|ID|Chinese,,CN
-KMG,|TH|Chinese,,CN
-KMG,|US|Chinese,,CN
-KMG,Chinese Tourism|,,CN
-KMG,Copper,,CN
-KMG,Heavy industry,,CN
-KMG,Horticulture,,CN
-KMG,Rare earths,Kunming,CN
-KMI,Agribusiness,,JP
-KMQ,Electronics,,JP
-KNO,Coffee,,ID
-KNO,Spices / Tropical ag,,ID
-KNO,Logistics APAC,,ID
-KOA,Coffee,,US
-KOA,PIF|,,US
-KOA,Surfing,,US
-KOJ,Aerospace,,JP
-KOJ,Agriculture,,JP
-KOJ,Geothermal,,JP
-KRK,|IE|Polish,,PL
-KRK,|US|Polish,,PL
-KRK,Software,,PL
-KRL,Oil,,PK
-KRR,|RU|Armenian,,SD
-KRR,Grain Belt,,RU
-KRT,Petrochemicals,,SD
-KRW,LNG,,TM
-KRW,Offshore Oil,,TM
-KSH,Agriculture,,IR
-KTA,LNG,,JP
-KTN,Seafood,,ID
-KTW,Automotive,,PL
-KTW,Heavy industry,,PL
-KUA,Petrochemicals,,MY
-KUF,Aerospace,,FI
-KUF,Russian Vacay Destination x2|,,FI
-KUL,|MY|Malayali,,MY
-KUL,|MY|Tamil,,MY
-KUL,Banking,,MY
-KUL,Cantonese|,,MY
-KUL,Logistics APAC,,ID
-KVA,Loves Kavala x2|,,SE
-KWE,Chinese Tourism|,,CN
-KWE,CPG & Retail,,CN
-KWE,Logistics APAC,,CN
-KWI,Banking,,KW
-KWI,Oil,,KW
-KWI,Petrochemicals,,KW
-KWL,Logistics APAC,,CN
-KWL,Sugar,,CN
-KWZ,Copper,Kolwezi DRC,CN
-KZN,Russian Vacay Destination x2|,,RU
-KZO,Oil,,RU
-KZO,Uranium,Kyzylorda Kazakhstan,RU
-LAD,Oil,,AO
-LAN,Academia,Michigan State University,US
-LAS,Casinos,,US
-LAS,Hispanic|,,US
-LAU,Logistics MEA,,KE
-LAX,|US|Chinese,,US
-LAX,|US|Filipino,,US
-LAX,|US|Iranian,,US
-LAX,|US|Korean,,US
-LAX,|US|Vietnamese,,US
-LAX,Banking,,US
-LAX,Drug trafficking,,US
-LAX,Entertainment,,US
-LAX,Hispanic|,,US
-LAX,SoCal NoCal,,US
-LBA,|GB|Indian,,GB
-LBA,|UK|Pakistani,,GB
-LBB,Ranching,,US
-LBB,Wind Energy,,US
-LBC,Logistics EU,,DE
-LBC,Loves Arctic|,,DE
-LBC,Nordic / Lutheran|,,DE
-LBL,Ranching,,US
-LBS,Agriculture,,NG
-LCA,Banking,,CY
-LCA,EU|,,CY
-LCA,Greek|,,CY
-LCA,Russian Vacay Destination x2|,,CY
-LCH,Petrochemicals,,AU
-LCJ,Appliances,,
-LCK,|US|Somali,,US
-LCX,Copper,Longyan,US
-LCY,|UK|Jewish,,GB
-LCY,Academia,Imperial College London,GB
-LCY,Banking,,GB
-LCY,Diamonds,,GB
-LCY,High finance,,GB
-LEA,Gemstones,,AU
-LEA,Gold,Laverton (Telfer Mine) Western Australia,NO
-LED,|RU|Armenian,,RU
-LED,Heavy industry,,RU
-LED,Logistics CIS,,RU
-LED,Marine,,RU
-LED,Russian Vacay Destination x2|,,RU
-LEJ,Automotive,,DE
-LEJ,LNG,,DE
-LEJ,Logistics EU,,DE
-LEJ,Loves Arctic|,,DE
-LEJ,Loves Bolzano x2|,,DE
-LEO,Gold,Leinster (various mines) Western Australia,BF
-LER,Rare earths,,SO
-LEX,Academia,University of Kentucky,US
-LEX,Whiskey,,US
-LFT,LNG,,US
-LGA,|US|Indian,,US
-LGA,|US|Jewish,,US
-LGA,|US|Korean,,US
-LGA,|US|Polish,,US
-LGA,|US|Stateside Puerto Ricans,,US
-LGA,Academia,,US
-LGA,Banking,,US
-LGA,CPG & Retail,,US
-LGA,Software,,US
-LGA,US Finance,,US
-LGB,|US|Nikkei,,US
-LGB,|US|Salvadoran,,US
-LGB,|US|Samoan,,US
-LGB,Defense,,US
-LGB,Global Logistics,,US
-LGB,Logistics NAC,,US
-LGB,SoCal NoCal,,US
-LGB,Toys,,US
-LGK,|MY|Tamil,,US
-LGW,|GB|Indian,,GB
-LGW,|UK|Nigerian,,GB
-LGW,|UK|Polish,,GB
-LGW,Banking,,GB
-LHE,|AE|Pakistani,,PK
-LHE,|SA|Pakistani,,PK
-LHE,|UK|Pakistani,,PK
-LHE,|US|Pakistani,,PK
-LHE,Dairy,,PK
-LHE,Textiles,,PK
-LHR,|GB|Indian,,GB
-LHR,|UK|Nigerian,,GB
-LHR,|UK|Pakistani,,GB
-LHR,Academia,Oxbridge,GB
-LHR,Bengali|,,GB
-LHR,Bureaucracy,,GB
-LHR,High finance,,GB
-LHR,Software,,GB
-LIH,PIF|,,US
-LIM,|PE|Nikkei,,PE
-LIM,|PE|Venezuelan,,PE
-LIM,Colonial ties bind,,PE
-LIM,Copper,Lima Peru,PE
-LIM,Seafood,,PE
-LIN,|IT|Romanian,,IT
-LIN,CPG & Retail,,IT
-LIN,Heavy industry,,IT
-LIO,Horticulture,,CR
-LIS,Marine,,PT
-LIS,Mediterranean Agriculture,,PT
-LIS,Logistics EU,,PT
-LJU,Pharma,,SI
-LKO,Shia|,,IN
-LLA,Heavy industry,,SE
-LLF,Rare earths,Lingling,FR
-LNG,LNG,,CL
-LNK,Academia,University of Nebraska,US
-LNL,Gold,Lianshanguan (various mines) Heilongjiang,US
-LNY,PIF|,,AU
-LOP,Gemstones,,ID
-LOS,|UK|Nigerian,,NG
-LOS,|US|Nigerian,,NG
-LOS,Logistics MEA,,NG
-LOS,Oil,,NG
-LPA,Seafood,,ES
-LPB,|AR|Bolivian,,BO
-LPB,|BR|Bolivian,,BO
-LPL,|GB|Indian,,GB
-LPL,Marine,,GB
-LPQ,Drug trafficking,,BO
-LPT,Sugar,,TH
-LRD,Hispanic|,,FR
-LRM,Sugar,,DR
-LSC,Viticulture,Elqui Valley,US
-LTN,|GB|Indian,,GB
-LTN,|UK|Jewish,,GB
-LTN,Life sciences,,GB
-LUG,Italian|,,CH
-LUN,Agriculture,,ZM
-LUN,Anglophone|,,ZM
-LUN,Copper,Lusaka Zambia,ZM
-LUX,High finance,,LU
-LUX,Logistics EU,,LU
-LVO,Gold,Leonora (Sunrise Dam) Western Australia,BG
-LW0,Banking,,GB
-LW0,High finance,,GB
-LWK,Oil,,ZM
-LYR,Loves Arctic|,,NO
-LYS,|FR|Algerian x2,,FR
-LYS,|FR|Armenian,,FR
-LYS,|FR|Serbian,,FR
-LYS,CPG & Retail,,FR
-LYS,Pharma,,FR
-LYS,Software,,FR
-MAA,|AE|Tamil,,IN
-MAA,|ID|Tamil,,IN
-MAA,|MY|Tamil,,IN
-MAA,Automotive,,IN
-MAA,Footwear,,IN
-MAA,Healthcare,,IN
-MAD,|ES|Ecuadorian,,ES
-MAD,|ES|Peruvian,,ES
-MAD,Colonial ties bind,,ES
-MAD,Logistics EU,,ES
-MAD,Telco,,ES
-MAF,|US|Durango & Zacatecas,,US
-MAF,Arctic Oil,Midland USA,US
-MAN,|GB|Indian,,GB
-MAN,|UK|Pakistani,,GB
-MAN,|UK|Polish,,GB
-MAN,Bengali|,,GB
-MAN,Heavy industry,,GB
-MAO,Amazonia,,BR
-MAO,Appliances,,BR
-MAO,Drug trafficking,,BR
-MAO,Forestry,,BR
-MAO,Horticulture,,BR
-MAO,Petrochemicals,,BR
-MAR,|CL|Venezuelan,,VE
-MAR,|PE|Venezuelan,,VE
-MAR,|US|Venezuelan,,VE
-MAR,Agriculture,,VE
-MAR,Oil,,VE
-MB1,Academia,,AQ
-MBA,Logistics MEA,,KE
-MBA,Oil,,KE
-MCI,|US|Jalisco & Michoacán,,US
-MCI,Agribusiness,,US
-MCI,Bureaucracy,,US
-MCI,Grain Belt,,US
-MCI,Telco,,US
-MCO,|US|Brazilian,,US
-MCO,|US|Stateside Puerto Ricans,,US
-MCO,Defense,,US
-MCO,Golf,,US
-MCO,Loves DR x2|,,US
-MCP,Amazonia,,BR
-MCP,Wood Processing,,BR
-MCT,|OM|Malayali,,OM
-MCT,Oil,,OM
-MCZ,Sugar,,BR
-MDC,Nickel,,CO
-MDE,|CL|Colombian,,CO
-MDE,|MX|Colombian,,CO
-MDE,|US|Colombian,,CO
-MDE,Andean connect,,CO
-MDE,Drug trafficking,,CO
-MDE,Horticulture,,CO
-MDE,Logistics LATAM,,CO
-MDQ,Seafood,,AR
-MDW,|US|Italian,,US
-MDW,|US|Polish,,US
-MDW,|US|Stateside Puerto Ricans,,US
-MDW,Academia,University of Chicago,US
-MDW,CPG & Retail,,US
-MDW,Loves DR x2|,,US
-MDZ,Loves Florianopolis x2|,,AR
-MDZ,Viticulture,Mendoza,AR
-MEA,Offshore Oil,,BR
-MEL,|AU|Chinese,,AU
-MEL,|AU|Greek,,AU
-MEL,|AU|Italian,,AU
-MEL,|AU|Vietnamese,,AU
-MEL,Banking,,AU
-MEL,Copper,Melbourne,AU
-MEL,Footie Traffic x2,,AU
-MEL,Logistics APAC,,AU
-MEL,Pharma,,AU
-MEL,Wind Energy,,AU
-MEM,Agribusiness,,US
-MEM,Global Logistics,,US
-MEM,Logistics NAC,,US
-MEX,|ES|Peruvian,,MX
-MEX,|MX|Bolivian,,MX
-MEX,|MX|Colombian,,MX
-MEX,Banking,,MX
-MEX,Bureaucracy,,MX
-MEX,Logistics NAC,,MX
-MEX,NA Capitols|,,MX
-MFE,Hispanic|,,US
-MFM,Cantonese|,,MO
-MFM,Casinos,,MO
-MFR,|US|Jalisco & Michoacán,,US
-MFR,Horticulture,,US
-MGA,Ranching,,US
-MGQ,|NO|Somali,,BR
-MGQ,|US|Somali,,BR
-MGZ,Gemstones,,MY
-MHG,Wind Energy,,PG
-MHT,|US|Irish American,,US
-MIA,|CU|Cuban,,US
-MIA,|US|Jewish,,US
-MIA,|US|Venezuelan,,US
-MIA,CC|,,US
-MIA,Drug trafficking,,US
-MIA,Entertainment,,US
-MIA,Hispanic|,,US
-MIA,Lusophone|,,US
-MID,Drug trafficking,,MX
-MIR,Spices / Tropical ag,,TN
-MJZ,Diamonds,,RU
-MJZ,Gemstones,,RU
-MKE,Dairy,,US
-MKE,Healthcare,,US
-MKE,Industrial automation,,US
-MKE,Nordic / Lutheran|,,US
-MKE,US Finance,,US
-MKY,Sugar,,AU
-MKZ,Appliances,,MY
-MLB,Aerospace,,US
-MLH,Pharma,,FR
-MLI,Grain Belt,,US
-MLM,|US|Jalisco & Michoacán,,US
-MLX,Copper,,FR
-MMK,Marine,,MM
-MNL,|IE|Filipino,,PH
-MNL,|IT|Filipino,,PH
-MNL,|US|Filipino,,PH
-MNL,Appliances,,PH
-MNL,Casinos,,PH
-MNL,Logistics APAC,,PH
-MNL,Marine,,PH
-MNX,Amazonia,,BR
-MOB,Heavy industry,,US
-MOB,Marine,,US
-MOC,Dairy,,BR
-MOT,Defense,,US
-MPL,|FR|Algerian x2,,FR
-MPL,Dairy,,FR
-MPL,Life sciences,,FR
-MPL,Viticulture,Montpellier,FR
-MPM,Agriculture,,MZ
-MPM,Logistics NAC,,US
-MPM,Lusophone|,,US
-MQL,Viticulture,Mildura Australia,AU
-MQT,Forestry,Marquette,US
-MRS,|FR|Algerian x2,,FR
-MRS,|FR|Moroccan,,FR
-MRS,|FR|Tunisian x2,,FR
-MRS,Logistics EU,,FR
-MRV,Russian Vacay Destination x2|,,FR
-MRY,Surfing,,US
-MSJ,Arctic Fishing,,JP
-MSJ,Defense,,JP
-MSN,Academia,University of Wisconsin,US
-MSN,Dairy,,US
-MSN,Healthcare,Epic Systems,US
-MSP,|US|Hmong,,US
-MSP,|US|Somali,,US
-MSP,Academia,University of Minnesota,US
-MSP,Agribusiness,,US
-MSP,CPG & Retail,,US
-MSP,Dairy,,US
-MSP,Nordic / Lutheran|,,US
-MSQ,Heavy industry,,BY
-MSS,Maple Syrup,,US
-MSY,LNG,,US
-MSY,Petrochemicals,,US
-MSY,Seafood,,US
-MTQ,Gold,Mount Isa (various mines) Queensland,FR
-MTT,Offshore Oil,,MX
-MTY,|MX|Bolivian,,MX
-MTY,Automotive,,MX
-MTY,Electronics,,MX
-MTY,Logistics NAC,,MX
-MUC,|DE|Serbian,,DE
-MUC,|DE|Turkish,,DE
-MUC,Aerospace,,DE
-MUC,Automotive,,DE
-MUC,Dairy,,DE
-MUC,Industrial automation,,DE
-MUC,Semiconductors,,DE
-MVD,Agriculture,,UY
-MVD,Logistics LATAM,,UY
-MVD,Ranching,,UY
-MVP,Drug trafficking,,MV
-MVY,Wind Energy,,US
-MWZ,Nordic / Lutheran|,,TZ
-MXL,Geothermal,,MX
-MXP,|AU|Italian,,IT
-MXP,|BR|Italian,,IT
-MXP,|IT|Filipino,,IT
-MXP,|US|Italian,,IT
-MXP,CPG & Retail,,IT
-MXP,Footwear,,IT
-MXP,Textiles,,IT
-MXZ,Rare earths,Meixian,OM
-MYR,Golf,,US
-MYY,Forestry,Miri,MM
-MZG,Drug trafficking,,AO
-MZG,Seafood,,AO
-MZR,|DE|Afghan,,PK
-MZR,|PK|Afghan,,PK
-MZR,|TR|Afghan,,PK
-MZR,Drug trafficking,,PK
-MZT,Agriculture,,MX
-MZT,Drug trafficking,,MX
-MZT,Seafood,,MX
-NAG,|SG|Marathi,,IN
-NAN,Gold,,FJ
-NAN,Surfing,,FJ
-NAP,|BR|Italian,,IT
-NAP,|US|Italian,,IT
-NAP,Agribusiness,,IT
-NAS,High finance,,BS
-NAT,Offshore Oil,,BR
-NBE,|FR|Tunisian x2,,TN
-NBO,|KE|Gujarati,,KE
-NBO,Horticulture,,KE
-NBO,Logistics MEA,,KE
-NBO,Ranching,,KE
-NBO,Geothermal,Olkaria geothermal power,KE
-NCE,|FR|Serbian,,FR
-NCE,Casinos,,FR
-NCE,Horticulture,,FR
-NCE,Viticulture,,FR
-NCL,Heavy industry,,NC
-NCL,Marine,,NC
-NDJ,Ranching,,TD
-NGB,Appliances,,CN
-NGB,LNG,,CN
-NGB,Logistics APAC,,CN
-NGB,Toys,,CN
-NGO,|BR|Nikkei,,JP
-NGO,|MP|Nikkei,,JP
-NGO,|PE|Nikkei,,JP
-NGO,|US|Nikkei,,JP
-NGO,Automotive,,JP
-NGO,Electronics,,JP
-NGO,Wind Energy,,JP
-NGS,Heavy industry,,JP
-NGS,Marine,,JP
-NIM,Uranium,,FR
-NKG,|AU|Chinese,,CN
-NKG,|CA|Chinese,,CN
-NKG,|ID|Chinese,,CN
-NKG,|TH|Chinese,,CN
-NKG,|US|Chinese,,CN
-NKG,Academia,,CN
-NKG,Appliances,,CN
-NKG,Chinese Tourism|,,CN
-NLA,Copper,Ndola Zambia,AU
-NLD,Hispanic|,,MX
-NLU,Bureaucracy,,MX
-NLU,NA Capitols|,,MX
-NNM,Russian Vacay Destination x2|,,NA
-NNR,|US|Irish American,,IE
-NOC,|US|Irish American,,IE
-NOR,Copper,Norilsk Russia,US
-NOU,Surfing,,NC
-NPE,Viticulture,,NZ
-NPL,Dairy,,NP
-NPL,LNG,,NP
-NPL,Petrochemicals,,NP
-NQN,Oil,Neuquén AR,AR
-NQY,Seafood,,AU
-NQY,Surfing,Cornwall,GB
-NRT,|AR|Nikkei,,JP
-NRT,|BR|Nikkei,,JP
-NRT,|MP|Nikkei,,JP
-NRT,|PE|Nikkei,,JP
-NRT,|US|Nikkei,,JP
-NRT,|JP|Korean,,JP
-NRT,Bureaucracy,,JP
-NRT,Electronics,,JP
-NRT,Software,,JP
-NRT,Semiconductors,,JP
-NSK,Copper,,JP
-NSK,Gold,,JP
-NSK,Heavy industry,,JP
-NSK,Platinum,,JP
-NSN,Seafood,,NZ
-NTE,Marine,,FR
-NTE,Renewable Energy,,FR
-NTG,Chinese Tourism|,,CN
-NTG,Marine,,CN
-NTG,Petrochemicals,,CN
-NTG,Textiles,,CN
-NTL,Heavy industry,,AU
-NTL,Surfing,,AU
-NTY,Platinum,,FR
-NU1,Offshore Oil,oil platform,
-NUE,Footwear,,DE
-NUE,Toys,,DE
-NUX,LNG,,GL
-NVT,Marine,,BR
-NWI,Wind Energy,,GB
-NZH,Gold,Manzhouli (various mines) Inner Mongolia,NZ
-OAK,|US|Filipino,,US
-OAK,|US|Vietnamese,,US
-OAK,Academia,University Berkeley,US
-OAK,Geothermal,,US
-OAK,Hispanic|,,US
-OAK,Marine,,US
-OAK,SoCal NoCal,,US
-OAK,Viticulture,,US
-OAX,|US|Guerrero & Oaxaca,,MX
-OBO,Forestry,,JP
-OGG,PIF|,,US
-OGG,Surfing,,US
-OIT,Geothermal,,JP
-OKA,Defense,,JP
-OKC,|US|Durango & Zacatecas,,US
-OKC,Academia,,US
-OKC,Oil,,US
-OLP,Copper,Olympic Dam,AU
-OMA,Agribusiness,,US
-OMA,Grain Belt,,US
-OMA,Logistics NAC,,US
-OMA,Ranching,,US
-OMA,Telco,,US
-OME,Gold,,US
-OMS,Oil,,RU
-OMS,Petrochemicals,,RU
-ONT,|US|Filipino,,US
-ONT,Hispanic|,,US
-ONT,Logistics NAC,,US
-ONT,Mediterranean agriculture,,US
-OOL,Surfing,,AU
-OPO,Viticulture,,PT
-ORB,|SE|Iraqi,,SE
-ORD,|US|Chinese,,US
-ORD,|US|Indian,,US
-ORD,|US|Jalisco & Michoacán,,US
-ORD,|US|Jewish,,US
-ORD,|US|Polish,,US
-ORD,Agribusiness,,US
-ORD,Banking,,US
-ORD,CPG & Retail,,US
-ORD,Telco,,US
-ORF,Defense,,US
-ORF,Logistics NAC,,US
-ORF,Loves DR x2|,,US
-ORF,Marine,,US
-ORF,Wind Energy,,US
-ORH,|US|Irish American,,RU
-ORH,Software,,RU
-ORK,|US|Irish American,,IE
-ORK,Apple,,IE
-ORK,Arctic Fishing,,IE
-ORK,Wind Energy,,IE
-ORN,|CA|Algerian,,AR
-ORN,|FR|Algerian x2,,AR
-ORY,|FR|Algerian x2,,FR
-ORY,|FR|Armenian,,FR
-ORY,|FR|Moroccan,,FR
-ORY,|FR|Polish,,FR
-ORY,|FR|Serbian,,FR
-ORY,|FR|Tunisian x2,,FR
-ORY,Academia,,FR
-ORY,Aerospace,,FR
-ORY,Banking,,FR
-ORY,Textiles,,FR
-OSL,|NO|Somali,,NO
-OSL,Arctic Fishing,,NO
-OSL,Marine,,NO
-OSL,Nordic Ski 2 City x2,,NO
-OSL,Renewable Energy,,NO
-OSL,Software,,NO
-OST,Wind Energy,,BE
-OTH,Forestry,North Bend/Coos Bay,US
-OTP,|IT|Romanian,,RO
-OTP,Automotive,,RO
-OTP,Petrochemicals,,RO
-OUL,Forestry,Oulu,FI
-OVB,Software,,RU
-PAE,Aerospace,,US
-PAE,Defense,,US
-PAP,|CA|Haitian,,HT
-PAP,|CL|Haitian,,HT
-PAP,Textiles,,HT
-PBC,Automotive,,MX
-PBI,|CU|Cuban,,US
-PBI,|US|Brazilian,,US
-PBI,|US|Colombian,,US
-PBI,|US|Jewish,,US
-PBI,Golf,,US
-PBM,|NL|Surinamese,,SR
-PBU,Drug trafficking,,MM
-PDG,Spices / Tropical ag,,ID
-PDV,Appliances,,BG
-PDV,Heavy industry,Plovdiv,BG
-PDX,Footwear,,US
-PDX,Software,,US
-PEK,|AU|Chinese,,CN
-PEK,|CA|Chinese,,CN
-PEK,|ID|Chinese,,CN
-PEK,|TH|Chinese,,CN
-PEK,|US|Chinese,,CN
-PEK,Academia,Tsinghua University,CN
-PEK,Aerospace,,CN
-PEK,Bureaucracy,,CN
-PEK,Chinese Tourism|,,CN
-PEN,|MY|Malayali,,MY
-PEN,|MY|Tamil,,MY
-PEN,Electronics,,MY
-PER,|AU|Chinese,,AU
-PER,|AU|Indian,,AU
-PER,Gold,Perth,AU
-PER,LNG,,AU
-PER,Logistics APAC,,AU
-PER,Surfing,,AU
-PER,Uranium,Perth,AU
-PEW,|PK|Afghan,,AU
-PEW,Drug trafficking,,AU
-PEW,Pashto|,,AU
-PFO,EU|,,CY
-PFO,Greek|,,CY
-PHC,Offshore Oil,,NG
-PHF,Aerospace,,US
-PHL,|US|Irish American,,US
-PHL,|US|Italian,,US
-PHL,|US|Jewish,,US
-PHL,|US|Korean,,US
-PHL,|US|Stateside Puerto Ricans,,US
-PHL,Academia,Penn State University,US
-PHL,Healthcare,,US
-PHL,US Finance,,US
-PHO,Copper,Phoenix USA,US
-PHX,|US|Guerrero & Oaxaca,,US
-PHX,|US|Jalisco & Michoacán,,US
-PHX,Copper,,US
-PHX,Semiconductors,,US
-PIA,Electronics,,MY
-PIA,Heavy industry,Caterpillar Inc,US
-PIA,Logistics APAC,,MY
-PIA,Semiconductors,,MY
-PIT,Academia,,US
-PIT,Healthcare,,US
-PIT,Industrial automation,,US
-PIT,Loves DR x2|,,US
-PIT,Software,,US
-PJC,Drug trafficking,,MY
-PKC,Gold,Petropavlovsk-Kamchatsky (Kamchatka) Russia,CZ
-PKC,Seafood,,CZ
-PKU,Oil,,MY
-PKU,Petrochemicals,,MY
-PKX,|AU|Chinese,,MY
-PKX,|CA|Chinese,,MY
-PKX,|ID|Chinese,,MY
-PKX,|TH|Chinese,,MY
-PKX,|US|Chinese,,MY
-PKX,Banking,,MY
-PKX,Chinese Tourism|,,MY
-PLM,Coffee,,US
-PLU,Drug trafficking,,US
-PLZ,Automotive,,HR
-PLZ,Surfing,Jeffrey’s Bay,ZA
-PMC,Seafood,,CL
-PMI,Loves Mallorca x2|,,ES
-PMI,Mediterranean agriculture,,ES
-PMO,|AU|Italian,,IT
-PMO,|BR|Italian,,IT
-PMO,|US|Italian,,IT
-PMO,Agribusiness,,IT
-PMR,Dairy,,NZ
-PMW,Gemstones,,BR
-PNH,Textiles,,KH
-PNH,Spices / Tropical ag,,KH
-PNQ,|SG|Marathi,,IN
-PNQ,Automotive,,IN
-PNQ,Heavy industry,,IN
-PNQ,Sugar,,IN
-PNS,Defense,,US
-PNS,Oil,Pensacola USA,IN
-PNS,Wood Processing,Pensacola,US
-POA,Agribusiness,,BR
-POA,Nordic / Lutheran|,,BR
-POP,Loves DR x2|,,DO
-POS,Forestry,,AR
-POS,Oil,,TT
-POZ,Logistics EU,,PL
-PPB,Sugar,,BR
-PPP,Spices / Tropical ag,,GY
-PPP,Sugar,,AU
-PQI,Francophonie|,,GF
-PRG,Automotive,,CZ
-PRN,Mediterranean agriculture,,XK
-PSA,|IT|Romanian,,IT
-PSA,Viticulture,,IT
-PSG,Seafood,,MY
-PSP,Golf,,US
-PSP,Renewable Energy,,US
-PTF,Surfing,,FR
-PTG,Diamonds,,AU
-PTY,Banking,,PA
-PTY,Global Logistics,,PA
-PTY,Logistics NAC,,PA
-PUB,Aerospace,,US
-PUB,Hispanic|,,US
-PUJ,Drug trafficking,,DO
-PUJ,Loves DR x2|,,DO
-PUQ,Viticulture,Magallanes wine region,CL
-PUS,|JP|Korean,,KR
-PUS,|US|Korean,,KR
-PUS,Electronics,,KR
-PUS,Marine,,KR
-PUS,Seafood,,KR
-PUS,Wind Energy,,KR
-PUW,Academia,,HR
-PVD,|US|Brazilian,,US
-PVD,Academia,Brown University,US
-PVD,Lusophone|,,US
-PVD,Pharma,,US
-PVD,Toys,,US
-PVG,|AU|Chinese,,CN
-PVG,|CA|Chinese,,CN
-PVG,|ID|Chinese,,CN
-PVG,|TH|Chinese,,CN
-PVG,|US|Chinese,,CN
-PVG,Chinese Tourism|,,CN
-PVG,Electronics,,CN
-PVG,Global Logistics,,CN
-PVG,High finance,,CN
-PVG,Industrial automation,,CN
-PVH,Amazonia,,BR
-PVH,Amazonia,,BR
-PVR,Surfing,,MX
-PWM,Seafood,,US
-PXH,Copper,Mount Eba,VU
-PXK,|TH|Chinese,,FJ
-PXM,Surfing,,MX
-PXU,Coffee,,CK
-PZU,Logistics APAC,,CN
-PZU,Oil,,CN
-QHV,Footwear,,VN
-QRO,Aerospace,,MX
-QRO,Appliances,Mabe,MX
-QRW,Oil,,MH
-RAI,Lusophone|,,BR
-RAK,|FR|Moroccan,,MA
-RAK,|NL|Moroccan,,MA
-RBA,|FR|Moroccan,,MA
-RBA,|NL|Moroccan,,MA
-RDP,Shia|,,IN
-RDU,Academia,,US
-RDU,Life sciences,,US
-RDU,Loves DR x2|,,US
-RDU,Telco,,US
-REC,Logistics LATAM,,BR
-REC,Marine,,BR
-REC,Petrochemicals,,BR
-REC,Sugar,,BR
-REP,Textiles,,KH
-RES,Agribusiness,,AR
-REX,Offshore Oil,,MX
-RGN,Drug trafficking,,MM
-RGN,Textiles,,MM
-RHI,Maple Syrup,,US
-RIC,Petrochemicals,,US
-RIC,US Finance,,US
-RIX,Wood Processing,Riga,LV
-RJ1,Aerospace,Chōfu,JP
-RKT,|AE|Malayali,,GL
-RKV,Geothermal,,IS
-RMO,Mediterranean agriculture,,IT
-RNO,Gold,Reno,US
-RNO,SoCal NoCal,,US
-ROC,|US|Somali,,US
-ROC,Healthcare,,US
-ROC,Loves DR x2|,,US
-ROS,Loves Florianopolis x2|,,AR
-ROS,Ranching,,AR
-ROV,Grain Belt,,RU
-ROV,Logistics CIS,,RU
-ROW,UFOs,,US
-RSA,Ranching,,AR
-RST,Nordic / Lutheran|,,US
-RSW,Hispanic|,,US
-RTM,|NL|Indonesian,,US
-RTM,Global Logistics,,NL
-RTM,Logistics EU,,NL
-RUH,|SA|Bangladeshi,,SA
-RUH,|SA|Malayali,,SA
-RUH,|SA|Pakistani,,SA
-RUH,Logistics MEA,,SA
-RUH,Petrochemicals,,SA
-RUT,Dairy,,US
-RVN,Santa,,CG
-SA3,Offshore Oil,oil platform,
-SAB,LNG,,VE
-SAF,Hispanic|,,AZ
-SAH,Shia|,,YE
-SAI,Chinese Tourism|,,FR
-SAL,|US|Salvadoran,,SV
-SAL,Logistics NAC,,SV
-SAN,|US|Guerrero & Oaxaca,,US
-SAN,|US|Iranian,,US
-SAN,|US|Samoan,,US
-SAN,Defense,,US
-SAN,Life sciences,,US
-SAN,SoCal NoCal,,US
-SAP,Spices / Tropical Ag,,HN
-SAT,Defense,,US
-SAT,Healthcare,,JP
-SAT,Hispanic|,,JP
-SAT,Ranching,,US
-SAV,Golf,,US
-SAV,Logistics NAC,,US
-SAV,Loves DR x2|,,US
-SAW,|TR|Iraqi,,TR
-SAW,Textiles,,TR
-SBA,Academia,Caltech,US
-SBA,Offshore Oil,,US
-SBD,|US|Guerrero & Oaxaca,,US
-SBD,SoCal NoCal,,US
-SBN,Academia,Notre Dame,US
-SBW,Forestry,,MY
-SBY,Aerospace,,ID
-SCC,LNG,,RS
-SCE,Academia,State College,US
-SCK,Mediterranean agriculture,,US
-SCL,|CL|Haitian,,CL
-SCL,Colonial ties bind,,CL
-SCL,Copper,Santiago Chile,CL
-SCL,Logistics LATAM,,CL
-SCN,Wind Energy,,DE
-SCO,Oil,,EG
-SCO,Uranium,Aktau,EG
-SDF,Academia,,US
-SDF,Appliances,GE HQ,US
-SDF,Global Logistics,,US
-SDF,Logistics NAC,,US
-SDF,Loves DR x2|,,US
-SDF,Whiskey,,US
-SDJ,Appliances,,JP
-SDQ,Gold,,DR
-SDQ,Spices / Tropical Ag,,DR
-SDQ,Footwear,,DR
-SDU,Coffee,,BR
-SDU,Heavy industry,,BR
-SDU,Logistics LATAM,,BR
-SDU,Oil,,BR
-SEA,|US|Chinese,,US
-SEA,|US|Indian,,US
-SEA,|US|Samoan,,US
-SEA,|US|Somali,,US
-SEA,|US|Vietnamese,,US
-SEA,Aerospace,,US
-SEA,Coffee,,US
-SEA,Software,,US
-SFJ,Santa,,SE
-SFN,Grain Belt,,AR
-SFO,|US|Bengali,,US
-SFO,|US|Chinese,,US
-SFO,|US|Indian,,US
-SFO,|US|Jewish,,US
-SFO,Cantonese|,,US
-SFO,High finance,,US
-SFO,SoCal NoCal,,US
-SFO,Software,,US
-SGN,|AU|Vietnamese,,VN
-SGN,|JP|Vietnamese,,VN
-SGN,|US|Vietnamese,,VN
-SGN,Coffee,,VN
-SGN,CPG & Retail,,VN
-SGN,Footwear,,VN
-SGN,Textiles,,VN
-SHA,|AU|Chinese,,CN
-SHA,|CA|Chinese,,CN
-SHA,|ID|Chinese,,CN
-SHA,|TH|Chinese,,CN
-SHA,|US|Chinese,,CN
-SHA,Chinese Tourism|,,CN
-SHA,Pharma,,CN
-SHA,Renewable Energy,,CN
-SHA,Semiconductors,,CN
-SHC,Aerospace,,AU
-SHE,Chinese Tourism|,,CN
-SHE,Heavy industry,,CN
-SHE,Wood Processing,Shenyang,CN
-SHJ,|AE|Malayali,,AE
-SHJ,Marine,,AE
-SHV,Oil,,AU
-SIN,|SG|Marathi,,SG
-SIN,Electronics,,SG
-SIN,Global Logistics,,SG
-SIN,High finance,,SG
-SIN,Life sciences,,SG
-SIN,Logistics APAC,,SG
-SIN,Semiconductors,,SG
-SIN,Telco,,SG
-SIP,|RU|Armenian,,HR
-SIT,Arctic Fishing,,US
-SJC,|US|Bengali,,US
-SJC,|US|Chinese,,US
-SJC,|US|Indian,,US
-SJC,Academia,,US
-SJC,Apple,,US
-SJC,Hispanic|,,US
-SJC,Renewable Energy,,US
-SJC,Semiconductors,,US
-SJC,SoCal NoCal,,US
-SJC,Software,,US
-SJO,Spices / Tropical Ag,,CR
-SJU,Logistics NAC,,PR
-SJU,Pharma,,PR
-SKG,Heavy industry,,GR
-SKG,Marine,,GR
-SKG,Mediterranean agriculture,,GR
-SLC,|CL|Colombian,,US
-SLC,|CL|Samoan,,US
-SLC,|CL|Venezuelan,,US
-SLI,Copper,Solwesi Zambia,US
-SLK,Maple Syrup,,US
-SLL,|OM|Malayali,,SL
-SLW,Automotive,,SB
-SLY,Russian Vacay Destination x2|,,NO
-SLZ,Agribusiness,,BR
-SMF,|US|Guerrero & Oaxaca,,US
-SMF,Dairy,,US
-SMF,Mediterranean agriculture,,US
-SMF,SoCal NoCal,,US
-SMR,Drug trafficking,,CO
-SMR,Marine,,CO
-SMX,Aerospace,,MX
-SNA,|US|Iranian,,US
-SNA,|US|Jewish,,US
-SNA,|US|Samoan,,US
-SNA,|US|Vietnamese,,US
-SNA,Academia,USC,US
-SNA,Defense,,US
-SNA,Hispanic|,,US
-SNA,SoCal NoCal,,US
-SNN,|US|Irish American,,IE
-SNN,Dairy,,IE
-SNP,Seafood,,HR
-SOF,Agribusiness,,BG
-SOF,Loves Kavala x2|,,BG
-SOF,Software,,BG
-SOQ,Nickel,,GB
-SP1,Academia,,AQ
-SPI,Grain Belt,,US
-SPS,Ranching,,US
-SPX,UFOs,,EG
-SPX,UFOs,,FR
-SSA,Sugar,,BR
-SSA,Petrochemicals,,BR
-SSG,Oil,,GA
-SSH,Russian Vacay Destination x2|,,EG
-STL,CPG & Retail,,US
-STL,Healthcare,,US
-STL,Logistics NAC,,US
-STL,Pharma,,US
-STM,Amazonia,,BR
-STM,Spices / Tropical ag,,BR
-STN,|GB|Indian,,GB
-STR,|DE|Serbian,,DE
-STR,Automotive,,DE
-STR,Loves Bolzano x2|,,DE
-STR,Pharma,,DE
-STR,Wood Processing,Stuttgart,DE
-STS,|US|Guerrero & Oaxaca,,US
-STS,SoCal NoCal,,US
-STS,Viticulture,,US
-STS,Geothermal,The Geysers,US
-STV,|KE|Gujarati,,US
-STV,Dairy,,US
-STV,Diamonds,,US
-SUB,|ID|Chinese,,ID
-SUB,|ID|Tamil,,ID
-SUB,|NL|Indonesian,,ID
-SUB,Logistics APAC,,ID
-SUB,Nickel,,ID
-SUB,Oil,Cepu Block,ID
-SUB,Petrochemicals,,ID
-SUJ,Appliances,,RO
-SVG,Oil,,NO
-SVO,|RU|Armenian,,RU
-SVO,LNG,,RU
-SVO,Oil,,RU
-SVO,Russian Vacay Destination x2|,,RU
-SVO,Software,,RU
-SVO,Sunni|,,RU
-SVX,Gold,,RU
-SVX,Heavy industry,,RU
-SVX,Russian Vacay Destination x2|,,RU
-SW1,Banking,,
-SWP,Uranium,Swakopmund,BD
-SXB,|FR|Polish,,FR
-SXR,Sunni|,,IN
-SXR,Sunni|,,IN
-SYD,|AU|Chinese,,AU
-SYD,|AU|Greek,,AU
-SYD,|AU|Indian,,AU
-SYD,|AU|Vietnamese,,AU
-SYD,Banking,,AU
-SYD,Footie Traffic x2,,AU
-SYD,Logistics APAC,,AU
-SYD,Surfing,,AU
-SYX,Russian Vacay Destination x2|,,GR
-SZB,|MY|Malayali,,PL
-SZX,Apple,,CN
-SZX,Banking,,CN
-SZX,Cantonese|,,CN
-SZX,Chinese Tourism|,,CN
-SZX,Electronics,,CN
-SZX,Global Logistics,,CN
-SZX,Industrial automation,,CN
-SZX,Renewable Energy,,CN
-TAC,Sugar,,PH
-TAM,Copper,,MX
-TAM,Oil,,MX
-TAM,UFOs,,MX
-TAO,|AU|Chinese,,CN
-TAO,|CA|Chinese,,CN
-TAO,|ID|Chinese,,CN
-TAO,|TH|Chinese,,CN
-TAO,|US|Chinese,,CN
-TAO,Appliances,Haier HQ,CN
-TAO,Chinese Tourism|,,CN
-TAO,Marine,,CN
-TAO,Seafood,,CN
-TAS,Logistics CIS,,UZ
-TAS,Textiles,,UZ
-TBS,Logistics EU,,GE
-TBS,Viticulture,,GE
-TBT,Amazonia,,BR
-TBZ,|DE|Iranian,,IR
-TBZ,|TR|Iranian,,IR
-TBZ,|US|Iranian,,IR
-TBZ,Agriculture,,IR
-TBZ,Heavy industry,,IR
-TCO,Drug trafficking,,CO
-TCR,|AE|Tamil,,US
-TCR,|ID|Tamil,,US
-TCR,|MY|Tamil,,US
-TCR,Marine,,IN
-TCR,Seafood,,IN
-TDD,Gemstones,,BO
-TET,Logistics MEA,,MZ
-TEZ,Sunni|,,IN
-TFF,Amazonia,,BR
-TFN,British Sunny Vacay x2|,,ES
-TFS,British Sunny Vacay x2|,,ES
-TFU,|AU|Chinese,,IS
-TFU,|CA|Chinese,,IS
-TFU,|ID|Chinese,,IS
-TFU,|TH|Chinese,,IS
-TFU,|US|Chinese,,IS
-TFU,Agribusiness,,CN
-TFU,Chinese Tourism|,,IS
-TFU,Semiconductors,,IS
-TGU,Coffee,,HN
-TGZ,Coffee,,DZ
-THL,Drug trafficking,,TH
-THR,|DE|Iranian,,IR
-THR,|TR|Iranian,,IR
-THR,|US|Iranian,,IR
-THR,Logistics MEA,,IR
-TIA,Footwear,,AL
-TIF,|AE|Pakistani,,US
-TIF,|SA|Pakistani,,US
-TIF,|UK|Pakistani,,US
-TIF,|US|Pakistani,,US
-TIR,|CA|Telugu,,IN
-TKG,Geothermal,,ID
-TKU,Forestry,Turku,FI
-TLH,Academia,,US
-TLL,Telco,,EE
-TLN,|FR|Algerian x2,,FR
-TLS,|FR|Algerian x2,,FR
-TLS,|FR|Moroccan,,FR
-TLS,Aerospace,,FR
-TLV,|FR|Jewish,,IL
-TLV,|IE|Ethiopian,,IL
-TLV,|IE|Filipino,,IL
-TLV,|UK|Jewish,,IL
-TLV,|US|Jewish,,IL
-TLV,Defense,,IL
-TLV,Diamonds,,IL
-TLV,Horticulture,,IL
-TLV,Software,,IL
-TMC,Nickel,,US
-TMT,Amazonia,,BR
-TNA,Automotive,,CN
-TNA,Chinese Tourism|,,CN
-TNA,Heavy industry,,CN
-TNE,Aerospace,,CN
-TNG,Global Logistics,,MA
-TNG,Textiles,,MA
-TNH,Gold,,CN
-TNR,Nordic / Lutheran|,,BR
-TOS,Arctic Fishing,,NO
-TOS,Defense,,NO
-TOS,Renewable Energy,,NO
-TPA,Golf,,US
-TPA,Healthcare,,US
-TPA,Logistics NAC,,US
-TPA,Software,,US
-TPE,Electronics,,TW
-TPE,HK Taiwan Kinship|,,TW
-TPE,Semiconductors,,TW
-TRD,Nordic Ski 2 City x2,,NO
-TRD,Software,,NO
-TRF,Santa,,NO
-TRG,Horticulture,,NO
-TRN,|IT|Romanian,,IT
-TRN,Automotive,,IT
-TRS,Marine,,IT
-TRU,Coffee,,PE
-TRU,Copper,Trujillo Peru,CA
-TRV,|AE|Malayali,,IN
-TRV,|MY|Malayali,,IN
-TRV,|OM|Malayali,,IN
-TRV,|SA|Malayali,,IN
-TRV,Aerospace,,US
-TRV,Software,,IN
-TRZ,|AE|Tamil,,AR
-TRZ,|ID|Tamil,,AR
-TRZ,|MY|Tamil,,AR
-TSA,Semiconductors,,TW
-TSE,Logistics CIS,,KZ
-TSE,Oil,,KZ
-TSF,|IT|Romanian,,IT
-TSF,CPG & Retail,,IT
-TSN,Automotive,,CN
-TSN,Logistics APAC,,CN
-TSN,Petrochemicals,,CN
-TSN,Semiconductors,,TW
-TSS,Banking,,CN
-TSS,High finance,,CN
-TSV,Copper,,RU
-TSV,Nickel,,RU
-TTN,Academia,Rutgers University,US
-TUC,Agribusiness,,AR
-TUL,Aerospace,,US
-TUL,Arctic Oil,,US
-TUL,LNG,,US
-TUL,Oil,,US
-TUN,|FR|Tunisian x2,,TN
-TUN,Automotive,,TN
-TUN,Logistics EU,,TN
-TUR,Amazonia,,BR
-TUS,Aerospace,,US
-TUS,Copper,,US
-TUS,Hispanic|,,US
-TXK,Wind Energy,,US
-TYS,Academia,,US
-TZX,Horticulture,,TN
-TZX,Seafood,,TN
-UDI,Dairy,,BR
-UDI,Logistics LATAM,,BR
-UDR,Sugar,,IN
-UET,Pashto|,,PK
-UFA,Oil,,RU
-UFA,Petrochemicals,,RU
-UFA,Russian Vacay Destination x2|,,RU
-UGO,Coffee,,AO
-UIO,|ES|Ecuadorian,,EC
-UIO,|US|Ecuadorian,,EC
-UIO,Coffee,,EC
-UIO,Horticulture,,EC
-UIO,Wood Processing,Quito,EC
-UKB,CPG & Retail,,JP
-UKB,Heavy industry,,JP
-UKB,Life sciences,,JP
-ULN,Gold,,MN
-ULN,Ranching,,MN
-UME,Forestry,Umeå,SE
-UPG,|ID|Chinese,,ID
-UPG,Marine,,ID
-UPG,Nickel,,ID
-UPN,|US|Jalisco & Michoacán,,MX
-UPT,|TH|Chinese,,TH
-URA,Oil,,KZ
-URC,Oil,,CN
-USK,Russian Vacay Destination x2|,,RU
-UTP,Appliances,,TH
-UTP,Russian Vacay Destination x2|,,TH
-UUD,Gold,Ulan-Ude (Transbaikal) Russia,MN
-UUS,Gold,Yuzhno-Sakhalinsk (Kurils) Russia,MN
-UUS,LNG,,MN
-UUS,Oil,,MN
-VAA,Forestry,Vaasa,FI
-VAR,Casinos,,BG
-VCE,Marine,,IT
-VCP,Logistics LATAM,,BR
-VCP,Petrochemicals,,BR
-VER,Offshore Oil,,MX
-VER,Oil,,MX
-VER,Petrochemicals,,MX
-VGA,|CA|Telugu,,IN
-VGO,Seafood,,ES
-VIE,Life sciences,,AT
-VIE,Pharma,,AT
-VII,Seafood,,VN
-VIX,Amazonia,,BR
-VIX,Marine,,BR
-VKO,CPG & Retail,,RU
-VKO,LNG,,RU
-VKO,Logistics CIS,,RU
-VKO,Oil,,RU
-VKO,Russian Vacay Destination x2|,,RU
-VKT,Russian Vacay Destination x2|,,RU
-VLC,Logistics EU,,ES
-VNO,Software,,LT
-VOG,Heavy industry,,RU
-VRA,|CU|Cuban,,CU
-VRA,Drug trafficking,,CU
-VRA,Sugar,,CU
-VRN,Agribusiness,,IT
-VRN,Viticulture,,IT
-VST,Forestry,Västerås,SE
-VST,Industrial automation,,US
-VTE,Logistics APAC,,LA
-VTZ,|CA|Telugu,,RU
-VUP,Drug trafficking,,PG
-VVI,|BR|Bolivian,,PE
-VVI,|MX|Bolivian,,PE
-VVO,Arctic Fishing,,RU
-VVO,Forestry,Vladivostok,RU
-VVO,Logistics CIS,,RU
-VVO,Marine,,FI
-VXC,Agriculture,,MZ
-WAG,Defense,,AU
-WAG,Horticulture,,AU
-WAG,Viticulture,,AU
-WAU,Gold,Wau (Granites Mine) Northern Territory,SD
-WAW,|IE|Polish,,PL
-WAW,|US|Polish,,PL
-WAW,CPG & Retail,,PL
-WAW,Heavy industry,,PL
-WDH,Gold,Windhoek,NA
-WDH,Ranching,,NA
-WDH,Uranium,Windhoek (Eros),NA
-WEL,|NZ|Samoan,,ZA
-WLG,Seafood,,NZ
-WNZ,Footwear,,CN
-WNZ,Petrochemicals,,CN
-WNZ,Toys,,CN
-WRE,Geothermal,Kawerau geothermal power station,NZ
-WRO,CPG & Retail,,PL
-WRO,Electronics,,PL
-WUH,|AU|Chinese,,CN
-WUH,|CA|Chinese,,CN
-WUH,|ID|Chinese,,CN
-WUH,|TH|Chinese,,CN
-WUH,|US|Chinese,,CN
-WUH,Automotive,,CN
-WUH,Chinese Tourism|,,CN
-WUX,Chinese Tourism|,,CN
-WUX,Pharma,,CN
-WUX,Renewable energy,,CN
-WUX,Textiles,,CN
-WVB,Uranium,Walvis Bay,NA
-XIY,Aerospace,,CN
-XIY,Chinese Tourism|,,CN
-XIY,Logistics APAC,,CN
-XIY,Software,,CN
-XMN,|AU|Chinese,,CN
-XMN,|CA|Chinese,,CN
-XMN,|ID|Chinese,,CN
-XMN,|TH|Chinese,,CN
-XMN,|US|Chinese,,CN
-XMN,Chinese Tourism|,,CN
-XMN,Electronics,,CN
-XMN,Textiles,,CN
-XMN,Sugar,,CN
-XNA,Appliances,,US
-XNA,CPG & Retail,,US
-XUZ,Heavy industry, SANY Heavy Industry,CN
-XWA,Arctic Oil,,AU
-YAM,Heavy Industry,,CA
-YAT,Gold,Attawapiskat (De Beers Victor Mine) Ontario,CA
-YAU,Nickel,,CA
-YAU,Platinum,,CA
-YBC,Forestry,Baie-Comeau,CA
-YBC,Francophonie|,,CA
-YBG,Francophonie|,,CA
-YBG,Maple Syrup,,CA
-YBR,Grain Belt,,CA
-YCB,Academia,,CA
-YCL,Francophonie|,,CA
-YDN,Grain Belt,,CA
-YEG,Arctic Oil,Edmonton Canada,CA
-YEG,LNG,,CA
-YEG,Loves Cancun x2|,,CA
-YEG,Oil,Edmonton Canada,CA
-YEG,Petrochemicals,,CA
-YEI,Appliances,Beko,TR
-YFB,Loves Arctic|,,CA
-YFB,Santa,,CA
-YGP,Francophonie|,,CA
-YHM,|CA|Chinese,,CA
-YHM,Heavy industry,,CA
-YHM,Logistics NAC,,CA
-YHM,Loves Cancun x2|,,CA
-YHU,Forestry,Saint-Hubert,CA
-YHU,Francophonie|,,CA
-YHU,Maple Syrup,,CA
-YHZ,Arctic Fishing,,CA
-YHZ,Marine,,CA
-YHZ,Renewable Energy,,CA
-YIN,Gold,Yining (various mines) Xinjiang,CN
-YIW,Toys,,CN
-YKM,|US|Jalisco & Michoacán,,CA
-YKS,Diamonds,,CA
-YKS,Gold,,CA
-YLW,Gold,Kelowna (B.C. mines) British Columbia,CA
-YLW,Viticulture,Kelowna,CA
-YMJ,Uranium,Moose Jaw,CA
-YMM,Arctic Oil,Fort McMurray Canada,CA
-YMT,Francophonie|,,CA
-YOW,Bureaucracy,,CA
-YOW,Defense,,CA
-YOW,Gold,Ottawa (Canadian HQs) Ontario,CA
-YOW,Loves Cancun x2|,,CA
-YOW,NA Capitols|,,CA
-YQB,Francophonie|,,CA
-YQB,Gold,Quebec City (Canadian HQs) Quebec,CA
-YQB,Loves Cancun x2|,,CA
-YQB,Maple Syrup,,CA
-YQB,Software,,CA
-YQG,Automotive,,CA
-YQL,Ranching,,CA
-YQR,Arctic Oil,Estevan Saskatchewan,CA
-YQR,Grain Belt,,CA
-YQR,Logistics NAC,,CA
-YQR,Ranching,,CA
-YQR,Uranium,Regina,CA
-YQU,Arctic Oil,Grande Prairie Canada,CA
-YQX,LNG,,CA
-YQY,Arctic Fishing,,CA
-YRJ,Francophonie|,,CA
-YRJ,Maple Syrup,,CA
-YSB,Nickel,,CA
-YSB,Platinum,,CA
-YTF,Francophonie|,,CA
-YTM,Francophonie|,,CA
-YTS,Francophonie|,,CA
-YTS,Gold,,CA
-YTS,Nickel,,CA
-YTY,Agriculture,,CN
-YTY,Toys,,CA
-YTZ,Banking,,CA
-YTZ,CPG & Retail,,CA
-YTZ,High finance,,CA
-YTZ,Logistics NAC,,CA
-YUL,|CA|Algerian,,CA
-YUL,|CA|Haitian,,CA
-YUL,|CA|Moroccan,,CA
-YUL,Aerospace,,CA
-YUL,Banking,,CA
-YUL,Francophonie|,,CA
-YUL,Logistics NAC,,CA
-YUL,Loves Cancun x2|,,CA
-YUL,Software,,CA
-YUM,Hispanic|,,US
-YUY,Copper,,CA
-YUY,Francophonie|,,CA
-YVO,Francophonie|,,CA
-YVO,Gold,,CA
-YVR,|CA|Bengali,,CA
-YVR,|CA|Chinese,,CA
-YVR,|CA|Punjabi,,CA
-YVR,Arctic Fishing,,CA
-YVR,Cantonese|,,CA
-YVR,Copper,Vancouver Canada,CA
-YVR,Gold,Vancouver,CA
-YVR,Software,,CA
-YW9,Academia,,AQ
-YWG,Agribusiness,,CA
-YWG,Grain Belt,,CA
-YWG,Healthcare,,CA
-YWG,Loves Cancun x2|,,CA
-YWG,Ranching,,CA
-YXC,Forestry,Cranbrook,CA
-YXC,Gemstones,,CA
-YXC,Grain Belt,,CA
-YXE,Arctic Oil,,CA
-YXE,Gold,,CA
-YXE,Ranching,,CA
-YXE,Uranium,Saskatoon,CA
-YXJ,Arctic Oil,Fort St. John Canada,CA
-YXK,Francophonie|,,CA
-YXS,Forestry,Prince George,CA
-YXU,Automotive,,CA
-YXU,LNG,,CA
-YXU,Loves Cancun x2|,,CA
-YXU,Renewable Energy,,CA
-YXX,Grain Belt,,CA
-YXY,Gold,Whitehorse (Yukon mines) Yukon,CA
-YXY,Loves Arctic|,,CA
-YXY,Loves Cancun x2|,,CA
-YXY,Uranium,Whitehorse,CA
-YXZ,Gold,Yellowknife (Diavik/Ekati) Northwest Territories,CA
-YYB,Forestry,North Bay,CA
-YYC,|CA|Chinese,,CA
-YYC,|CA|Punjabi,,CA
-YYC,Arctic Oil,Calgary Canada,CA
-YYC,Loves Cancun x2|,,CA
-YYC,Oil,Calgary Canada,CA
-YYE,Arctic Oil,,CA
-YYE,Forestry,Fort Nelson,CA
-YYF,Gold,Penticton (B.C. mines) British Columbia,CA
-YYG,Arctic Fishing,,CA
-YYJ,Academia,,CA
-YYJ,Defense,,CA
-YYJ,Marine,,CA
-YYR,Defense,,CA
-YYT,Arctic Fishing,,CA
-YYT,Arctic Oil,,CA
-YYY,Francophonie|,,CA
-YYZ,|CA|Bengali,,CA
-YYZ,|CA|Chinese,,CA
-YYZ,|CA|Punjabi,,CA
-YYZ,|CA|Telugu,,CA
-YYZ,Banking,,CA
-YYZ,Entertainment,,CA
-YYZ,High finance,,CA
-YYZ,Loves Cancun x2|,,CA
-YYZ,Software,,CA
-YZF,Loves Arctic|,,CA
-YZP,Forestry,Sandspit,CA
-YZR,Arctic Oil,Sarnia Canada,CA
-YZV,Francophonie|,,CA
-ZAG,Logistics EU,,HR
-ZBF,Francophonie|,,CA
-ZCL,|US|Durango & Zacatecas,,MX
-ZIH,|US|Guerrero & Oaxaca,,MX
-ZLO,|US|Jalisco & Michoacán,,MX
-ZNE,Copper,Newman,MX
-ZNE,Rare earths,,MX
-ZQN,Viticulture,,MX
-ZRH,Banking,,CH
-ZRH,Bureaucracy,,CH
-ZRH,High finance,,CH
-ZRH,Pharma,,CH
-ZUH,Rare earths,Zhuhai,CN
+iata,airportZone,
+AAE,|FR|Algerian x2,
+AAL,Atlantic Fishing,
+AAL,Dairy,
+AAL,Healthcare,
+AAL,Jutland capital journeys,
+AAL,Wind Energy,
+AAN,|AE|Malayali,
+AAV,|AU|Italian,
+ABA,Aluminum,
+ABE,Steel,
+ABJ,Agriculture,
+ABJ,Logistics MEA,
+ABJ,Spices / Tropical ag,
+ABQ,Academia,
+ABQ,Hispanic|,
+ABQ,Renewable Energy,
+ABQ,UFOs,
+ABV,|US|Nigerian,
+ABV,Bureaucracy,
+ABY,Cotton,
+ABZ,Atlantic Fishing,
+ABZ,Whiskey,
+ABZ,Oil,
+ABZ,Offshore Oil,
+ACA,|US|Guerrero & Oaxaca,
+ACC,|NL|Ghanaian,
+ACC,Agriculture,
+ACC,Spices / Tropical ag,
+ACE,Atlantic Fishing,
+ACK,Wind Energy,
+ACT,Ranching,
+ACV,|US|Guerrero & Oaxaca,
+ACV,Drug trafficking,
+ACV,Forestry,Arcata/Eureka
+ACY,Casinos,
+AD1,Offshore Oil,oil platform
+ADA,|DK|Turkish,
+ADA,|NL|Turkish,
+ADA,Agriculture,
+ADB,|DK|Turkish,
+ADB,|NL|Turkish,
+ADB,Wind Energy,
+ADD,|IE|Ethiopian,
+ADD,|US|Ethiopian,
+ADD,|ZA|Ethiopian,
+ADD,Bureaucracy,
+ADD,Coffee,
+ADD,Logistics MEA,
+ADL,|AU|Indian,
+ADL,Viticulture,
+ADQ,Arctic Fishing,
+ADZ,Coffee,
+AEP,|US|Jewish,
+AEP,Agribusiness,
+AEP,Loves Florianopolis x2|,
+AES,Atlantic Fishing,
+AEY,Geothermal,
+AGA,Altantic Fishing,
+AGM,Arctic Fishing,
+AGP,|ES|Ecuadorian,
+AGP,Mediterranean agriculture,
+AGP,Telco,
+AGR,Footwear,
+AGS,Golf,
+AGT,German|,
+AGT,Spices / Tropical ag,
+AGU,|US|Durango & Zacatecas,
+AHB,|SA|Pakistani,
+AHB,Petrochemicals,
+AIP,|CA|Punjabi,
+AJF,Offshore Oil,
+AKL,|NZ|Indian,
+AKL,|NZ|Samoan,
+AKL,Dairy,
+AKL,Logistics APAC,
+AKN,Arctic Fishing,
+AKU,Cotton,
+AKU,Sunni|,
+ALA,LNG,
+ALA,Logistics CIS,
+ALA,Logistics CIS,
+ALA,Oil,
+ALB,Dairy,
+ALB,Loves DR x2|,
+ALC,British Sunny Vacay x2|,
+ALC,Mediterranean agriculture,
+ALC,Petrochemicals,
+ALG,|CA|Algerian,
+ALG,|FR|Algerian x2,
+ALG,Logistics EU Med,
+ALG,Oil,
+ALO,Wind Energy,
+ALP,|BR|Syrian,
+ALP,|NL|Syrian,
+AMA,Ranching,
+AMA,UFOs,
+AMA,Wind Energy,
+AMD,|KE|Gujarati,
+AMD,Dairy,
+AMD,Pharma,
+AMD,Textiles,
+AMH,|US|Ethiopian,
+AMH,|ZA|Ethiopian,
+AMM,Healthcare,
+AMS,|NL|Ghanaian,
+AMS,|NL|Indonesian,
+AMS,|NL|Moroccan,
+AMS,|NL|Surinamese,
+AMS,|NL|Turkish,
+AMS,Diamonds,
+AMS,Drug trafficking,
+AMS,Horticulture,
+AMS,Semiconductors,
+ANC,|US|Samoan,
+ANC,Arctic Fishing,
+ANC,Arctic Oil,Anchorage Alaska
+ANC,LNG,
+ANF,Copper,Antofagasta Chile
+ANR,Diamonds,
+ANR,Drug trafficking,
+ANR,Global Logistics,
+ANR,Logistics EU Med,
+ANR,Loves Tiroler Unterlan x2|,
+ANR,Telco,
+ANX,Atlantic Fishing,
+AOG,Steel,
+AOI,Footwear,
+APL,Agriculture,
+APN,Maple Syrup,
+AQP,Copper,Arequipa Peru
+ARB,Academia,University of Michigan
+ARH,Arctic Fishing,
+ARH,Forestry,
+ARK,Nordic / Lutheran|,
+ARM,Ranching,
+ARN,|NL|Syrian,
+ARN,|SE|Iraqi,
+ARN,Industrial automation,
+ARN,Software,
+ARN,Telco,
+ARU,Sugar,
+ASB,LNG,
+ASB,Oil,
+ASR,CPG & Retail,
+AT2,Offshore Oil,oil platform
+ATH,|AU|Greek,
+ATH,Marine,
+ATL,|US|Colombian,
+ATL,|US|Korean,
+ATL,|US|Nigerian,
+ATL,CPG & Retail,Coca Cola
+ATL,Defense,
+ATL,Logistics NAC,
+ATL,Loves DR x2|,
+ATQ,|CA|Punjabi,
+ATQ,Agriculture,
+ATQ,Cotton,
+ATW,Nordic / Lutheran|,
+AUH,|AE|Malayali,
+AUH,|AE|Pakistani,
+AUH,Aluminum,
+AUH,Banking,
+AUH,Oil Refining,
+AUS,|US|Durango & Zacatecas,
+AUS,|US|Pakistani,
+AUS,Academia,
+AUS,Renewable Energy,
+AUS,Semiconductors,
+AUS,Software,
+AUS,Apple,
+AVA,Rice,
+AVL,Academia,University of North Carolina at Asheville
+AVL,Paper & Furniture,Asheville
+AVV,|AU|Indian,
+AWZ,Oil Refining,
+AWZ,Petrochemicals,
+AWZ,Steel,
+AXD,Sea Fishing,
+AYT,Russian Vacay Destination x2|,
+AZS,Sugar,
+BAH,Aluminum,
+BAH,LNG,
+BAH,Offshore Oil,
+BAQ,|CL|Colombian,
+BAQ,|MX|Colombian,
+BAQ,|US|Colombian,
+BAR,Rice,
+BAV,Aluminum,
+BAV,Rare earths,Baotou
+BBI,Rice,
+BBK,Gemstones,
+BCN,|ES|Ecuadorian,
+BCN,Textiles,
+BDA,High finance,
+BDB,Sugar,
+BDJ,Diamonds,
+BDL,|US|Irish American,
+BDL,|US|Polish,
+BDL,|US|Stateside Puerto Ricans,
+BDL,Academia,University of Connecticut
+BDL,Loves DR x2|,
+BDO,Spices / Tropical ag,
+BDQ,Dairy,
+BDU,Defense,
+BEG,|DE|Serbian,
+BEG,|FR|Serbian,
+BEG,Agriculture,
+BEG,Logistics EU Med,
+BEL,|BR|Nikkei,
+BEL,Agribusiness,
+BEL,Amazonia,
+BER,|DE|Iranian,
+BER,|DE|Serbian,
+BER,|DE|Turkish,
+BER,Entertainment,
+BER,Industrial automation,
+BER,Renewable Energy,
+BER,Telco,
+BES,Marine,
+BET,Arctic Oil,Bethel Alaska
+BEY,Shia|,
+BFI,Academia,University Washington
+BFI,Aerospace,
+BFL,Arctic Oil,Bakersfield CA
+BFL,Hispanic|,
+BFL,Logistics NAC,Bakersfield CA
+BGO,Atlantic Fishing,
+BGO,Marine,
+BGO,Offshore Oil,
+BGO,Wind Energy,
+BGW,|SE|Iraqi,
+BGW,|TR|Iraqi,
+BGW,Shia|,
+BGY,|IT|Romanian,
+BGY,Banking,
+BGY,Dairy,
+BGY,Footwear,
+BHE,Viticulture,Blenheim New Zealand
+BHE,Viticulture,
+BHJ,|KE|Gujarati,
+BHM,Academia,
+BHM,Heavy industry,
+BHX,|GB|Indian,
+BIL,Forestry,Billings
+BIO,Renewable Energy,
+BIQ,Surfing,
+BIS,Nordic / Lutheran|,
+BIU,Geothermal,
+BJA,|FR|Algerian x2,
+BJR,|ZA|Ethiopian,
+BJX,Footwear,
+BJX,Textiles,
+BKI,Spices / Tropical ag,Kota Kinabalu
+BKK,|TH|Chinese,
+BKK,Banking,
+BKK,CPG & Retail,
+BKK,Electronics,
+BKS,Geothermal,
+BLA,Oil,
+BLJ,|FR|Algerian x2,
+BLK,Oil Fracking,
+BLK,Wind Energy,
+BLL,Dairy,
+BLL,Toys,
+BLL,Wind Energy,
+BLQ,Automotive,
+BLQ,CPG & Retail,
+BLR,|AE|Kannada,
+BLR,|OM|Kannada,
+BLR,Software,
+BLR,Sunni|,
+BLR,Telco,
+BMI,Academia,
+BNA,Automotive,
+BNA,CPG & Retail,
+BNA,Entertainment,
+BNA,Healthcare,
+BNA,US Finance,
+BND,Logistics MEA,
+BNE,|AU|Chinese,
+BNE,|AU|Indian,
+BNE,|AU|Vietnamese,
+BNE,Logistics APAC,
+BNE,Renewable Energy,
+BOD,|FR|Algerian x2,
+BOD,Viticulture,
+BOG,|CL|Colombian,
+BOG,|MX|Colombian,
+BOG,|US|Colombian,
+BOG,Andean connect,
+BOG,Coffee,
+BOG,Colonial ties bind,
+BOG,Horticulture,
+BOI,Forestry,Boise
+BOI,Healthcare,
+BOI,Paper & Furniture,
+BOJ,Agriculture,
+BOJ,Sea Fishing,
+BOM,|SG|Marathi,
+BOM,Banking,
+BOM,Bollywood 2 Bureaucracy x2,
+BOM,Diamonds,
+BOM,Entertainment,
+BOM,Sunni|,
+BOM,Textiles,
+BOS,|US|Brazilian,
+BOS,|US|Irish American,
+BOS,Academia,Harvard University
+BOS,Banking,
+BOS,Life sciences,
+BOS,Software,
+BOS,US Finance,
+BPN,Nickel,
+BPN,Oil,Balikpapan Indonesia
+BPT,Oil Refining,
+BQS,Defense RU,
+BRD,Paper & Furniture,Brainerd
+BRE,Agribusiness,
+BRE,Loves Arctic|,
+BRE,Loves Bolzano x2|,
+BRE,Nordic / Lutheran|,
+BRE,Wind Energy,
+BRI,Viticulture,
+BRO,Aerospace,
+BRO,Hispanic|,
+BRS,Aerospace,
+BRU,|CD|Congolese,
+BRU,Bureaucracy,
+BRU,CPG & Retail,
+BRU,Pharma,
+BRW,Arctic Oil,Barrow Alaska
+BRW,LNG,
+BRX,Sugar,
+BSB,Agribusiness,
+BSB,Bureaucracy,
+BSB,Coffee,
+BSL,Life sciences,
+BSR,|SE|Iraqi,
+BSR,|TR|Iraqi,
+BSR,Oil,
+BSR,Shia|,
+BTJ,Indian Ocean Fishing,
+BTJ,Surfing,
+BTK,Gold,Bratsk (Lena goldfields) Russia
+BTR,Academia,LSU
+BTR,LNG,
+BTR,Oil Refining,
+BTS,Appliances,
+BTS,Automotive,
+BTU,LNG,
+BTV,Academia,University of Vermont
+BTV,Dairy,
+BTV,Maple Syrup,
+BUD,Automotive,
+BUD,Pharma,
+BUF,Agribusiness,
+BUF,Heavy industry,
+BUF,Life sciences,
+BUF,Toys,Fisher-Price
+BUQ,Logistics MEA,
+BUQ,Zim Connect x2,
+BUR,Aerospace,
+BUR,Entertainment,
+BUR,Hispanic|,
+BUR,SoCal NoCal,
+BUW,Nickel,
+BUZ,Logistics MEA,
+BUZ,Marine,
+BUZ,Petrochemicals,
+BVA,|FR|Algerian x2,
+BVA,|FR|Moroccan,
+BVA,|FR|Polish,
+BVA,|FR|Serbian,
+BVA,|FR|Tunisian x2,
+BVA,Aerospace,
+BVA,Software,
+BWI,|US|Guatemalan,
+BWI,|US|Nigerian,
+BWI,|US|Salvadoran,
+BWI,Defense,
+BWI,Logistics NAC,
+BWN,LNG,
+BWN,Oil,
+BWN,Sinophone|,
+BWN,Spices / Tropical ag,
+BZL,Rice,
+BZO,Loves Bolzano x2|,
+CAB,Francophonie|,
+CAE,Academia,
+CAE,Healthcare,
+CAG,Mediterranean agriculture,
+CAH,Seafood,
+CAI,Agriculture,
+CAK,LNG,
+CAN,Automotive,
+CAN,Cantonese|,
+CAN,Chinese Tourism|,
+CAN,Electronics,
+CAN,Footwear,
+CAN,Textiles,
+CAN,Toys,
+CAS,Logistics MEA,
+CAY,Aerospace,
+CAZ,Copper,Cobar
+CAZ,Gold,Cobar (various mines) New South Wales
+CBB,|AR|Bolivian,
+CBB,|BR|Bolivian,
+CBL,Gold,
+CBR,Bureaucracy,
+CCD,Gold,Cloncurry (Ernest Henry Mine) Queensland
+CCJ,|AE|Malayali,
+CCJ,|MY|Malayali,
+CCJ,|OM|Malayali,
+CCJ,|SA|Malayali,
+CCJ,Sunni|,
+CCP,Heavy industry,
+CCP,Viticulture,Itata Valley
+CCS,|CL|Venezuelan,
+CCS,|PE|Venezuelan,
+CCS,|US|Venezuelan,
+CCS,Oil,
+CCU,|CA|Bengali,
+CCU,|US|Bengali,
+CCU,Bengali|,
+CCU,Logistics APAC,
+CCU,Sunni|,
+CCU,Tea,
+CDG,|FR|Algerian x2,
+CDG,|FR|Jewish,
+CDG,|FR|Moroccan,
+CDG,|FR|Polish,
+CDG,Automotive,
+CDG,Banking,
+CDG,Life sciences,Sciences Po
+CDG,Software,
+CEB,Appliances,
+CEB,Chinese Tourism|,
+CEB,Electronics,
+CEC,Forestry,
+CEE,Paper & Furniture,
+CEI,Gemstones,
+CFB,Offshore Oil,
+CGB,Gold,
+CGB,Ranching,
+CGB,Sugar,
+CGH,Agribusiness,
+CGH,Banking,
+CGH,Healthcare,
+CGH,Logistics LATAM,
+CGJ,Copper,Chingola Zambia
+CGK,|ID|Chinese,
+CGK,|ID|Tamil,
+CGK,|NL|Indonesian,
+CGK,Coffee,
+CGK,CPG & Retail,
+CGK,Tea,
+CGN,Banking,
+CGN,Life sciences,
+CGN,Loves Arctic|,
+CGN,Loves Bolzano x2|,
+CGO,|CA|Chinese,
+CGO,Agribusiness,
+CGO,Apple,
+CGO,Automotive,
+CGO,Chinese Tourism|,
+CGO,Cotton,
+CGR,|BR|Nikkei,
+CGR,Agribusiness,
+CHC,|NZ|Indian,
+CHC,|NZ|Samoan,
+CHC,Agribusiness,
+CHC,Dairy,
+CHC,Logistics APAC,
+CHO,Academia,University of Virginia
+CHS,Aerospace,
+CIA,|IT|Romanian,
+CID,Academia,University of Iowa
+CIU,Forestry,
+CJB,|AE|Tamil,
+CJB,|ID|Tamil,
+CJB,|MY|Tamil,
+CJB,Tea,
+CJC,Copper,Calama Chile
+CJC,Gemstones,
+CJS,Electronics,
+CJS,Logistics NAC,
+CKG,|AU|Chinese,
+CKG,|CA|Chinese,
+CKG,|ID|Chinese,
+CKG,|TH|Chinese,
+CKG,|US|Chinese,
+CKG,Automotive,
+CKG,Chinese Tourism|,
+CKG,Logistics APAC,
+CKG,Rice,
+CKZ,Sea Fishing,
+CLE,|US|Stateside Puerto Ricans,
+CLE,Aerospace,
+CLE,Appliances,Whirlpool
+CLE,Healthcare,
+CLE,Loves DR x2|,
+CLO,|CL|Colombian,
+CLO,|MX|Colombian,
+CLO,|US|Colombian,
+CLO,Agribusiness,
+CLO,Drug trafficking,
+CLQ,|US|Jalisco & Michoacán,
+CLT,Industrial automation,
+CLT,Loves DR x2|,
+CLT,US Finance,
+CLV,Ranching,
+CMB,Gemstones,
+CMB,Indian Ocean Fishing,
+CMB,Tea,
+CMB,Textiles,
+CME,Offshore Oil,
+CMG,|BR|Nikkei,
+CMH,|US|Jalisco & Michoacán,
+CMH,|US|Somali,
+CMH,Academia,Ohio State University
+CMH,Logistics NAC,
+CMH,Semiconductors,
+CMH,US Finance,
+CMI,Academia,University of Illinois
+CMN,|CA|Moroccan,
+CMN,|FR|Moroccan,
+CMN,|NL|Moroccan,
+CMN,Logistics EU Med,
+CMN,Logistics MEA,
+CND,Sea Fishing,
+CNF,Agribusiness,
+CNF,Automotive,
+CNF,Coffee,
+CNF,Dairy,
+CNN,|AE|Malayali,
+CNN,|MY|Malayali,
+CNN,|OM|Malayali,
+CNN,|SA|Malayali,
+CNS,|AU|Indian,
+CNS,Pacific Fishing,
+CNS,Sugar,
+CNX,Chinese Tourism|,
+CNX,Spices / Tropical ag,
+CNX,Sugar,
+COK,|AE|Malayali,
+COK,|MY|Malayali,
+COK,|OM|Malayali,
+COK,|SA|Malayali,
+COK,Indian Ocean Fishing,
+COK,Rare earths,
+COK,Textiles,
+COR,Agribusiness,
+COR,CPG & Retail,Arcor
+COR,Loves Florianopolis x2|,
+COR,Ranching,
+CPD,Oil Fracking,
+CPH,|DK|Turkish,
+CPH,Dairy,
+CPH,Jutland capital journeys,
+CPH,Life sciences,
+CPH,Marine,
+CPH,Renewable Energy,
+CPH,Wind Energy,
+CPO,Copper,Copiapó Chile
+CPT,Logistics MEA,
+CPT,Mediterranean agriculture,
+CPT,Viticulture,
+CRK,|IE|Filipino,
+CRK,|IT|Filipino,
+CRK,|US|Filipino,
+CRK,CPG & Retail,
+CRK,Electronics,
+CRP,Hispanic|,
+CRP,Offshore Oil,
+CRP,Ranching,
+CRP,Wind Energy,
+CRZ,Oil,
+CSX,Agribusiness,
+CSX,Chinese Tourism|,
+CSX,Electronics,
+CSX,Industrial automation,
+CSX,Steel,
+CTA,|AU|Italian,
+CTA,|BR|Italian,
+CTA,|US|Italian,
+CTG,Petrochemicals,
+CTS,Arctic Fishing,
+CTS,Whiskey,
+CTU,Automotive,
+CTU,Banking,
+CTU,Electronics,
+CTU,Rice,
+CUL,Agriculture,
+CUL,Drug trafficking,
+CUN,|MX|Bolivian,
+CUN,Anglophone|,
+CUN,Casinos,
+CUN,Loves Cancun x2|,
+CUU,Appliances,
+CUU,Automotive,
+CUU,Logistics NAC,
+CUZ,Colonial ties bind,
+CVG,Industrial automation,
+CVG,Logistics NAC,
+CVG,US Finance,
+CWA,Maple Syrup,
+CWB,|BR|Nikkei,
+CWB,Appliances,
+CWB,Dairy,
+CXR,Chinese Tourism|,
+CXR,Russian Vacay Destination x2|,
+CXR,Seafood,
+CYI,Oil Refining,
+CZL,|FR|Algerian x2,
+CZM,Loves Cancun x2|,
+CZX,Industrial automation,
+DAC,|SA|Bangladeshi,
+DAC,Banking,
+DAC,Tea,
+DAC,Textiles,
+DAD,|AU|Vietnamese,
+DAD,|JP|Vietnamese,
+DAD,|US|Vietnamese,
+DAD,Appliances,
+DAD,Drug trafficking,
+DAD,Seafood,
+DAL,Aerospace,
+DAL,Arctic Oil,
+DAL,Industrial automation,
+DAL,Oil,
+DAL,Oil Fracking,
+DAL,Ranching,
+DAL,Telco,
+DAM,|BR|Syrian,
+DAM,|NL|Syrian,
+DAM,Shia|,
+DAR,Logistics MEA,
+DAY,Healthcare,
+DBV,Mediterranean agriculture,
+DCA,Aerospace,
+DCA,Banking,
+DCA,Bureaucracy,
+DCA,Defense,
+DCA,High finance,
+DCA,NA Capitols|,
+DDC,Grain Belt,
+DEL,Banking,
+DEL,Bollywood 2 Bureaucracy x2,
+DEL,Bureaucracy,
+DEL,Sunni|,
+DEL,Telco,
+DEN,|US|Ethiopian,
+DEN,Aerospace,
+DEN,Gold,
+DEN,Renewable Energy,
+DEN,Software,
+DFW,|US|Chinese,
+DFW,|US|Durango & Zacatecas,
+DFW,|US|Indian,
+DFW,|US|Jalisco & Michoacán,
+DFW,Loves DR x2|,
+DFW,Semiconductors,
+DFW,Telco,
+DGO,|US|Durango & Zacatecas,
+DGT,Geothermal,Palinpinon Geothermal Power Plant
+DHA,Oil,
+DIK,Oil Fracking,
+DLA,Offshore Oil,
+DLC,Marine,
+DLC,Petrochemicals,
+DLC,Seafood,
+DLG,Arctic Oil,Dillingham Alaska
+DLH,Nordic / Lutheran|,
+DME,|RU|Armenian,
+DME,Defense RU,
+DME,Defense RU,
+DME,Nickel,
+DME,Petrochemicals,
+DME,Russian Vacay Destination x2|,
+DMK,|TH|Chinese,
+DMK,Appliances,
+DMK,Chinese Tourism|,
+DMK,Rice,
+DMM,|SA|Bangladeshi,
+DMM,|SA|Malayali,
+DMM,|SA|Pakistani,
+DMM,Offshore Oil,
+DMM,Oil,
+DNZ,Geothermal,Kızıldere Geothermal Power Plant
+DOH,LNG,
+DOH,Logistics MEA,
+DOL,Logistics EU Med,Le Harve
+DOU,Ranching,
+DOY,Aluminum,
+DPS,|ID|Chinese,
+DPS,|ID|Tamil,
+DPS,|NL|Indonesian,
+DPS,Chinese Tourism|,
+DPS,Loves Bali x2|,
+DPS,Surfing,
+DRP,Geothermal,
+DRS,Pharma,
+DRS,Semiconductors,
+DRW,Defense,
+DRW,Pacific Fishing,Darwin
+DSM,|US|Jalisco & Michoacán,
+DSM,Agribusiness,
+DSM,Grain Belt,
+DSS,Logistics MEA,
+DSS,Oil Refining,
+DTM,|DE|Serbian,
+DTM,Industrial automation,
+DTM,Logistics EU Med,
+DTM,Loves Arctic|,
+DTM,Loves Bolzano x2|,
+DTW,Automotive,
+DTW,Healthcare,
+DTW,Loves DR x2|,
+DTW,Sunni|,
+DTW,US Finance,
+DUB,|IE|Polish,
+DUB,|US|Irish American,
+DUB,Golf,
+DUB,High finance,
+DUB,US Finance,
+DUB,Whiskey,
+DUD,Academia,University of Otago
+DUR,|ZA|Ethiopian,
+DUR,Agribusiness,
+DUR,Logistics MEA,
+DUS,|DE|Serbian,
+DUS,Banking,
+DUS,Loves Arctic|,
+DUS,Loves Bolzano x2|,
+DUS,Telco,
+DUT,Arctic Fishing,
+DVL,Grain Belt,
+DVO,|IE|Filipino,
+DVO,|IT|Filipino,
+DVO,|US|Filipino,
+DVO,Spices / Tropical ag,
+DWC,|AE|Pakistani,
+DWC,Aluminum,
+DXB,|AE|Malayali,
+DXB,|AE|Pakistani,
+DXB,Global Logistics,
+DXB,Gold,
+DXB,High finance,
+DXB,Oil,
+DXB,Petrochemicals,
+EAT,Horticulture,
+EAU,|US|Somali,
+EAU,Nordic / Lutheran|,
+EAU,Paper & Furniture,
+EBL,|SE|Iraqi,
+EBL,Oil,
+ECN,Sunni|,
+ECN,Turkish|,
+EDI,|UK|Polish,
+EDI,Academia,University of Edinburgh
+EDI,Banking,
+EDI,Golf,
+EDI,Whiskey,
+EG1,Academia,
+EG9,Academia,
+EH1,Offshore Oil,oil platform
+EIN,CPG & Retail,
+EIN,Dairy,
+EIS,High finance,
+ELG,Gold,El Gouera (FIFO)
+ELP,Hispanic|,
+ELP,Horticulture,
+ELP,Logistics NAC,
+ELP,Petrochemicals,
+ELS,Automotive,
+ELS,Platinum,
+EMA,Logistics EU Med,
+EN1,Offshore Oil,oil platform
+EN2,Offshore Oil,oil platform
+EN3,Offshore Oil,oil platform
+EN4,Offshore Oil,oil platform
+EN9,Offshore Oil,oil platform
+ENA,LNG,
+ENO,Grain Belt,
+ESB,|DK|Turkish,
+ESB,|NL|Turkish,
+ESB,|TR|Iraqi,
+ESB,Bureaucracy,
+EUG,Academia,University Oregon
+EUG,Footwear,
+EVN,|FR|Armenian,
+EVN,|RU|Armenian,
+EVN,Logistics CIS,
+EWR,|US|Brazilian,
+EWR,|US|Chinese,
+EWR,|US|Indian,
+EWR,|US|Jewish,
+EWR,|US|Nigerian,
+EWR,|US|Pakistani,
+EWR,Global Logistics,
+EWR,Pharma,
+EWR,Software,
+EWR,US Finance,
+EXT,Wind Energy,
+EZE,|AR|Bolivian,
+EZE,|US|Jewish,
+EZE,Banking,
+EZE,Logistics LATAM,
+EZE,Loves Florianopolis x2|,
+FAI,Arctic Oil,Fairbanks Alaska
+FAI,Forestry,Fairbanks
+FAI,Loves Arctic|,
+FAI,Santa,
+FAO,Atlantic Fishing,
+FAO,Mediterranean agriculture,
+FAR,Grain Belt,
+FAR,Nordic / Lutheran|,
+FAT,|US|Guerrero & Oaxaca,
+FAT,Grain Belt,
+FBM,|CD|Congolese,
+FBM,Copper,Lubumbashi DRC
+FBM,Uranium,
+FCN,Atlantic Fishing,
+FCO,|AU|Italian,
+FCO,|BR|Italian,
+FCO,|IT|Filipino,
+FCO,|US|Italian,
+FCO,Telco,
+FEZ,|FR|Moroccan,
+FEZ,|NL|Moroccan,
+FEZ,Mediterranean agriculture,
+FIH,|CD|Congolese,
+FIH,Gemstones,
+FJR,|AE|Malayali,
+FKB,Paper & Furniture,Karlsruhe/Baden-Baden
+FLL,|CU|Cuban,
+FLL,|US|Jewish,
+FLL,|US|Venezuelan,
+FLL,CC|,
+FLL,Hispanic|,
+FLN,Loves Florianopolis x2|,
+FLN,Surfing,
+FLR,Textiles,
+FLR,Viticulture,
+FMM,Loves Arctic|,
+FMM,Loves Bolzano x2|,
+FMO,Paper & Furniture,Münster/Osnabrück
+FNT,Automotive,
+FOC,|AU|Chinese,
+FOC,|CA|Chinese,
+FOC,|ID|Chinese,
+FOC,|TH|Chinese,
+FOC,|US|Chinese,
+FOC,Chinese Tourism|,
+FOC,Footwear,
+FOC,Logistics APAC,
+FOR,Textiles,
+FRA,|DE|Serbian,
+FRA,|DE|Turkish,
+FRA,Global Logistics,
+FRA,High finance,
+FRA,Industrial automation,
+FRA,Loves Arctic|,
+FRA,Loves Bolzano x2|,
+FRA,Pharma,
+FRC,Footwear,
+FRU,Agriculture,
+FSD,Grain Belt,
+FSD,Nordic / Lutheran|,
+FSD,US Finance,
+FSM,Cotton,
+FSZ,Appliances,
+FSZ,Heavy industry,
+FUK,Appliances,
+FUK,Electronics,
+FWA,Academia,Purdue University
+GAU,Rice,
+GAU,Sunni|,
+GAU,Paper & Furniture,Guwahati
+GBB,Agriculture,
+GBB,Cotton,
+GBE,Diamonds,
+GCK,Wind Energy,
+GDL,|US|Jalisco & Michoacán,
+GDL,CPG & Retail,
+GDL,Software,
+GDL,Textiles,
+GDN,|IE|Polish,
+GDN,|US|Polish,
+GDN,Marine,
+GDX,Arctic Fishing,
+GDX,Gold,Magadan (Kolyma region) Russia
+GEG,Forestry,Spokane
+GEO,Oil,Georgetown
+GFK,Nordic / Lutheran|,
+GIG,Entertainment,
+GIG,Offshore Oil,
+GIG,Telco,
+GJL,|FR|Algerian x2,
+GLA,Heavy industry,
+GLA,Marine,
+GLA,Whiskey,
+GLA,Defense,
+GLH,Rice,
+GLT,Aluminum,
+GLT,LNG,
+GMO,|US|Nigerian,
+GMP,|JP|Korean,
+GMP,|US|Korean,
+GMP,Appliances,
+GMP,CPG & Retail,
+GMP,Electronics,
+GMP,Industrial automation,
+GNV,Academia,
+GOA,Logistics EU Med,
+GOA,Marine,
+GOA,Russian Vacay Destination x2|,
+GOH,Arctic Fishing,
+GOH,Loves Arctic|,
+GOJ,Automotive,
+GOM,Rwanda-Rundi|,
+GOT,Automotive,
+GOT,Life sciences,
+GOT,Marine,
+GPT,Aerospace,
+GPT,Casinos,
+GRB,Dairy,
+GRB,Maple Syrup,
+GRK,Ranching,
+GRO,Mediterranean agriculture,
+GRR,Industrial automation,
+GRU,|BR|Bolivian,
+GRU,|BR|Italian,
+GRU,|BR|Nikkei,
+GRU,|BR|Syrian,
+GRU,|US|Brazilian,
+GRU,Aerospace,
+GRU,Banking,
+GRV,Defense RU,
+GSO,Paper & Furniture,
+GSP,Appliances,Electrolux
+GUA,|US|Guatemalan,
+GUM,Defense,
+GUR,Pacific Fishing,
+GUW,Oil,Atyrau
+GUW,Uranium,Atyrau
+GVA,Banking,
+GVA,Bureaucracy,
+GVA,CPG & Retail,Nestle
+GVA,Francophonie|,
+GVA,High finance,
+GVR,Gemstones,
+GWY,|US|Irish American,
+GYA,Drug trafficking,
+GYD,Horticulture,
+GYD,LNG,
+GYD,Offshore Oil,
+GYE,|ES|Ecuadorian,
+GYE,|US|Ecuadorian,
+GYE,Coffee,
+GYE,Logistics LATAM,
+GYN,Ranching,
+GYN,Sugar,
+GZO,Pacific Fishing,
+HAJ,Automotive,
+HAJ,Loves Arctic|,
+HAJ,Loves Bolzano x2|,
+HAJ,Nordic / Lutheran|,
+HAK,Rice,
+HAK,Spices / Tropical Ag,
+HAM,|DE|Afghan,
+HAM,|DE|Iranian,
+HAM,|DE|Turkish,
+HAM,Aerospace,
+HAM,Logistics EU Med,
+HAM,Loves Arctic|,
+HAM,Loves Bolzano x2|,
+HAM,Marine,
+HAM,Renewable Energy,
+HAN,|AU|Vietnamese,
+HAN,|JP|Vietnamese,
+HAN,|US|Hmong,
+HAN,|US|Vietnamese,
+HAN,CPG & Retail,
+HAN,Electronics,
+HAN,Tea,
+HAV,|CU|Cuban,
+HBE,Logistics EU Med,
+HEL,Telco,
+HFA,Marine,Hafia
+HFE,Appliances,Midea Group
+HFE,CPG & Retail,
+HGA,|NO|Somali,
+HGA,|US|Somali,
+HGH,|AU|Chinese,
+HGH,|CA|Chinese,
+HGH,|ID|Chinese,
+HGH,|TH|Chinese,
+HGH,|US|Chinese,
+HGH,Academia,
+HGH,Chinese Tourism|,
+HGH,CPG & Retail,
+HGH,Software,
+HGH,Textiles,
+HHN,Loves Arctic|,
+HHN,Loves Bolzano x2|,
+HHN,Wind Energy,
+HHP,Banking,
+HHP,High finance,
+HIJ,Automotive,
+HIJ,Heavy industry,
+HKG,Cantonese|,
+HKG,Global Logistics,
+HKG,High finance,
+HKG,HK Taiwan Kinship|,
+HKG,Logistics APAC,
+HKG,Textiles,
+HKG,Toys,
+HKT,Chinese Tourism|,
+HKT,Drug trafficking,
+HKT,Indian Ocean Fishing,
+HKT,Loves Phuket x2|,
+HKT,Russian Vacay Destination x2|,
+HKT,Spices / Tropical ag,
+HLA,Gold,
+HLD,Ranching,
+HLD,Rare earths,
+HLN,Forestry,
+HLZ,Agribusiness,Hamilton NZ
+HLZ,Dairy,Hamilton NZ
+HLZ,Viticulture,Waikato wine region
+HMO,Automotive,
+HMO,Drug trafficking,
+HND,|BR|Nikkei,
+HND,|JP|Korean,
+HND,|JP|Vietnamese,
+HND,|MP|Nikkei,
+HND,|PE|Nikkei,
+HND,|US|Nikkei,
+HND,Automotive,
+HND,Industrial automation,
+HND,Telco,
+HNL,|US|Filipino,
+HNL,|US|Nikkei,
+HNL,|US|Samoan,
+HNL,Defense,
+HNL,PIF|,
+HNL,Surfing,
+HNM,PIF|,
+HOB,Oil Fracking,
+HOD,Shia|,
+HOG,|CU|Cuban,
+HOM,Arctic Fishing,
+HOU,|US|Durango & Zacatecas,
+HOU,Aerospace,
+HOU,Healthcare,
+HOU,Offshore Oil,
+HOU,Offshore Oil,
+HOU,Oil,
+HOU,Oil Fracking,
+HOU,Oil Refining,
+HPH,|JP|Vietnamese,
+HPN,|US|Ecuadorian,
+HPN,|US|Guatemalan,
+HPN,|US|Irish American,
+HPN,Hispanic|,
+HRB,Agribusiness,
+HRB,Chinese Tourism|,
+HRB,Pharma,
+HRE,Platinum,
+HRE,Rare earths,
+HRE,Zim Connect x2,
+HRG,Russian Vacay Destination x2|,
+HRH,Shia|,
+HRH,Sunni|,
+HRL,Hispanic|,
+HSV,Academia,University of Alabama in Huntsville
+HSV,Aerospace,
+HSV,Defense,
+HTN,Sunni|,
+HTS,Gemstones,
+HTY,Sea Fishing,
+HUI,Agriculture,
+HUI,Surfing,
+HUX,Surfing,
+HUY,Wind Energy,
+HVN,|US|Stateside Puerto Ricans,
+HVN,Academia,Yale University
+HYD,|CA|Telugu,
+HYD,Pharma,
+HYD,Shia|,
+HYD,Software,
+HYN,Rice,
+IAD,|US|Ethiopian,
+IAD,|US|Guatemalan,
+IAD,|US|Indian,
+IAD,|US|Jewish,
+IAD,|US|Korean,
+IAD,Bureaucracy,
+IAD,Defense,
+IAD,NA Capitols|,
+IAD,Software,
+IAH,|US|Chinese,
+IAH,|US|Indian,
+IAH,|US|Nigerian,
+IAH,|US|Pakistani,
+IAH,|US|Vietnamese,
+IAH,LNG,
+IAH,Oil,
+IAH,Petrochemicals,
+IAH,Software,
+IAS,Steel,
+IAS,Viticulture,
+ICN,|JP|Korean,
+ICN,|US|Korean,
+ICN,Automotive,
+ICN,Banking,
+ICN,Electronics,
+ICN,Semiconductors,
+ICT,|US|Jalisco & Michoacán,
+ICT,Aerospace,
+ICT,Heavy industry,
+IDA,Gemstones,
+IEV,Grain Belt,
+IFN,|DE|Iranian,
+IFN,|TR|Iranian,
+IFN,|US|Iranian,
+IFN,Steel,
+IGS,Automotive,
+IGU,|BR|Nikkei,
+IGU,UFOs,
+IKA,|DE|Iranian,
+IKA,|TR|Iranian,
+IKA,|US|Iranian,
+IKA,Automotive,
+IKA,Oil,
+IKT,Forestry,Irkutsk
+IKT,Gold,Irkutsk (Bodaibo) Russia
+ILG,US Finance,
+ILM,Forestry,Wilmington
+ILO,Rice,
+ILR,|US|Nigerian,
+ILY,Atlantic Fishing,Islay
+IMP,Sugar,
+IMT,Maple Syrup,
+INC,Sunni|,
+IND,|US|Jalisco & Michoacán,
+IND,Academia,Indiana University Bloomington
+IND,Industrial automation,
+IND,Logistics NAC,
+IND,Pharma,
+INN,Loves Tiroler Unterlan x2|,
+INV,Whiskey,
+INV,Defense,
+INW,UFOs,
+IPN,Heavy industry,
+IPT,Oil Fracking,Marcellus Shale
+IQM,Gold,Qiemo (various mines) Xinjiang
+IQQ,Copper,Iquique Chile
+IQT,Amazonia,
+ISA,Copper,Mount Isa
+ISB,|US|Pakistani,
+ISP,|US|Salvadoran,
+IST,|DK|Turkish,
+IST,|NL|Turkish,
+IST,|TR|Afghan,
+IST,|TR|Iranian,
+IST,|TR|Iraqi,
+IST,Banking,
+IST,CPG & Retail,
+IST,Logistics APAC,
+IST,Logistics CIS,
+ISU,|SE|Iraqi,
+ISU,|TR|Iraqi,
+ISU,Shia|,
+ITH,Academia,
+ITH,Dairy,
+ITM,|JP|Korean,
+ITM,|JP|Korean,
+ITM,|JP|Vietnamese,
+ITM,Electronics,
+ITM,Industrial automation,
+ITO,Defense RU,
+ITO,PIF|,
+IWD,Maple Syrup,
+IWK,Petrochemicals,
+IXA,Paper & Furniture,Agartala
+IXB,Tea,
+IXC,|CA|Punjabi,
+IXC,Software,
+IXE,|AE|Kannada,
+IXE,|OM|Kannada,
+IXG,Agriculture,
+IXM,|AE|Tamil,
+IXM,|ID|Tamil,
+IXM,|MY|Tamil,
+IXR,Rice,
+IXR,Textiles,
+IXR,Paper & Furniture,Ranchi
+IXS,Sunni|,
+IXS,Tea,
+IXU,|SG|Marathi,
+IXU,Gemstones,
+IXU,Sugar,
+IZO,Agriculture,
+IZO,Seafood,
+JAI,Gemstones,
+JAN,Heavy industry,
+JAU,Copper,
+JAV,Arctic Fishing,
+JAX,Defense,
+JAX,Logistics NAC,
+JAX,US Finance,
+JBQ,Sugar,
+JBR,Rice,
+JED,|SA|Bangladeshi,
+JED,|SA|Malayali,
+JED,|SA|Pakistani,
+JED,Banking,
+JED,Logistics MEA,
+JFK,|US|Jewish,
+JFK,|US|Ukrainian,
+JFK,Banking,
+JFK,Cantonese|,
+JFK,CC|,
+JFK,Entertainment,
+JFK,High finance,
+JFK,Hispanic|,
+JFK,Software,
+JGA,Oil Refining,
+JGD,Gemstones,
+JGD,Gold,Jiagedaqi (various mines) Heilongjiang
+JGS,Rice,
+JHB,|MY|Malayali,
+JHB,Electronics,
+JHB,Logistics APAC,
+JIB,Logistics MEA,
+JIU,Horticulture,
+JJN,Footwear,
+JLR,Sugar,
+JNB,|ZA|Ethiopian,
+JNB,Agriculture,
+JNB,Copper,
+JNB,Gold,
+JNB,Logistics MEA,
+JNB,Platinum,
+JNB,Rare earths,
+JNB,Uranium,
+JNU,Arctic Fishing,
+JNZ,Horticulture,
+JNZ,Textiles,Jinzhou
+JOG,Spices / Tropical ag,
+JOI,Automotive,
+JRA,Banking,
+JRA,Banking,
+JRA,High finance,
+JRB,Banking,
+JRB,Banking,
+JRB,High finance,
+JRG,Aluminum,
+JRO,Coffee,
+JRO,Nordic / Lutheran|,
+JRO,Ranching,
+JRT,Amazonia,
+JSR,Rice,
+JTC,Sugar,
+JWA,Diamonds,
+JXA,Gemstones,
+JZH,Aluminum,
+KBL,|DE|Afghan,
+KBL,|PK|Afghan,
+KBL,|TR|Afghan,
+KBL,Drug trafficking,
+KBL,Pashto|,
+KBP,Grain Belt,
+KCH,Forestry,
+KCH,Oil Refining,
+KCT,Surfing,Weligama Sri Lanka
+KCZ,Forestry,Kochi
+KCZ,Rice,
+KCZ,Seafood,
+KDH,Drug trafficking,
+KDH,Pashto|,
+KEF,Atlantic Fishing,
+KEF,Geothermal,
+KER,Copper,
+KGD,Defense RU,
+KGI,Gold,Kalgoorlie-Boulder (Super Pit) Western Australia
+KGI,Rare earths,
+KGL,Gold,Kigali
+KHG,Sunni|,
+KHH,HK Taiwan Kinship|,
+KHH,Logistics APAC,
+KHH,Seafood,
+KHH,Paper & Furniture,Kaohsiung
+KHI,|AE|Pakistani,
+KHI,|PK|Afghan,
+KHI,|SA|Pakistani,
+KHI,|UK|Pakistani,
+KHI,|US|Pakistani,
+KHI,Banking,
+KHI,Textiles,
+KHN,Cotton,
+KHN,Footwear,
+KHN,Uranium,
+KHS,Oil,
+KHV,Aerospace,
+KHV,Arctic Fishing,
+KHV,Forestry,Khabarovsk
+KHV,Heavy industry,
+KHV,Russian Vacay Destination x2|,
+KIN,Drug trafficking,
+KIN,Sugar,
+KIR,Atlantic Fishing,Kerry
+KIT,Copper,Kitwe Zambia
+KIV,Agribusiness,
+KIX,|BR|Nikkei,
+KIX,|JP|Korean,
+KIX,|JP|Vietnamese,
+KIX,|MP|Nikkei,
+KIX,|PE|Nikkei,
+KIX,|US|Nikkei,
+KIX,Banking,
+KIX,Electronics,
+KIX,Semiconductors,
+KIX,Whiskey,
+KJA,Aerospace,
+KJA,Aluminum,
+KJA,Forestry,Krasnoyarsk
+KJA,Gold,Krasnoyarsk (various mines) Russia
+KJA,Russian Vacay Destination x2|,
+KJT,Tea,
+KKJ,Steel,Kitakyushu
+KME,|US|Salvadoran,
+KMG,|AU|Chinese,
+KMG,|CA|Chinese,
+KMG,|ID|Chinese,
+KMG,|TH|Chinese,
+KMG,|US|Chinese,
+KMG,Chinese Tourism|,
+KMG,Copper,
+KMG,Heavy industry,
+KMG,Horticulture,
+KMG,Rare earths,Kunming
+KMI,Agribusiness,
+KMQ,Electronics,
+KNO,Coffee,
+KNO,Logistics APAC,
+KNO,Spices / Tropical ag,
+KOA,Coffee,
+KOA,PIF|,
+KOA,Surfing,
+KOJ,Aerospace,
+KOJ,Agriculture,
+KOJ,Geothermal,
+KOS,Indian Ocean Fishing,
+KPO,Steel,
+KRK,|IE|Polish,
+KRK,|US|Polish,
+KRK,Software,
+KRK,Steel,
+KRL,Oil,
+KRR,|RU|Armenian,
+KRR,Grain Belt,
+KRT,Petrochemicals,
+KRW,LNG,
+KRW,Offshore Oil,
+KSH,Cotton,
+KTA,LNG,
+KTN,Arctic Fishing,
+KTW,Automotive,
+KTW,Heavy industry,
+KUA,Petrochemicals,
+KUF,Aerospace,
+KUF,Russian Vacay Destination x2|,
+KUL,|MY|Malayali,
+KUL,|MY|Tamil,
+KUL,Banking,
+KUL,Cantonese|,
+KUL,Logistics APAC,
+KVA,Loves Kavala x2|,
+KVA,Sea Fishing,
+KWE,Chinese Tourism|,
+KWE,CPG & Retail,
+KWE,Logistics APAC,
+KWI,Banking,
+KWI,Oil,
+KWI,Oil Refining,
+KWL,Logistics APAC,
+KWL,Rice,
+KWL,Sugar,
+KWZ,Copper,Kolwezi DRC
+KZN,Aluminum,
+KZN,Russian Vacay Destination x2|,
+KZO,Oil Refining,
+KZO,Uranium,Kyzylorda Kazakhstan
+LAD,Logistics MEA,
+LAD,Offshore Oil,
+LAN,Academia,Michigan State University
+LAS,Casinos,
+LAS,Hispanic|,
+LAU,Logistics MEA,
+LAX,|US|Chinese,
+LAX,|US|Filipino,
+LAX,|US|Iranian,
+LAX,|US|Korean,
+LAX,|US|Vietnamese,
+LAX,Banking,
+LAX,Drug trafficking,
+LAX,Entertainment,
+LAX,Hispanic|,
+LAX,SoCal NoCal,
+LBA,|GB|Indian,
+LBA,|UK|Pakistani,
+LBB,Ranching,
+LBB,Wind Energy,
+LBC,Logistics EU Med,
+LBC,Loves Arctic|,
+LBC,Nordic / Lutheran|,
+LBL,Ranching,
+LBS,Agriculture,
+LCA,Banking,
+LCA,EU|,
+LCA,Greek|,
+LCA,Russian Vacay Destination x2|,
+LCH,Petrochemicals,
+LCJ,Appliances,
+LCK,|US|Somali,
+LCX,Copper,Longyan
+LCY,|UK|Jewish,
+LCY,Academia,Imperial College London
+LCY,Banking,
+LCY,Diamonds,
+LCY,High finance,
+LEA,Gemstones,
+LEA,Gold,Laverton (Telfer Mine) Western Australia
+LED,|RU|Armenian,
+LED,Defense RU,
+LED,Heavy industry,
+LED,Logistics CIS,
+LED,Russian Vacay Destination x2|,
+LEJ,Automotive,
+LEJ,LNG,
+LEJ,Logistics EU Med,
+LEJ,Loves Arctic|,
+LEJ,Loves Bolzano x2|,
+LEO,Gold,Leinster (various mines) Western Australia
+LER,Rare earths,
+LEX,Academia,University of Kentucky
+LEX,Whiskey,
+LFT,LNG,
+LGA,|US|Indian,
+LGA,|US|Jewish,
+LGA,|US|Korean,
+LGA,|US|Polish,
+LGA,|US|Stateside Puerto Ricans,
+LGA,Academia,
+LGA,Banking,
+LGA,CPG & Retail,
+LGA,Software,
+LGA,US Finance,
+LGB,|US|Nikkei,
+LGB,|US|Salvadoran,
+LGB,|US|Samoan,
+LGB,Defense,
+LGB,Global Logistics,
+LGB,Logistics NAC,
+LGB,SoCal NoCal,
+LGB,Toys,
+LGK,|MY|Tamil,
+LGW,|GB|Indian,
+LGW,|UK|Nigerian,
+LGW,|UK|Polish,
+LGW,Banking,
+LHE,|AE|Pakistani,
+LHE,|SA|Pakistani,
+LHE,|UK|Pakistani,
+LHE,|US|Pakistani,
+LHE,Dairy,
+LHE,Footwear,
+LHR,|GB|Indian,
+LHR,|UK|Nigerian,
+LHR,|UK|Pakistani,
+LHR,Academia,Oxbridge
+LHR,Bengali|,
+LHR,Bureaucracy,
+LHR,High finance,
+LHR,Software,
+LHW,Heavy industry,
+LHW,Petrochemicals,
+LIH,PIF|,
+LIM,|PE|Nikkei,
+LIM,|PE|Venezuelan,
+LIM,Colonial ties bind,
+LIM,Copper,Lima Peru
+LIM,Seafood,
+LIN,|IT|Romanian,
+LIN,CPG & Retail,
+LIN,Heavy industry,
+LIO,Horticulture,
+LIS,Logistics EU Med,
+LIS,Marine,
+LIS,Mediterranean Agriculture,
+LJU,Pharma,
+LKO,Rice,Narendra Deva University of Agriculture and Technology
+LKO,Shia|,
+LLA,Steel,
+LLF,Rare earths,Lingling
+LLW,Agriculture,
+LNG,LNG,
+LNK,Academia,University of Nebraska
+LNK,Oil Fracking,
+LNL,Gold,Lianshanguan (various mines) Heilongjiang
+LNY,PIF|,
+LOP,Gemstones,
+LOS,|UK|Nigerian,
+LOS,|US|Nigerian,
+LOS,Entertainment,
+LOS,Logistics MEA,
+LOS,Oil,
+LPA,Atlantic Fishing,
+LPB,|AR|Bolivian,
+LPB,|BR|Bolivian,
+LPL,|GB|Indian,
+LPL,Marine,
+LPQ,Drug trafficking,
+LPT,Sugar,
+LRD,Hispanic|,
+LRD,Oil Fracking,
+LRM,Sugar,
+LSC,Viticulture,Elqui Valley
+LTN,|GB|Indian,
+LTN,|UK|Jewish,
+LTN,Life sciences,
+LUG,Italian|,
+LUN,Agriculture,
+LUN,Anglophone|,
+LUN,Copper,Lusaka Zambia
+LUX,High finance,
+LUX,Logistics EU Med,
+LUX,Steel,ArcelorMittal
+LVO,Gold,Leonora (Sunrise Dam) Western Australia
+LW0,Banking,
+LW0,High finance,
+LWK,Offshore Oil,
+LYA,Paper & Furniture,
+LYG,Steel,
+LYP,Cotton,
+LYR,Academia,
+LYR,Loves Arctic|,
+LYS,|FR|Algerian x2,
+LYS,|FR|Armenian,
+LYS,|FR|Serbian,
+LYS,CPG & Retail,
+LYS,Pharma,
+LYS,Software,
+MAA,|AE|Tamil,
+MAA,|ID|Tamil,
+MAA,|MY|Tamil,
+MAA,Automotive,
+MAA,Footwear,
+MAA,Healthcare,
+MAD,|ES|Ecuadorian,
+MAD,|ES|Peruvian,
+MAD,Colonial ties bind,
+MAD,Logistics EU Med,
+MAD,Telco,
+MAF,|US|Durango & Zacatecas,
+MAF,Cotton,
+MAF,Oil Fracking,Midland USA
+MAN,|GB|Indian,
+MAN,|UK|Pakistani,
+MAN,|UK|Polish,
+MAN,Bengali|,
+MAN,Heavy industry,
+MAO,Amazonia,
+MAO,Appliances,
+MAO,Drug trafficking,
+MAO,Forestry,
+MAO,Horticulture,
+MAO,Petrochemicals,
+MAR,|CL|Venezuelan,
+MAR,|PE|Venezuelan,
+MAR,|US|Venezuelan,
+MAR,Agriculture,
+MAR,Oil Refining,
+MB1,Academia,
+MBA,Logistics MEA,
+MBA,Oil,
+MCI,|US|Jalisco & Michoacán,
+MCI,Agribusiness,
+MCI,Bureaucracy,
+MCI,Grain Belt,
+MCI,Telco,
+MCO,|US|Brazilian,
+MCO,|US|Stateside Puerto Ricans,
+MCO,Defense,
+MCO,Golf,
+MCO,Loves DR x2|,
+MCP,Amazonia,
+MCP,Paper & Furniture,
+MCT,|OM|Malayali,
+MCT,Oil,
+MCZ,Sugar,
+MDC,Nickel,
+MDE,|CL|Colombian,
+MDE,|MX|Colombian,
+MDE,|US|Colombian,
+MDE,Andean connect,
+MDE,Drug trafficking,
+MDE,Horticulture,
+MDE,Logistics LATAM,
+MDQ,Seafood,
+MDT,Steel,
+MDW,|US|Italian,
+MDW,|US|Polish,
+MDW,|US|Stateside Puerto Ricans,
+MDW,Academia,University of Chicago
+MDW,CPG & Retail,
+MDW,Loves DR x2|,
+MDY,Rice,
+MDZ,Loves Florianopolis x2|,
+MDZ,Oil Fracking,
+MDZ,Viticulture,Mendoza
+MEA,Offshore Oil,
+MEL,|AU|Chinese,
+MEL,|AU|Greek,
+MEL,|AU|Italian,
+MEL,|AU|Vietnamese,
+MEL,Banking,
+MEL,Copper,Melbourne
+MEL,Footie Traffic x2,
+MEL,Logistics APAC,
+MEL,Pharma,
+MEL,Wind Energy,
+MEM,Agribusiness,
+MEM,Global Logistics,
+MEM,Logistics NAC,
+MEX,|ES|Peruvian,
+MEX,|MX|Bolivian,
+MEX,|MX|Colombian,
+MEX,Bureaucracy,
+MEX,Logistics NAC,
+MEX,NA Capitols|,
+MFE,Hispanic|,
+MFM,Cantonese|,
+MFM,Casinos,
+MFR,|US|Jalisco & Michoacán,
+MFR,Forestry,
+MFR,Horticulture,
+MGA,Ranching,
+MGQ,|NO|Somali,
+MGQ,|US|Somali,
+MGZ,Gemstones,
+MHG,Wind Energy,
+MHT,|US|Irish American,
+MIA,|CU|Cuban,
+MIA,|US|Jewish,
+MIA,|US|Venezuelan,
+MIA,CC|,
+MIA,Drug trafficking,
+MIA,Entertainment,
+MIA,Hispanic|,
+MIA,Lusophone|,
+MID,Drug trafficking,
+MIM,Pacific Fishing,
+MIR,Spices / Tropical ag,
+MJY,Aluminum,Boguchany BGS
+MJZ,Diamonds,
+MJZ,Gemstones,
+MKE,Dairy,
+MKE,Healthcare,
+MKE,Industrial automation,
+MKE,Nordic / Lutheran|,
+MKE,US Finance,
+MKY,Sugar,
+MKZ,Appliances,
+MLB,Aerospace,
+MLE,Indian Ocean Fishing,
+MLH,Pharma,
+MLI,Grain Belt,
+MLM,|US|Jalisco & Michoacán,
+MLX,Copper,
+MMK,Defense RU,
+MMK,Logistics CIS,
+MNL,|IE|Filipino,
+MNL,|IT|Filipino,
+MNL,|US|Filipino,
+MNL,Appliances,
+MNL,Logistics APAC,
+MNL,Marine,
+MNL,Rice,
+MNX,Amazonia,
+MOB,Heavy industry,
+MOB,Marine,
+MOC,Dairy,
+MOT,Oil Fracking,
+MPL,|FR|Algerian x2,
+MPL,Dairy,
+MPL,Life sciences,
+MPL,Viticulture,Montpellier
+MPM,Agriculture,
+MPM,Aluminum,
+MPM,Logistics NAC,
+MPM,Lusophone|,
+MQL,Viticulture,Mildura Australia
+MQT,Platinum,Marquette
+MQT,Paper & Furniture,
+MRS,|FR|Algerian x2,
+MRS,|FR|Moroccan,
+MRS,|FR|Tunisian x2,
+MRS,Logistics EU Med,
+MRU,Textiles,
+MRV,Russian Vacay Destination x2|,
+MRY,Surfing,
+MSJ,Arctic Fishing,
+MSJ,Defense,
+MSN,Academia,University of Wisconsin
+MSN,Dairy,
+MSN,Healthcare,Epic Systems
+MSP,|US|Hmong,
+MSP,|US|Somali,
+MSP,Academia,University of Minnesota
+MSP,Agribusiness,
+MSP,CPG & Retail,
+MSP,Dairy,
+MSP,Nordic / Lutheran|,
+MSQ,Heavy industry,
+MSQ,Logistics CIS,
+MSS,Maple Syrup,
+MSY,LNG,
+MSY,Petrochemicals,
+MSY,Seafood,
+MTQ,Gold,Mount Isa (various mines) Queensland
+MTT,Offshore Oil,
+MTY,|MX|Bolivian,
+MTY,Automotive,
+MTY,Electronics,
+MTY,Logistics NAC,
+MUC,|DE|Serbian,
+MUC,|DE|Turkish,
+MUC,Aerospace,
+MUC,Automotive,
+MUC,Dairy,
+MUC,Industrial automation,
+MUC,Semiconductors,
+MUX,Cotton,
+MVD,Agriculture,
+MVD,Logistics LATAM,
+MVD,Ranching,
+MVP,Drug trafficking,
+MVY,Wind Energy,
+MWX,Oil Refining,
+MWX,Steel,
+MWZ,Nordic / Lutheran|,
+MXL,Geothermal,
+MXP,|AU|Italian,
+MXP,|BR|Italian,
+MXP,|IT|Filipino,
+MXP,|US|Italian,
+MXP,CPG & Retail,
+MXP,Textiles,
+MXX,Logistics EU Med,
+MXX,Paper & Furniture,Ikea
+MXZ,Rare earths,Meixian
+MYR,Golf,
+MYY,Forestry,Miri
+MYY,Oil,Oil field
+MZG,Drug trafficking,
+MZG,Seafood,
+MZR,|DE|Afghan,
+MZR,|PK|Afghan,
+MZR,|TR|Afghan,
+MZR,Drug trafficking,
+MZT,Agriculture,
+MZT,Drug trafficking,
+MZT,Seafood,
+NAG,|SG|Marathi,
+NAN,Gold,
+NAN,Surfing,
+NAP,|BR|Italian,
+NAP,|US|Italian,
+NAP,Agribusiness,
+NAS,High finance,
+NAT,Offshore Oil,
+NBE,|FR|Tunisian x2,
+NBO,|KE|Gujarati,
+NBO,Geothermal,Olkaria geothermal power
+NBO,Horticulture,
+NBO,Logistics MEA,
+NBO,Ranching,
+NCE,|FR|Serbian,
+NCE,Horticulture,
+NCE,Viticulture,
+NCL,Heavy industry,
+NCL,Marine,
+NDG,Steel,
+NDJ,Ranching,
+NGB,Appliances,
+NGB,LNG,
+NGB,Logistics APAC,
+NGB,Toys,
+NGO,|BR|Nikkei,
+NGO,|MP|Nikkei,
+NGO,|PE|Nikkei,
+NGO,|US|Nikkei,
+NGO,Automotive,
+NGO,Electronics,
+NGO,Rice,Okinawa Prefectural Agricultural Research Center.
+NGO,Wind Energy,
+NGS,Heavy industry,
+NGS,Marine,
+NIM,Uranium,
+NKG,|AU|Chinese,
+NKG,|CA|Chinese,
+NKG,|ID|Chinese,
+NKG,|TH|Chinese,
+NKG,|US|Chinese,
+NKG,Academia,
+NKG,Appliances,
+NKG,Chinese Tourism|,
+NLA,Copper,Ndola Zambia
+NLD,Hispanic|,
+NLU,Bureaucracy,
+NLU,NA Capitols|,
+NNM,Russian Vacay Destination x2|,
+NNR,|US|Irish American,
+NOC,|US|Irish American,
+NOR,Copper,Norilsk Russia
+NOU,Surfing,
+NPE,Viticulture,
+NPL,Dairy,
+NPL,LNG,
+NPL,Petrochemicals,
+NQN,Oil,Neuquén AR
+NQN,Oil Fracking,Vaca Muerta
+NQY,Atlantic Fishing,
+NQY,Surfing,Cornwall
+NRT,|AR|Nikkei,
+NRT,|BR|Nikkei,
+NRT,|JP|Korean,
+NRT,|MP|Nikkei,
+NRT,|PE|Nikkei,
+NRT,|US|Nikkei,
+NRT,Bureaucracy,
+NRT,Electronics,
+NRT,Semiconductors,
+NRT,Software,
+NSI,Forestry,
+NSK,Copper,
+NSK,Gold,
+NSK,Heavy industry,
+NSK,Platinum,
+NSN,Pacific Fishing,
+NTE,Marine,
+NTE,Renewable Energy,
+NTG,Chinese Tourism|,
+NTG,Marine,
+NTG,Petrochemicals,
+NTG,Textiles,
+NTL,Aluminum,
+NTL,Surfing,
+NTY,Platinum,
+NU1,Offshore Oil,oil platform
+NUE,Footwear,
+NUE,Toys,
+NUX,LNG,
+NVT,Marine,
+NWI,Wind Energy,
+NZH,Gold,Manzhouli (various mines) Inner Mongolia
+OAK,|US|Filipino,
+OAK,|US|Vietnamese,
+OAK,Academia,University Berkeley
+OAK,Geothermal,
+OAK,Hispanic|,
+OAK,Marine,
+OAK,SoCal NoCal,
+OAK,Viticulture,
+OAX,|US|Guerrero & Oaxaca,
+OBO,Forestry,
+ODS,Sea Fishing,
+OGG,PIF|,
+OGG,Surfing,
+OGZ,Defense RU,
+OIT,Geothermal,
+OKA,Defense,
+OKC,|US|Durango & Zacatecas,
+OKC,Academia,
+OKC,Oil,
+OKJ,Aluminum,
+OLP,Copper,Olympic Dam
+OMA,Agribusiness,
+OMA,Grain Belt,
+OMA,Logistics NAC,
+OMA,Ranching,
+OMA,Telco,
+OME,Gold,
+OMS,Oil Refining,
+OMS,Petrochemicals,
+ONT,|US|Filipino,
+ONT,Hispanic|,
+ONT,Logistics NAC,
+ONT,Mediterranean agriculture,
+OOL,Surfing,
+OPO,Viticulture,
+ORB,|SE|Iraqi,
+ORD,|US|Chinese,
+ORD,|US|Indian,
+ORD,|US|Jalisco & Michoacán,
+ORD,|US|Jewish,
+ORD,|US|Polish,
+ORD,Agribusiness,
+ORD,Banking,
+ORD,CPG & Retail,
+ORD,Telco,
+ORF,Defense,
+ORF,Logistics NAC,
+ORF,Loves DR x2|,
+ORF,Marine,
+ORF,Wind Energy,
+ORH,|US|Irish American,
+ORH,Software,
+ORK,|US|Irish American,
+ORK,Apple,
+ORK,Atlantic Fishing,
+ORK,Wind Energy,
+ORN,|CA|Algerian,
+ORN,|FR|Algerian x2,
+ORY,|FR|Algerian x2,
+ORY,|FR|Armenian,
+ORY,|FR|Moroccan,
+ORY,|FR|Polish,
+ORY,|FR|Serbian,
+ORY,|FR|Tunisian x2,
+ORY,Academia,
+ORY,Aerospace,
+ORY,Banking,
+ORY,Textiles,
+OSL,|NO|Somali,
+OSL,Atlantic Fishing,
+OSL,Marine,
+OSL,Nordic Ski 2 City x2,
+OSL,Renewable Energy,
+OSL,Software,
+OST,Atlantic Fishing,
+OST,Wind Energy,
+OTH,Forestry,North Bend/Coos Bay
+OTP,|IT|Romanian,
+OTP,Automotive,
+OTP,Petrochemicals,
+OUL,Forestry,Oulu
+OVB,Software,
+PAB,Aluminum,
+PAE,Academia,
+PAE,,
+PAP,|CA|Haitian,
+PAP,|CL|Haitian,
+PAP,Textiles,
+PBC,Automotive,
+PBI,|CU|Cuban,
+PBI,|US|Brazilian,
+PBI,|US|Colombian,
+PBI,|US|Jewish,
+PBI,Golf,
+PBM,|NL|Surinamese,
+PBU,Drug trafficking,
+PDG,Spices / Tropical ag,
+PDT,Paper & Furniture,
+PDV,Appliances,
+PDV,Heavy industry,Plovdiv
+PDX,Footwear,
+PDX,Software,
+PEK,|AU|Chinese,
+PEK,|CA|Chinese,
+PEK,|ID|Chinese,
+PEK,|TH|Chinese,
+PEK,|US|Chinese,
+PEK,Academia,Tsinghua University
+PEK,Aerospace,
+PEK,Bureaucracy,
+PEK,Chinese Tourism|,
+PEN,|MY|Malayali,
+PEN,|MY|Tamil,
+PEN,Electronics,
+PER,|AU|Chinese,
+PER,|AU|Indian,
+PER,Gold,Perth
+PER,LNG,
+PER,Logistics APAC,
+PER,Surfing,
+PER,Uranium,Perth
+PES,Paper & Furniture,
+PEW,|PK|Afghan,
+PEW,Drug trafficking,
+PEW,Pashto|,
+PFO,EU|,
+PFO,Greek|,
+PHC,Offshore Oil,
+PHF,Aerospace,
+PHL,|US|Irish American,
+PHL,|US|Italian,
+PHL,|US|Jewish,
+PHL,|US|Korean,
+PHL,|US|Stateside Puerto Ricans,
+PHL,Academia,Penn State University
+PHL,Healthcare,
+PHL,US Finance,
+PHO,Copper,Phoenix USA
+PHX,|US|Guerrero & Oaxaca,
+PHX,|US|Jalisco & Michoacán,
+PHX,Copper,
+PHX,Semiconductors,
+PIA,Electronics,
+PIA,Heavy industry,Caterpillar Inc
+PIA,Logistics APAC,
+PIA,Semiconductors,
+PIT,Academia,
+PIT,Healthcare,
+PIT,Industrial automation,
+PIT,Loves DR x2|,
+PIT,Software,
+PJC,Drug trafficking,
+PKC,Arctic Fishing,
+PKC,Gold,Petropavlovsk-Kamchatsky (Kamchatka) Russia
+PKU,Oil,
+PKU,Petrochemicals,
+PKV,Defense RU,
+PKX,|AU|Chinese,
+PKX,|CA|Chinese,
+PKX,|ID|Chinese,
+PKX,|TH|Chinese,
+PKX,|US|Chinese,
+PKX,Banking,
+PKX,Chinese Tourism|,
+PLM,Coffee,
+PLO,Pacific Fishing,
+PLU,Drug trafficking,
+PLZ,Automotive,
+PLZ,Surfing,Jeffrey’s Bay
+PMC,Pacific Fishing,
+PMI,Loves Mallorca x2|,
+PMI,Mediterranean agriculture,
+PMO,|AU|Italian,
+PMO,|BR|Italian,
+PMO,|US|Italian,
+PMO,Agribusiness,
+PMO,Sea Fishing,
+PMR,Dairy,
+PMW,Gemstones,
+PNH,Spices / Tropical ag,
+PNH,Textiles,
+PNQ,|SG|Marathi,
+PNQ,Automotive,
+PNQ,Heavy industry,
+PNQ,Sugar,
+PNS,Cotton,Pensacola USA
+PNS,Defense,
+PNS,Paper & Furniture,Pensacola
+POA,Agribusiness,
+POA,Footwear,
+POA,Nordic / Lutheran|,
+POP,Loves DR x2|,
+POS,Forestry,
+POS,Oil Refining,
+POS,Tea,
+POZ,Logistics EU Med,
+PPB,Sugar,
+PPP,Spices / Tropical ag,
+PPP,Sugar,
+PQI,Francophonie|,
+PRC,Golf,
+PRG,Automotive,
+PRN,Mediterranean agriculture,
+PSA,|IT|Romanian,
+PSA,Viticulture,
+PSG,Seafood,
+PSP,Golf,
+PSP,Renewable Energy,
+PSR,Sea Fishing,
+PTF,Surfing,
+PTG,Diamonds,
+PTU,Platinum,
+PTY,Banking,
+PTY,Global Logistics,
+PTY,Logistics NAC,
+PUB,Aerospace,
+PUB,Hispanic|,
+PUJ,Drug trafficking,
+PUJ,Loves DR x2|,
+PUQ,Viticulture,Magallanes wine region
+PUS,|JP|Korean,
+PUS,|US|Korean,
+PUS,Aluminum,
+PUS,Electronics,
+PUS,Marine,
+PUS,Seafood,
+PUS,Wind Energy,
+PUW,Academia,
+PVD,|US|Brazilian,
+PVD,Academia,Brown University
+PVD,Lusophone|,
+PVD,Pharma,
+PVD,Toys,
+PVG,|AU|Chinese,
+PVG,|CA|Chinese,
+PVG,|ID|Chinese,
+PVG,|TH|Chinese,
+PVG,|US|Chinese,
+PVG,Chinese Tourism|,
+PVG,Electronics,
+PVG,Global Logistics,
+PVG,High finance,
+PVG,Industrial automation,
+PVH,Amazonia,
+PVH,Amazonia,
+PVR,Surfing,
+PWM,Atlantic Fishing,ME
+PXH,Copper,Mount Eba
+PXK,|TH|Chinese,
+PXM,Surfing,
+PXU,Coffee,
+PZU,Logistics MEA,
+PZU,Offshore Oil,
+QHV,Footwear,
+QRO,Aerospace,
+QRO,Appliances,Mabe
+QRW,Oil,Warri
+QSZ,Sunni|,
+RAI,Lusophone|,
+RAK,|FR|Moroccan,
+RAK,|NL|Moroccan,
+RAP,Casinos,
+RBA,|FR|Moroccan,
+RBA,|NL|Moroccan,
+RBA,Mediterranean agriculture,
+RCB,Aluminum,
+RDM,Forestry,
+RDP,Shia|,
+RDU,Academia,
+RDU,Life sciences,
+RDU,Loves DR x2|,
+RDU,Telco,
+REC,Logistics LATAM,
+REC,Marine,
+REC,Petrochemicals,
+REC,Sugar,
+REN,Aluminum,
+REP,Textiles,
+RES,Agribusiness,
+REX,Offshore Oil,
+RGN,Drug trafficking,
+RGN,Rice,
+RGN,Textiles,
+RHI,Maple Syrup,
+RIC,Petrochemicals,
+RIC,US Finance,
+RIX,Paper & Furniture,Riga
+RJ1,Aerospace,Chōfu
+RJK,Sea Fishing,
+RKT,|AE|Malayali,
+RKV,Geothermal,
+RMO,Mediterranean agriculture,
+RNO,Casinos,
+RNO,Gold,Reno
+RNO,SoCal NoCal,
+ROC,|US|Somali,
+ROC,Healthcare,
+ROC,Loves DR x2|,
+ROS,Loves Florianopolis x2|,
+ROS,Ranching,
+ROV,Defense RU,
+ROV,Grain Belt,
+ROV,Logistics CIS,
+ROW,UFOs,
+RSA,Ranching,
+RST,Nordic / Lutheran|,
+RSW,Hispanic|,
+RTM,|NL|Indonesian,
+RTM,Global Logistics,
+RTM,Logistics EU Med,
+RUH,|SA|Bangladeshi,
+RUH,|SA|Malayali,
+RUH,|SA|Pakistani,
+RUH,Logistics MEA,
+RUH,Petrochemicals,
+RUT,Dairy,
+RVN,Santa,
+SA3,Offshore Oil,oil platform
+SAB,LNG,
+SAF,Hispanic|,
+SAH,Shia|,
+SAI,Chinese Tourism|,
+SAL,|US|Salvadoran,
+SAL,Logistics NAC,
+SAL,Paper & Furniture,
+SAN,|US|Guerrero & Oaxaca,
+SAN,|US|Iranian,
+SAN,|US|Samoan,
+SAN,Defense,
+SAN,Life sciences,
+SAN,SoCal NoCal,
+SAP,Spices / Tropical Ag,
+SAT,Defense,
+SAT,Healthcare,
+SAT,Hispanic|,
+SAT,Ranching,
+SAV,Golf,
+SAV,Logistics NAC,
+SAV,Loves DR x2|,
+SAW,|TR|Iraqi,
+SAW,Footwear,
+SAW,Steel,
+SAW,Textiles,
+SBA,Academia,Caltech
+SBA,Offshore Oil,
+SBD,|US|Guerrero & Oaxaca,
+SBD,SoCal NoCal,
+SBN,Academia,Notre Dame
+SBW,Paper & Furniture,
+SBY,Aerospace,
+SCC,LNG,
+SCE,Academia,State College
+SCK,Mediterranean agriculture,
+SCL,|CL|Haitian,
+SCL,Colonial ties bind,
+SCL,Copper,Santiago Chile
+SCL,Logistics LATAM,
+SCN,Wind Energy,
+SCO,Oil,
+SCO,Uranium,Aktau
+SDF,Academia,
+SDF,Appliances,GE HQ
+SDF,Global Logistics,
+SDF,Logistics NAC,
+SDF,Loves DR x2|,
+SDF,Whiskey,
+SDJ,Appliances,
+SDQ,Footwear,
+SDQ,Gold,
+SDQ,Spices / Tropical Ag,
+SDU,Coffee,
+SDU,Heavy industry,
+SDU,Logistics LATAM,
+SDU,Offshore Oil,
+SEA,|US|Chinese,
+SEA,|US|Indian,
+SEA,|US|Samoan,
+SEA,|US|Somali,
+SEA,|US|Vietnamese,
+SEA,Aerospace,
+SEA,Coffee,
+SEA,Software,
+SEA,Arctic Fishing,
+SFJ,Santa,
+SFN,Grain Belt,
+SFO,|US|Bengali,
+SFO,|US|Chinese,
+SFO,|US|Indian,
+SFO,|US|Jewish,
+SFO,Cantonese|,
+SFO,High finance,
+SFO,SoCal NoCal,
+SFO,Software,
+SGN,|AU|Vietnamese,
+SGN,|JP|Vietnamese,
+SGN,|US|Vietnamese,
+SGN,Coffee,
+SGN,CPG & Retail,
+SGN,Footwear,
+SGN,Textiles,
+SHA,|AU|Chinese,
+SHA,|CA|Chinese,
+SHA,|ID|Chinese,
+SHA,|TH|Chinese,
+SHA,|US|Chinese,
+SHA,Chinese Tourism|,
+SHA,Pharma,
+SHA,Renewable Energy,
+SHA,Semiconductors,
+SHA,Steel,
+SHC,Aerospace,
+SHE,Chinese Tourism|,
+SHE,Steel,
+SHE,Paper & Furniture,Shenyang
+SHJ,|AE|Malayali,
+SHJ,Marine,
+SHV,Oil,
+SIN,|SG|Marathi,
+SIN,Electronics,
+SIN,Global Logistics,
+SIN,High finance,
+SIN,Life sciences,
+SIN,Logistics APAC,
+SIN,Semiconductors,
+SIN,Telco,
+SIP,|RU|Armenian,
+SIP,Defense RU,
+SIT,Arctic Fishing,
+SJC,|US|Bengali,
+SJC,|US|Chinese,
+SJC,|US|Indian,
+SJC,Academia,
+SJC,Apple,
+SJC,Hispanic|,
+SJC,Renewable Energy,
+SJC,Semiconductors,
+SJC,SoCal NoCal,
+SJC,Software,
+SJO,Spices / Tropical Ag,
+SJT,Cotton,
+SJU,Logistics NAC,
+SJU,Pharma,
+SKD,Cotton,
+SKG,Heavy industry,
+SKG,Marine,
+SKG,Mediterranean agriculture,
+SKT,Rice,
+SKT,Toys,
+SKZ,Agriculture,
+SLC,|CL|Colombian,
+SLC,|CL|Samoan,
+SLC,|CL|Venezuelan,
+SLC,Copper,
+SLC,US Finance,
+SLI,Copper,Solwesi Zambia
+SLK,Maple Syrup,
+SLL,|OM|Malayali,
+SLW,Automotive,
+SLY,Russian Vacay Destination x2|,
+SLZ,Agribusiness,
+SMF,|US|Guerrero & Oaxaca,
+SMF,Dairy,
+SMF,Mediterranean agriculture,
+SMF,Rice,
+SMF,SoCal NoCal,
+SMR,Drug trafficking,
+SMR,Marine,
+SMX,Aerospace,
+SNA,|US|Iranian,
+SNA,|US|Jewish,
+SNA,|US|Samoan,
+SNA,|US|Vietnamese,
+SNA,Academia,USC
+SNA,Defense,
+SNA,Hispanic|,
+SNA,SoCal NoCal,
+SNN,|US|Irish American,
+SNN,Dairy,
+SNP,Arctic Fishing,AK
+SOF,Agribusiness,
+SOF,Loves Kavala x2|,
+SOF,Software,
+SON,Pacific Fishing,
+SOQ,Nickel,
+SP1,Academia,
+SPI,Grain Belt,
+SPS,Ranching,
+SPX,UFOs,
+SSA,Petrochemicals,
+SSA,Sugar,
+SSG,Offshore Oil,
+SSH,Russian Vacay Destination x2|,
+STL,CPG & Retail,
+STL,Healthcare,
+STL,Logistics NAC,
+STL,Pharma,
+STM,Amazonia,
+STM,Spices / Tropical ag,
+STN,|GB|Indian,
+STR,|DE|Serbian,
+STR,Automotive,
+STR,Loves Bolzano x2|,
+STR,Pharma,
+STR,Paper & Furniture,Stuttgart
+STS,|US|Guerrero & Oaxaca,
+STS,Geothermal,The Geysers
+STS,SoCal NoCal,
+STS,Viticulture,
+STV,|KE|Gujarati,
+STV,Dairy,
+STV,Diamonds,
+STW,Defense RU,
+SUB,|ID|Chinese,
+SUB,|ID|Tamil,
+SUB,|NL|Indonesian,
+SUB,Logistics APAC,
+SUB,Nickel,
+SUB,Oil,Cepu Block
+SUB,Oil Refining,
+SUJ,Appliances,
+SUV,Pacific Fishing,
+SVC,Copper,
+SVG,Offshore Oil,
+SVG,Paper & Furniture,
+SVO,|RU|Armenian,
+SVO,Defense RU,
+SVO,LNG,
+SVO,Oil,
+SVO,Russian Vacay Destination x2|,
+SVO,Software,
+SVO,Sunni|,
+SVX,Gold,
+SVX,Russian Vacay Destination x2|,
+SVX,Steel,
+SW1,Banking,
+SWP,Uranium,Swakopmund
+SXB,|FR|Polish,
+SXR,Sunni|,
+SXR,Sunni|,
+SYD,|AU|Chinese,
+SYD,|AU|Greek,
+SYD,|AU|Indian,
+SYD,|AU|Vietnamese,
+SYD,Banking,
+SYD,Footie Traffic x2,
+SYD,Logistics APAC,
+SYD,Surfing,
+SYK,Spices / Tropical Ag,
+SYX,Russian Vacay Destination x2|,
+SZB,|MY|Malayali,
+SZX,Apple,
+SZX,Banking,
+SZX,Cantonese|,
+SZX,Chinese Tourism|,
+SZX,Electronics,
+SZX,Global Logistics,
+SZX,Industrial automation,
+SZX,Renewable Energy,
+TAC,Sugar,
+TAM,Copper,
+TAM,Offshore Oil,
+TAM,UFOs,
+TAO,|AU|Chinese,
+TAO,|CA|Chinese,
+TAO,|ID|Chinese,
+TAO,|TH|Chinese,
+TAO,|US|Chinese,
+TAO,Appliances,Haier HQ
+TAO,Chinese Tourism|,
+TAO,Marine,
+TAO,Seafood,
+TAS,Logistics CIS,
+TAS,Textiles,
+TBS,Logistics EU Med,
+TBS,Viticulture,
+TBT,Amazonia,
+TBZ,|DE|Iranian,
+TBZ,|TR|Iranian,
+TBZ,|US|Iranian,
+TBZ,Cotton,
+TBZ,Heavy industry,
+TCO,Drug trafficking,
+TCR,|AE|Tamil,
+TCR,|ID|Tamil,
+TCR,|MY|Tamil,
+TCR,Indian Ocean Fishing,
+TDD,Gemstones,
+TET,Logistics MEA,
+TEZ,Sunni|,
+TFF,Amazonia,
+TFN,British Sunny Vacay x2|,
+TFS,British Sunny Vacay x2|,
+TFU,|AU|Chinese,
+TFU,|CA|Chinese,
+TFU,|ID|Chinese,
+TFU,|TH|Chinese,
+TFU,|US|Chinese,
+TFU,Agribusiness,
+TFU,Chinese Tourism|,
+TFU,Semiconductors,
+TGU,Coffee,
+TGZ,Coffee,
+THL,Drug trafficking,
+THR,|DE|Iranian,
+THR,|TR|Iranian,
+THR,|US|Iranian,
+THR,Logistics MEA,
+TIA,Footwear,
+TIF,|AE|Pakistani,
+TIF,|SA|Pakistani,
+TIF,|UK|Pakistani,
+TIF,|US|Pakistani,
+TIR,|CA|Telugu,
+TIV,Sea Fishing,
+TKG,Geothermal,
+TKU,Forestry,Turku
+TLE,Indian Ocean Fishing,
+TLH,Academia,
+TLL,Telco,
+TLN,|FR|Algerian x2,
+TLQ,Cotton,
+TLS,|FR|Algerian x2,
+TLS,|FR|Moroccan,
+TLS,Aerospace,
+TLV,|FR|Jewish,
+TLV,|IE|Ethiopian,
+TLV,|IE|Filipino,
+TLV,|UK|Jewish,
+TLV,|US|Jewish,
+TLV,Defense,
+TLV,Diamonds,
+TLV,Horticulture,
+TLV,Software,
+TMC,Nickel,
+TMT,Amazonia,
+TNA,Automotive,
+TNA,Chinese Tourism|,
+TNA,Heavy industry,
+TNE,Aerospace,
+TNG,Logistics EU Med,
+TNG,Textiles,
+TNH,Gold,
+TNR,Agriculture,
+TOS,Atlantic Fishing,
+TOS,Defense,
+TOS,Renewable Energy,
+TOY,Rice,
+TPA,Golf,
+TPA,Healthcare,
+TPA,Logistics NAC,
+TPA,Software,
+TPE,Electronics,
+TPE,HK Taiwan Kinship|,
+TPE,Semiconductors,
+TRD,Nordic Ski 2 City x2,
+TRD,Software,
+TRF,Santa,
+TRG,Horticulture,
+TRN,|IT|Romanian,
+TRN,Automotive,
+TRS,Marine,
+TRU,Coffee,
+TRU,Copper,Trujillo Peru
+TRV,|AE|Malayali,
+TRV,|MY|Malayali,
+TRV,|OM|Malayali,
+TRV,|SA|Malayali,
+TRV,Aerospace,
+TRV,Software,
+TRZ,|AE|Tamil,
+TRZ,|ID|Tamil,
+TRZ,|MY|Tamil,
+TSA,Semiconductors,
+TSE,Logistics CIS,
+TSE,Oil,
+TSF,|IT|Romanian,
+TSF,CPG & Retail,
+TSN,Automotive,
+TSN,Logistics APAC,
+TSN,Petrochemicals,
+TSN,Semiconductors,
+TSS,Banking,
+TSS,High finance,
+TSV,Copper,
+TSV,Nickel,
+TTN,Academia,Rutgers University
+TTU,Drug trafficking,
+TUC,Agribusiness,
+TUL,Aerospace,
+TUL,Arctic Oil,
+TUL,LNG,
+TUL,Oil,
+TUN,|FR|Tunisian x2,
+TUN,Automotive,
+TUN,Logistics EU Med,
+TUN,Mediterranean agriculture,
+TUR,Amazonia,
+TUS,Defense,
+TUS,Gemstones,
+TUS,Golf,
+TUS,Hispanic|,
+TXK,Wind Energy,
+TYN,Toys,
+TYS,Academia,
+TZX,Horticulture,
+TZX,Sea Fishing,
+UDI,Dairy,
+UDI,Logistics LATAM,
+UDR,Sugar,
+UET,Pashto|,
+UFA,Oil Refining,
+UFA,Petrochemicals,
+UFA,Russian Vacay Destination x2|,
+UGO,Coffee,
+UIO,|ES|Ecuadorian,
+UIO,|US|Ecuadorian,
+UIO,Coffee,
+UIO,Horticulture,
+UIO,Paper & Furniture,Quito
+UKB,CPG & Retail,
+UKB,Heavy industry,
+UKB,Life sciences,
+UKB,Rice,
+ULN,Gold,
+ULN,Ranching,
+UME,Forestry,Umeå
+UPG,|ID|Chinese,
+UPG,Marine,
+UPG,Nickel,
+UPN,|US|Jalisco & Michoacán,
+UPT,|TH|Chinese,
+URA,Oil,
+URC,Aluminum,
+URC,Cotton,
+URC,Oil,
+URC,Sunni|,
+USK,Russian Vacay Destination x2|,
+USN,Oil Refining,
+UTH,Rice,
+UTP,Appliances,
+UTP,Russian Vacay Destination x2|,
+UUD,Gold,Ulan-Ude (Transbaikal) Russia
+UUS,Defense RU,
+UUS,Gold,Yuzhno-Sakhalinsk (Kurils) Russia
+UUS,LNG,
+UUS,Oil,
+VAA,Forestry,Vaasa
+VAR,Casinos,
+VCE,Marine,
+VCP,Logistics LATAM,
+VCP,Petrochemicals,
+VER,Offshore Oil,
+VER,Offshore Oil,
+VER,Petrochemicals,
+VGA,|CA|Telugu,
+VGO,Atlantic Fishing,
+VIE,Life sciences,
+VIE,Pharma,
+VII,Seafood,
+VIX,Amazonia,
+VIX,Marine,
+VKO,CPG & Retail,
+VKO,Defense RU,
+VKO,LNG,
+VKO,Logistics CIS,
+VKO,Oil,
+VKO,Russian Vacay Destination x2|,
+VKT,Russian Vacay Destination x2|,
+VLC,Logistics EU Med,
+VLC,Sea Fishing,
+VNO,Software,
+VOG,Heavy industry,
+VRA,|CU|Cuban,
+VRA,Drug trafficking,
+VRA,Sugar,
+VRN,Agribusiness,
+VRN,Viticulture,
+VST,Forestry,Västerås
+VST,Industrial automation,
+VTE,Logistics APAC,
+VTZ,|CA|Telugu,
+VTZ,Rice,
+VUP,Drug trafficking,
+VVI,|BR|Bolivian,
+VVI,|MX|Bolivian,
+VVO,Arctic Fishing,
+VVO,Defense RU,
+VVO,Forestry,Vladivostok
+VVO,Logistics CIS,
+VVO,Marine,
+VXC,Agriculture,
+WAG,Defense,
+WAG,Horticulture,
+WAG,Viticulture,
+WAU,Gold,Wau (Granites Mine) Northern Territory
+WAW,|IE|Polish,
+WAW,|US|Polish,
+WAW,CPG & Retail,
+WAW,Heavy industry,
+WDH,Gold,Windhoek
+WDH,Ranching,
+WDH,Uranium,Windhoek (Eros)
+WEL,|NZ|Samoan,
+WLG,Pacific Fishing,
+WNH,Aluminum,
+WNS,Cotton,
+WNZ,Aluminum,
+WNZ,Footwear,
+WNZ,Toys,
+WRE,Geothermal,Kawerau geothermal power station
+WRO,CPG & Retail,
+WRO,Electronics,
+WUH,|AU|Chinese,
+WUH,|CA|Chinese,
+WUH,|ID|Chinese,
+WUH,|TH|Chinese,
+WUH,|US|Chinese,
+WUH,Automotive,
+WUH,Chinese Tourism|,
+WUH,Cotton,
+WUX,Chinese Tourism|,
+WUX,Pharma,
+WUX,Renewable energy,
+WUX,Rice,
+WUX,Textiles,
+WVB,Uranium,Walvis Bay
+WXN,Aluminum,
+XAP,Paper & Furniture,
+XFN,Automotive,
+XIY,Aerospace,
+XIY,Chinese Tourism|,
+XIY,Logistics APAC,
+XIY,Software,
+XMN,|AU|Chinese,
+XMN,|CA|Chinese,
+XMN,|ID|Chinese,
+XMN,|TH|Chinese,
+XMN,|US|Chinese,
+XMN,Chinese Tourism|,
+XMN,Electronics,
+XMN,Sugar,
+XMN,Textiles,
+XNA,Appliances,
+XNA,CPG & Retail,
+XNN,Heavy industry,
+XUZ,Heavy industry, SANY Heavy Industry
+XWA,Oil Fracking,Williston
+YAM,Steel,
+YAP,Pacific Fishing,
+YAT,Gold,Attawapiskat (De Beers Victor Mine) Ontario
+YAU,Nickel,
+YAU,Platinum,
+YBC,Aluminum,
+YBC,Forestry,Baie-Comeau
+YBC,Francophonie|,
+YBG,Aluminum,
+YBG,Francophonie|,
+YBG,Maple Syrup,
+YBR,Grain Belt,
+YBR,Ranching,
+YBY,Oil Fracking,
+YCB,Academia,
+YCG,Horticulture,
+YCL,Francophonie|,
+YDN,Grain Belt,
+YDN,Grain Belt,
+YEG,LNG,
+YEG,Loves Cancun x2|,
+YEG,Oil Fracking,
+YEI,Appliances,Beko
+YFB,Loves Arctic|,
+YFB,Santa,
+YGP,Francophonie|,
+YHM,|CA|Chinese,
+YHM,Logistics NAC,
+YHM,Loves Cancun x2|,
+YHM,Steel,
+YHU,Forestry,Saint-Hubert
+YHU,Francophonie|,
+YHU,Maple Syrup,
+YHZ,Atlantic Fishing,
+YHZ,Marine,
+YHZ,Renewable Energy,
+YIA,Tea,
+YIH,Logistics APAC,
+YIN,Gold,Yining (various mines) Xinjiang
+YIW,Toys,
+YKM,|US|Jalisco & Michoacán,
+YKS,Diamonds,
+YKS,Gold,
+YLW,Gold,Kelowna (B.C. mines) British Columbia
+YLW,Viticulture,Kelowna
+YMJ,Uranium,Moose Jaw
+YMM,Oil Fracking,Athabasca
+YMT,Francophonie|,
+YNT,Aluminum,
+YOW,Bureaucracy,
+YOW,Defense,
+YOW,Gold,Ottawa (Canadian HQs) Ontario
+YOW,Loves Cancun x2|,
+YOW,NA Capitols|,
+YPE,Oil Fracking,
+YPY,Forestry,
+YQB,Aluminum,
+YQB,Francophonie|,
+YQB,Gold,Quebec City (Canadian HQs) Quebec
+YQB,Loves Cancun x2|,
+YQB,Maple Syrup,
+YQB,Software,
+YQG,Automotive,
+YQL,Ranching,
+YQL,Ranching,
+YQR,Arctic Oil,Estevan Saskatchewan
+YQR,Grain Belt,
+YQR,Logistics NAC,
+YQR,Ranching,
+YQR,Uranium,Regina
+YQT,Platinum,
+YQU,Oil Fracking,Grande Prairie Canada
+YQX,LNG,
+YQY,Atlantic Fishing,
+YRJ,Francophonie|,
+YRJ,Maple Syrup,
+YSB,Nickel,
+YSB,Platinum,
+YTF,Francophonie|,
+YTM,Francophonie|,
+YTS,Francophonie|,
+YTS,Gold,
+YTS,Nickel,
+YTY,Agriculture,
+YTY,Toys,
+YTZ,Banking,
+YTZ,CPG & Retail,
+YTZ,High finance,
+YTZ,Logistics NAC,
+YUL,|CA|Algerian,
+YUL,|CA|Haitian,
+YUL,|CA|Moroccan,
+YUL,Aerospace,
+YUL,Banking,
+YUL,Francophonie|,
+YUL,Logistics NAC,
+YUL,Loves Cancun x2|,
+YUL,Software,
+YUM,Horticulture,
+YUM,Hispanic|,
+YUY,Copper,
+YUY,Francophonie|,
+YVO,Francophonie|,
+YVO,Gold,
+YVR,|CA|Bengali,
+YVR,|CA|Chinese,
+YVR,|CA|Punjabi,
+YVR,Arctic Fishing,
+YVR,Cantonese|,
+YVR,Copper,Vancouver Canada
+YVR,Gold,Vancouver
+YVR,Software,
+YW9,Academia,
+YWG,Agribusiness,
+YWG,Grain Belt,
+YWG,Healthcare,
+YWG,Loves Cancun x2|,
+YWG,Ranching,
+YXC,Forestry,Cranbrook
+YXC,Gemstones,
+YXC,Grain Belt,
+YXE,Arctic Oil,
+YXE,Gold,
+YXE,Ranching,
+YXE,Uranium,Saskatoon
+YXH,LNG,
+YXJ,Arctic Oil,Fort St. John Canada
+YXK,Francophonie|,
+YXS,Forestry,Prince George
+YXT,Aluminum,
+YXU,Automotive,
+YXU,Loves Cancun x2|,
+YXU,Oil Fracking,
+YXU,Rare earths,
+YXU,Renewable Energy,
+YXX,Grain Belt,
+YXY,Gold,Whitehorse (Yukon mines) Yukon
+YXY,Loves Arctic|,
+YXY,Loves Cancun x2|,
+YXY,Uranium,Whitehorse
+YXZ,Gold,Yellowknife (Diavik/Ekati) Northwest Territories
+YYB,Forestry,North Bay
+YYC,|CA|Chinese,
+YYC,|CA|Punjabi,
+YYC,Loves Cancun x2|,
+YYC,Oil,Calgary Canada
+YYC,Oil Fracking,Calgary Canada
+YYC,Telco,
+YYE,Arctic Oil,
+YYE,Forestry,Fort Nelson
+YYF,Gold,Penticton (B.C. mines) British Columbia
+YYG,Atlantic Fishing,
+YYG,Wind Energy,
+YYJ,Academia,
+YYJ,Defense,
+YYJ,Marine,
+YYR,Defense,
+YYR,Forestry,
+YYT,Arctic Oil,
+YYT,Atlantic Fishing,
+YYY,Francophonie|,
+YYZ,|CA|Bengali,
+YYZ,|CA|Chinese,
+YYZ,|CA|Punjabi,
+YYZ,|CA|Telugu,
+YYZ,Banking,
+YYZ,Entertainment,
+YYZ,High finance,
+YYZ,Loves Cancun x2|,
+YYZ,Software,
+YZF,Loves Arctic|,
+YZP,Forestry,Sandspit
+YZR,Arctic Oil,Sarnia Canada
+YZV,Aluminum,
+YZV,Francophonie|,
+ZAG,Logistics EU Med,
+ZBF,Francophonie|,
+ZCL,|US|Durango & Zacatecas,
+ZHA,Heavy industry,
+ZHA,Marine,
+ZHA,Offshore Oil,
+ZHA,Sugar,Zhanjiang
+ZIH,|US|Guerrero & Oaxaca,
+ZLO,|US|Jalisco & Michoacán,
+ZNE,Copper,Newman
+ZNE,Rare earths,
+ZQN,Viticulture,
+ZRH,Banking,
+ZRH,Bureaucracy,
+ZRH,High finance,
+ZRH,Pharma,
+ZUH,Rare earths,Zhuhai
