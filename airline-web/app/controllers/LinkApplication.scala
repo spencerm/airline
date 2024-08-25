@@ -939,8 +939,8 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
 
         //check distance
         val distance = Computation.calculateDistance(fromAirport, toAirport)
-        if (distance <= 15) {
-          return Some("Route must be longer than 15 km", DISTANCE)
+        if (distance <= 10) {
+          return Some("Route must be longer than 10 km", DISTANCE)
         }
 
         //check balance
