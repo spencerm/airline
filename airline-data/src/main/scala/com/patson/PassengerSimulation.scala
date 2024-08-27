@@ -629,7 +629,7 @@ object PassengerSimulation {
               }
 
               if (previousLinkAirlineId ==  currentLinkAirlineId || allianceIdByAirlineId.get(previousLinkAirlineId) == allianceIdByAirlineId.get(currentLinkAirlineId))) { //same alliance or airline, 30 % less perceived cost
-                 connectionCost *= 0.7
+                 connectionCost -= fromCost*0.3
               }
               
               //make transfert impose extra cost at the end of the calculation
