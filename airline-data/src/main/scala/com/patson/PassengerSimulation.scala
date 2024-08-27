@@ -632,11 +632,16 @@ object PassengerSimulation {
                  connectionCost -= fromCost*0.3
               }
               
-              //make transfert impose extra cost at the end of the calculation
+              //make transfert impose extra cost
               connectionCost += 40
               
               flightTransit = true
             }
+            
+            if (flightTransit = false) { //if one airline (no transfer)) then should be treated as same airline or alliance.
+              connectionCost -= fromCost*0.3
+            }
+          
             connectionCost *= passengerGroup.preference.connectionCostRatio * passengerGroup.preference.preferredLinkClass.priceMultiplier //connection cost should take into consideration of preferred link class too
 
             if (flightTransit) {
