@@ -1967,6 +1967,7 @@ function updateLinksTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + link.totalLoadFactor + '%' + "</div>")
 		row.append("<div class='cell' align='right'>" + quality + "</div>")
 		row.append("<div class='cell' align='right'>" + Math.round(link.satisfaction * 100) + '%' + "</div>")
+		row.append("<div class='cell' align='right'>" + link.currentStaffRequired + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.revenue) + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.profit) + "</div>")
 		row.append("<div class='cell' align='right'>" + link.profitMargin.toFixed(2) + "%" + "</div>")

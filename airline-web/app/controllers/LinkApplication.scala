@@ -173,7 +173,8 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
       val cancelledSeats = entry.cancelledSeats
       val satisfaction = entry.satisfaction
       val lastUpdate = entry.lastUpdate
-      Json.toJson(link).asInstanceOf[JsObject] + ("profit" -> JsNumber(profit)) + ("revenue" -> JsNumber(revenue)) + ("passengers" -> Json.toJson(passengers)) + ("capacityHistory" -> Json.toJson(capacityHistory)) + ("cancelledSeats" -> Json.toJson(cancelledSeats)) + ("satisfaction" -> JsNumber(satisfaction)) + ("lastUpdate" -> JsNumber(lastUpdate.getTimeInMillis))
+      val currentStaffRequired = entry.currentStaffRequired
+      Json.toJson(link).asInstanceOf[JsObject] + ("profit" -> JsNumber(profit)) + ("revenue" -> JsNumber(revenue)) + ("passengers" -> Json.toJson(passengers)) + ("capacityHistory" -> Json.toJson(capacityHistory)) + ("cancelledSeats" -> Json.toJson(cancelledSeats)) + ("satisfaction" -> JsNumber(satisfaction)) + ("lastUpdate" -> JsNumber(lastUpdate.getTimeInMillis)) + ("currentStaffRequired" -> JsNumber(currentStaffRequired))
     }
   }
 
@@ -563,16 +564,17 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         consumptions.get(link.id).fold(0)(_.revenue),
         consumptions.get(link.id).fold(LinkClassValues.getInstance())(_.link.soldSeats),
         consumptions.get(link.id).fold(LinkClassValues.getInstance())(_.link.capacity),
-        consumptions.get(link.id).fold(LinkClassValues.getInstance())(_.link.cancelledSeats),      
+        consumptions.get(link.id).fold(LinkClassValues.getInstance())(_.link.cancelledSeats),
         consumptions.get(link.id).map(_.satisfaction).getOrElse(0),
-        lastUpdates(link.id))
+        lastUpdates(link.id),
+        link.getCurrentOfficeStaffRequired)
     }
     Ok(Json.toJson(linksWithProfit)).withHeaders(
       ACCESS_CONTROL_ALLOW_ORIGIN -> "*"
     )
   }
 
-  case class LinkExtendedInfo(link : Link, profit : Int, revenue : Int, soldSeats : LinkClassValues, capacityHistory : LinkClassValues, cancelledSeats : LinkClassValues, satisfaction : Double, lastUpdate : Calendar)
+  case class LinkExtendedInfo(link : Link, profit : Int, revenue : Int, soldSeats : LinkClassValues, capacityHistory : LinkClassValues, cancelledSeats : LinkClassValues, satisfaction : Double, lastUpdate : Calendar, currentStaffRequired : Int)
 
   def deleteLink(airlineId : Int, linkId: Int) = AuthenticatedAirline(airlineId) { request =>
     //verify the airline indeed has that link
