@@ -262,6 +262,7 @@ function updateLinksInfo() {
 		    		drawFlightPath(link)
 		  		});
 		    	updateLoadedLinks(links);
+		    	updateAirportMarkers(activeAirline)
 		    },
 	        error: function(jqXHR, textStatus, errorThrown) {
 		            console.log(JSON.stringify(jqXHR));
