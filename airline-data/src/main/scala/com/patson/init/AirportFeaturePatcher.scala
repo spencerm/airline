@@ -795,6 +795,7 @@ object AirportFeaturePatcher extends App {
 "SYD" -> 39, //Sydney
 "SFO" -> 38, //San Francisco
 "SCL" -> 37, //Santiago
+"DEN" -> 36, //Denver
 "BOM" -> 35, //Mumbai
 "LGA" -> 35, //New York
 "YVR" -> 35, //Vancouver
@@ -812,14 +813,13 @@ object AirportFeaturePatcher extends App {
 "VIE" -> 32, //Vienna
 "YUL" -> 32, //Montreal
 "DME" -> 31, //Moscow
+"PKX" -> 31, //Beijing
 "ATL" -> 30, //Atlanta
 "LUX" -> 30, //Luxembourg
 "AKL" -> 29, //Auckland
 "EDI" -> 29, //Edinburgh
-"PKX" -> 29, //Beijing
 "SVO" -> 29, //Moscow
 "DEL" -> 28, //New Delhi
-"DEN" -> 28, //Denver
 "IST" -> 28, //Istanbul
 "MXP" -> 28, //Milan
 "PUS" -> 28, //Busan
@@ -871,6 +871,7 @@ object AirportFeaturePatcher extends App {
 "ALG" -> 16, //Algiers
 "HYD" -> 16, //Hyderabad
 "TLL" -> 16, //Tallinn
+"SLC" -> 16, //Salt Lake City
 "CGH" -> 15, //Sao Paulo
 "HEL" -> 15, //Helsinki
 "MDW" -> 15, //Chicago
@@ -886,7 +887,6 @@ object AirportFeaturePatcher extends App {
 "ALA" -> 13, //Almaty
 "CMN" -> 13, //Casablanca
 "DAL" -> 13, //Dallas
-"SLC" -> 13, //Salt Lake City
 "TLS" -> 13, //Toulouse
 "TSN" -> 13, //Tianjin
 "CBR" -> 12, //Canberra
@@ -955,7 +955,7 @@ object AirportFeaturePatcher extends App {
 "CLO" -> 5, //Cali
 "DTM" -> 5, //Dortmund
 "GLA" -> 5, //Glasgow
-"IOM" -> 5, //Castletown
+"IOM" -> 6, //Castletown
 "KGL" -> 5, //Kigali
 "MTY" -> 5, //Monterrey
 "TRD" -> 5, //Trondheim
@@ -970,6 +970,7 @@ object AirportFeaturePatcher extends App {
 "KEF" -> 4, //Reykjavik
 "SNA" -> 4, //
 "YXE" -> 4, //Saskatoon
+"HAV" -> 4, //Havanna
 "ABV" -> 3, //
 "JNU" -> 3, //Juneau
 "MBA" -> 3, //Mombasa
@@ -983,7 +984,7 @@ object AirportFeaturePatcher extends App {
 "ABQ" -> 2, //
 "BOI" -> 2, //
 "BUR" -> 2, //
-"CB7" -> 2, //Vancouver Heliport
+"CLE" -> 2, //
 "EBL" -> 2, //Arbil
 "JAX" -> 2, //
 "JRA" -> 2, //NYC Heliport
@@ -993,7 +994,7 @@ object AirportFeaturePatcher extends App {
 "YWG" -> 2, //
 "PZU" -> 2, ////Port Sudan
 "JIB" -> 2, ////Djibouti
-"GR0" -> 1, //Sao Paulo
+"JIB" -> 2, ////Djibouti
 "GR0" -> 1, //Sao Paulo
 "HHP" -> 1, //Hong Kong
 "SW1" -> 1, //Rio Heliport
@@ -1054,6 +1055,7 @@ object AirportFeaturePatcher extends App {
       "SHA" -> 0,
       "ZUH" -> 0,
       "LXA" -> 0,
+      "BAR" -> 0,
       //japan
       "ITM" -> 0,
       "UKB" -> 0,
