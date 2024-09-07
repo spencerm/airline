@@ -936,6 +936,7 @@ li.row, div.table-row {
     -webkit-overflow-scrolling: touch;
     max-height: calc(100dvh - 120px);
     overflow-y: scroll;
+    overflow-x: hidden
 }
 
 .table-container-x {
@@ -1429,10 +1430,11 @@ iframe.clip {
 
 .threshold-section {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 .threshold-bar-container {
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     height: 20px;
     padding: 12px 4px;
 }

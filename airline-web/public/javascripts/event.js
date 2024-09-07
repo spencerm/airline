@@ -277,6 +277,7 @@ function populateCityVoteModal(candidates, votes, votingActive) {
         $(this).html(getCountryFlagImg(candidates[index].countryCode) + candidates[index].city)
     })
     table.find(".olympicsAirports").each(function(i) {
+        $(this).empty();
         candidates[i].affectedAirports.forEach(airport => {
             $(this).append(`<li class=''>${airport.iata} ${airport.name}</span>`)
         })
