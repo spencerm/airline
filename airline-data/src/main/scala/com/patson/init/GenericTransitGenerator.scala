@@ -146,7 +146,7 @@ object GenericTransitGenerator {
           0
         }
         val minSize = Math.min(airport.size, targetAirport.size)
-        val capacity = minSize * 9000 + domesticAirportBonus //kinda random
+        val capacity = minSize * 10500 + domesticAirportBonus //kinda random
         val genericTransit = GenericTransit(from = airport, to = targetAirport, distance = distance.toInt, capacity = LinkClassValues.getInstance(economy = capacity))
         LinkSource.saveLink(genericTransit)
         println(genericTransit)

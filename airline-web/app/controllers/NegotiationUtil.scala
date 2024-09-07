@@ -193,7 +193,7 @@ object NegotiationUtil {
       requirements.append(NegotiationRequirement(UPDATE_LINK, UPDATE_BASE_REQUIREMENT * flightTypeMultiplier, "Update Flights"))
     }
 
-    if (existingLinkOption.nonEmpty && aircraftSizeDelta > 0) {
+    if (existingLinkOption.nonEmpty && aircraftSizeDelta > 0 && newModel.airplaneTypeSize != existingModel.airplaneTypeSize) {
       requirements.append(NegotiationRequirement(UPSIZE_GATE, aircraftSizeDelta * flightTypeMultiplier, s"Increase gate size to ${newModel.airplaneTypeLabel}"))
     }
 

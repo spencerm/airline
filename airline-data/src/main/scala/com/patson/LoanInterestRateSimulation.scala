@@ -1,8 +1,8 @@
 package com.patson
 
 import java.math.MathContext
-
 import com.patson.data._
+import com.patson.model.Bank
 import com.patson.model.bank.LoanInterestRate
 
 import scala.util.Random
@@ -29,7 +29,7 @@ object LoanInterestRateSimulation {
   
   def getNextRate(previousRates : List[BigDecimal]) : BigDecimal = {
     if (previousRates.isEmpty) {
-      return DEFAULT_ANNUAL_RATE
+      return Bank.DEFAULT_ANNUAL_RATE
     }
     //check when was the last time a rate changed
     var walker = previousRates.last
@@ -68,10 +68,12 @@ object LoanInterestRateSimulation {
     }
   }
 
-  val DEFAULT_ANNUAL_RATE : Double = 0.12 //12% set for default plus used for define 20 years loan but more usage later planned.
+
   val MAX_DELTA : BigDecimal = 0.01 // rate can''t change more than 100 basis point per cycle.
-  val RATE_STEP : BigDecimal = 0.0005 // 0.05 % is a step
-  val MIN_RATE : BigDecimal = -0.042 //min rate is -4.2%
+  val RATE_STEP : BigDecimal = 0.0005 // 5 basis point is a step.
+  val MAX_DELTA : BigDecimal = 0.01
+  val RATE_STEP : BigDecimal = 0.001 // 0.1 % is a step
+  val MIN_RATE : BigDecimal = -0.042 //min rate is -4,2%
   val MAX_RATE = 0.42 //max rate is 42% annual
   val BOUNDARY_ZONE_FACTOR_LOW : BigDecimal = 0.13 //bottom 13% are considered outside of boundary
   val BOUNDARY_ZONE_FACTOR_HIGH : BigDecimal = 0.42 //top 42% are considered outside of boundary
