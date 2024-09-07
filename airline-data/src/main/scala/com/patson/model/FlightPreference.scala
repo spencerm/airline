@@ -5,6 +5,7 @@ import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 import com.patson.Util
 import com.patson.model.FlightPreferenceType.{BRAND, FREQUENT}
+import com.patson.model.airplane.Model
 
 import java.util.concurrent.ThreadLocalRandom
 import com.patson.model.{PassengerType, _}
@@ -189,8 +190,8 @@ abstract class FlightPreference(homeAirport : Airport) {
     val flightDurationRatioDelta = {
       if (flightDurationSensitivity == 0 || link.transportType != TransportType.FLIGHT) {
         0
-      } else if (flightDurationSensitivity <= 0.6 && link.duration.toDouble / link.distance < 1.8) {
-        0 //do not apply duration sensitivity if on a super slow trip (blimp) & pax isn't super sensitive
+      } else if (flightDurationSensitivity <= 0.6 && link.asInstanceOf[Link].getAssignedModel().get.category == Model.Category.SPECIAL ) {
+        0
       } else {
         val flightDurationThreshold = Computation.computeStandardFlightDuration(link.distance)
         Math.min(flightDurationSensitivity, (link.duration - flightDurationThreshold).toFloat / flightDurationThreshold * flightDurationSensitivity)
@@ -309,7 +310,13 @@ case class LastMinutePreference(homeAirport : Airport, preferredLinkClass: LinkC
       LAST_MINUTE
     }
   }
-  override val connectionCostRatio = 0.3
+  override val connectionCostRatio = {
+    if (priceModifier < 1) { //LAST_MINUTE_DEAL
+      0.1
+    } else { //LAST_MINUTE
+      1.0
+    }
+  }
 }
 
 
@@ -332,7 +339,7 @@ case class AppealPreference(homeAirport : Airport, preferredLinkClass : LinkClas
 
   override val connectionCostRatio = {
     if (loyaltyRatio > 1) {
-      2.0
+      1.7
     } else {
       1.2
     }

@@ -689,7 +689,7 @@
 								<div class="flex-container-width-quarter pt-2">
 									<div></div>
 									<div class="h-8"><p>Set price</p></div>
-									<div class="h-8"><p class="leading-none h-7">Load factor<br><small style="font-size:10px">20 week average</small></p></div>
+									<div class="h-8"><p class="leading-none h-7">Load factor<br><small style="font-size:10px">10 week average</small></p></div>
 									<div class="h-8"><p class="leading-none h-7">Percent<br><small style="font-size:10px">base price</small></p></div>
 								</div>
 								<div class="flex-container-width-quarter">
@@ -842,7 +842,7 @@
 										</div>
 									</div>
 									<div class="table-row">
-										<div class="label">Staff Requried:</div>
+										<div class="label">Staff Required:</div>
 										<div class="value" style="">
 											<span class="staffRequired"></span>
 											<span id="linkStaffBreakdownTooltip" class="tooltip">
@@ -1914,7 +1914,7 @@
 							</p>
 						</div>
 
-						<div class="section min-w-80" style="flex:1; max-width: 100%; overflow: hidden;">
+						<div class="section min-w-80" style="flex:1; max-width: 100%;">
 							<h4>Reputation tracks
 								<span class="tooltip">
 									<img src='@routes.Assets.versioned("images/icons/information.svg")'>
@@ -2749,7 +2749,7 @@
 
 
 				<div id="rankingCanvas" class="canvas" style="display: none; width: 100%; flex-direction: column">
-					<div class="section" style="width: 100%;height: min-content;flex-shrink: 0;"><p><i>All rankings are best per airline. Prizes are rewarded in reputation. </i></p></div>
+					<div class="section" style="width: 100%;height: min-content;flex-shrink: 0;"><p><i>All rankings are best per airline, of at least 60 reputation. Prizes are rewarded in reputation.</i></p></div>
 					<div class="two-up-grid">
 						<div class="table data section tight rankingTable" id="touristCountRank">
 							<div class="table-header">
@@ -2778,21 +2778,30 @@
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
 						</div>
-						<div class="table data section tight rankingTable" id="satisfactionRank">
-							<div class="table-header">
-								<div class="cell" style="width: 7%">Rank</div>
-								<div class="cell" style="width: 9%">Change</div>
-								<div class="cell" style="width: 55%">Happiest Customers</div>
-								<div class="cell" style="width: 22%" align="right">Average SF<br><small>by pax km</small></div>
-								<div class="cell" style="width: 7%" align="right">Prize</div>
-							</div>
-						</div>
 						<div class="table data section tight rankingTable" id="stockRank">
 							<div class="table-header">
 								<div class="cell" style="width: 7%">Rank</div>
 								<div class="cell" style="width: 9%">Change</div>
 								<div class="cell" style="width: 50%">Best Capitalist</div>
 								<div class="cell" style="width: 27%" align="right">Stock Price</div>
+								<div class="cell" style="width: 7%" align="right">Prize</div>
+							</div>
+						</div>
+						<div class="table data section tight rankingTable" id="satisfactionRank">
+							<div class="table-header">
+								<div class="cell" style="width: 7%">Rank</div>
+								<div class="cell" style="width: 9%">Change</div>
+								<div class="cell" style="width: 55%">Happiest Customers</div>
+								<div class="cell" style="width: 22%" align="right">Average SF</div>
+								<div class="cell" style="width: 7%" align="right">Prize</div>
+							</div>
+						</div>
+						<div class="table data section tight rankingTable" id="speedRank">
+							<div class="table-header">
+								<div class="cell" style="width: 7%">Rank</div>
+								<div class="cell" style="width: 9%">Change</div>
+								<div class="cell" style="width: 55%">Most Scenic (slow)</div>
+								<div class="cell" style="width: 22%" align="right">Average Speed</div>
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
 						</div>
@@ -2868,6 +2877,15 @@
 								<div class="cell" style="width: 7%" align="right">Prize</div>
 							</div>
 						</div>
+						<div class="table data section tight rankingTable" id="uniqueIataRank">
+							<div class="table-header">
+								<div class="cell" style="width: 7%">Rank</div>
+								<div class="cell" style="width: 9%">Change</div>
+								<div class="cell" style="width: 55%">Most Destinations Served</div>
+								<div class="cell" style="width: 22%" align="right">Destinations</div>
+								<div class="cell" style="width: 7%" align="right">Prize</div>
+							</div>
+						</div>
 						<div class="table data section tight rankingTable" id="linksSmallTown">
 							<div class="table-header">
 								<div class="cell" style="width: 7%">Rank</div>
@@ -2911,6 +2929,14 @@
 								<div class="cell" style="width: 10%">Change</div>
 								<div class="cell" style="width: 55%">Most Profitable Routes</div>
 								<div class="cell" style="width: 25%" align="right">Weekly Profit</div>
+							</div>
+						</div>
+						<div class="table data section tight rankingTable" id="airlineValueRank">
+							<div class="table-header">
+								<div class="cell" style="width: 10%">Rank</div>
+								<div class="cell" style="width: 10%">Change</div>
+								<div class="cell" style="width: 55%">Airline by Asset Value</div>
+								<div class="cell" style="width: 25%" align="right"><i>In millions</i></div>
 							</div>
 						</div>
 						<div class="table data section tight rankingTable" id="internationPaxRank">

@@ -13,7 +13,7 @@ import scala.math.BigDecimal.int2bigDecimal
 
 class CountryApplication @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   def getAllCountries(airlineId : Option[Int]) = Action {
-    val countries = CountrySource.loadAllCountries()
+    val countries = CountrySource.loadAllCountries().filter(_.airportPopulation > 0)
 
     airlineId match {
       case None => Ok(Json.toJson(countries))

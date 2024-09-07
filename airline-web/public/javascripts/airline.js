@@ -1016,7 +1016,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 	})
 	let averageLoadFactor = {economy: "-", business: "-", first: "-"}
 	if(currentLinkConsumptions !== null){
-        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 20)
+        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 10)
         averageLoadFactor = getLoadFactorsFor({
             soldSeats: {
                 economy: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "economy"),
@@ -2674,7 +2674,7 @@ function updateTopCountryComposition(countryComposition, selector) {
 }
 
 function updateTopAirportComposition($container, airportComposition) {
-	var maxPerColumn = Math.floor(airportComposition.length / 2);
+	var maxPerColumn = Math.max(2, Math.floor(airportComposition.length / 2));
 	var index = 0;
 	$container.empty()
 	var $table
@@ -3092,7 +3092,7 @@ function getLinkNegotiation(callback) {
                     refreshAirlineDelegateStatus($('#linkConfirmationModal div.delegateStatus'), delegateInfo)
 
                     if (availableDelegates > 0) {
-                        updateAssignedDelegateCount(1)
+                        addMinimumRequiredDelegates()
                     } else {
                         updateAssignedDelegateCount(0)
                     }
