@@ -53,7 +53,7 @@ object ChampionUtil {
     result.toList
   }
 
-  val BASE_BOOST = 0.5
+  val BASE_BOOST = 0.0
   val MAX_ECONOMIC_BOOST = 20.0
   val reputationBoostTop10 : Map[Int, Double] = Map(
     1 -> 1,
@@ -85,8 +85,8 @@ object ChampionUtil {
     airport.getFeatures().foreach { feature =>
       val featureBoost = feature.featureType match {
         case GATEWAY_AIRPORT => 3
-        case VACATION_HUB => Math.min(feature.strength.toDouble / 8.0, 8.0)
-        case INTERNATIONAL_HUB => Math.min(feature.strength.toDouble / 8.0, 8.0)
+        case VACATION_HUB => Math.min(feature.strength.toDouble / 10.0, 8.0)
+        case INTERNATIONAL_HUB => Math.min(feature.strength.toDouble / 10.0, 8.0)
         case ELITE_CHARM => Math.max(feature.strength.toDouble / 5.0, 0.5)
         case FINANCIAL_HUB => Math.max(feature.strength.toDouble / 5.0, 0.5)
         case ISOLATED_TOWN => feature.strength.toDouble / 5.0
@@ -96,7 +96,8 @@ object ChampionUtil {
       boost += featureBoost
     }
 
-    boost += airport.size
+    val airportSizeBoost = if (airport.size <= 7) airport.size else airport.size + 2 * (airport.size - 7)
+    boost += airportSizeBoost
 
     BigDecimal(boost * reputationBoostTop10(ranking)).setScale(2, RoundingMode.HALF_EVEN).toDouble
   }

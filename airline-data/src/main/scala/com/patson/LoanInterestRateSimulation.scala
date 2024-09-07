@@ -1,8 +1,8 @@
 package com.patson
 
 import java.math.MathContext
-
 import com.patson.data._
+import com.patson.model.Bank
 import com.patson.model.bank.LoanInterestRate
 
 import scala.util.Random
@@ -30,7 +30,7 @@ object LoanInterestRateSimulation {
   
   def getNextRate(previousRates : List[BigDecimal]) : BigDecimal = {
     if (previousRates.isEmpty) {
-      return DEFAULT_ANNUAL_RATE
+      return Bank.DEFAULT_ANNUAL_RATE
     }
     //check when was the last time a rate changed
     var walker = previousRates.last
@@ -69,15 +69,15 @@ object LoanInterestRateSimulation {
     }
   }
 
-  val DEFAULT_ANNUAL_RATE : Double = 0.1 //10%
   val MAX_DELTA : BigDecimal = 0.01
-  val RATE_STEP : BigDecimal= 0.001 // 0.1 % is a step
-  val MIN_RATE : BigDecimal= 0.01 //min rate is 1%
-  val MAX_RATE = DEFAULT_ANNUAL_RATE * 2.1 //max rate is 21% annual
-  val BOUNDARY_ZONE_FACTOR : BigDecimal = 0.25 //top 25% and bottom 25% are considered outside of boundary
-  val BOUNDARY_ZONE_DELTA_ADJUSTMENT = 0.003 // 0.3% adjustment if it's considered in abnormal range (ie > HIGH or < LOW threshold)
-  val HIGH_RATE_THRESHOLD = MAX_RATE - (MAX_RATE - MIN_RATE) * BOUNDARY_ZONE_FACTOR
-  val LOW_RATE_THRESHOLD = MIN_RATE + (MAX_RATE - MIN_RATE) * BOUNDARY_ZONE_FACTOR
+  val RATE_STEP : BigDecimal = 0.001 // 0.1 % is a step
+  val MIN_RATE : BigDecimal = -0.042 //min rate is -4,2%
+  val MAX_RATE = 0.42 //max rate is 42% annual
+  val BOUNDARY_ZONE_FACTOR_LOW : BigDecimal = 0.13 //bottom 13% are considered outside of boundary
+  val BOUNDARY_ZONE_FACTOR_HIGH : BigDecimal = 0.42 //top 42% are considered outside of boundary
+  val BOUNDARY_ZONE_DELTA_ADJUSTMENT = 0.005 // 0.5% adjustment if it's considered in abnormal range (ie > HIGH or < LOW threshold)
+  val HIGH_RATE_THRESHOLD = MAX_RATE - (MAX_RATE - MIN_RATE) * BOUNDARY_ZONE_FACTOR_HIGH
+  val LOW_RATE_THRESHOLD = MIN_RATE + (MAX_RATE - MIN_RATE) * BOUNDARY_ZONE_FACTOR_LOW
 
   def simulateNextRate(previousRate : BigDecimal, previousDelta : BigDecimal) : BigDecimal = {
      var newDelta = (Random.nextInt((MAX_DELTA / RATE_STEP).toInt) + 1) * RATE_STEP

@@ -792,7 +792,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
   def getServiceFundingProjection(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     val targetQuality = request.user.getTargetServiceQuality()
-    val targetQualityCost = Math.pow(targetQuality.toDouble / 25, 1.9)
+    val targetQualityCost = Math.pow(targetQuality.toDouble / 25, 1.92)
     val links = LinkSource.loadFlightLinksByAirlineId(airlineId)
     var crewCost = 0
 
@@ -874,8 +874,8 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
     if (allianceMemberOption.isDefined && allianceMemberOption.get.role == AllianceRole.LEADER) {
         return Some("Cannot reset airline as your airline is the leader of an alliance. Either promote another member as leader or disband the alliance before proceeding")
     }
-    if (rebuild && airline.getReputation() < 100) {
-        return Some(s"Cannot rebuild airline when reputation is lower than 100")
+    if (rebuild && airline.getReputation() < 50) {
+        return Some(s"Cannot rebuild airline when reputation is lower than 50")
     }
     return None
   }
@@ -886,9 +886,9 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       Try(request.body.asInstanceOf[AnyContentAsJson].json.\("targetServiceQuality").as[Int]) match {
         case Success(targetServiceQuality) =>
           if (targetServiceQuality < 0) {
-            BadRequest("Cannot have negative targetServiceQuality")
+            BadRequest("Cannot have negative employee quality")
           } else if (targetServiceQuality > 100) {
-            BadRequest(s"Cannot have targetServiceQuality $targetServiceQuality")
+            BadRequest(s"Cannot have employee quality above 100")
           } else {
             val airline = request.user
             airline.setTargetServiceQuality(targetServiceQuality)

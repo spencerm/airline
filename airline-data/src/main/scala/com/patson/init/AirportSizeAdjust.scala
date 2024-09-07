@@ -246,6 +246,7 @@ object AirportSizeAdjust {
         "NKG" -> 7,
         "XMN" -> 6,
         "URC" -> 6,
+        "MIG" -> 4,
         "PZI" -> 3,
         //upscaling oddly small airports
         "DNH" -> 4,
@@ -286,6 +287,7 @@ object AirportSizeAdjust {
         "XCR" -> 3,
         "TLN" -> 3,
         "LTT" -> 2,
+        "FSP" -> 3,
         //ethiopia
         "MQX" -> 3,
         //eritrea
