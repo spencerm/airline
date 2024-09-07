@@ -8,11 +8,12 @@ import com.patson.data.AirplaneSource
 
 object Bank {
   val WEEKS_PER_YEAR = 52
-  val LOAN_TERMS = List[Int](26, WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 8 * WEEKS_PER_YEAR)
+  val LOAN_TERMS = List[Int](26, WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 8 * WEEKS_PER_YEAR, 10 * WEEKS_PER_YEAR, 15 * WEEKS_PER_YEAR, 20 * WEEKS_PER_YEAR)
   val MAX_LOANS = 10
   val MIN_LOAN_AMOUNT = 10000
-  val MAX_LOAN_AMOUNT = 1500000000 //1.5b max
+  val MAX_LOAN_AMOUNT : Long = 10000000000L //10b max
   val LOAN_REAPPLY_MIN_INTERVAL = 2
+  val DEFAULT_ANNUAL_RATE = 0.14
   def getMaxLoan(airlineId : Int) : LoanReply = {
     val existingLoans = BankSource.loadLoansByAirline(airlineId)
     
@@ -40,16 +41,12 @@ object Bank {
     
     val liability = existingLoans.map(_.remainingPayment(currentCycle)).sum
     
-    var availableLoanAmount = totalCredit - liability
-    
-    if (availableLoanAmount >= MAX_LOAN_AMOUNT) {
-      availableLoanAmount = MAX_LOAN_AMOUNT
-    }
+    val availableLoanAmount = Math.min(totalCredit - liability, Math.max(MAX_LOAN_AMOUNT - liability, 0))
     
     if (availableLoanAmount >= MIN_LOAN_AMOUNT) {
-      return LoanReply(availableLoanAmount, None)
+      LoanReply(availableLoanAmount, None)
     } else {
-      return LoanReply(0, Some("Lending you money is considered too high risk."))
+      LoanReply(0, Some("Lending you money is considered too high risk."))
     }
   }
  
@@ -64,12 +61,10 @@ object Bank {
   }
 
   def getLoanOptions(principal : Long, annualRate : BigDecimal, currentCycle : Int) = {
-      val rateIncrementPerYear = 0.004 //0.5% more every extra year
       LOAN_TERMS.map { term =>
-        //Payment = P x (r / n) x (1 + r / n)^n(t)] / ((1 + r / n)^n(t) - 1)
-        val years = term / WEEKS_PER_YEAR
         val baseAnnualRate = annualRate
-        val annualRateByTerm = baseAnnualRate + (years - 1) * rateIncrementPerYear
+        val DEFAULT_ANNUAL_RATE : Double = 0.14
+        val annualRateByTerm = ( ( ( DEFAULT_ANNUAL_RATE - baseAnnualRate ) / (WEEKS_PER_YEAR * 20) ) * term + baseAnnualRate )
         Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle, lastPaymentCycle = currentCycle, term = term)
       }
   }

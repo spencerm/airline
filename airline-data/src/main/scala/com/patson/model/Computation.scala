@@ -7,6 +7,8 @@ import com.patson.Util
 import com.patson.util.{AirlineCache, AllianceRankingUtil}
 
 import scala.collection.mutable.ListBuffer
+import scala.collection.mutable
+
 
 object Computation {
   val MODEL_COUNTRY_CODE = "US"
@@ -95,8 +97,11 @@ object Computation {
     if (value < 0) 0 else value.toInt
   }
   
+  val distanceCache: mutable.Map[(Int, Int), Int] = mutable.Map.empty
+
   def calculateDistance(fromAirport : Airport, toAirport : Airport) : Int = {
-    Util.calculateDistance(fromAirport.latitude, fromAirport.longitude, toAirport.latitude, toAirport.longitude).toInt
+    val key = (fromAirport.id, toAirport.id)
+    distanceCache.getOrElseUpdate(key, Util.calculateDistance(fromAirport.latitude, fromAirport.longitude, toAirport.latitude, toAirport.longitude).toInt)
   }
 
   def getFlightType(fromAirport : Airport, toAirport : Airport) : FlightType.Value = {
@@ -110,9 +115,8 @@ object Computation {
     //hard-coding some home markets into the computation function to allow for independent relation values
     //https://en.wikipedia.org/wiki/European_Common_Aviation_Area
     val ECAA = List("AL", "AM", "AT", "BA", "BE", "BG", "CH", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GE", "GR", "HR", "HU", "IE", "IS", "IT", "LT", "LU", "LV", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "SI", "SK", "ES", "SE", "UA", "XK")
-    val ANZAC = List("AU", "NZ", "CX", "CK", "NU", "CC", "NF")
     val USA = List("US", "PR", "VI", "GU", "AS", "MP", "MH", "PW", "FM") //US & COFA Pacific
-    if (fromAirport.countryCode == toAirport.countryCode || relationship == 5 || ECAA.contains(fromAirport.countryCode) && ECAA.contains(toAirport.countryCode) || ANZAC.contains(fromAirport.countryCode) && ANZAC.contains(toAirport.countryCode) || USA.contains(fromAirport.countryCode) && USA.contains(toAirport.countryCode)){
+    if (fromAirport.countryCode == toAirport.countryCode || relationship == 5 || ECAA.contains(fromAirport.countryCode) && ECAA.contains(toAirport.countryCode) || USA.contains(fromAirport.countryCode) && USA.contains(toAirport.countryCode)){
       if (distance <= 1000) {
         SHORT_HAUL_DOMESTIC
       } else if (distance <= 3000) {
@@ -361,7 +365,8 @@ def constructAffinityText(fromZone : String, toZone : String, fromCountry : Stri
     val amountFromBases = AirlineSource.loadAirlineBasesByAirline(airlineId).map(_.getValue * 0.2).sum.toLong //only get 20% back
     val amountFromAssets = AirportAssetSource.loadAirportAssetsByAirline(airlineId).map(_.sellValue).sum
     val amountFromLoans = BankSource.loadLoansByAirline(airlineId).map(_.earlyRepayment(currentCycle) * -1).sum //repay all loans now
-    val amountFromOilContracts = OilSource.loadOilContractsByAirline(airlineId).map(_.contractTerminationPenalty(currentCycle) * -1).sum //termination penalty
+//    val amountFromOilContracts = OilSource.loadOilContractsByAirline(airlineId).map(_.contractTerminationPenalty(currentCycle) * -1).sum //termination penalty
+    val amountFromOilContracts = 0 //removing because not interesting and burdens DB
     val existingBalance = AirlineCache.getAirline(airlineId).get.airlineInfo.balance
     
     ResetAmountInfo(amountFromAirplanes, amountFromBases, amountFromAssets, amountFromLoans, amountFromOilContracts, existingBalance)

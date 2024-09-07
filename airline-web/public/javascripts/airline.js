@@ -1016,7 +1016,7 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 	})
 	let averageLoadFactor = {economy: "-", business: "-", first: "-"}
 	if(currentLinkConsumptions !== null){
-        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 20)
+        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 10)
         averageLoadFactor = getLoadFactorsFor({
             soldSeats: {
                 economy: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "economy"),
@@ -1967,6 +1967,7 @@ function updateLinksTable(sortProperty, sortOrder) {
 		row.append("<div class='cell' align='right'>" + link.totalLoadFactor + '%' + "</div>")
 		row.append("<div class='cell' align='right'>" + quality + "</div>")
 		row.append("<div class='cell' align='right'>" + Math.round(link.satisfaction * 100) + '%' + "</div>")
+		row.append("<div class='cell' align='right'>" + link.currentStaffRequired + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.revenue) + "</div>")
 		row.append("<div class='cell' align='right'>" + '$' + commaSeparateNumber(link.profit) + "</div>")
 		row.append("<div class='cell' align='right'>" + link.profitMargin.toFixed(2) + "%" + "</div>")
@@ -2674,7 +2675,7 @@ function updateTopCountryComposition(countryComposition, selector) {
 }
 
 function updateTopAirportComposition($container, airportComposition) {
-	var maxPerColumn = Math.floor(airportComposition.length / 2);
+	var maxPerColumn = Math.max(2, Math.floor(airportComposition.length / 2));
 	var index = 0;
 	$container.empty()
 	var $table
@@ -3092,7 +3093,7 @@ function getLinkNegotiation(callback) {
                     refreshAirlineDelegateStatus($('#linkConfirmationModal div.delegateStatus'), delegateInfo)
 
                     if (availableDelegates > 0) {
-                        updateAssignedDelegateCount(1)
+                        addMinimumRequiredDelegates()
                     } else {
                         updateAssignedDelegateCount(0)
                     }
