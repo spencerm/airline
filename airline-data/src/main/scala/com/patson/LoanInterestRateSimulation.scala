@@ -68,7 +68,6 @@ object LoanInterestRateSimulation {
     }
   }
 
-
   val MAX_DELTA : BigDecimal = 0.01 // rate can''t change more than 100 basis point per cycle.
   val RATE_STEP : BigDecimal = 0.0005 // 5 basis point is a step.
   val MIN_RATE : BigDecimal = -0.042 //min rate is -4,2%
