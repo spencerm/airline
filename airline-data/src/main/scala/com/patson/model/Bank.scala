@@ -11,8 +11,9 @@ object Bank {
   val LOAN_TERMS = List[Int](26, WEEKS_PER_YEAR, 2 * WEEKS_PER_YEAR, 4 * WEEKS_PER_YEAR, 8 * WEEKS_PER_YEAR, 10 * WEEKS_PER_YEAR, 15 * WEEKS_PER_YEAR, 20 * WEEKS_PER_YEAR)
   val MAX_LOANS = 10
   val MIN_LOAN_AMOUNT = 10000
-  val MAX_LOAN_AMOUNT = 1500000000 //1.5b max
+  val MAX_LOAN_AMOUNT : Long = 10000000000L //10b max
   val LOAN_REAPPLY_MIN_INTERVAL = 2
+  val DEFAULT_ANNUAL_RATE = 0.14
   def getMaxLoan(airlineId : Int) : LoanReply = {
     val existingLoans = BankSource.loadLoansByAirline(airlineId)
     
@@ -40,16 +41,12 @@ object Bank {
     
     val liability = existingLoans.map(_.remainingPayment(currentCycle)).sum
     
-    var availableLoanAmount = totalCredit - liability
-    
-    if (availableLoanAmount >= MAX_LOAN_AMOUNT) {
-      availableLoanAmount = MAX_LOAN_AMOUNT
-    }
+    val availableLoanAmount = Math.min(totalCredit - liability, Math.max(MAX_LOAN_AMOUNT - liability, 0))
     
     if (availableLoanAmount >= MIN_LOAN_AMOUNT) {
-      return LoanReply(availableLoanAmount, None)
+      LoanReply(availableLoanAmount, None)
     } else {
-      return LoanReply(0, Some("Lending you money is considered too high risk."))
+      LoanReply(0, Some("Lending you money is considered too high risk."))
     }
   }
  
@@ -65,9 +62,10 @@ object Bank {
 
   def getLoanOptions(principal : Long, annualRate : BigDecimal, currentCycle : Int) = {
       LOAN_TERMS.map { term =>
+
         val years = term / WEEKS_PER_YEAR
         val baseAnnualRate = annualRate
-		val DEFAULT_ANNUAL_RATE : Double = 0.12 // 12% set for default plus used for define 20 years loan but more usage later planned.
+		val DEFAULT_ANNUAL_RATE : Double = 0.14 // 14% set for default plus used for define 20 years loan but more usage later planned.
 		val annualRateByTerm = ( ( ( DEFAULT_ANNUAL_RATE - baseAnnualRate ) / 1040 ) * term + baseAnnualRate ) // CACULATED FOR MAX TERM OF 20 YEARS!!!
         Loan(airlineId = 0, principal = principal, annualRate = annualRateByTerm, creationCycle = currentCycle, lastPaymentCycle = currentCycle, term = term)
       }

@@ -143,11 +143,15 @@ object GeoDataGenerator extends App {
 
   def getAirport() : Future[List[CsvAirport]] = {
     Future {
+      val airportNameOverrideMap: Map[String, String] = scala.io.Source.fromFile("airport-name-override.csv").getLines().map(_.split(",", -1)).map { tokens =>
+        (tokens(1), tokens(4))
+      }.toMap
+
       println("loading affinity-patch-list.csv")
       val airportZoneList = scala.io.Source.fromFile("affinity-patch-list.csv").getLines().map(_.split(",", -1)).map { tokens =>
           (tokens(0),tokens(1))
         }.toList
-      println(airportZoneList)
+//      println(airportZoneList)
       println("setting zones via country-data-2022.csv")
       //csv = country-code,country-name,openness,gini,nominal-to-real-conversion-ratio,(5)zone,group1,lang1,group2,lang2,lang3
       val countryZoneMap = scala.io.Source.fromFile("country-data-2022.csv").getLines().map(_.split(",", -1)).map { tokens =>
@@ -160,8 +164,6 @@ object GeoDataGenerator extends App {
 
         if (innerString.nonEmpty) (tokens(0), innerString) else (tokens(0), "None")
       }.toMap
-
-      println(countryZoneMap)
 
       val result = ListBuffer[CsvAirport]()
       for (line : String <- Source.fromFile("airports.csv").getLines) {
@@ -177,6 +179,8 @@ object GeoDataGenerator extends App {
 //        val updatedInnerString = if (airportZones.isEmpty) innerString else innerString + airportZones.mkString
         val zone = countryZoneMap.getOrElse(info(8), info(7)) + airportZones.mkString
 
+        val airportName = airportNameOverrideMap.getOrElse(info(8), info(3))
+
         val airportSize =
           info(2) match {
             case "heliport" => 1
@@ -185,10 +189,26 @@ object GeoDataGenerator extends App {
             case "large_airport" => 3
             case _ => 0
           }
-        //0 - csvId, 2 - size, 3 - name, 4 - lat, 5 - long, 7 - zone, 8 - country, 10 - city, 11 - scheduled service, 12 - code1, 13- code2
-        result += CsvAirport(airport = new Airport(info(13), info(12), info(3), info(4).toDouble, info(5).toDouble, info(8), info(10), zone, airportSize, 0, 0, 0, 0, 0),
-          csvAirportId = info(0).toInt, scheduledService = "yes".equals(info(11)))
 
+        val countryCode : String = if (List("CX", "CC", "NF").contains(info(8))) {
+          "AU"
+        } else if ("NU" == info(8)) {
+          "NZ"
+        } else if (List("PM", "WF").contains(info(8))) {
+          "FR"
+        } else if (List("BQ").contains(info(8))) {
+          "NL"
+        } else if (List("IM", "JE", "BM", "GI", "FK", "GG", "SH", "MS").contains(info(8))) {
+          "GB"
+        } else {
+          info(8)
+        }
+        if (info(8) != countryCode) {
+          println(info(8) + " " + countryCode)
+        }
+        //0 - csvId, 2 - size, 3 - name, 4 - lat, 5 - long, 7 - zone, 8 - country, 10 - city, 11 - scheduled service, 12 - code1, 13- code2
+        result += CsvAirport(airport = new Airport(info(13), info(12), airportName, info(4).toDouble, info(5).toDouble, countryCode, info(10), zone, airportSize, 0, 0, 0, 0, 0),
+          csvAirportId = info(0).toInt, scheduledService = "yes".equals(info(11)))
       }
       result.toList
     }
