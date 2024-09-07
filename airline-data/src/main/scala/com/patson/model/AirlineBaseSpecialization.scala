@@ -93,7 +93,7 @@ object AirlineBaseSpecialization extends Enumeration {
       case _ => 1.2
     }
     override val label = "Domestic Hub"
-    override def descriptions(airport : Airport) = List("Reduce staff required for domestic flight by 20%", "Increase staff required for international flight by 20%")
+    override def descriptions(airport : Airport) = List("Reduce staff required for home market flights by 20%", "Increase staff required for international flight by 20%")
   }
 
   case class InternationalSpecialization() extends FlightTypeSpecialization {
