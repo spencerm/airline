@@ -224,7 +224,7 @@ case class OlympicsPassengerCashReward() extends EventReward(EventType.OLYMPICS,
   def computeReward(eventId: Int, airlineId : Int) = {
     val stats: Map[Int, BigDecimal] = EventSource.loadOlympicsAirlineStats (eventId, airlineId).toMap
     val totalScore = stats.view.values.sum
-    Math.max((totalScore * 750).toLong, MIN_CASH_REWARD)
+    Math.max((totalScore * 1500).toLong, MIN_CASH_REWARD)
   }
 
   override def applyReward(event: Event, airline : Airline) = {
@@ -233,7 +233,7 @@ case class OlympicsPassengerCashReward() extends EventReward(EventType.OLYMPICS,
     AirlineSource.adjustAirlineBalance(airline.id, reward)
   }
 
-  override val description: String = "$20,000,000 or $750 * score (whichever is higher) cash reward"
+  override val description: String = "$20,000,000 or $1500 * score (whichever is higher) cash reward"
   override def redeemDescription(eventId: Int, airlineId : Int) = s"$$${java.text.NumberFormat.getIntegerInstance.format(computeReward(eventId, airlineId))} cash reward"
 
 }
@@ -251,7 +251,7 @@ case class OlympicsPassengerLoyaltyReward() extends EventReward(EventType.OLYMPI
 }
 
 case class OlympicsPassengerReputationReward() extends EventReward(EventType.OLYMPICS, RewardCategory.OLYMPICS_PASSENGER, RewardOption.REPUTATION) {
-  val REPUTATION_BONUS = 55
+  val REPUTATION_BONUS = 75
   override def applyReward(event: Event, airline : Airline) = {
     AirlineSource.adjustAirlineReputation(airline.id, REPUTATION_BONUS)
   }
