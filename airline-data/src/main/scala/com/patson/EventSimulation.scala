@@ -89,9 +89,9 @@ object EventSimulation {
   }
 
   val MAX_CANDIDATES_COUNT = 6
-  val CANDIDATE_MIN_SIZE = 6
-  val CANDIDATE_MIN_POPULATION = 750000
-  val CANDIDATE_MIN_INCOME = 8000
+  //these two are an OR
+  val CANDIDATE_MIN_SIZE = 7
+  val CANDIDATE_MIN_POP_MIDDLE_INCOME = 3_000_000
 
   def selectCandidates() : List[Airport] = {
     selectCandidates(AirportSource.loadAllAirports())
@@ -120,8 +120,10 @@ object EventSimulation {
 
     val randomizedAirports: List[Airport] = previousCanidateAirports ++ Random.shuffle(allAirports.filter { airport =>
       airport.size >= CANDIDATE_MIN_SIZE &&
-      airport.population >= CANDIDATE_MIN_POPULATION &&
-      airport.income >= CANDIDATE_MIN_INCOME &&
+      !cooldownCountries.contains(airport.countryCode) &&
+      !cooldownZones.contains(airport.zone.split("-")(0)) ||
+      (airport.size >= CANDIDATE_MIN_SIZE - 1) &&
+      airport.popMiddleIncome >= CANDIDATE_MIN_POP_MIDDLE_INCOME &&
       !cooldownCountries.contains(airport.countryCode) &&
       !cooldownZones.contains(airport.zone.split("-")(0))
     })

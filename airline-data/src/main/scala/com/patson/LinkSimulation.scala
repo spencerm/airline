@@ -20,7 +20,7 @@ object LinkSimulation {
 
 
   private val FUEL_UNIT_COST = OilPrice.DEFAULT_UNIT_COST //for easier flight monitoring, let's make it the default unit price here
-  val CREW_UNIT_COST = 6
+  val CREW_UNIT_COST = 5
   val CREW_BASE_COST = 0
 
 
@@ -260,7 +260,7 @@ object LinkSimulation {
         depreciation += (airplane.depreciationRate * assignmentWeights(airplane)).toInt
     }
 
-    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 25, 1.9)
+    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 25, 1.92)
     var crewCost = CREW_BASE_COST
     var inflightCost, revenue = 0
     LinkClass.values.foreach { linkClass =>
@@ -335,9 +335,9 @@ object LinkSimulation {
       } else if (star == 3) {
         2
       } else if (star == 4) {
-        6
+        7
       } else {
-        14
+        14.5
       }
 
     val costPerPassenger = classMultiplier * durationCostPerHour * link.duration.toDouble / 60

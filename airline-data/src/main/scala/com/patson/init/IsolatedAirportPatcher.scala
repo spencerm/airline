@@ -18,25 +18,26 @@ object IsolatedAirportPatcher {
     val isolationByAirport = Map[Airport, Int]()
     val ISOLATED_ISLAND_AIRPORTS = Array(
       //carribean
-      "PVA", "ADZ", "CYB", "RTB", "UII", "GJA", "CPX", "VQS", "SPR", "CYC", "CUK",
+      "PVA", "ADZ", "CYB", "RTB", "UII", "GJA", "CPX", "VQS", "SPR", "CYC", "CUK", "NAS",
       //europe
       "KGD", //RU
       "IDY", "ACI", "ISC", "OUI", //FR
       "PNL", "LMP", //IT
       "HGL", "BMK", "GWT", "BMR", //DE
-      "EGH", "EOI", "FIE", "FOA", "LWK", "LSI", "ACI", "TRE", "BRR", "BEB", "SYY", "KOI", "ILY", "CAL", "ISC", "GCI", "JER", //GB
+      "EGH", "EOI", "FIE", "FOA", "LWK", "LSI", "ACI", "TRE", "BRR", "BEB", "SYY", "KOI", "ILY", "CAL", "ISC", "GCI", "JER", "GIB", "IOM", //GB
       "BYR", "RNN", //DK
       "MHQ", "KDL", "URE", "ENF", "KTT", //FI
       "IOR","INQ","IIA", //IE
       "PJA", //SE
       "EN9","EN1","EN2", "SKN", "SSJ", "BNN", "MOL", "OSY", "RVK", "SDN", "SOG", //NO
       "HZK", //IS
-      "AOK", "JMK", "JNX", "JSI", "JTR", "KIT", "LKS", "MLO", "SMI", "JIK", "KGS", "RHO", //GR
+      "AOK", "JMK", "JNX", "JSI", "JTR", "KIT", "LKS", "MLO", "SMI", "JIK", "KGS", "RHO", "LXS", "MJT", "JKH", "ZTH", "EFL", //GR
       //americas
       "FRD", "ESD", "ACK", "MVY", "BID", "AVX", //US
       "YGR", "YPN", "YYB", //CA
+      "FSP",
       //oceania
-      "WSZ",
+      "WSZ", "WLS",
       //asia
       "KUM", "TNE", "MYE", "MK1", "OIM", "HAC", "AO1", "SDS", "OIR", "RIS", "OKI", "TSJ", "FUJ", "KKX", "TKN", "OKE", "RNJ", "UEO", "OKA", "MMY", "TRA", "ISG", "OGN", "IKI", "MMD", "KTD", //JP
       "BSO", "CGM", "JOL", "CYU", "TWT", "IAO", "MBT", "USU", "ENI", //PH
