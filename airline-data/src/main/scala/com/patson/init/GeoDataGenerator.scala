@@ -35,6 +35,22 @@ object GeoDataGenerator extends App {
 
   import actorSystem.dispatcher
 
+  def countryCodeConvert(countryCode: String): String = {
+    if (List("CX", "CC", "NF").contains(countryCode)) {
+      "AU"
+    } else if (List("CX", "CC", "NF").contains(countryCode)) {
+      "NZ"
+    } else if (List("PM", "WF").contains(countryCode)) {
+      "FR"
+    } else if (List("BQ").contains(countryCode)) {
+      "NL"
+    } else if (List("IM", "JE", "BM", "GI", "FK", "GG", "SH", "MS").contains(countryCode)) {
+      "GB"
+    } else {
+      countryCode
+    }
+  }
+
   mainFlow
 
   def mainFlow() {
@@ -190,24 +206,8 @@ object GeoDataGenerator extends App {
             case _ => 0
           }
 
-        val countryCode : String = if (List("CX", "CC", "NF").contains(info(8))) {
-          "AU"
-        } else if ("NU" == info(8)) {
-          "NZ"
-        } else if (List("PM", "WF").contains(info(8))) {
-          "FR"
-        } else if (List("BQ").contains(info(8))) {
-          "NL"
-        } else if (List("IM", "JE", "BM", "GI", "FK", "GG", "SH", "MS").contains(info(8))) {
-          "GB"
-        } else {
-          info(8)
-        }
-        if (info(8) != countryCode) {
-          println(info(8) + " " + countryCode)
-        }
         //0 - csvId, 2 - size, 3 - name, 4 - lat, 5 - long, 7 - zone, 8 - country, 10 - city, 11 - scheduled service, 12 - code1, 13- code2
-        result += CsvAirport(airport = new Airport(info(13), info(12), airportName, info(4).toDouble, info(5).toDouble, countryCode, info(10), zone, airportSize, 0, 0, 0, 0, 0),
+        result += CsvAirport(airport = new Airport(info(13), info(12), airportName, info(4).toDouble, info(5).toDouble, countryCodeConvert(info(8)), info(10), zone, airportSize, 0, 0, 0, 0, 0),
           csvAirportId = info(0).toInt, scheduledService = "yes".equals(info(11)))
       }
       result.toList

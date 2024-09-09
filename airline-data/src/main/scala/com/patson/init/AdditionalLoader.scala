@@ -1,13 +1,16 @@
 package com.patson.init
 
 import com.patson.model.Airport
+
 import scala.io.Source
 import com.patson.model.City
 import com.patson.model.Country
 import com.patson.model.Destination
+
 import scala.collection.mutable.ListBuffer
 import scala.util.Try
 import com.patson.data.AirportSource
+import com.patson.init.GeoDataGenerator.countryCodeConvert
 
 object AdditionalLoader {
   def loadRemovalAirportIatas() : List[String] = {
@@ -93,7 +96,7 @@ object AdditionalLoader {
           name = tokens(0),
           latitude = tokens(1).toDouble,
           longitude = tokens(2).toDouble,
-          countryCode = tokens(3),
+          countryCode = countryCodeConvert(tokens(3)),
           population = tokens(4).toInt,
           income = if(tokens(5).length >= 1){
             tokens(5).toInt

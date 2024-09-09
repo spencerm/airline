@@ -207,14 +207,14 @@ object DemandGenerator {
         4.5 //very busy domestic routes
       } else if (List("NO", "IS", "FO", "GL", "GR", "CY", "FJ", "KR").contains(fromAirport.countryCode)) {
         2.25 //very high per capita flights https://ourworldindata.org/grapher/air-trips-per-capita
-      } else if (List("SE", "GB", "CL", "BS").contains(fromAirport.countryCode)) {
+      } else if (List("SE", "GB", "CL", "BS", "AE", "DK").contains(fromAirport.countryCode)) {
         1.5 // high per capita flights
       } else if (List("CD", "CG", "CV", "CI", "GN", "GW", "LR", "ML", "MR", "NE", "SD", "SO", "SS", "TD", "TG").contains(fromAirport.countryCode)) {
         4.0 //very poor roads but unstable governance
       } else if (List("AO", "BI", "BJ", "BW", "CM", "CV", "DJ", "ET", "GA", "GH", "GM", "GQ", "KE", "KM", "LS", "MG", "MU", "MW", "MZ", "NA", "NG", "RW", "SC", "SL", "SN", "ST", "SZ", "TZ", "UG", "ZA", "ZM", "ZW").contains(fromAirport.countryCode)) {
         6.0 //very poor roads
       } else if (fromAirport.countryCode == "IN" && toAirport.countryCode == "IN") {
-        0.65 //pops are just very large
+        0.67 //pops are just very large
       } else if (fromAirport.countryCode == "CN") {
         if(distance < 900) {
           0.53 //China has a very extensive highspeed rail network, pops are just very large
