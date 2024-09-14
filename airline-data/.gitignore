@@ -9,4 +9,5 @@
 /logs
 .metals/
 .vscode/
+.bsp/
 .scala-build/
