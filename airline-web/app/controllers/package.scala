@@ -903,4 +903,9 @@ package object controllers {
 
   val allAirplaneModels = ModelSource.loadAllModels()
   val allCountryRelationships = CountrySource.getCountryMutualRelationships()
+
+  object LoginStatus extends Enumeration {
+    type LoginStatus = Value
+    val ONLINE, ACTIVE_7_DAYS, ACTIVE_30_DAYS, INACTIVE = Value
+  }
 }

@@ -123,7 +123,8 @@ object CountryAirlineTitle {
         s"Relationship +${Title.relationshipBonus(PARTNERED_AIRLINE)} with ${country.name}"
       )
     case PRIVILEGED_AIRLINE =>
-      List(s"May build bases anywhere in ${country.name}."
+      List(s"May build bases anywhere in ${country.name}.",
+        s"May open international routes to ${country.name}'s very small airports."
       )
     case ESTABLISHED_AIRLINE =>
       List(s"Easier negotiations in ${country.name} and may build bases in ${country.name}'s gateway airports."

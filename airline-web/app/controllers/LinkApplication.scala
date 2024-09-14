@@ -368,6 +368,9 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     val negotiationInfo = NegotiationUtil.getLinkNegotiationInfo(airline, incomingLink, existingLink)
     val negotiationResultOption =
       if (negotiationInfo.finalRequirementValue > 0) { //then negotiation is required
+        if (delegateCount <= negotiationInfo.finalRequirementValue) {
+          return BadRequest(s"Must assign at least ${negotiationInfo.finalRequirementValue} delegates")
+        }
         getNegotiationRejectionReason(airline, incomingLink.from, incomingLink.to, existingLink) foreach {
           case (reason, rejectionType) =>
             return BadRequest(s"No negotiation : $reason")
@@ -856,6 +859,40 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
         var otherLinkArray = Json.toJson(competitorLinkConsumptions.filter(_.link.capacity.total > 0).map { linkConsumption => Json.toJson(linkConsumption)(SimpleLinkConsumptionWrite) }.toSeq)
         resultObject = resultObject + ("otherLinks", otherLinkArray)
 
+        val nearbyFromAirports = loadGenericTransitAirports(fromAirport)
+        val nearbyToAirports = loadGenericTransitAirports(toAirport)
+        val competitorViaLocalTransitLinkConsumptions : List[LinkConsumptionDetails] = {
+          val viaLocalTransitFlightLinks : List[Link] =
+            nearbyFromAirports.flatMap { localTransitAirport =>
+              (nearbyToAirports.map(_.id) :+ toAirportId).flatMap { toAirportId =>
+                LinkSource.loadFlightLinksByAirports(localTransitAirport.id, toAirportId, LinkSource.ID_LOAD) ++ LinkSource.loadFlightLinksByAirports(toAirportId, localTransitAirport.id, LinkSource.ID_LOAD)
+              }
+            } ++
+            nearbyToAirports.flatMap { localTransitAirport =>
+              (nearbyFromAirports.map(_.id) :+ fromAirportId).flatMap { fromAirportId =>
+                LinkSource.loadFlightLinksByAirports(localTransitAirport.id, fromAirportId, LinkSource.ID_LOAD) ++ LinkSource.loadFlightLinksByAirports(fromAirportId, localTransitAirport.id, LinkSource.ID_LOAD)
+              }
+            }
+          LinkSource.loadLinkConsumptionsByLinksId(viaLocalTransitFlightLinks.map(_.id), 1)
+        }
+        val otherViaLocalTransitLinkArray = Json.toJson(competitorViaLocalTransitLinkConsumptions.filter(_.link.capacity.total > 0).map { linkConsumption => {
+          var linkConsumptionJson : JsObject = Json.toJson(linkConsumption)(SimpleLinkConsumptionWrite).as[JsObject]
+          if (nearbyFromAirports.contains(linkConsumption.link.to)) {
+            linkConsumptionJson = linkConsumptionJson + ("altFrom" -> JsString(linkConsumption.link.to.iata))
+          } else if (nearbyFromAirports.contains(linkConsumption.link.from)) {
+            linkConsumptionJson = linkConsumptionJson + ("altFrom" -> JsString(linkConsumption.link.from.iata))
+          }
+
+          if (nearbyToAirports.contains(linkConsumption.link.to)) {
+            linkConsumptionJson = linkConsumptionJson + ("altTo" -> JsString(linkConsumption.link.to.iata))
+          } else if (nearbyToAirports.contains(linkConsumption.link.from)) {
+            linkConsumptionJson = linkConsumptionJson + ("altTo" -> JsString(linkConsumption.link.from.iata))
+          }
+
+          linkConsumptionJson
+        } })
+        resultObject = resultObject + ("otherViaLocalTransitLinks", otherViaLocalTransitLinkArray)
+
         if (existingLink.isDefined) {
           resultObject = resultObject + ("existingLink", Json.toJson(existingLink))
           val deleteRejection = getDeleteLinkRejection(existingLink.get, request.user)
@@ -913,37 +950,34 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
           case Some(base) => base
         }
 
-        val countryRelationships = CountrySource.getCountryMutualRelationships()
-        val relationship = countryRelationships.getOrElse((fromAirport.countryCode, toAirport.countryCode), 0)
+        val flightType = Computation.getFlightType(fromAirport, toAirport)
 
-        if (!toAirport.isGateway() && toAirport.size <= 2 && relationship != 5) {
-          return Some("Destination airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+        if (!toAirport.isGateway() && toAirport.size <= 2 && FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL ) {
+          val currentTitle = CountryAirlineTitle.getTitle(toAirport.countryCode, airline)
+          val requiredTitle = Title.PRIVILEGED_AIRLINE
+          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
+          if (!ok) {
+            return Some("Destination airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+          }
         }
-        if (!fromAirport.isGateway() && fromAirport.size <= 2 && relationship != 5) {
-          return Some("Home airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+        if (!fromAirport.isGateway() && fromAirport.size <= 2 && FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL) {
+          val currentTitle = CountryAirlineTitle.getTitle(toAirport.countryCode, airline)
+          val requiredTitle = Title.PRIVILEGED_AIRLINE
+          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
+          if (!ok) {
+            return Some("Home airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+          }
         }
 
-//          val toCountryCode = toAirport.countryCode
-//        val flightCategory = FlightType.getCategory(Computation.getFlightType(fromAirport, toAirport))
-        //check title status
-//        if (flightCategory == FlightCategory.INTERCONTINENTAL) {
-//          val requiredTitle = if (toAirport.isGateway()) Title.APPROVED_AIRLINE else Title.PRIVILEGED_AIRLINE
-//          val currentTitle = CountryAirlineTitle.getTitle(toCountryCode, airline)
-//          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
-//
-//          if (!ok) {
-//            return Some((s"Cannot fly Intercontinental to this ${if (toAirport.isGateway()) "Gateway" else "Non-gateway"} airport until your airline attain title ${Title.description(requiredTitle)} with ${CountryCache.getCountry(toCountryCode).get.name}", TITLE_REQUIREMENT))
-//          }
-//        }
         if (fromAirport == toAirport) {
           return Some("Departure and Destination airports cannot be the same. Click and select a different destination airport.", DISTANCE)
         }
 
         //check distance
-        val distance = Computation.calculateDistance(fromAirport, toAirport)
-        if (distance <= 10) {
-          return Some("Route must be longer than 10 km", DISTANCE)
-        }
+//        val distance = Computation.calculateDistance(fromAirport, toAirport)
+//        if (distance <= 10) {
+//          return Some("Route must be longer than 10 km", DISTANCE)
+//        }
 
         //check balance
         val cost = Computation.getLinkCreationCost(fromAirport, toAirport)
@@ -956,7 +990,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     }
 
 
-    return None
+    None
   }
 
   def getNegotiationRejectionReason(airline : Airline, fromAirport: Airport, toAirport : Airport, existingLink : Option[Link]) : Option[(String, RejectionType.Value)]= {
@@ -1579,6 +1613,12 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
       case None => None
     }
   }
+
+  def loadGenericTransitAirports(principalAirport : Airport) : List[Airport] = {
+    LinkSource.loadLinksByCriteria(List(("from_airport", principalAirport.id), ("transport_type", TransportType.GENERIC_TRANSIT.id))).map(_.to) ++
+    LinkSource.loadLinksByCriteria(List(("to_airport", principalAirport.id), ("transport_type", TransportType.GENERIC_TRANSIT.id))).map(_.from)
+  }
+
 
   def getLinkNegotiation(airlineId : Int) = AuthenticatedAirline(airlineId)  { implicit request =>
     val incomingLink = request.body.asInstanceOf[AnyContentAsJson].json.as[Link]

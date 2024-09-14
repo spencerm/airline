@@ -468,7 +468,7 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
         }
         result
     }
-
+    val basePrice = Pricing.computeStandardPriceForAllClass(distance, flightType)
 
     //basic details
     var result = Json.obj(
@@ -481,6 +481,7 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
       "directDemand" -> directDemand,
       "mutualRelationship" -> relationship,
       "affinity" -> affinityText,
+      "basePrice" -> basePrice,
       "fromAirportTravelerDemand" -> directFromAirportTravelerDemand,
       "toAirportTravelerDemand" -> directToAirportTravelerDemand,
       "fromAirportBusinessDemand" -> directFromAirportBusinessDemand,
@@ -494,12 +495,12 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
 
     //load existing links
     val links = LinkSource.loadFlightLinksByAirports(fromAirportId, toAirportId) ++ LinkSource.loadFlightLinksByAirports(toAirportId, fromAirportId)
-    result = result + ("links" -> Json.toJson(links))
-    val consumptions = LinkSource.loadLinkConsumptionsByLinksId(links.map(_.id))
+    result = result + ("links" -> Json.toJson(links.sortBy(_.airline.id)))
+    val consumptions = LinkSource.loadLinkConsumptionsByLinksId(links.map(_.id)).sortBy(_.link.airline.id)
 
 
 
-    result = result + ("consumptions" -> Json.toJson(consumptions)(Writes.traversableWrites(MinimumLinkConsumptionWrite)))
+    result = result + ("consumptions" -> Json.toJson(consumptions)(Writes.traversableWrites(SimpleLinkConsumptionWrite)))
     Ok(result)
   }
 
