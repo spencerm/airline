@@ -1017,32 +1017,14 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 		    let loadFactorPercentage = Math.round(linkConsumption.soldSeats * 100 / linkConsumption.capacity.total)
 			$("#planLinkCompetitors").append("<div class='table-row data-row'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
 				    	    			   + "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
-				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity) + " (" + linkConsumption.frequency + ")"
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity)
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency
 				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.quality
-				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency + "</div></div>")
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + loadFactorPercentage + "</div></div>")
 		}
 	})
-	let averageLoadFactor = {economy: "-", business: "-", first: "-"}
-	if(currentLinkConsumptions !== null){
-        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 10)
-        averageLoadFactor = getLoadFactorsFor({
-            soldSeats: {
-                economy: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "economy"),
-                business: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "business"),
-                first: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "first"),
-            },
-            capacity: {
-                economy: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "economy"),
-                business: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "business"),
-                first: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "first"),
-            },
-        });
-	}
-	$("#planLFEconomy").text(averageLoadFactor.economy+"%")
-	$("#planLFBusiness").text(averageLoadFactor.business+"%")
-	$("#planLFFirst").text(averageLoadFactor.first+"%")
 
-	if ($("#planLinkCompetitors .data-row").length < 5) { //then additional info
+	if ($("#planLinkCompetitors .data-row").length < 6) { //then additional info
 	    linkInfo.otherViaLocalTransitLinks.sort(function(a, b) {
             return b.capacity.total - a.capacity.total;
         });
@@ -1051,9 +1033,10 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 				let loadFactorPercentage = Math.round(linkConsumption.soldSeats * 100 / linkConsumption.capacity.total)
 				var $row = $("<div class='table-row data-row' style='opacity: 60%'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
 								+ "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
-								+ "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity) + " (" + linkConsumption.frequency + ")"
-								+ "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.quality
-								+ "</div><div style='display: table-cell; text-align:right;'>" + loadFactorPercentage + "%</div></div>")
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity)
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.quality
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + loadFactorPercentage + "</div></div>")
 				let phrases = []
 				if (linkConsumption.altFrom) {
 					phrases.push("Depart from " + linkConsumption.altFrom)
@@ -1066,6 +1049,26 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 			}
 		})
 	}
+
+	let averageLoadFactor = {economy: "-", business: "-", first: "-"}
+    if(currentLinkConsumptions !== null){
+        const lastLinkConsumptions = currentLinkConsumptions.slice(0, 10)
+        averageLoadFactor = getLoadFactorsFor({
+            soldSeats: {
+                economy: averageFromSubKey(lastLinkConsumptions, "soldSeats", "economy"),
+                business: averageFromSubKey(lastLinkConsumptions, "soldSeats", "business"),
+                first: averageFromSubKey(lastLinkConsumptions, "soldSeats", "first"),
+            },
+            capacity: {
+                economy: averageFromSubKey(lastLinkConsumptions, "capacity", "economy"),
+                business: averageFromSubKey(lastLinkConsumptions, "capacity", "business"),
+                first: averageFromSubKey(lastLinkConsumptions, "capacity", "first"),
+            },
+        });
+    }
+    $("#planLFEconomy").text(averageLoadFactor.economy+"%")
+    $("#planLFBusiness").text(averageLoadFactor.business+"%")
+    $("#planLFFirst").text(averageLoadFactor.first+"%")
 
 	if ($("#planLinkCompetitors .data-row").length == 0) {
 		$("#planLinkCompetitors").append("<div class='table-row data-row'><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div></div>")
