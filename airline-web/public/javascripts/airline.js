@@ -2954,6 +2954,8 @@ function addMinimumRequiredDelegates() {
 	}
 	if (negotiationOddsLookup[minimumRequiredDelegates] > 0) {
 		updateAssignedDelegateCount(minimumRequiredDelegates)
+	} else {
+		updateAssignedDelegateCount(0)
 	}
 }
 
