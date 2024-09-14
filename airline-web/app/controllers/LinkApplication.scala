@@ -368,6 +368,9 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     val negotiationInfo = NegotiationUtil.getLinkNegotiationInfo(airline, incomingLink, existingLink)
     val negotiationResultOption =
       if (negotiationInfo.finalRequirementValue > 0) { //then negotiation is required
+        if (delegateCount <= negotiationInfo.finalRequirementValue) {
+          return BadRequest(s"Must assign at least ${negotiationInfo.finalRequirementValue} delegates")
+        }
         getNegotiationRejectionReason(airline, incomingLink.from, incomingLink.to, existingLink) foreach {
           case (reason, rejectionType) =>
             return BadRequest(s"No negotiation : $reason")
@@ -947,37 +950,34 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
           case Some(base) => base
         }
 
-        val countryRelationships = CountrySource.getCountryMutualRelationships()
-        val relationship = countryRelationships.getOrElse((fromAirport.countryCode, toAirport.countryCode), 0)
+        val flightType = Computation.getFlightType(fromAirport, toAirport)
 
-        if (!toAirport.isGateway() && toAirport.size <= 2 && relationship != 5) {
-          return Some("Destination airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+        if (!toAirport.isGateway() && toAirport.size <= 2 && FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL ) {
+          val currentTitle = CountryAirlineTitle.getTitle(toAirport.countryCode, airline)
+          val requiredTitle = Title.PRIVILEGED_AIRLINE
+          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
+          if (!ok) {
+            return Some("Destination airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+          }
         }
-        if (!fromAirport.isGateway() && fromAirport.size <= 2 && relationship != 5) {
-          return Some("Home airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+        if (!fromAirport.isGateway() && fromAirport.size <= 2 && FlightType.getCategory(flightType) == FlightCategory.INTERNATIONAL) {
+          val currentTitle = CountryAirlineTitle.getTitle(toAirport.countryCode, airline)
+          val requiredTitle = Title.PRIVILEGED_AIRLINE
+          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
+          if (!ok) {
+            return Some("Home airport is too small to serve international destinations.", REQUIRES_CUSTOMS)
+          }
         }
 
-//          val toCountryCode = toAirport.countryCode
-//        val flightCategory = FlightType.getCategory(Computation.getFlightType(fromAirport, toAirport))
-        //check title status
-//        if (flightCategory == FlightCategory.INTERCONTINENTAL) {
-//          val requiredTitle = if (toAirport.isGateway()) Title.APPROVED_AIRLINE else Title.PRIVILEGED_AIRLINE
-//          val currentTitle = CountryAirlineTitle.getTitle(toCountryCode, airline)
-//          val ok = currentTitle.title.id <= requiredTitle.id //smaller value means higher title
-//
-//          if (!ok) {
-//            return Some((s"Cannot fly Intercontinental to this ${if (toAirport.isGateway()) "Gateway" else "Non-gateway"} airport until your airline attain title ${Title.description(requiredTitle)} with ${CountryCache.getCountry(toCountryCode).get.name}", TITLE_REQUIREMENT))
-//          }
-//        }
         if (fromAirport == toAirport) {
           return Some("Departure and Destination airports cannot be the same. Click and select a different destination airport.", DISTANCE)
         }
 
         //check distance
-        val distance = Computation.calculateDistance(fromAirport, toAirport)
-        if (distance <= 10) {
-          return Some("Route must be longer than 10 km", DISTANCE)
-        }
+//        val distance = Computation.calculateDistance(fromAirport, toAirport)
+//        if (distance <= 10) {
+//          return Some("Route must be longer than 10 km", DISTANCE)
+//        }
 
         //check balance
         val cost = Computation.getLinkCreationCost(fromAirport, toAirport)
@@ -990,7 +990,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
     }
 
 
-    return None
+    None
   }
 
   def getNegotiationRejectionReason(airline : Airline, fromAirport: Airport, toAirport : Airport, existingLink : Option[Link]) : Option[(String, RejectionType.Value)]= {

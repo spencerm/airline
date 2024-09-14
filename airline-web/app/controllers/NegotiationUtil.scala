@@ -24,14 +24,13 @@ object NegotiationUtil {
   val FREE_LINK_DIFFICULTY_THRESHOLD = 10
   val GREAT_SUCCESS_THRESHOLD = 0.95 // 5%
 
-
-  def negotiate(info : NegotiationInfo, delegateCount : Int) = {
+  def negotiate(info: NegotiationInfo, delegateCount: Int): NegotiationResult = {
     val odds = info.odds.get(delegateCount) match {
       case Some(value) => value
-      case None => 0
+      case None => 1.0
     }
-    val number = Math.random()
-    NegotiationResult(1 - odds, number)
+    val threshold = Math.random()
+    NegotiationResult(1 - odds, threshold)
   }
 
 
@@ -68,8 +67,8 @@ object NegotiationUtil {
     if (baseScale >= 8) {
       maxFrequency += (baseScale - 7) * 2
     }
-    if (baseScale >= 13) { //accumulative with the >= 8 buff
-      maxFrequency += (baseScale - 12) * 2
+    if (baseScale >= 11) { //accumulative with the >= 8 buff
+      maxFrequency += (baseScale - 10) * 2
     }
 
     maxFrequency
