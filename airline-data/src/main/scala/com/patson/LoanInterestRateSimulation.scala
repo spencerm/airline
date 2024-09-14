@@ -9,10 +9,9 @@ import scala.util.Random
 
 object LoanInterestRateSimulation {
 
-  val PREVIOUS_RATE_ENTRIES_TO_CONSIDER = 20
-
+  val PREVIOUS_RATE_ENTRIES_TO_CONSIDER = 10
   def simulate(cycle: Int) : Unit = {
-    val fromCycle = cycle - PREVIOUS_RATE_ENTRIES_TO_CONSIDER //last 20 weeks have influence on the rate calculation
+    val fromCycle = cycle - PREVIOUS_RATE_ENTRIES_TO_CONSIDER //last 10 weeks have influence on the rate calculation
     val rates = BankSource.loadLoanInterestRatesFromCycle(fromCycle).sortBy(_.cycle).map(_.annualRate)
     val nextRate = getNextRate(rates)
     if (!rates.isEmpty) {
@@ -69,8 +68,8 @@ object LoanInterestRateSimulation {
     }
   }
 
-  val MAX_DELTA : BigDecimal = 0.01
-  val RATE_STEP : BigDecimal = 0.001 // 0.1 % is a step
+  val MAX_DELTA : BigDecimal = 0.01 // rate can''t change more than 100 basis point per cycle.
+  val RATE_STEP : BigDecimal = 0.0005 // 5 basis point is a step.
   val MIN_RATE : BigDecimal = -0.042 //min rate is -4,2%
   val MAX_RATE = 0.42 //max rate is 42% annual
   val BOUNDARY_ZONE_FACTOR_LOW : BigDecimal = 0.13 //bottom 13% are considered outside of boundary
