@@ -9,7 +9,7 @@ case class GenericTransit(from : Airport, to : Airport, distance : Int, var capa
 
   override val flightType : FlightType.Value = FlightType.SHORT_HAUL_DOMESTIC
 
-  override val cost : LinkClassValues = LinkClassValues.getInstance(economy = Pricing.computeStandardPrice(distance, FlightType.SHORT_HAUL_DOMESTIC, ECONOMY)) * 0.4 //hidden cost of general transit
+  override val cost : LinkClassValues = LinkClassValues.getInstance(economy = Pricing.computeStandardPrice(distance, FlightType.SHORT_HAUL_DOMESTIC, ECONOMY)) * 0.3 //hidden cost of general transit
 
   val upkeep = 0
   override var minorDelayCount : Int = 0

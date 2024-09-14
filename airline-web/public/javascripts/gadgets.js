@@ -359,7 +359,7 @@ function getRankingImg(ranking, limitToTop3 = false) {
 	} else if (ranking <= 10 && limitToTop3 !== true) {
 		rankingIcon = "assets/images/icons/trophy-" + ranking + ".png"
 		rankingTitle = ranking + "th place"
-	} else if (ranking <= 20) {
+	} else if (ranking <= 20 && limitToTop3 !== true) {
 		rankingIcon = "assets/images/icons/counter-" + ranking + ".png"
         rankingTitle = ranking + "th place"
 	}
