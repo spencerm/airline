@@ -129,6 +129,14 @@ function fadeInMarkerRecursive(marker) {
 	}
 }
 
+function toLinkPercentOfBasePrices(priceValues, basePrice) {
+	var economyValue = priceValues.hasOwnProperty('economy') ? (priceValues.economy * 100 / basePrice.economy).toFixed(0) : '-'
+	var businessValue = priceValues.hasOwnProperty('business') ? (priceValues.business * 100 / basePrice.business).toFixed(0) : '-'
+	var firstValue = priceValues.hasOwnProperty('first') ? (priceValues.first * 100 / basePrice.first).toFixed(0) : '-'
+
+    return  economyValue + "%" + " / " + businessValue + "%" + " / " + firstValue + "%"
+}
+
 function toLinkClassValueString(linkValues, prefix, suffix) {
 	if (!prefix) {
 		prefix = ""

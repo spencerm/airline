@@ -832,11 +832,13 @@ function researchFlight(fromAirportId, toAirportId) {
                 $("#researchSearchResult .table.links .table-row").remove()
 
                 $.each(result.links, function(index, link) {
+                    const loadFactor = Math.round(result.consumptions[index].soldSeats * 100 / link.capacity.total)
                     var $row = $("<div class='table-row'><div class='cell'>" + link.airlineName
-                        + "</div><div class='cell'>" + toLinkClassValueString(link.price, "$")
+                        + "</div><div class='cell'>" + toLinkPercentOfBasePrices(link.price, result.basePrice)
                         + "</div><div class='cell'>" + toLinkClassValueString(link.capacity)
+                        + "</div><div class='cell'>" + link.frequency
                         + "</div><div class='cell'>" + link.computedQuality
-                        + "</div><div class='cell'>" + link.frequency + "</div></div>")
+                        + "</div><div class='cell'>" + loadFactor + "%</div></div>")
                     $('#researchSearchResult .table.links').append($row)
                 })
                 if (result.links.length == 0) {
