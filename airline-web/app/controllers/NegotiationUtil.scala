@@ -91,15 +91,15 @@ object NegotiationUtil {
 
     val officeStaffCount : Int = baseOption.map(_.getOfficeStaffCapacity).getOrElse(0)
     val airlineLinksFromThisAirport = airlineLinks.filter(link => link.from.id == airport.id && (isNewLink || link.id != existingLinkOption.get.id))
-    val currentOfficeStaffUsed = airlineLinksFromThisAirport.map(_.getFutureOfficeStaffMinimizedRequired).sum
-    val newOfficeStaffRequired = newLink.getFutureOfficeStaffMinimizedRequired
+    val currentOfficeStaffUsed = airlineLinksFromThisAirport.map(_.getFutureOfficeStaffRequired).sum
+    val newOfficeStaffRequired = newLink.getFutureOfficeStaffRequired
     val newTotal = currentOfficeStaffUsed + newOfficeStaffRequired
 
     if (newTotal < officeStaffCount) {
-      requirements.append(NegotiationRequirement(STAFF_CAP, 0, s"Requires ${newOfficeStaffRequired} office staff (minimized), within your base capacity : ${newTotal} / ${officeStaffCount}"))
+      requirements.append(NegotiationRequirement(STAFF_CAP, 0, s"Requires ${newOfficeStaffRequired} office staff, within your base capacity : ${newTotal} / ${officeStaffCount}"))
     } else {
       val requirement = (newTotal - officeStaffCount).toDouble / 10
-      requirements.append(NegotiationRequirement(STAFF_CAP, requirement, s"Requires ${newOfficeStaffRequired} office staff (minimized), over your base capacity : ${newTotal} / ${officeStaffCount}"))
+      requirements.append(NegotiationRequirement(STAFF_CAP, requirement, s"Requires ${newOfficeStaffRequired} office staff, over your base capacity : ${newTotal} / ${officeStaffCount}"))
     }
 
     val mutualRelationship = CountrySource.getCountryMutualRelationship(newLink.from.countryCode, newLink.to.countryCode)
@@ -526,7 +526,7 @@ abstract class NegotiationDiscount(val adjustmentType : NegotiationDiscountType.
     case OVER_CAPACITY => s"${airport.displayText} is over capacity"
     case LOYALTY => s"Loyalty of ${airport.displayText}"
     case BASE => s"Airline base"
-    case ALLIANCE_BASE => s"Alliance member hq/base as ranked champion "
+    case ALLIANCE_BASE => s"Alliance partner hq/base is ranked champion "
     case NEW_AIRLINE => s"New airline bonus"
     case MAIDEN_INTERNATIONAL => "No flights between these 2 countries yet"
     case _ => s"Unknown"
