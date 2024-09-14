@@ -816,7 +816,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def getChampionedAirports(airlineId : Int) = Authenticated { implicit request =>
     val championedAirportsByThisAirline  = ChampionUtil.loadAirportChampionInfoByAirline(airlineId).sortBy(_.reputationBoost)(Ordering[Double].reverse)
 
-    Ok(Json.obj("airports" -> championedAirportsByThisAirline))
+    Ok(Json.toJson(championedAirportsByThisAirline))
   }
 
 
