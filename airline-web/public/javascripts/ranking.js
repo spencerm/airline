@@ -125,7 +125,11 @@ function getRankingRow(ranking) {
 	if (ranking.airlineId) {
 		var entry = getAirlineSpan(ranking.airlineId, ranking.airlineName)
 		if (ranking.rankInfo) {
-			entry += ' : ' + ranking.rankInfo
+		    if (ranking.rankInfo.from && ranking.rankInfo.to) {
+		        entry += ' : ' + "<span style='vertical-align:bottom'>" + getAirportSpan(ranking.rankInfo.from) + "<img style='vertical-align:bottom; margin:0 3px;' src='assets/images/icons/12px/arrow-double.png'/>" + getAirportSpan(ranking.rankInfo.to) + "</span>"
+		    } else {
+			    entry += ' : ' + ranking.rankInfo
+            }
 		}
 		var $airlineDiv = $("<div class='cell'>" + entry + "</div>").appendTo(row)
 		addAirlineTooltip($airlineDiv, ranking.airlineId, ranking.airlineSlogan, ranking.airlineName)

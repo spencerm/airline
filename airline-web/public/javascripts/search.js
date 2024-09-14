@@ -195,13 +195,7 @@ function searchRoute(fromAirportId, toAirportId) {
                             }
 
                             if (remarks.length > 0) {
-                                var remarksText = ""
-                                for (i = 0 ; i < remarks.length; i++) {
-                                    if (i > 0) {
-                                        linkDurationText += ", "
-                                    }
-                                    remarksText += remarks[i]
-                                }
+                                var remarksText = remarks.join(", ")
                                 linkDurationText += "(" + remarksText + ")"
                             }
 
@@ -806,9 +800,12 @@ function researchFlight(fromAirportId, toAirportId) {
                 loadAirportImage(fromAirportId, $('#researchSearchResult img.fromAirport') )
                 loadAirportImage(toAirportId, $('#researchSearchResult img.toAirport'))
                 $("#researchSearchResult .fromAirportText").text(result.fromAirportText)
+		        $("#researchSearchResult .fromAirportText")[0].setAttribute("onclick", `showAirportDetails(${fromAirportId})`)
                 $("#researchSearchResult .fromAirport .population").text(commaSeparateNumber(result.fromAirport.population))
                 $("#researchSearchResult .fromAirport .incomeLevel").text(result.fromAirport.incomeLevel)
                 $("#researchSearchResult .toAirportText").text(result.toAirportText)
+		        $("#researchSearchResult .toAirportText")[0].setAttribute("onclick", `showAirportDetails(${toAirportId})`)
+		        populateNavigation($("#researchSearchResult"))
                 $("#researchSearchResult .toAirport .population").text(commaSeparateNumber(result.toAirport.population))
                 $("#researchSearchResult .toAirport .incomeLevel").text(result.toAirport.incomeLevel)
 
@@ -835,11 +832,13 @@ function researchFlight(fromAirportId, toAirportId) {
                 $("#researchSearchResult .table.links .table-row").remove()
 
                 $.each(result.links, function(index, link) {
+                    const loadFactor = Math.round(result.consumptions[index].soldSeats * 100 / link.capacity.total)
                     var $row = $("<div class='table-row'><div class='cell'>" + link.airlineName
-                        + "</div><div class='cell'>" + toLinkClassValueString(link.price, "$")
+                        + "</div><div class='cell'>" + toLinkPercentOfBasePrices(link.price, result.basePrice)
                         + "</div><div class='cell'>" + toLinkClassValueString(link.capacity)
+                        + "</div><div class='cell'>" + link.frequency
                         + "</div><div class='cell'>" + link.computedQuality
-                        + "</div><div class='cell'>" + link.frequency + "</div></div>")
+                        + "</div><div class='cell'>" + loadFactor + "%</div></div>")
                     $('#researchSearchResult .table.links').append($row)
                 })
                 if (result.links.length == 0) {

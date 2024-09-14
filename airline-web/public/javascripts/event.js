@@ -486,6 +486,7 @@ function confirmOlympicsVotes() {
 	    success: function(airline) {
 	        closeModal($("#olympicsVoteModal"))
 	        loadOlympicsDetails($('#olympicsTable .table-row.selected'))
+	        checkPendingActions()
 	    },
         error: function(jqXHR, textStatus, errorThrown) {
 	            console.log(JSON.stringify(jqXHR));
