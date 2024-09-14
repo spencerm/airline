@@ -788,7 +788,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
   def getServiceFundingProjection(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
     val targetQuality = request.user.getTargetServiceQuality()
-    val targetQualityCost = Math.pow(targetQuality.toDouble / 25, 1.92)
+    val targetQualityCost = Math.pow(targetQuality.toDouble / 25, 1.96)
     val links = LinkSource.loadFlightLinksByAirlineId(airlineId)
     var crewCost = 0
 
@@ -816,7 +816,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def getChampionedAirports(airlineId : Int) = Authenticated { implicit request =>
     val championedAirportsByThisAirline  = ChampionUtil.loadAirportChampionInfoByAirline(airlineId).sortBy(_.reputationBoost)(Ordering[Double].reverse)
 
-    Ok(Json.obj("airports" -> championedAirportsByThisAirline, "maxEntries" -> AirlineSimulation.MAX_AIRPORT_CHAMPION_BOOST_ENTRIES))
+    Ok(Json.obj("airports" -> championedAirportsByThisAirline))
   }
 
 

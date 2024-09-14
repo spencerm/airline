@@ -24,7 +24,6 @@ object AirlineSimulation {
   val MINIMUM_CASH_BALANCE_STOCKS = 10000000 //10M
   val BANKRUPTCY_ASSETS_THRESHOLD = -50000000 //-50M
   val BANKRUPTCY_CASH_THRESHOLD = -10000000 //-10M
-  val MAX_AIRPORT_CHAMPION_BOOST_ENTRIES = 120 //per airline, how many airport champ entries can it add up for reputation boost
 
   def airlineSimulation(cycle: Int, flightLinkResult : List[LinkConsumptionDetails], loungeResult : scala.collection.immutable.Map[Lounge, LoungeConsumptionDetails], airplanes : List[Airplane], airlineStats : List[AirlineStat]) = {
     val allAirlines = AirlineSource.loadAllAirlines(true)
