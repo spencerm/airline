@@ -260,7 +260,7 @@ object LinkSimulation {
         depreciation += (airplane.depreciationRate * assignmentWeights(airplane)).toInt
     }
 
-    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 25, 1.92)
+    val targetQualityCost = Math.pow(flightLink.airline.getTargetServiceQuality().toDouble / 25, 1.96)
     var crewCost = CREW_BASE_COST
     var inflightCost, revenue = 0
     LinkClass.values.foreach { linkClass =>
@@ -329,7 +329,7 @@ object LinkSimulation {
     val star = link.rawQuality / 20
     val durationCostPerHour =
       if (star == 1) {
-        -4 //selling food & credit cards :)
+        -4.5 //selling food & credit cards :)
       } else if (star == 2) {
         0
       } else if (star == 3) {
@@ -337,7 +337,7 @@ object LinkSimulation {
       } else if (star == 4) {
         7
       } else {
-        14.5
+        15
       }
 
     val costPerPassenger = classMultiplier * durationCostPerHour * link.duration.toDouble / 60

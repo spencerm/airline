@@ -52,10 +52,10 @@ public class SearchUtil {
 				System.out.println("Initializing ES countires");
 				initCountries(client);
 			}
-			if (!isIndexExist(client, "zones")) {
-				System.out.println("Initializing ES zones");
-				initZones(client);
-			}
+//			if (!isIndexExist(client, "zones")) {
+//				System.out.println("Initializing ES zones");
+//				initZones(client);
+//			}
 			if (!isIndexExist(client, "airlines")) {
 				System.out.println("Initializing ES airlines");
 				initAirlines(client);
@@ -82,8 +82,8 @@ public class SearchUtil {
 			initAirports(client);
 			System.out.println("Initializing ES countires");
 			initCountries(client);
-			System.out.println("Initializing ES zones");
-			initZones(client);
+//			System.out.println("Initializing ES zones");
+//			initZones(client);
 			System.out.println("Initializing ES airlines");
 			initAirlines(client);
 			System.out.println("Initializing ES alliances");

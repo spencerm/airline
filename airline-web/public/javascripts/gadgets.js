@@ -129,6 +129,14 @@ function fadeInMarkerRecursive(marker) {
 	}
 }
 
+function toLinkPercentOfBasePrices(priceValues, basePrice) {
+	var economyValue = priceValues.hasOwnProperty('economy') ? (priceValues.economy * 100 / basePrice.economy).toFixed(0) : '-'
+	var businessValue = priceValues.hasOwnProperty('business') ? (priceValues.business * 100 / basePrice.business).toFixed(0) : '-'
+	var firstValue = priceValues.hasOwnProperty('first') ? (priceValues.first * 100 / basePrice.first).toFixed(0) : '-'
+
+    return  economyValue + "%" + " / " + businessValue + "%" + " / " + firstValue + "%"
+}
+
 function toLinkClassValueString(linkValues, prefix, suffix) {
 	if (!prefix) {
 		prefix = ""
@@ -351,12 +359,15 @@ function getRankingImg(ranking, limitToTop3 = false) {
 	} else if (ranking <= 10 && limitToTop3 !== true) {
 		rankingIcon = "assets/images/icons/trophy-" + ranking + ".png"
 		rankingTitle = ranking + "th place"
+	} else if (ranking <= 20 && limitToTop3 !== true) {
+		rankingIcon = "assets/images/icons/counter-" + ranking + ".png"
+        rankingTitle = ranking + "th place"
 	}
 	
 	if (rankingIcon) {
 		return "<img src='" + rankingIcon + "' title='" + rankingTitle + "' style='vertical-align:middle; padding-right: 2px;'/>"
 	} else {
-		return ""
+		return "<span>" + ranking + "</span>"
 	}
 }
 
@@ -621,11 +632,14 @@ function closeModal(modal) {
 }
 
 function closeAllModals() {
+    var closedModals = []
     $.each($(".modal"), function(index, modal) {
         if ($(modal).is(":visible")) {
             closeModal($(modal))
+             closedModals.push(modal);  // Add the closed modal to the array
         }
     });
+    return closedModals
 }
 
 function disableButton(button, reason) {

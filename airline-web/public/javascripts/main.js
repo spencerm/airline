@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
 	window.addEventListener('orientationchange', refreshMobileLayout)
 
-//    populateLookups()
+    populateLookups()
 	if ($.cookie('sessionActive')) {
 		loadUser(false)
 	} else {
@@ -273,11 +273,13 @@ function logout() {
 function showUserSpecificElements() {
 	$('.user-specific-tab').show()
 	$('.topBarDetails').show()
+	$('.topBarDetails').parent().removeClass('hide-empty') //hack to avoid empty floating div for modern layout
 }
 
 function hideUserSpecificElements() {
 	$('.user-specific-tab').hide()
 	$('.topBarDetails').hide()
+	$('.topBarDetails').parent().addClass('hide-empty') //hack to avoid empty floating div for modern layout
 }
 
 
@@ -435,51 +437,74 @@ function refreshPanels(airlineId) {
 
 var totalmillisecPerWeek = 7 * 24 * 60 * 60 * 1000
 var refreshInterval = 5000 //every 5 second
-var incrementPerInterval = totalmillisecPerWeek / (15 * 60 * 1000) * refreshInterval //by default 15 minutes per week
-var durationTillNextTick
 var hasTickEstimation = false
-var refreshIntervalTimer
 var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+var currentTickTimer
+var tickTimerCreator
 
 function updateTime(cycle, fraction, cycleDurationEstimation) {
 	$(".currentTime").attr("title", "Current Cycle: " + cycle)
-	currrentCycle = cycle
-	currentTime = (cycle + fraction) * totalmillisecPerWeek 
-	if (refreshIntervalTimer) {
-	    //cancel old timer
-	    clearInterval(refreshIntervalTimer)
-	 }
+	gameTimeStart = (cycle + fraction) * totalmillisecPerWeek
 
-	 if (cycleDurationEstimation > 0) { //update incrementPerInterval
-	    incrementPerInterval = totalmillisecPerWeek / cycleDurationEstimation * refreshInterval
-	    durationTillNextTick = cycleDurationEstimation * (1 - fraction)
+    var initialDurationTillNextTick
+	if (cycleDurationEstimation > 0) { //update incrementPerInterval
+	    initialDurationTillNextTick = cycleDurationEstimation * (1 - fraction)
 	    hasTickEstimation = true
-	 }
-	 //start incrementing
-	refreshIntervalTimer = setInterval( function() {
-			currentTime += incrementPerInterval
-			if (hasTickEstimation) {
-			    durationTillNextTick -= refreshInterval
-			}
-			var date = new Date(currentTime)
-			$(".currentTime").text("(" + days[date.getDay()] + ") " + padBefore(date.getMonth() + 1, "0", 2) + '/' + padBefore(date.getDate(), "0", 2) +  " " + padBefore(date.getHours(), "0", 2) + ":00")
+	}
 
-			if (hasTickEstimation) {
-			    var minutesLeft = Math.round(durationTillNextTick / 1000 / 60)
-			    if (minutesLeft <= 0) {
-			        $(".nextTickEstimation").text("Very soon")
-			    } else if (minutesLeft == 1) {
-			        $(".nextTickEstimation").text("1 minute")
-			    } else {
-			        $(".nextTickEstimation").text(minutesLeft + " minutes")
-			    }
-            } else {
-                $(".nextTickEstimation").text("Estimating...")
-            }
-		}, refreshInterval);
+	var wallClockStart = new Date()
 
+	//how much wall clock duration should be multiplied as game time duration
+	var timeMultiplier = cycleDurationEstimation > 0 ?
+	    totalmillisecPerWeek / cycleDurationEstimation :
+		totalmillisecPerWeek / (30 * 60 * 1000) //by default 30 minutes per week
+
+
+	if (currentTickTimer) {
+	    clearInterval(currentTickTimer)
+	}
+
+
+    var updateTimerFunction = function() {
+        var currentWallClock = new Date()
+        var wallClockDurationSinceStart = currentWallClock.getTime() - wallClockStart.getTime()
+
+        var durationTillNextTick = initialDurationTillNextTick - wallClockDurationSinceStart
+
+        var currentGameTime = gameTimeStart + wallClockDurationSinceStart * timeMultiplier
+        var currentGameDate = new Date(currentGameTime)
+        $(".currentTime").text("(" + days[currentGameDate.getDay()] + ") " + padBefore(currentGameDate.getMonth() + 1, "0", 2) + '/' + padBefore(currentGameDate.getDate(), "0", 2) +  " " + padBefore(currentGameDate.getHours(), "0", 2) + ":00")
+
+        if (hasTickEstimation) {
+          var minutesLeft = Math.round(durationTillNextTick / 1000 / 60)
+          if (minutesLeft <= 0) {
+              $(".nextTickEstimation").text("Very soon")
+          } else if (minutesLeft == 1) {
+              $(".nextTickEstimation").text("1 minute")
+          } else {
+              $(".nextTickEstimation").text(minutesLeft + " minutes")
+          }
+        }
+    }
+    tickTimerCreator = function() {
+        updateTimerFunction()
+        var newTimer = setInterval(updateTimerFunction, refreshInterval);
+        return newTimer
+    }
+
+	currentTickTimer = tickTimerCreator()
 }
+
+
+// Handle tab visibility change
+document.addEventListener('visibilitychange', function () {
+    clearInterval(currentTickTimer);
+    if (!document.hidden && tickTimerCreator) {
+        console.log("Recreating tick timer!")
+        currentTickTimer = tickTimerCreator()
+    }
+});
 
 
 //function printConsole(message, messageLevel, activateConsole, persistMessage) {
@@ -592,27 +617,24 @@ function populateDataPropertyTooltips() {
 
 }
 
-//var airlineGradeLookup
-//function populateLookups() {
-//    loadAllCountries()
-//    $.ajax({
-//		type: 'GET',
-//		url: "lookups",
-//	    contentType: 'application/json; charset=utf-8',
-//	    dataType: 'json',
-//	    async: false,
-//	    success: function(result) {
-//	    	airlineGradeLookup = result.airlineGradeLookup
-//	    	airlineGradeTourists = result.airlineGradeTourists
-//	    	airlineGradeElites = result.airlineGradeElites
-//	    	airlineGradeStockPrice = result.airlineGradeStockPrice
-//	    },
-//	    error: function(jqXHR, textStatus, errorThrown) {
-//	            console.log(JSON.stringify(jqXHR));
-//	            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-//	    }
-//	});
-//}
+var airlineGradeLookup
+function populateLookups() {
+    loadAllCountries()
+    $.ajax({
+		type: 'GET',
+		url: "lookups",
+	    contentType: 'application/json; charset=utf-8',
+	    dataType: 'json',
+	    async: false,
+	    success: function(result) {
+	    	airlineGradeLookup = result.airlineGradeLookup
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	            console.log(JSON.stringify(jqXHR));
+	            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+	    }
+	});
+}
 
 function showTutorial() {
 	// Get the modal
@@ -715,13 +737,22 @@ function populateNavigation(parent) { //change all the tabs to do fake url
     parent.find('[data-link]').andSelf().filter('[data-link]').each(function() {
         $(this).off('click.nav')
 
-        var onclickFunction = $(this).attr("onclick")
         var path = $(this).data("link") != "/" ? ("nav-" + $(this).data("link")) : "/"
-        //console.log(path + " " + onclickFunction)
 
-        $(this).on('click.nav', function() {
-            history.pushState({ "onclickFunction" : onclickFunction }, null, path);
-        })
+        var onbackFunction = $(this).attr("onback") //prefer onback function, so we can pass a flag
+        if (onbackFunction !== undefined) {
+            $(this).on('click.nav', function() {
+                history.pushState({ "onbackFunction" : onbackFunction}, null, path);
+            })
+        } else {
+            var onclickFunction = $(this).attr("onclick")
+
+            //console.log(path + " " + onclickFunction)
+
+            $(this).on('click.nav', function() {
+                history.pushState({ "onclickFunction" : onclickFunction}, null, path);
+            })
+        }
 //
 //        if (onclickFunction) {
 //            eval(onclickFunction)
@@ -752,16 +783,14 @@ function initTabGroup() {
     //$("#tabGroup").mouseenter(() => showTabGroup()).mouseleave(() => { console.log('out'); hideTabGroup() })
 
 
-    $("#tabGroup .tab-icon").on('mouseenter touchstart',
-        function() {
-            $(this).closest('.left-tab').find('.label').fadeIn(200)
-        }
-    )
-    $("#tabGroup .tab-icon").on('mouseleave touchend',
-        function() {
-            $(this).closest('.left-tab').find('.label').hide()
-        }
-    )
+    $("#tabGroup .tab-icon").on('mouseenter touchstart', function() {
+        $(this).closest('.left-tab').find('.label').show();
+    });
+
+    $("#tabGroup .tab-icon").on('mouseleave touchend', function() {
+        $(this).closest('.left-tab').find('.label').hide();
+    });
+
 
 //    $("#canvas").on( "swiperight", function( e ) {
 //        if ($('#canvas')[0].scrollLeft == 0) {
@@ -827,7 +856,11 @@ function toggleAutoplay() {
 }
 
 window.addEventListener('popstate', function(e) {
-    if (e.state && e.state.onclickFunction) {
-        eval(e.state.onclickFunction)
+    if (e.state) {
+        if (e.state.onbackFunction) {
+            eval(e.state.onbackFunction) //onback has higher precedence
+        } else if (e.state.onclickFunction) {
+            eval(e.state.onclickFunction)
+        }
     }
 });

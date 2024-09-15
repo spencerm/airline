@@ -24,14 +24,13 @@ object NegotiationUtil {
   val FREE_LINK_DIFFICULTY_THRESHOLD = 10
   val GREAT_SUCCESS_THRESHOLD = 0.95 // 5%
 
-
-  def negotiate(info : NegotiationInfo, delegateCount : Int) = {
+  def negotiate(info: NegotiationInfo, delegateCount: Int): NegotiationResult = {
     val odds = info.odds.get(delegateCount) match {
       case Some(value) => value
-      case None => 0
+      case None => 1.0
     }
-    val number = Math.random()
-    NegotiationResult(1 - odds, number)
+    val threshold = Math.random()
+    NegotiationResult(1 - odds, threshold)
   }
 
 
@@ -68,8 +67,8 @@ object NegotiationUtil {
     if (baseScale >= 8) {
       maxFrequency += (baseScale - 7) * 2
     }
-    if (baseScale >= 13) { //accumulative with the >= 8 buff
-      maxFrequency += (baseScale - 12) * 2
+    if (baseScale >= 11) { //accumulative with the >= 8 buff
+      maxFrequency += (baseScale - 10) * 2
     }
 
     maxFrequency
@@ -339,14 +338,13 @@ object NegotiationUtil {
     }
 
     val airportChampionAirlineIds = ChampionUtil.loadAirportChampionInfoByAirport(airport.id).map(_.loyalist.airline.id)
-    allianceMembers.foreach { allianceMember =>
-      if (allianceMember.airline.getBases().map(_.airport.id).contains(airport.id)) {
-        if (allianceMember.airline.id != airline.id && airportChampionAirlineIds.contains(allianceMember.airline.id)) {
-          if (discounts.find(_.adjustmentType == ALLIANCE_BASE).isEmpty) { //only add once
-            discounts.append(SimpleNegotiationDiscount(ALLIANCE_BASE, 0.2))
-          }
-        }
-      }
+    val allianceBases = allianceMembers.flatMap(_.airline.getBases()).filter(_.airport.id == airport.id).filter(_.airline != airline.id)
+
+    val championAllianceBases = allianceBases.filter(base => airportChampionAirlineIds.contains(base.airline.id))
+    if (championAllianceBases.find(_.headquarter).isDefined) {
+      discounts.append(SimpleNegotiationDiscount(ALLIANCE_BASE, 0.3))
+    } else if (!championAllianceBases.isEmpty) {
+      discounts.append(SimpleNegotiationDiscount(ALLIANCE_BASE, 0.2))
     }
 
     airport.getAirlineBase(airline.id).foreach {
@@ -528,7 +526,7 @@ abstract class NegotiationDiscount(val adjustmentType : NegotiationDiscountType.
     case OVER_CAPACITY => s"${airport.displayText} is over capacity"
     case LOYALTY => s"Loyalty of ${airport.displayText}"
     case BASE => s"Airline base"
-    case ALLIANCE_BASE => s"Alliance member base as ranked champion "
+    case ALLIANCE_BASE => s"Alliance partner hq/base is ranked champion "
     case NEW_AIRLINE => s"New airline bonus"
     case MAIDEN_INTERNATIONAL => "No flights between these 2 countries yet"
     case _ => s"Unknown"

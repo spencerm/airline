@@ -109,6 +109,7 @@ GET		 /airlines/:airlineId/alliance-details  controllers.AllianceApplication.get
 GET      /airlines/:airlineId/fleet			  controllers.AirlineApplication.getFleet(airlineId : Int)
 GET		 /alliances  controllers.AllianceApplication.getAlliances(airlineId : Option[Int])
 GET		 /alliances/:allianceId/details  controllers.AllianceApplication.getAllAllianceDetails(allianceId : Int)
+GET		 /alliances/:allianceId/member-login-status  controllers.AllianceApplication.getMemberLoginStatus(allianceId : Int)
 GET		 /alliances/:allianceId/championed-airports	controllers.AllianceApplication.getAllianceAirportChampions(allianceId : Int)
 GET		 /alliances/:allianceId/championed-countries	controllers.AllianceApplication.getAllianceCountryChampions(allianceId : Int)
 POST	 /airlines/:airlineId/form-alliance  controllers.AllianceApplication.formAlliance(airlineId : Int)
@@ -188,7 +189,7 @@ GET      /delegates/airline/:airlineId      controllers.DelegateApplication.getD
 GET      /delegates/airline/:airlineId/country/:countryCode      controllers.DelegateApplication.getCountryDelegates(countryCode : String, airlineId: Int)
 POST      /delegates/airline/:airlineId/country/:countryCode      controllers.DelegateApplication.updateCountryDelegates(countryCode : String, airlineId: Int)
 
-GET		 /santa-claus/guess/:airportId/:airlineId   controllers.ChristmasApplication.makeGuess(airportId : Int, airlineId : Int)
+GET		 /santa-claus/guess/:airportId/:airlineId/:difficulty   controllers.ChristmasApplication.makeGuess(airportId : Int, airlineId : Int, difficulty : String)
 GET		 /santa-claus/attempt-status/:airportId/:airlineId  controllers.ChristmasApplication.getAttemptStatus(airportId : Int, airlineId : Int)
 GET		 /santa-claus/award-options/:airlineId  controllers.ChristmasApplication.getAwardOptions(airlineId : Int)
 GET      /santa-claus/pick-award/:airlineId/:optionId   controllers.ChristmasApplication.pickAwardOption(airlineId : Int, optionId : Int)
@@ -227,6 +228,8 @@ GET     /event/:eventId/airline/:airlineId/reward/olympics-vote  controllers.Oly
 GET     /event/:eventId/airline/:airlineId/reward/olympics-passenger  controllers.OlympicsApplication.getOlympicsPassengerRewardOptions(airlineId : Int, eventId : Int)
 
 GET     /banner    controllers.BannerApplication.getBanner()
+
+GET     /broadcaster-direct/trigger-prompts-check/:airlineId  controllers.BroadcasterDirectApplication.triggerPromptsCheck(airlineId : Int)
 
 # Admin
 PUT		 /admin-action/:action/:targetUserId		controllers.AdminApplication.adminAction(action : String, targetUserId : Int)

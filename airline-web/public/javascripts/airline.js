@@ -10,12 +10,13 @@ const CLASSES = ['Economy', 'Business', 'First'];
 
 $( document ).ready(function() {
     $('#linkEventModal .filterCheckboxes input:checkbox').change(function() {
-        var filterType = $(this).data('filter')
-        if ($(this).prop('checked')) {
-            $("#linkEventModal .linkEventHistoryTable .table-row.filter-" + filterType).show()
-        } else {
-            $("#linkEventModal .linkEventHistoryTable .table-row.filter-" + filterType).hide()
-        }
+        $("#linkEventModal .linkEventHistoryTable .table-row").hide() //hide all first
+        $('#linkEventModal .filterCheckboxes input:checkbox').each(function() { //have to iterate them, as they are not mutually exclusive...
+           var filterType = $(this).data('filter')
+           if ($(this).prop('checked')) {
+               $("#linkEventModal .linkEventHistoryTable .table-row.filter-" + filterType).show()
+           }
+        });
     })
 })
 
@@ -261,6 +262,7 @@ function updateLinksInfo() {
 		    		drawFlightPath(link)
 		  		});
 		    	updateLoadedLinks(links);
+		    	updateAirportMarkers(activeAirline)
 		    },
 	        error: function(jqXHR, textStatus, errorThrown) {
 		            console.log(JSON.stringify(jqXHR));
@@ -410,9 +412,14 @@ function highlightPath(path, refocus) {
 
 
 	if (!path.highlighted) { //only highlight again if it's not already done so
-	    path.setOptions({ strokeOpacity : pathOpacityByStyle[currentStyles].highlight })
-		var originalColorString = path.strokeColor
+	    var originalColorString = path.strokeColor
+		//keep track of original values so we can revert...shouldn't there be a better way to just get all options all at once?
 		path.originalColor = originalColorString
+		path.originalStrokeWeight = path.strokeWeight
+		path.originalZIndex = path.zIndex
+		path.originalStrokeOpacity = path.strokeOpacity
+
+		path.setOptions({ strokeOpacity : pathOpacityByStyle[currentStyles].highlight })
 		var totalFrames = 20
 
 		var rgbHexValue = parseInt(originalColorString.substring(1), 16);
@@ -455,8 +462,8 @@ function highlightPath(path, refocus) {
 function unhighlightPath(path) {
 	window.clearInterval(path.animation)
 	path["animation"] = undefined
-	path.setOptions({ strokeColor : path.originalColor , strokeWeight : 2, zIndex : 90, strokeOpacity : pathOpacityByStyle[currentStyles].normal})
-
+	path.setOptions({ strokeColor : path.originalColor , strokeWeight : path.originalStrokeWeight, zIndex : path.originalZIndex, strokeOpacity : path.originalStrokeOpacity})
+	
 	delete path.highlighted
 }
 
@@ -685,14 +692,11 @@ function refreshLinkDetails(linkId) {
 	    	    success: function(linkConsumptions) {
 	    	    	$("#linkCompetitons .data-row").remove()
 	    	    	$.each(linkConsumptions, function(index, linkConsumption) {
-    	    			var row = $("<div class='table-row data-row clickable' data-link='rival'><div style='display: table-cell;'>" + linkConsumption.airlineName
+    	    			var row = $("<div class='table-row data-row clickable' onclick='showRivalsCanvas(" + linkConsumption.airlineId + ")' data-link='rival'><div style='display: table-cell;'>" + linkConsumption.airlineName
                                   		    	    				+ "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
                                   		    	    				+ "</div><div style='display: table-cell; text-align: right;'>" + toLinkClassValueString(linkConsumption.capacity)
                                   		    	    				+ "</div><div style='display: table-cell; text-align: right;'>" + linkConsumption.quality
                                   		    	    				+ "</div><div style='display: table-cell; text-align: right;'>" + linkConsumption.frequency + "</div></div>")
-                        row.click(function() {
-                            showRivalsCanvas(linkConsumption.airlineId)
-                        })
                         if (linkConsumption.airlineId == airlineId) {
                             $("#linkCompetitons .table-header").after(row) //self is always on top
                         } else {
@@ -1002,39 +1006,73 @@ function updatePlanLinkInfo(linkInfo, isRefresh) {
 
 	 //+ " (business: " + linkInfo.businessPassengers + " tourist: " + linkInfo.touristPassengers + ")")
 	//$('#planLinkAirportLinkCapacity').text(linkInfo.airportLinkCapacity)
+	
+	
+	$("#planLinkCompetitors .data-row").remove()
 
-
-	$("#planLinkCompetitons .data-row").remove()
+	linkInfo.otherLinks.sort(function(a, b) {
+        return b.capacity.total - a.capacity.total;
+    });
 	$.each(linkInfo.otherLinks, function(index, linkConsumption) {
-		if (linkConsumption.linkId != linkInfo.id) {
-			$("#planLinkCompetitons").append("<div class='table-row data-row'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
+		if (linkConsumption.airlineId != activeAirline.id) {
+		    let loadFactorPercentage = Math.round(linkConsumption.soldSeats * 100 / linkConsumption.capacity.total)
+			$("#planLinkCompetitors").append("<div class='table-row data-row'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
 				    	    			   + "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
 				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity)
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency
 				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.quality
-				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency + "</div></div>")
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + loadFactorPercentage + "</div></div>")
 		}
 	})
+
+	if ($("#planLinkCompetitors .data-row").length < 6) { //then additional info
+	    linkInfo.otherViaLocalTransitLinks.sort(function(a, b) {
+            return b.capacity.total - a.capacity.total;
+        });
+	    $.each(linkInfo.otherViaLocalTransitLinks, function(index, linkConsumption) { //reachable by 1 local transit
+			if (linkConsumption.airlineId != activeAirline.id) {
+				let loadFactorPercentage = Math.round(linkConsumption.soldSeats * 100 / linkConsumption.capacity.total)
+				var $row = $("<div class='table-row data-row' style='opacity: 60%'><div style='display: table-cell;'>" + getAirlineSpan(linkConsumption.airlineId, linkConsumption.airlineName)
+								+ "</div><div style='display: table-cell;'>" + toLinkClassValueString(linkConsumption.price, "$")
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + toLinkClassValueString(linkConsumption.capacity)
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.frequency
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + linkConsumption.quality
+				    	    			   + "</div><div style='display: table-cell; text-align:right;'>" + loadFactorPercentage + "</div></div>")
+				let phrases = []
+				if (linkConsumption.altFrom) {
+					phrases.push("Depart from " + linkConsumption.altFrom)
+				}
+				if (linkConsumption.altTo) {
+					phrases.push("Arrive at " + linkConsumption.altTo)
+				}
+				$row.attr('title', phrases.join('; '))
+				$("#planLinkCompetitors").append($row)
+			}
+		})
+	}
+
 	let averageLoadFactor = {economy: "-", business: "-", first: "-"}
-	if(currentLinkConsumptions !== null){
-        const lastTwentyLinkConsumptions = currentLinkConsumptions.slice(0, 10)
+    if(currentLinkConsumptions !== null){
+        const lastLinkConsumptions = currentLinkConsumptions.slice(0, 10)
         averageLoadFactor = getLoadFactorsFor({
             soldSeats: {
-                economy: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "economy"),
-                business: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "business"),
-                first: averageFromSubKey(lastTwentyLinkConsumptions, "soldSeats", "first"),
+                economy: averageFromSubKey(lastLinkConsumptions, "soldSeats", "economy"),
+                business: averageFromSubKey(lastLinkConsumptions, "soldSeats", "business"),
+                first: averageFromSubKey(lastLinkConsumptions, "soldSeats", "first"),
             },
             capacity: {
-                economy: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "economy"),
-                business: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "business"),
-                first: averageFromSubKey(lastTwentyLinkConsumptions, "capacity", "first"),
+                economy: averageFromSubKey(lastLinkConsumptions, "capacity", "economy"),
+                business: averageFromSubKey(lastLinkConsumptions, "capacity", "business"),
+                first: averageFromSubKey(lastLinkConsumptions, "capacity", "first"),
             },
         });
-	}
-	$("#planLFEconomy").text(averageLoadFactor.economy+"%")
-	$("#planLFBusiness").text(averageLoadFactor.business+"%")
-	$("#planLFFirst").text(averageLoadFactor.first+"%")
-	if ($("#planLinkCompetitons .data-row").length == 0) {
-		$("#planLinkCompetitons").append("<div class='table-row data-row'><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div></div>")
+    }
+    $("#planLFEconomy").text(averageLoadFactor.economy+"%")
+    $("#planLFBusiness").text(averageLoadFactor.business+"%")
+    $("#planLFFirst").text(averageLoadFactor.first+"%")
+
+	if ($("#planLinkCompetitors .data-row").length == 0) {
+		$("#planLinkCompetitors").append("<div class='table-row data-row'><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div><div style='display: table-cell;'>-</div></div>")
 	}
 
 	if (tempPath) { //remove previous plan link if it exists
@@ -1891,11 +1929,13 @@ function removeTempPath() {
 }
 
 function showLinksDetails() {
-	selectedLink = undefined
-	loadLinksTable()
+//    selectedLink = undefined
+    loadLinksTable()
 	setActiveDiv($('#linksCanvas'));
 	highlightTab($('.linksCanvasTab'))
-	$('#sidePanel').fadeOut(200);
+	if (selectedLink === undefined) {
+	    $('#sidePanel').fadeOut(200);
+    }
 	$('#sidePanel').appendTo($('#linksCanvas'))
 }
 
@@ -2137,6 +2177,7 @@ function showLinkEventHistory(linkId) {
     + getAirportText(link.toAirportCity, link.toAirportCode) + "</div>")
     $('#linkEventModal .fromAirportCode').text(link.fromAirportCode)
     $('#linkEventModal .toAirportCode').text(link.toAirportCode)
+    $('#linkEventModal .bothAirportCode').append(link.fromAirportCode + link.toAirportCode)
     $("#linkEventModal div.filterCheckboxes input:checkbox").prop('checked', true)
 
     var linkConsumptions = $($('#linkEventChart').data('linkConsumptions')).toArray().slice(0, 8 * 13)
@@ -2254,6 +2295,9 @@ function showLinkEventHistory(linkId) {
                     }
                     if (entry.matchTo) {
                         row.addClass('filter-toAirport')
+                    }
+                    if (entry.matchFrom && entry.matchTo) {
+                        row.addClass('filter-bothAirport')
                     }
                     if (!entry.matchFrom && !entry.matchTo) {
                         row.addClass('filter-other')
@@ -2911,6 +2955,8 @@ function addMinimumRequiredDelegates() {
 	}
 	if (negotiationOddsLookup[minimumRequiredDelegates] > 0) {
 		updateAssignedDelegateCount(minimumRequiredDelegates)
+	} else {
+		updateAssignedDelegateCount(0)
 	}
 }
 

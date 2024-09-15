@@ -103,7 +103,7 @@
 				<span style="width: 95px;"><span class="cycleDeltaText"></span>&nbsp;week(s) ago</span>
 				<img class="clickable next" title="View passenger map of next week" src='@routes.Assets.versioned("images/icons/arrow.png")'/>
 			</div>
-			<button type="button" class="button glow" onclick="hideLinkHistoryView()" style="margin-top : 10px">Exit Passenger Map</button>
+			<button type="button" class="button glow exitPaxMap" onclick="hideLinkHistoryView()" style="margin-top : 10px">Exit Passenger Map</button>
 		</div>
 	</div>
 	  <div id="heatmapControlPanel" class="section mapControlPanel" style="display: none; width: 250px; flex-direction: column; align-items:center">
@@ -325,7 +325,7 @@
 
                     <li class="button left-tab user-specific-tab airplaneCanvasTab">
                         <div style="display:flex; align-items: center;">
-                            <button class="tab-icon" data-link="airplane" onclick="showAirplaneCanvas();">
+                            <button class="tab-icon" data-link="airplane" onclick="showAirplaneCanvas();" onback="showAirplaneCanvas(true)">
                                 <img src='@routes.Assets.versioned("images/icons/airplane-gear.png")' style="margin: auto;">
                             </button>
                             <span class="label floatLabel">Airplane</span>
@@ -677,13 +677,14 @@
 									</div>
 								</div>
 
-								<div class="table data py-2" id="planLinkCompetitons" style="width: 100%">
+								<div class="table data py-2" id="planLinkCompetitors" style="width: 100%">
 									<div class='table-header'>
-										<div class="cell" style="width: 30%;"><h5>Airline</h5></div>
-										<div class="cell" style="width: 28%;"><h5>Price</h5></div>
-										<div class="cell" style="width: 20%;"><h5>Capacity</h5></div>
-										<div class="cell" style="width: 12%;"><h5>Quality</h5></div>
-										<div class="cell" style="width: 10%;"><h5>Freq.</h5></div>
+										<div class="cell" style="width: 24%;"><p>Airline</p></div>
+										<div class="cell" style="width: 24%;"><p>Price</p></div>
+										<div class="cell" style="width: 24%;"><p>Capacity</p></div>
+										<div class="cell" style="width: 9%;"><p title="Frequency">Freq.</p></div>
+										<div class="cell" style="width: 9%;"><p title="Quality">Q.</p></div>
+										<div class="cell" style="width: 9%;"><p title="Load factor">L.F.</p></div>
 									</div>
 								</div>
 								<div class="flex-container-width-quarter pt-2">
@@ -3234,8 +3235,8 @@
 										<div class="cell">
 											<div class="tooltip">
 												<img class="info svg" src='@routes.Assets.versioned("images/icons/information.svg")'>
-												<p class="tooltiptext below" style="width: 350px;">
-													<div class="table data allianceChampionAirportSummary" style="width: 100%;">
+												<div class="tooltiptext below" style="width: 350px;">
+													<div class="table data allianceChampionAirportSummary" style="width: 350px;">
 														<div class="table-header">
 															<div class="cell" style="width: 28%;">Scale</div>
 															<div class="cell" style="width: 20%;"><img src='@routes.Assets.versioned("images/icons/crown.png")' title="1st"></div>
@@ -3244,7 +3245,7 @@
 															<div class="cell" style="width: 20%;">Other</div>
 														</div>
 													</div>
-												</p>
+												</div>
 											</div>
 											<span class="championedAirports value" style="display: inline-block;"></span>
 										</div>
@@ -3647,23 +3648,23 @@
 								  </div>
 								  <div style="clear: both;"></div>
 							  </div>
-							  <div class="searchCriterion"> <!-- Country -->
-								  <div style="float: left; width : 50%; position: relative;">
-									  <div class="searchInput" data-search-type="zone">
-										  <input type="text" style="width: 80%" tabindex="105" class="fromZone" data-search-group="fromDestination" placeholder="From Zone (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.fromZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.fromZone'))">
-										  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>
-									  </div>
-									  <div class="searchResult"></div>
-								  </div>
-								  <div style="float: left; width : 50%; position: relative;">
-									  <div class="searchInput" data-search-type="zone">
-										  <input type="text" style="width: 80%" tabindex="106" class="toZone" data-search-group="toDestination" placeholder="To Zone (Any)" autocomplete="no"  oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.toZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.toZone'))">
-										  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>
-									  </div>
-									  <div class="searchResult"></div>
-								  </div>
-								  <div style="clear: both;"></div>
-							  </div>
+<!--							  <div class="searchCriterion"> &lt;!&ndash; Country &ndash;&gt;-->
+<!--								  <div style="float: left; width : 50%; position: relative;">-->
+<!--									  <div class="searchInput" data-search-type="zone">-->
+<!--										  <input type="text" style="width: 80%" tabindex="105" class="fromZone" data-search-group="fromDestination" placeholder="From Zone (Any)" autocomplete="no" oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.fromZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.fromZone'))">-->
+<!--										  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>-->
+<!--									  </div>-->
+<!--									  <div class="searchResult"></div>-->
+<!--								  </div>-->
+<!--								  <div style="float: left; width : 50%; position: relative;">-->
+<!--									  <div class="searchInput" data-search-type="zone">-->
+<!--										  <input type="text" style="width: 80%" tabindex="106" class="toZone" data-search-group="toDestination" placeholder="To Zone (Any)" autocomplete="no"  oninput="searchChange($(this))" onfocus="$(this).select();" onfocusout="searchFocusOut($(this))" onkeyup="searchKeyUp(event, $('div.historySearch input.toZone'))" onkeydown="searchKeyDown(event, $('div.historySearch input.toZone'))">-->
+<!--										  <span class="spinner" style="display: none;"><img src='assets/images/icons/spinning-wheel.gif' style="height: 16px"></span>-->
+<!--									  </div>-->
+<!--									  <div class="searchResult"></div>-->
+<!--								  </div>-->
+<!--								  <div style="clear: both;"></div>-->
+<!--							  </div>-->
 							</div>
 							<div class="otherCriteria" style="float: right; width : 50%; position: relative; box-sizing: border-box;">
 								<div style="float: left; width : 50%; position: relative;">
@@ -3737,7 +3738,7 @@
 							  <div class="flex-container-width-half gap-8 py-4 mx-auto" style="width: 600px; max-width:100%;">
 								  <div style="max-width: 200px; display: flex; flex-direction: column; align-items: center;" class="fromAirport">
 									  <img class="fromAirport roundImage" style="height: 150px; width:150px; max-height: 30vw; max-width: 30vw;">
-									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="fromAirportText"></div>
+									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="fromAirportText clickable" data-link="airport"></div>
 									  <div class="table" style="width: 100%">
 										  <div class="table-row">
 											  <div class="label">Population</div>
@@ -3751,7 +3752,7 @@
 								  </div>
 								  <div style="max-width: 200px; display: flex; flex-direction: column; align-items: center;" class="toAirport">
 									  <img class="toAirport roundImage" style="height: 150px; width:150px; max-height: 30vw; max-width: 30vw;">
-									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="toAirportText"></div>
+									  <div style="display:inline-block; align-self: center; margin-top:5px; font-weight: bold;" class="toAirportText clickable" data-link="airport"></div>
 									  <div class="table" style="width: 100%">
 										  <div class="table-row">
 											  <div class="label">Population</div>
@@ -3784,7 +3785,7 @@
 								  <div class="table-row">
 									  <p class="label" style="width:50%">Direct Demand</p>
 									  <div class="value" style="width:50%">
-										  <div style="display: flex; align-items: center">
+										  <div style="display: flex; align-items: right">
 											  <span class="demand" style="text-align:right;">
 											  </span>
 											  <div class="tooltip">
@@ -3812,11 +3813,12 @@
 							  <h4>Existing Flights</h4>
 							  <div class="table data links" style="width: 100%">
 								  <div class='table-header'>
-									  <div class="cell" style="width: 30%;"><h5>Airline</h5></div>
-									  <div class="cell" style="width: 24%;"><h5>Price</h5></div>
-									  <div class="cell" style="width: 20%;"><h5>Capacity</h5></div>
-									  <div class="cell" style="width: 13%;"><h5>Quality</h5></div>
-									  <div class="cell" style="width: 13%;"><h5>Freq.</h5></div>
+									  <div class="cell" style="width: 31%;"><p>Airline</p></div>
+									  <div class="cell" style="width: 21%;"><p>Percent of Price</p></div>
+									  <div class="cell" style="width: 21%;"><p>Capacity</p></div>
+									  <div class="cell" style="width: 9%;"><p>Freq.</p></div>
+									  <div class="cell" style="width: 9%;"><p>Quality</p></div>
+									  <div class="cell" style="width: 9%;"><p>L.F.</p></div>
 								  </div>
 							  </div>
 							  <div class="linksPie" align="center"></div>
@@ -4240,7 +4242,16 @@
 		<div class="modal-content"  style="width : 500px;">
 			<span class="close" onclick="closeSantaClausModal()">&times;</span>
 			<div style="margin-bottom: 30px"><h2>Santa, Where are you?</h2></div>
-			<h4 style="margin-bottom: 10px;">Search History</h4>
+			<h4 style="margin-bottom: 10px;">Difficulty</h4>
+			<div class="difficultyOptions">
+				<div class="remarks" style="margin-bottom: 15px; display: block;">Upon first attempt, the difficulty will be fixed!</div>
+				<div><input type="radio" name="difficulty" value="normal" class="difficulty" onchange="$('#santaClausAttemptsLeft').text('10')" checked>Normal (10 attempts)</div>
+				<div><input type="radio" name="difficulty" value="hard" class="difficulty" onchange="$('#santaClausAttemptsLeft').text('5')">Hard (5 attempts, double reward)</div>
+			</div>
+			<div class="difficultyPick">
+				<span class="difficultyLabel"></span>
+			</div>
+			<h4 style="margin-top: 10px; margin-bottom: 10px;">Search History</h4>
 			<div style="width: 100%;">
 				<div style="width: 100%; overflow: auto; float: left;">
 					<div class="table data"style="width: 100%">
@@ -4567,9 +4578,12 @@
 		  <div id="linkRivalHistoryChart" class="chart" style="width: 100%; height: 250px;"></div>
 
 		  <div style="float:right; margin-bottom: 3px;" class="filterCheckboxes">
-			  <input type="checkbox" data-filter="fromAirport"/><span class="fromAirportCode"></span>
-			  <input type="checkbox" style="margin-left: 5px;" data-filter="toAirport"/><span class="toAirportCode"></span>
-			  <input type="checkbox" style="margin-left: 5px;" data-filter="other"/><span>Other</span>
+			  <span style='display: flex; align-items: center;'>
+				  <input type="checkbox" data-filter="bothAirport"/><span class="fromAirportCode"></span><img src='assets/images/icons/arrow.png'><span class="toAirportCode"></span>
+				  <input type="checkbox" style="margin-left: 5px;" data-filter="fromAirport"/><span class="fromAirportCode"></span>
+				  <input type="checkbox" style="margin-left: 5px;" data-filter="toAirport"/><span class="toAirportCode"></span>
+				  <input type="checkbox" style="margin-left: 5px;" data-filter="other"/><span>Other</span>
+			  </span>
 		  </div>
 		  <div class="table data" style="height: 20px; width: 95%; min-width: 700px; margin: auto;">
 			  <div class="table-header">
@@ -5318,7 +5332,7 @@
 				  </div>
 				  <p><span class="dot"/>Cannot assign Olympic bonus delegates</p>
 				  <p><span class="dot"/>Currenlty need &nbsp;<span class="delegatesRequired"></span>&nbsp;delegates to maintain bases in this country</p>
-				  <p><span class="dot"/>Each delegate level provides&nbsp;<span class="delegateMultiplier"></span>&nbsp;relationship points. Each delegate starts at level 0 and progress over time. Hover for details.</p>
+				  <p><span class="dot"/>Each delegate level provides&nbsp;<span class="delegateMultiplier"></span>&nbsp;relationship points. Each delegate starts at level 0 and gains levels over time. Hover for details.</p>
 				  <button type="button" class="button" onclick="updateCountryDelegates()">Confirm</button>
 				  <button type="button" class="button" onclick="closeModal($('#airlineCountryRelationshipModal'))">Cancel</button>
 			  </div>
@@ -5871,7 +5885,7 @@
   <script src='@routes.Assets.versioned("javascripts/aircraft-config.umd.js")' defer></script>
   <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/index-CKPGaino.css")'>
 
-	
+
 	<audio id="christmasMusic" preload="none" loop>
 <!--	    <source src='@routes.Assets.versioned("music/silent-night.mp3")' type="audio/mp3" />-->
 		<source src='@routes.Assets.versioned("music/joy-to-the-world.mp3")' type="audio/mp3" />

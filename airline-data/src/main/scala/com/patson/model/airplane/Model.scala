@@ -66,7 +66,7 @@ case class Model(name : String, family : String = "", capacity : Int, maxSeats :
 
   //weekly fixed cost
   val baseMaintenanceCost : Int = {
-    (capacity * 141).toInt //for now
+    (capacity * 155).toInt
   }
 
   def applyDiscount(discounts : List[ModelDiscount]) = {
