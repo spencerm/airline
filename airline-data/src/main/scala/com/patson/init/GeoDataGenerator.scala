@@ -38,13 +38,13 @@ object GeoDataGenerator extends App {
   def countryCodeConvert(countryCode: String): String = {
     if (List("CX", "CC", "NF").contains(countryCode)) {
       "AU"
-    } else if (List("CX", "CC", "NF").contains(countryCode)) {
-      "NZ"
-    } else if (List("PM", "WF").contains(countryCode)) {
+//    } else if (List("NU", "CK").contains(countryCode)) {
+//      "NZ"
+    } else if (List("PM", "WF", "GF", "GP", "MF", "MQ", "PM", "BL", "RE", "NC", "PF").contains(countryCode)) {
       "FR"
     } else if (List("BQ").contains(countryCode)) {
       "NL"
-    } else if (List("IM", "JE", "BM", "GI", "FK", "GG", "SH", "MS").contains(countryCode)) {
+    } else if (List("IM", "JE", "GI", "FK", "GG", "SH", "MS", "MS", "AI").contains(countryCode)) {
       "GB"
     } else {
       countryCode
@@ -359,7 +359,7 @@ object GeoDataGenerator extends App {
          * Starting with small airports, then larger ones, in arbitrary income bands
          */
         //https://en.wikipedia.org/wiki/List_of_countries_by_number_of_millionaires
-        val underRepresentedCountries = List("ES", "PT", "GB", "FR", "BE", "NL", "LU", "CH", "DE", "AT", "DK", "NO", "SE", "FI", "IT", "GR", "MT", "CA", "AU", "NZ", "CN", "HK", "MO", "TW", "KR", "JP", "MA", "NA", "AE")
+        val underRepresentedCountries = List("ES", "PT", "GB", "FR", "BE", "NL", "LU", "CH", "DE", "AT", "DK", "NO", "SE", "FI", "IT", "GR", "MT", "CA", "CN", "HK", "MO", "TW", "KR", "JP", "MA", "NA", "AE")
         //https://www.henleyglobal.com/publications/wealthiest-cities
         val nationalCenters = List("ALA","TAS","IKA","KHI","DEL","BOM","PEK","PVG","FNJ","ICN","GMP","HND","NRT","KIX","ITM","KUL","SGN","CGK","DPS","YYZ","YVR","SFO","MIA","FLL","PBI","MAD","BCN","LIS","LHR","LGW","LTN","EDI","CDG","ORY","CPH","ARN","FCO","CIA","MXP","BGY","LIN","BUD","ACC","KGL","LUN","MPM","NBO")
 
@@ -396,9 +396,9 @@ object GeoDataGenerator extends App {
          * Having "density" in the cities would help a lot
          */
         val elitePopAdjusted : Int = if (List("GVA", "NCE", "LCY", "SYD", "MEL", "AVV").contains(airport.iata)) {
-            ((elitePop + 349) * 11.9).toInt
+            ((elitePop + 389) * 11.9).toInt
           } else if (List("DOH", "SZG", "ACH", "BRN", "LUG", "INN", "MIA", "PER", "BNE", "OOL", "YYZ", "YVR").contains(airport.iata)) {
-            ((elitePop + 279) * 4.9).toInt
+            ((elitePop + 289) * 4.9).toInt
           } else if (List("NRT", "ITM", "KIX", "FUK", "CTS", "BSL", "VCE", "BZO", "TRN", "FLO", "BRU", "AKL", "CNS", "SJC", "SBA", "PBI", "XNA", "PSP", "HTO", "PBI", "HNL", "OGG", "KOA", "CPT", "SIN").contains(airport.iata)) {
             (elitePop + 179) * 3
           } else if (List("HKG", "PEK", "PVG", "ARN", "ZRH", "MXP", "LIN", "BGY", "FCO", "SEA", "IAH", "ASE", "JAC", "YUL", "YYC", "TLV").contains(airport.iata)) {
@@ -513,7 +513,7 @@ object GeoDataGenerator extends App {
   }
 
   def buildCountryData(airports : Seq[Airport], update : Boolean = false) {
-    val airportsByCountry : Map[String, Seq[Airport]] = airports.groupBy { airport => airport.countryCode }
+    val airportsByCountry : Map[String, Seq[Airport]] = airports.groupBy { airport => countryCodeConvert(airport.countryCode) }
 
     val countryCodeToNameMap = scala.io.Source.fromFile("country-code.txt").getLines().map(_.split(",")).map { tokens =>
       val countryCode = tokens(1)
@@ -566,6 +566,7 @@ object GeoDataGenerator extends App {
 //    }.flatten.toMap
 
     val countries = ArrayBuffer[Country]()
+    println(airportsByCountry)
     airportsByCountry.foreach {
       case (countryCode, airports) =>
         val totalAirportPopulation = airports.map {
@@ -615,7 +616,7 @@ object GeoDataGenerator extends App {
           val iata = info(0)
           val code = info(3)
 
-          val runway = Runway(length, code, RunwayType.withName(info(2)), lighted = true)
+          val runway = Runway(length, code, RunwayType.withName(info(2)), lighted = false)
           val list = result.getOrElseUpdate(iata, ListBuffer[Runway]())
           list += runway
         } catch {

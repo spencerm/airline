@@ -232,6 +232,8 @@ object AirportSizeAdjust {
         "YCH" -> 2,
         "YJT" -> 2,
         "SLW" -> 2,
+        //Cayman
+        "CYB" -> 3,
         //https://en.wikipedia.org/wiki/List_of_airports_in_Chad
         //https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Chile
         "ANF" -> 5,
@@ -288,6 +290,8 @@ object AirportSizeAdjust {
         "TLN" -> 3,
         "LTT" -> 2,
         "FSP" -> 3,
+        "PTP" -> 5,
+        "WLS" -> 3,
         //ethiopia
         "MQX" -> 3,
         //eritrea
@@ -605,6 +609,7 @@ object AirportSizeAdjust {
         "BHD" -> 3,
         "ABZ" -> 3,
         "ASI" -> 3, //Ascension Island
+        "HLE" -> 3, //St Helena
         //https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_the_United_States
         //up to 10m pax
         "EWR" -> 7, //should be 8
