@@ -1067,6 +1067,7 @@ div.future {
     width: 100%;
     display: block;
     position: relative;
+    overflow-x: hidden;
 }
 
 
