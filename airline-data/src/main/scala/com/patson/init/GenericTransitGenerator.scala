@@ -70,7 +70,7 @@ object GenericTransitGenerator {
     "MRS" -> "TLN",
     "MRS" -> "AVN",
     "BCN" -> "REU",
-    "ZRH" -> "BRN",
+    "BRN" -> "ZRH",
     "GVA" -> "BRN",
     "BSL" -> "BRN",
     "ZRH" -> "BSL",
@@ -146,8 +146,8 @@ object GenericTransitGenerator {
           0
         }
         val minSize = Math.min(airport.size, targetAirport.size)
-        val capacity = minSize * 10500 + domesticAirportBonus //kinda random
-        val genericTransit = GenericTransit(from = airport, to = targetAirport, distance = distance.toInt, capacity = LinkClassValues.getInstance(economy = capacity))
+        val capacity = minSize * 11000 + domesticAirportBonus //kinda random
+        val genericTransit = GenericTransit(from = airport, to = targetAirport, distance = distance.toInt, capacity = LinkClassValues.getInstance(economy = capacity, business = (capacity * 0.3).toInt))
         LinkSource.saveLink(genericTransit)
         println(genericTransit)
       }
