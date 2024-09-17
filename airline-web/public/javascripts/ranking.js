@@ -142,7 +142,7 @@ function getRankingRow(ranking) {
     }
     row.append("<div class='cell' style='text-align: right;'>" + commaSeparateNumber(ranking.rankedValue) + "</div>")
 	if (ranking.reputationPrize || ranking.reputationPrize === 0){
-    	row.append("<div class='cell' style='text-align: right;'>" + getRankingImg(ranking.rank) + " " + commaSeparateNumber(ranking.reputationPrize) + "</div>")
+    	row.append("<div class='cell' style='text-align: right;'>" + getRankingImg(ranking.rank, true) + " " + commaSeparateNumber(ranking.reputationPrize) + "</div>")
 	}
 
 	return row
