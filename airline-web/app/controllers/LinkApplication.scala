@@ -875,7 +875,7 @@ class LinkApplication @Inject()(cc: ControllerComponents) extends AbstractContro
             }
           LinkSource.loadLinkConsumptionsByLinksId(viaLocalTransitFlightLinks.map(_.id), 1)
         }
-        val otherViaLocalTransitLinkArray = Json.toJson(competitorViaLocalTransitLinkConsumptions.filter(_.link.capacity.total > 0).map { linkConsumption => {
+        val otherViaLocalTransitLinkArray = Json.toJson(competitorViaLocalTransitLinkConsumptions.filter {consumption =>  consumption.link.capacity.total > 0 && consumption.link.distance > 50 }.map { linkConsumption => {
           var linkConsumptionJson : JsObject = Json.toJson(linkConsumption)(SimpleLinkConsumptionWrite).as[JsObject]
           if (nearbyFromAirports.contains(linkConsumption.link.to)) {
             linkConsumptionJson = linkConsumptionJson + ("altFrom" -> JsString(linkConsumption.link.to.iata))
