@@ -44,7 +44,7 @@ object GeoDataGenerator extends App {
       "FR"
     } else if (List("BQ").contains(countryCode)) {
       "NL"
-    } else if (List("IM", "JE", "GI", "FK", "GG", "SH", "MS", "MS", "AI").contains(countryCode)) {
+    } else if (List("IM", "JE", "GI", "FK", "GG", "SH", "MS", "AI").contains(countryCode)) {
       "GB"
     } else {
       countryCode

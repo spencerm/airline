@@ -1840,7 +1840,7 @@
 								<span class="clickable editButton"><img src='@routes.Assets.versioned("images/icons/gear.png")'style="vertical-align: middle;" onclick="editAirlineName()"/></span>
 							</h2>
 							<span class="airlineNameInputSpan" style="display: none;">
-								<input class="airlineNameInput" type="text" oninput="validateAirlineName($(this).val())"/>
+								<input id="airlineNameInput" class="airlineNameInput" type="text" />
 								<button onclick="confirmAirlineRename($('#officeCanvas .airlineNameInput').val())" class="confirm">
 									<img src='@routes.Assets.versioned("images/icons/tick.png")'/>
 								</button>
@@ -4069,10 +4069,10 @@
 	<div id="confirmationModal" class="modal">
 	  <div class="modal-content"  style="width : 400px;">
 	    <span class="close" onclick="closeModal($('#confirmationModal'))">&times;</span>
-	    <div style="margin-bottom: 10px;">
-	    	<img src='@routes.Assets.versioned("images/icons/32px/question.png")'><span style="font-size: 20px;">Confirmation</span>
+	    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+	    	<img src='@routes.Assets.versioned("images/icons/32px/question.png")'><span style="font-size: 14px;">Confirmation</span>
 	    </div>
-	    <h3 id="confirmationPrompt" style="margin-bottom: 10px;"></h3>
+	    <p id="confirmationPrompt" style="margin-bottom: 12px; font-size: 14px;"></p>
 	    <button type="button" class="button confirmationButton ml-0" onclick="closeModal($('#confirmationModal')); executeConfirmationTarget();">Confirm</button>
 	    <button type="button" class="button mr-0" onclick="closeModal($('#confirmationModal'))">Cancel</button>
 	  </div>
@@ -5841,6 +5841,7 @@
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="preload" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/plw0ulw.css">
+  <script src='@routes.Assets.versioned("javascripts/gadgets.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/main.js")'></script>
   <script defer src='@routes.Assets.versioned("javascripts/airport.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/airport-asset.js")'></script>
@@ -5864,7 +5865,6 @@
   <script src='@routes.Assets.versioned("javascripts/departures.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/websocket.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/map-button.js")'></script>
-  <script src='@routes.Assets.versioned("javascripts/gadgets.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/chat.js")' defer></script>
   <script src='@routes.Assets.versioned("javascripts/christmas.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/confetti.js")'></script>
