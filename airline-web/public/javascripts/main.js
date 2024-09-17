@@ -620,20 +620,20 @@ function populateDataPropertyTooltips() {
 var airlineGradeLookup
 function populateLookups() {
     loadAllCountries()
-    $.ajax({
-		type: 'GET',
-		url: "lookups",
-	    contentType: 'application/json; charset=utf-8',
-	    dataType: 'json',
-	    async: false,
-	    success: function(result) {
-	    	airlineGradeLookup = result.airlineGradeLookup
-	    },
-	    error: function(jqXHR, textStatus, errorThrown) {
-	            console.log(JSON.stringify(jqXHR));
-	            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-	    }
-	});
+//    $.ajax({
+//		type: 'GET',
+//		url: "lookups",
+//	    contentType: 'application/json; charset=utf-8',
+//	    dataType: 'json',
+//	    async: false,
+//	    success: function(result) {
+//	    	airlineGradeLookup = result.airlineGradeLookup
+//	    },
+//	    error: function(jqXHR, textStatus, errorThrown) {
+//	            console.log(JSON.stringify(jqXHR));
+//	            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+//	    }
+//	});
 }
 
 function showTutorial() {
