@@ -36,6 +36,9 @@ object IsolatedAirportPatcher {
       "FRD", "ESD", "ACK", "MVY", "BID", "AVX", //US
       "YGR", "YPN", "YYB", //CA
       "FSP",
+      "STT", "STX", "SAB", "EUX", "SXM", "SFG", "AXA", "SKB", "SBH", "NEV", "BBQ", "MNI", "GBJ", "NCA", "XSC", "GDT", "PTP", "FDF", //Caribbean
+      "CAY",
+      "ADZ",
       //oceania
       "WSZ", "WLS",
       //asia

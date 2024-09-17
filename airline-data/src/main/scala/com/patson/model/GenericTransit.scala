@@ -9,7 +9,8 @@ case class GenericTransit(from : Airport, to : Airport, distance : Int, var capa
 
   override val flightType : FlightType.Value = FlightType.SHORT_HAUL_DOMESTIC
 
-  override val cost : LinkClassValues = LinkClassValues.getInstance(economy = Pricing.computeStandardPrice(distance, FlightType.SHORT_HAUL_DOMESTIC, ECONOMY)) * 0.3 //hidden cost of general transit
+  val localCostRatio = 0.2
+  override val cost : LinkClassValues = LinkClassValues.getInstance(economy = (Pricing.computeStandardPrice(distance, FlightType.SHORT_HAUL_DOMESTIC, ECONOMY) * localCostRatio).toInt, business = (Pricing.computeStandardPrice(distance, FlightType.SHORT_HAUL_DOMESTIC, BUSINESS) * localCostRatio).toInt) //hidden cost of general transit
 
   val upkeep = 0
   override var minorDelayCount : Int = 0
@@ -25,7 +26,7 @@ case class GenericTransit(from : Airport, to : Airport, distance : Int, var capa
 }
 
 object GenericTransit {
-  val QUALITY = 35 //note, pax preference does not consider quality if transit
+  val QUALITY = 0 //note, pax preference does not consider quality if transit
   val TRANSIT_PROVIDER = Airline.fromId(0).copy(name = "Local Transit")
 }
 

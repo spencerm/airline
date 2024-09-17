@@ -365,9 +365,9 @@ function getRankingImg(ranking, limitToTop3 = false) {
 	}
 	
 	if (rankingIcon) {
-		return "<img src='" + rankingIcon + "' title='" + rankingTitle + "' style='vertical-align:middle; padding-right: 2px;'/>"
+		return "<img src='" + rankingIcon + "' title='" + rankingTitle + "' style='vertical-align:middle; padding-right: 2px;'/>";
 	} else {
-		return "<span>" + ranking + "</span>"
+		return "";
 	}
 }
 
