@@ -32,7 +32,7 @@ object CountryMutualRelationshipGenerator extends App {
 //    )),
     //other UK territories are one-one relationships
     Affiliation("UK Caribbean", 5, List(
-      "GB", "TC", "KY", "VG"
+      "GB", "TC", "KY", "VG", "BM"
 //      "GB", "TC", "KY", "BM", "VG", "MS", "AI", "BM"
     )),
     Affiliation("Denmark", 5, List(
