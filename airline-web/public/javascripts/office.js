@@ -750,6 +750,12 @@ function setAirlineCode(airlineCode) {
 	});
 }
 
+const airlineNameInput = document.getElementById('airlineNameInput');
+const debouncedValidateAirlineName = debounce(validateAirlineName, 400);
+
+airlineNameInput.addEventListener('input', (event) => {
+    debouncedValidateAirlineName(event.target.value);
+});
 
 function editAirlineName() {
 	$('#officeCanvas .airlineNameDisplaySpan').hide()
@@ -786,7 +792,7 @@ function validateAirlineName(airlineName) {
 }
 
 function confirmAirlineRename(airlineName) {
-    promptConfirm("Change airline name to " + airlineName + " ? Can only rename every 30 days.", function() {
+    promptConfirm("Change airline name to <b>" + airlineName + "</b>? Can only rename every 30 days.", function() {
         var airlineId = activeAirline.id
         var url = "airlines/" + airlineId + "/airline-name"
         var data = { "airlineName" : airlineName }
