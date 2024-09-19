@@ -163,7 +163,7 @@ object NegotiationUtil {
     }
     val existingFrequency = existingLinkOption.map(_.futureFrequency()).getOrElse(0)
 
-    val aircraftSizeDelta = newModel.airplaneTypeSize * newFrequency - existingModel.airplaneTypeSize * existingFrequency
+    val aircraftSizeDelta = newModel.airplaneTypeSize * existingFrequency - existingModel.airplaneTypeSize * existingFrequency
     val frequencyDelta = newFrequency - existingFrequency
     val requirements = ListBuffer[NegotiationRequirement]()
 

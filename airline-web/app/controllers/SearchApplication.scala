@@ -101,14 +101,14 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
 
     val targetAirlines = mutable.Set[Airline]()
     val targetLinkIds = mutable.Set[Int]()
-    val targetAirports = mutable.Set[Airport]()
+//    val targetAirports = mutable.Set[Airport]()
     //iterate once to gather some summary info
     sortedRoutes.foreach {
       case (route, passengerCount) =>
         targetAirlines.addAll(route.links.map(_._1.airline))
         targetLinkIds.addAll(route.links.map(_._1.id))
-        targetAirports.add(route.links(0)._1.from)
-        targetAirports.addAll(route.links.map(_._1.to))
+//        targetAirports.add(route.links(0)._1.from)
+//        targetAirports.addAll(route.links.map(_._1.to))
     }
     val airlineAllianceMap = AllianceSource.loadAllianceMemberByAirlines(targetAirlines.toList)
     val detailedLinkLookup = LinkSource.loadLinksByIds(targetLinkIds.toList).map(link => (link.id, link)).toMap
@@ -170,16 +170,16 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
               "airlineId" -> airline.id,
               "linkClass" -> linkClass.label,
               "fromAirportId" -> from.id,
-              "fromAirportName" -> from.name,
+//              "fromAirportName" -> from.name,
               "fromAirportIata" -> from.iata,
               "fromAirportCity" -> from.city,
-              "fromAirportText" -> from.displayText,
+//              "fromAirportText" -> from.displayText,
               "fromAirportCountryCode" -> from.countryCode,
               "toAirportId" -> to.id,
-              "toAirportName" -> to.name,
+//              "toAirportName" -> to.name,
               "toAirportIata" -> to.iata,
               "toAirportCity" -> to.city,
-              "toAirportText" -> to.displayText,
+//              "toAirportText" -> to.displayText,
               "duration" -> link.duration,
               "toAirportCountryCode" -> to.countryCode,
               "price" -> link.price(linkClass),
@@ -222,7 +222,7 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
           routeEntryJson = routeEntryJson + ("remarks" -> Json.toJson(remarks.map(_.toString)))
         }
 
-        routeEntryJson = routeEntryJson + ("route" -> routeJson)
+        routeEntryJson = routeEntryJson + ("route" -> routeJson) + ("paxCount" -> Json.toJson(passengerCount))
         resultJson = resultJson.append(routeEntryJson)
     }
 
@@ -315,7 +315,7 @@ class SearchApplication @Inject()(cc: ControllerComponents) extends AbstractCont
     for (i <- 0 until 7) {
       var previousLinkArrivalTime : TimeSlot = TimeSlot(i, random.nextInt(24), random.nextInt(60))
       val scheduleOption = links.map { link =>
-        val departureTime = generateDepartureTime(link, previousLinkArrivalTime.increment(30)) //at least 30 minutes after
+        val departureTime = generateDepartureTime(link, previousLinkArrivalTime.increment(30, Some(Scheduling.TimeSlotRetriction(5, 23)))) //at least 30 minutes after
         previousLinkArrivalTime = departureTime.increment(link.duration)
         (link, departureTime)
       }

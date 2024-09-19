@@ -132,7 +132,7 @@ function searchRoute(fromAirportId, toAirportId) {
                     var itineraryDiv = $("<div class='section itinerary' onclick='toggleSearchLinkDetails($(this))'></div>")
                     var total = 0
 
-                    var routeDiv = $("<div style='float:left; width : 85%'></div>")
+                    var routeDiv = $("<div></div>")
                     itineraryDiv.append(routeDiv)
 
                      //Generate Summary
@@ -153,10 +153,9 @@ function searchRoute(fromAirportId, toAirportId) {
                     }
 
                     var startDay = Math.floor(startLink.departure / (24 * 60))
-                    var summaryDiv = $("<div class='summary'  style='display: flex; align-items: center;'></div>")
-                    summaryDiv.append("<div style='width: 50%; float:left;'> " + getAirlineTimeSlotText(startLink.departure, startDay) + " - " + getAirlineTimeSlotText(endLink.arrival, startDay) + "</div>")
-                    summaryDiv.append("<div style='width: 50%; float:left;'> " + getDurationText(endLink.arrival - startLink.departure) +  "</div>")
-                    summaryDiv.append("<div style='clear:both; '></div>")
+                    var summaryDiv = $("<div class='summary' style='display: flex; align-items: center; transition: '></div>")
+//                    summaryDiv.append("<div style='width: 50%; float:left;'><p>" + getAirlineTimeSlotText(startLink.departure, startDay)  + " - " + getAirlineTimeSlotText(endLink.arrival, startDay) + " | " + getDurationText(endLink.arrival - startLink.departure) +  "</p></div>")
+//                    summaryDiv.append("<div style='clear:both; '></div>")
 
                     routeDiv.append(summaryDiv)
 
@@ -179,9 +178,9 @@ function searchRoute(fromAirportId, toAirportId) {
                                 }
                             }
 
-                            var linkDiv = $("<div style='margin-bottom: 10px;'></div>")
-                            var linkSummaryDiv = $("<div style='margin : 10px 0;'></div>")
-                            linkSummaryDiv.append("<div style='width: 50%; float:left; display: flex; align-items: center;'> " + getAirlineLogoImg(link.airlineId) + "<span class='summary'>" + link.airlineName + "</span></div>")
+                            var linkDiv = $("<div class='" + link.airlineName + "' style='margin-bottom: 16px;'></div>")
+                            var linkSummaryDiv = $("<div style='margin: 4px 0; display: flex;'></div>")
+                            linkSummaryDiv.append("<div style='width: 250px; display: flex; align-items: center;'> " + getAirlineLogoImg(link.airlineId) + "<span class='summary'>" + link.airlineName + "</span><span style='display:none;' class='linkDetails text-base'>&nbsp;|&nbsp;" + link.flightCode + "</span></div>")
                             var linkDurationText = getDurationText(link.arrival - link.departure)
                             var remarks = []
                             if (preGenericTransit) {
@@ -190,8 +189,9 @@ function searchRoute(fromAirportId, toAirportId) {
                             if (postGenericTransit) {
                                 remarks.push("Arrive at " + link.toAirportIata)
                             }
+
                             if (previousLink) {
-                                remarks.push("+" + getDurationText(link.departure - previousLink.arrival) + " layover at " + link.fromAirportIata)
+                                linkDurationText = "<p class='opacity-90'>" + getDurationText(link.departure - previousLink.arrival) + " layover at " + link.fromAirportIata + "</p><p>" + linkDurationText + "</p>"
                             }
 
                             if (remarks.length > 0) {
@@ -199,24 +199,22 @@ function searchRoute(fromAirportId, toAirportId) {
                                 linkDurationText += "(" + remarksText + ")"
                             }
 
-                            linkSummaryDiv.append("<div style='width: 50%; float:left;'> " + linkDurationText + "</div>")
-    //                        airlineSpan.append("<div style='width: 50%; float:left;'> " + link.flightCode + "&nbsp;" + getAirlineTimeSlotText(link.departure, startDay) + " - " + getAirlineTimeSlotText(link.arrival, startDay) + "</div>")
-                            linkSummaryDiv.append("<div style='clear:both; '></div>")
+                            linkSummaryDiv.append("<div>" + linkDurationText + "</div>")
+//                            linkSummaryDiv.append("<div style='clear:both; '></div>")
                             linkDiv.append(linkSummaryDiv)
 
-                            var linkDetailDiv = $("<div style='display: flex; align-items: center; margin: 0 10px;' class='linkDetails'></div>")
-                            var linkDetailLeftDiv = $("<div style='width: 50%;'></div>").appendTo(linkDetailDiv)
-                            linkDetailLeftDiv.append("<div style='display: inline-block; width: 75px;' class='summary'> " + link.flightCode + "</div>")
-                            linkDetailLeftDiv.append("<span>" + getAirlineTimeSlotText(link.departure, startDay) + " - " + getAirlineTimeSlotText(link.arrival, startDay) + "</span>")
-                            linkDetailLeftDiv.append("<div>$" + link.price + " (" +  link.linkClass + ")</div>")
+                            var linkDetailDiv = $("<div data-linkclass=" + link.linkClass + " style='display: flex; align-items: center; margin-bottom: 12px;' class='linkDetails'></div>")
+                            var linkDetailLeftDiv = $("<div style='width: 250px;'></div>").appendTo(linkDetailDiv)
+                            linkDetailLeftDiv.append("<p style='margin-bottom: 4px;'>$" + link.price + " (" + link.linkClass + ")</p>")
+                            link.airplaneModelName && linkDetailLeftDiv.append("<p style='font-style: italic; opacity: 0.8'>" + link.airplaneModelName + "</p>")
                             $featureIconsDiv = getLinkFeatureIconsDiv(link.features)
                             linkDetailLeftDiv.append($featureIconsDiv)
                             linkDetailLeftDiv.append(getLinkReviewDiv(link.computedQuality))
 
 
                             var linkDetailRightDiv = $("<div style='width: 50%;'></div>").appendTo(linkDetailDiv)
+                            linkDetailRightDiv.append("<span>" + getAirlineTimeSlotText(link.departure, startDay) + " - " + getAirlineTimeSlotText(link.arrival, startDay) + "</span>")
                             linkDetailRightDiv.append("<div style='display: flex; align-items: center;'>" + getAirportText(link.fromAirportCity, link.fromAirportIata) + "<img src='assets/images/icons/arrow.png' style='margin: 0 5px;'>" + getAirportText(link.toAirportCity, link.toAirportIata) + "</div>")
-                            linkDetailRightDiv.append("<div>Aircraft : " + (link.airplaneModelName ? link.airplaneModelName : "-") + "</div>")
                             if (link.operatorAirlineId) { //code share
                                 linkDetailRightDiv.append("<div>Operated by " + getAirlineLogoImg(link.operatorAirlineId) + link.operatorAirlineName + "</div>")
                             }
@@ -227,14 +225,8 @@ function searchRoute(fromAirportId, toAirportId) {
                                 linkDetailRightDiv.append("<div>Arrive at " + postGenericTransit.fromAirportText + "</div>")
                             }
 
-
-                            linkDetailDiv.append("<div style='clear:both; '></div>")
-
                             linkDetailDiv.hide()
                             linkDiv.append(linkDetailDiv)
-
-    //                        var directionDiv = $("<div style='display: flex; align-items: center;' >" + link.flightCode + "&nbsp;" + getAirportText(link.fromAirportCity, link.fromAirportIata) + "<img src='assets/images/icons/arrow.png' style='margin: 0 5px;'>" + getDurationText(link.duration) + " " + link.linkClass + "</div>")
-    //                        linkDiv.append(directionDiv)
 
                             routeDiv.append(linkDiv)
                             total += link.price
@@ -249,7 +241,7 @@ function searchRoute(fromAirportId, toAirportId) {
                     } else {
                         stopDescription = (flightCount - 1) + " Stops"
                     }
-                    var priceDiv = $("<div style='float: right; width: 15%;'><div class='price'>$ " + total + "</div></div>")
+                    var priceDiv = $("<div style='float: right; width: 85px;'><div class='price'>$ " + total + "</div></div>")
                     var priceTextDiv = priceDiv.find('div.price')
 
                     $.each(entry.remarks, function(index, remark) {
@@ -262,11 +254,10 @@ function searchRoute(fromAirportId, toAirportId) {
                         }
                     })
 
-
                     priceDiv.append($("<div style='margin-top: 5px;'>" + stopDescription + "</div>"))
+                    priceDiv.append($("<p title='" + entry.paxCount + " passengers booked' style='margin-top: 5px;'><img src='assets/images/icons/users.png' style='position: relative; top: 2px; padding-right: 4px;'/>" + entry.paxCount + "</p>"))
 
-
-                    itineraryDiv.append(priceDiv)
+                    itineraryDiv.prepend(priceDiv)
                     itineraryDiv.append("<div style='clear:both;'></div>")
                     $("#routeSearchResult").append(itineraryDiv)
                 })
@@ -989,5 +980,27 @@ function updateNavigationArrows($titlesContainer, animated) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const checkboxes = document.querySelectorAll('input.searchClasses');
+  let hideFromSearch = [];
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+
+      });
+    });
+  });
+  const hide() => {
+    const itinerarySections = document.querySelectorAll('.section.itinerary');
+     itinerarySections.forEach(section => {
+       const linkDetails = section.querySelectorAll('.linkDetails');
+       const shouldHide = Array.from(linkDetails).some(detail =>
+         detail.dataset.linkclass === checkbox.dataset.linkclass && !checkbox.checked
+       );
+
+       section.style.display = shouldHide ? 'none' : 'block';
+   }
+});
 
 

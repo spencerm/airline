@@ -3603,6 +3603,14 @@
 						  </div>
 
 						  <button type="button" class="button search" tabindex="103" onkeypress="searchButtonKeyPress(event, $(this))" onclick="searchAction($('div.searchFieldContainer input.fromAirport').data('selectedId'), $('div.searchFieldContainer input.toAirport').data('selectedId'))">Search</button>
+						  <div class="mx-auto w-fit">
+							  <input data-linkclass="economy" class="searchClasses" type="checkbox" id="searchEconomy" name="SearchEconomy" checked />
+							  <label for="SearchEconomy">Search Economy</label>
+							  <input data-linkclass="business" class="searchClasses" type="checkbox" id="searchBusiness" name="SearchBusiness" checked />
+							  <label for="SearchBusiness">Search Business</label>
+							  <input data-linkclass="first" class="searchClasses" type="checkbox" id="searchFirst" name="SearchFirst" checked />
+							  <label for="SearchFirst">Search First</label>
+						  </div>
 					  </div>
 
 					  <div class="routeSearch searchContainer" style="display: flex; flex-flow: column; flex-grow : 1;">

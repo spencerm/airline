@@ -122,6 +122,11 @@ h1, h2, h3, h4, h5, h6, .font-display {
     letter-spacing: -.01em;
 }
 
+em {
+    font-weight: bold;
+    font-style: italic;
+}
+
 .font-mono {
     font-family: "ibm-plex-mono", monospace;
 }
@@ -1649,6 +1654,7 @@ i, .italic {
 .min-w-96 { min-width: 24rem; }
 .max-w-60 { max-width: 15rem; }
 .max-w-72 { max-width: 19rem; }
+.w-fit { width: fit-content; }
 .w-full { width: 100% !important; }
 .w-half { width: 50% !important; }
 .max-w-32 {max-width: 8rem;}

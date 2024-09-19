@@ -375,7 +375,7 @@ function getDurationText(duration) {
 	var hour = Math.floor(duration / 60)
 	var minute = duration % 60
 	if (hour > 0) {
-		return hour + " h " + minute + "m"
+		return hour + " hr " + minute + " min"
 	} else {
 		return minute + " m"
 	}
@@ -547,7 +547,7 @@ function padBefore(str, padChar, max) {
 
 function getAirportText(city, airportCode) {
 	if (city) {
-		return city + "(" + airportCode + ")"
+		return city + "&nbsp;<em>" + airportCode + "</em>"
 	} else {
 		return airportCode
 	}
