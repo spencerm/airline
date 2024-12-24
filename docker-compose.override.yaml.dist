@@ -1,0 +1,8 @@
+services:
+  airline-app:
+    ports:
+      - "9000:9000"
+
+  airline-db:
+    ports:
+      - "33063:3306"

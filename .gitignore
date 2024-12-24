@@ -4,6 +4,6 @@
 *.scala-build
 *.vscode
 .idea
-
+/docker-compose.override.yaml
 /airline-data/airline-data.iml
 /.bash_history

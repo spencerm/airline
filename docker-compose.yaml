@@ -21,8 +21,8 @@ services:
     environment:
       DB_HOST: airline-db
     entrypoint: ["tail", "-f", "/dev/null"]
-    ports:
-      - "9000:9000"
+#    ports:
+#      - "9000:9000"
     networks:
       - airline
 
@@ -36,8 +36,8 @@ services:
       MYSQL_CHARACTER_SET: utf8mb4
       MYSQL_COLLATE: utf8mb4_unicode_ci
       ALLOW_EMPTY_PASSWORD: yes
-    ports:
-      - "3306:3306"
+#    ports:
+#      - "3306:3306"
     volumes:
       - "mysql-data:/var/lib/mysql"
     networks:
