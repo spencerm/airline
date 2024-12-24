@@ -1,5 +1,9 @@
 services:
   airline-app:
+#    environment:
+#      DB_NAME: other-db-name
+#      DB_USER: other-db-user
+#      DB_PASSWORD: other-db-pass
     ports:
       - "9000:9000"
 
