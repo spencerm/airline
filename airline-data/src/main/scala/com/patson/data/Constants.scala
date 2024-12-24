@@ -184,7 +184,7 @@ object Constants {
   //  val DATABASE_CONNECTION = "jdbc:sqlite:../airline-data/db/default.db"
   //  val DB_DRIVER = "org.sqlite.JDBC"
   val configFactory = ConfigFactory.load()
-  val DB_HOST = if (configFactory.hasPath("mysqldb.host")) configFactory.getString("mysqldb.host") else "localhost:3306"
+  val DB_HOST = if (configFactory.hasPath("mysqldb.host")) configFactory.getString("mysqldb.host") else sys.env.get("DB_HOST").getOrElse("localhost:3306")
   val dbParams = if (configFactory.hasPath("mysqldb.dbParams")) configFactory.getString("mysqldb.dbParams") else ""
   println("!!!!!!!!!!!!!!!DB HOST IS " + DB_HOST)
   val SCHEMA_NAME = if (configFactory.hasPath("mysqldb.schema")) configFactory.getString("mysqldb.schema") else "airline"
