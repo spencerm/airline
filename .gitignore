@@ -5,3 +5,5 @@
 *.vscode
 .idea
 
+/airline-data/airline-data.iml
+/.bash_history

@@ -1,0 +1,44 @@
+networks:
+  airline: {}
+
+volumes:
+  mysql-data: {}
+  airline-target: {}
+
+services:
+  airline-app:
+    container_name: airline-app
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    depends_on:
+      - airline-db
+    volumes:
+      - ".:/home/airline/airline"
+      - "./.docker/data/init.sh:/home/airline/init-data.sh"
+      - "./.docker/data/start.sh:/home/airline/start-data.sh"
+      - "./.docker/web/start.sh:/home/airline/start-web.sh"
+    environment:
+      DB_HOST: airline-db
+    entrypoint: ["tail", "-f", "/dev/null"]
+    ports:
+      - "9000:9000"
+    networks:
+      - airline
+
+  airline-db:
+    image: bitnami/mysql:8.0
+    container_name: airline-db
+    environment:
+      MYSQL_DATABASE: airline
+      MYSQL_USER: mfc01
+      MYSQL_PASSWORD: ghEtmwBdnXYBQH4
+      MYSQL_CHARACTER_SET: utf8mb4
+      MYSQL_COLLATE: utf8mb4_unicode_ci
+      ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - "3306:3306"
+    volumes:
+      - "mysql-data:/var/lib/mysql"
+    networks:
+      - airline
