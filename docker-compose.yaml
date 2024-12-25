@@ -20,6 +20,7 @@ services:
       - "./.docker/web/start.sh:/home/airline/start-web.sh"
     environment:
       DB_HOST: airline-db
+      ES_HOST: airline-search
     entrypoint: ["tail", "-f", "/dev/null"]
 #    ports:
 #      - "9000:9000"
@@ -40,5 +41,13 @@ services:
 #      - "3306:3306"
     volumes:
       - "mysql-data:/var/lib/mysql"
+    networks:
+      - airline
+
+  airline-search:
+    image: elasticsearch:7.17.21
+    container_name: airline-search
+    environment:
+      discovery.type: single-node
     networks:
       - airline
