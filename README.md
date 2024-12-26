@@ -16,7 +16,7 @@ Live at https://myfly.club/
 1. run `cp docker-compose.override.yaml.dist docker-compose.override.yaml` and then edit the new file with your preferred ports. Mysql only has to have exposed ports if you like to connect from outside docker
     1. If you plan to use this anything else than for development, adjust the credentials via environment variables
 2. start the stack with `docker compose up -d` and confirm both containers are running
-3. open a shell inside the container via `docker compose exec airline-app bash`
+3. open a shell inside the container via `docker compose exec -ti airline-app bash`
 4. run the init scripts:
     1. `sh init-data.sh` (might need to run it a couple of times because migration seems to be spotty)
 5. To boot up both front and backend, use the start scripts `sh start-data.sh` and `sh start-web.sh` in separate sessions
