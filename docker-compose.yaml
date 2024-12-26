@@ -18,6 +18,7 @@ services:
       - "./.docker/data/init.sh:/home/airline/init-data.sh"
       - "./.docker/data/start.sh:/home/airline/start-data.sh"
       - "./.docker/web/start.sh:/home/airline/start-web.sh"
+      - "./.docker/web/clean.sh:/home/airline/clean-web.sh"
     environment:
       DB_HOST: airline-db
       ES_HOST: airline-search
