@@ -1,4 +1,11 @@
-FROM exoplatform/jdk:openjdk-11-ubuntu-22 AS base
+FROM ubuntu:22.04 AS base
+
+RUN apt-get update \
+    && apt-get upgrade --yes \
+    && apt-get install --yes openjdk-11-jdk \
+        curl \
+        screen \
+        nano
 
 RUN groupadd -r -g 1000 airline \
     && useradd -u 1000 -r -g 1000 -d /home/airline airline
