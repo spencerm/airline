@@ -987,8 +987,8 @@
 										<div class="table-header" id="linksTableSortHeader">
 											<div class="cell clickable selected" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
 											<div class="cell clickable" style="width: 0%" data-sort-property="lastUpdate" data-sort-order="ascending" id="hiddenLinkSortBy"></div> <!--hidden column for last update (cannot be first otherwise the left round corner would not work -->
-											<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport</div>
-											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
+											<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport <a onclick="toggleTableColumnFilterModal(event, $(this))">(F)</a></div>
+											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model <a onclick="toggleTableColumnFilterModal(event, $(this))">(F)</a></div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="distance" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Distance</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="totalCapacity" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Capacity (Freq.)</div>
 											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalPassengers" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Pax</div>
@@ -5555,6 +5555,17 @@
 	  </div>
   </div>
 
+  <div id="tableColumnFilterModal" class="modal">
+	  <div class="modal-content"  style="width : 400px;">
+		  <span class="close" onclick="closeModal($('#tableColumnFilterModal'))">&times;</span>
+		  <h4>Column Filter</h4>
+		  <div class="columnFilter">
+			  <select id="tableColumnFilterSelect" onchange="tableColumnFilterSelectValue(event)">
+				  <option value="" disabled selected>Filter for Value</option>
+			  </select>
+		  </div>
+	  </div>
+  </div>
 
   <div id="airportAssetDetailsModal" class="modal">
 	  <div class="modal-content" style="width : 600px; max-width: 100%">
@@ -5881,6 +5892,7 @@
   <script src='@routes.Assets.versioned("javascripts/color.js")'></script>
   <script src='@routes.Assets.versioned("javascripts/mobile.js")' defer></script>
   <script src='@routes.Assets.versioned("javascripts/ui-theme.js")'></script>
+  <script src='@routes.Assets.versioned("javascripts/table-utils.js")'></script>
 
   <script src='@routes.Assets.versioned("javascripts/aircraft-config.umd.js")' defer></script>
   <link rel="stylesheet" type="text/css" href='@routes.Assets.versioned("stylesheets/index-CKPGaino.css")'>
