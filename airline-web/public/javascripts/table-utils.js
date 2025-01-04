@@ -10,7 +10,13 @@ function toggleLinksTableFilterRow() {
 }
 
 let linksColumnFilter = {}
+let currentFilterOptionValues = {}
 function updateLinksColumnFilterOptions(values) {
+    if (JSON.stringify(values) === JSON.stringify(currentFilterOptionValues)) {
+        return;
+    }
+    currentFilterOptionValues = values;
+
     Object.entries(values).forEach(([column, rows]) => {
         let selectElement = $('<select>', {
             multiple: "multiple",
