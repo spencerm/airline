@@ -1985,23 +1985,40 @@ function toggleLinksTableSortOrder(sortHeader) {
 function updateLinksTable(sortProperty, sortOrder) {
 	var linksTable = $("#linksCanvas #linksTable")
 	const filterProperty = $(linksTable).data("filter-property")
-	var filterValue = $(linksTable).data("filter-value")
+	const filterValue = $(linksTable).data("filter-value")
 	linksTable.children("div.table-row").remove()
 
 	//sort the list
 	//loadedLinks.sort(sortByProperty(sortProperty, sortOrder == "ascending"))
 	loadedLinks = sortPreserveOrder(loadedLinks, sortProperty, sortOrder == "ascending")
 
+	/*
 	if (filterProperty) {
 		switch (filterProperty) {
 			case "toAirportCode":
 				filterValue = filterValue.match(/\(([^)]+)\)/)[1] || filterValue;
 		}
 	}
+	*/
 
 	$.each(loadedLinks, function(index, link) {
 	    const quality = link.computedQuality > 0 ? link.computedQuality : "-"
 		const row = $("<div class='table-row clickable' onclick='selectLinkFromTable($(this), " + link.id + ")'></div>")
+
+		// pass data for filters
+		$(row).data({
+			'from-airport-id': link.fromAirportId,
+			'from-country-code': link.fromCountryCode,
+			'from-airport-city': link.fromAirportCity,
+			'from-airport-code': link.fromAirportCode,
+			'to-airport-id': link.toAirportId,
+			'to-country-code': link.toCountryCode,
+			'to-airport-city': link.toAirportCity,
+			'to-airport-code': link.toAirportCode,
+			'model-id': link.modelId,
+			'model-name': link.modelName,
+		});
+
 		if (filterProperty !== null) {
 			if (link[filterProperty] !== undefined && link[filterProperty] !== filterValue) {
 				$(row).hide();

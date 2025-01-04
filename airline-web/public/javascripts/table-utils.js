@@ -1,10 +1,7 @@
-function toggleTableColumnFilterModal(event, sender) {
-    event.stopPropagation();
-    const cell = sender.closest('.cell');
-    const property = $(cell).data("sort-property");
-    const index = $(cell).index() - 1;
-    const columnValues = aggregateColumnValues(index);
-    updateTableColumnFilterSelect(columnValues, property)
+function toggleTableColumnFilterModal() {
+    const columnValues = aggregateColumnValues($("#linksTable"));
+    //updateTableColumnFilterSelect(columnValues)
+    updateTableColumnFilterForm(columnValues);
 
     if (!$("#tableColumnFilterModal").is(":visible")) {
         $('#tableColumnFilterModal').fadeIn(500)
@@ -13,22 +10,33 @@ function toggleTableColumnFilterModal(event, sender) {
     }
 }
 
-function aggregateColumnValues(columnIndex) {
-    let aggregatedValues = {};
+function aggregateColumnValues(table) {
+    let aggregatedValues = {
+        airports: {
+            from: {},
+            to: {},
+        },
+        models: {},
+    };
 
     // Loop through each row in the table
-    $("#linksTable").find('.table-row').each(function () {
+    table.find('.table-row').each(function () {
         // Find all cells in the current row
-        const cell = $(this).find('.cell').eq(columnIndex);
 
-        // Get the value from the cell at the specified columnIndex
-        const cellValue = cell.text().trim();
+        const data = $(this).data();
+        console.log("aggregateColumnValues DATA", data);
 
-        if (cellValue) {
-            aggregatedValues[cellValue] = (aggregatedValues[cellValue] || 0) + 1;
+        if (data) {
+            aggregatedValues.airports.from[data.fromCountryCode] = aggregatedValues.airports.from[data.fromCountryCode] || {};
+            aggregatedValues.airports.to[data.toCountryCode] = aggregatedValues.airports.to[data.toCountryCode] || {};
+
+            aggregatedValues.airports.from[data.fromCountryCode][data.fromAirportId] = data.fromAirportCity + ' (' + data.fromAirportCode + ')';
+            aggregatedValues.airports.to[data.toCountryCode][data.toAirportId] = data.toAirportCity + ' (' + data.toAirportCode + ')';
+            aggregatedValues.models[data.modelId] = data.modelName;
         }
     });
 
+    /*
     return Object.entries(aggregatedValues)
         .sort((a, b) => {
             // Sort by count (descending), then alphabetically (ascending)
@@ -38,9 +46,122 @@ function aggregateColumnValues(columnIndex) {
             return b[1] - a[1]; // Count comparison
         })
         .map(entry => ({ value: entry[0], count: entry[1] }));
+     */
+    return aggregatedValues;
 }
 
-function updateTableColumnFilterSelect(values, property) {
+function updateTableColumnFilterForm(values) {
+    const countriesFromForm = $('#tableColumnFilterCountriesFrom');
+    const airportsFromForm = $('#tableColumnFilterAirportsFrom');
+    const countriesToForm = $('#tableColumnFilterCountriesTo');
+    const airportsToForm = $('#tableColumnFilterAirportsTo');
+    const modelsForm = $('#tableColumnFilterModels');
+    countriesFromForm.innerHTML = "";
+    airportsFromForm.innerHTML = "";
+    countriesToForm.innerHTML = "";
+    airportsToForm.innerHTML = "";
+    modelsForm.innerHTML = "";
+
+    console.log("updateTableColumnFilterForm", values);
+
+    Object.entries(values.airports.from).forEach(([countryCode, airportInfo]) => {
+        const flexDiv = $('<div>', { class: 'flex-align-center' }) // Create the parent div
+            .append(
+                $('<input>', {
+                    type: 'checkbox',
+                    name: 'countries-from-'+countryCode,
+                    //class: 'toggleUtilizationRateBox',
+                    //onclick: "toggleUtilizationRate($('#modelConfigurationModal'), $(this))"
+                })
+            )
+            .append(
+                getCountryFlagImg(countryCode)
+            );
+        countriesFromForm.append(flexDiv);
+
+        Object.entries(airportInfo).forEach(([airportId, airportName]) => {
+            const flexDiv = $('<div>', { class: 'flex-align-center' }) // Create the parent div
+                .append(
+                    $('<input>', {
+                        type: 'checkbox',
+                        id: 'airports-from-'+airportId,
+                        name: 'airports-from-'+airportId,
+                        //class: 'toggleUtilizationRateBox',
+                        //onclick: "toggleUtilizationRate($('#modelConfigurationModal'), $(this))"
+                    })
+                )
+                .append(
+                    $('<label>', {
+                        for: 'airports-from-'+airportId,
+                        text: airportName,
+                    })
+                );
+            airportsFromForm.append(flexDiv);
+        })
+    });
+
+    Object.entries(values.airports.to).forEach(([countryCode, airportInfo]) => {
+        const flexDiv = $('<div>', { class: 'flex-align-center' }) // Create the parent div
+            .append(
+                $('<input>', {
+                    type: 'checkbox',
+                    name: 'countries-to-'+countryCode,
+                    //class: 'toggleUtilizationRateBox',
+                    //onclick: "toggleUtilizationRate($('#modelConfigurationModal'), $(this))"
+                })
+            )
+            .append(
+                getCountryFlagImg(countryCode)
+            );
+        countriesToForm.append(flexDiv)
+
+        Object.entries(airportInfo).forEach(([airportId, airportName]) => {
+            const flexDiv = $('<div>', { class: 'flex-align-center' }) // Create the parent div
+                .append(
+                    $('<input>', {
+                        type: 'checkbox',
+                        id: 'airports-to-'+airportId,
+                        name: 'airports-to-'+airportId,
+                        //class: 'toggleUtilizationRateBox',
+                        //onclick: "toggleUtilizationRate($('#modelConfigurationModal'), $(this))"
+                    })
+                )
+                .append(
+                    $('<label>', {
+                        for: 'airports-to-'+airportId,
+                        text: airportName,
+                    })
+                );
+            airportsToForm.append(flexDiv);
+        })
+    });
+
+    Object.entries(values.models).forEach(([modelId, modelName]) => {
+        const flexDiv = $('<div>', { class: 'flex-align-center' }) // Create the parent div
+            .append(
+                $('<input>', {
+                    type: 'checkbox',
+                    name: 'model-'+modelId,
+                    //class: 'toggleUtilizationRateBox',
+                    //onclick: "toggleUtilizationRate($('#modelConfigurationModal'), $(this))"
+                })
+            )
+            .append(
+                $('<label>', {
+                    for: 'model-'+modelId,
+                    text: modelName,
+                })
+                    .append(getAirplaneIconImg(
+                        {isReady: true, condition: 1},
+                        1,
+                        true
+                    ))
+            );
+        modelsForm.append(flexDiv);
+    })
+}
+
+function updateTableColumnFilterSelect(values) {
     const dropdown = document.getElementById('tableColumnFilterSelect');
     dropdown.innerHTML = "";
     const reset = document.createElement("option");
