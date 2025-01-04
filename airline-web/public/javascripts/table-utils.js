@@ -30,7 +30,7 @@ function updateLinksColumnFilterOptions(values) {
 
         // Render Country-Airport
         if (column === "fromAirportCode" || column === "toAirportCode") {
-            Object.entries(rows).forEach(([countryCode, airportRow]) => {
+            Object.entries(rows).sort((a, b) => a[0].localeCompare(b[0])).forEach(([countryCode, airportRow]) => {
                 const countryGroup = $('<option>', {
                     value: countryCode,
                     style: `background: left no-repeat url(${getCountryFlagUrl(countryCode)}); padding-left: 30px; font-weight: bold`,
@@ -38,7 +38,7 @@ function updateLinksColumnFilterOptions(values) {
                 });
                 selectElement.append(countryGroup);
 
-                Object.entries(airportRow).forEach(([airportCode, airportCity]) => {
+                Object.entries(airportRow).sort((a, b) => a[0].localeCompare(b[0])).forEach(([airportCode, airportCity]) => {
                     const airport = $('<option>', { value: countryCode + '-' + airportCode, text: airportCity });
                     selectElement.append(airport);
                 });
@@ -74,7 +74,7 @@ function updateLinksColumnFilterOptions(values) {
                 updateLinksTable(selectedSortHeader.data('sort-property'), selectedSortHeader.data('sort-order'))
             });
         } else {
-            Object.entries(rows).forEach(([key, value]) => {
+            Object.entries(rows).sort((a, b) => a[0].localeCompare(b[0])).forEach(([key, value]) => {
                 const airport = $('<option>', { value: key, text: value });
                 selectElement.append(airport);
             });
