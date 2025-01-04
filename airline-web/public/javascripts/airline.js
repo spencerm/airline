@@ -2047,9 +2047,9 @@ function updateLinksTable(sortProperty, sortOrder) {
 		linksTable.append(row)
 	});
 	if (loadedLinks.length == 0) {
-        $('#linksCanvas .noLinkTips').show();
+		$('#linksCanvas .noLinkTips').show();
 	} else {
-	    $('#linksCanvas .noLinkTips').hide();
+		$('#linksCanvas .noLinkTips').hide();
 		updateLinksColumnFilterOptions(filterOptionValues);
 	}
 
