@@ -981,14 +981,15 @@
 						<div class="section tight">
 							<div style="height: 20px; text-align: left;">
 								<img src='@routes.Assets.versioned("images/icons/clock-frame.png")' class="button" title="Sort by last updated" onclick="toggleLinksTableSortOrder($('#hiddenLinkSortBy'))" style="vertical-align: text-bottom">
+								<img src='@routes.Assets.versioned("images/icons/funnel.png")' class="button" title="Show / Hide Filter Row" onclick="toggleLinksTableFilterRow()" style="vertical-align: text-bottom">
 							</div>
 								<div class="table-container-x">
 									<div class="table data" style="min-width: 920px; height: 20px;">
 										<div class="table-header" id="linksTableSortHeader">
 											<div class="cell clickable selected" style="width: 16%" data-sort-property="fromAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">From Airport</div>
 											<div class="cell clickable" style="width: 0%" data-sort-property="lastUpdate" data-sort-order="ascending" id="hiddenLinkSortBy"></div> <!--hidden column for last update (cannot be first otherwise the left round corner would not work -->
-											<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport <a onclick="toggleTableColumnFilterModal()">(F)</a></div>
-											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model <a onclick="toggleTableColumnFilterModal()">(F)</a></div>
+											<div class="cell clickable" style="width: 16%" data-sort-property="toAirportCode" data-sort-order="descending" onclick="toggleLinksTableSortOrder($(this))">To Airport</div>
+											<div class="cell clickable" style="width: 14%" data-sort-property="model" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Model</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="distance" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Distance</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="totalCapacity" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Capacity (Freq.)</div>
 											<div class="cell clickable" style="width: 4%" align="right" data-sort-property="totalPassengers" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Pax</div>
@@ -999,6 +1000,22 @@
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="revenue" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Revenue</div>
 											<div class="cell clickable" style="width: 8%" align="right" data-sort-property="profit" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Profit</div>
 											<div class="cell clickable" style="width: 6%" align="right" data-sort-property="profitMargin" data-sort-order="ascending" onclick="toggleLinksTableSortOrder($(this))">Margin</div>
+										</div>
+										<div class="table-header" id="linksTableFilterHeader" style="display: none;">
+											<div class="cell" style="width: 16%" data-filter-property="fromAirportCode">&nbsp;</div>
+											<div class="cell" style="width: 0%"></div>
+											<div class="cell" style="width: 16%" data-filter-property="toAirportCode">&nbsp;</div>
+											<div class="cell" style="width: 14%" data-filter-property="modelId">&nbsp;</div>
+											<div class="cell" style="width: 8%">&nbsp;</div>
+											<div class="cell" style="width: 8%">&nbsp;</div>
+											<div class="cell" style="width: 4%">&nbsp;</div>
+											<div class="cell" style="width: 4%">&nbsp;</div>
+											<div class="cell" style="width: 3%">&nbsp;</div>
+											<div class="cell" style="width: 5%">&nbsp;</div>
+											<div class="cell" style="width: 5%">&nbsp;</div>
+											<div class="cell" style="width: 8%">&nbsp;</div>
+											<div class="cell" style="width: 8%">&nbsp;</div>
+											<div class="cell" style="width: 6%">&nbsp;</div>
 										</div>
 									</div>
 									<div class="table-container-y" style="min-width: 920px;">
