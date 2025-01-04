@@ -1,11 +1,21 @@
-let showFilterRow = false;
+let showFilterRowState = 0;
 function toggleLinksTableFilterRow() {
-    if (showFilterRow) {
-        $("#linksTableFilterHeader").hide();
-        showFilterRow = false;
-    } else {
-        $("#linksTableFilterHeader").show();
-        showFilterRow = true;
+    const header = $("#linksTableFilterHeader");
+    switch (showFilterRowState) {
+        case 0:
+            header.show();
+            header.css("height", "200px");
+            showFilterRowState = 1;
+            break;
+        case 1:
+            header.show();
+            header.css("height", "600px");
+            showFilterRowState = 2;
+            break;
+        default:
+            header.hide();
+            header.css("height", "200px");
+            showFilterRowState = 0;
     }
 }
 
@@ -20,7 +30,7 @@ function updateLinksColumnFilterOptions(values) {
     Object.entries(values).forEach(([column, rows]) => {
         let selectElement = $('<select>', {
             multiple: "multiple",
-            style: "width: 100%; background: transparent"
+            style: "width: 100%; height: 100%; background: transparent"
         });
         selectElement.append($('<option>', {
             value: "",
