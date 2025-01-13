@@ -1158,6 +1158,8 @@ object AirportFeaturePatcher extends App {
 
     list -= "HND"
     list -= "CGO" //China
+    list += "VTE"
+    list -= "PKZ"
     list -= "OSS" //Uzbekistan
     list += "FRU"
     list -= "LHE" //Pakistan
