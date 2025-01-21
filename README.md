@@ -12,17 +12,29 @@ Live at https://myfly.club/
 - Sbt
 
 ## Setup
-
-1. Create MySQL database to match values defined here: (https://github.com/patsonluk/airline/blob/master/airline-data/src/main/scala/com/patson/data/Constants.scala#L184)
+1. Create MySQL database matching values defined [here](https://github.com/patsonluk/airline/blob/master/airline-data/src/main/scala/com/patson/data/Constants.scala#L184).
+1. Define sbt JVM minimum resoures by setting `export SBT_OPTS="-Xms2g -Xmx8g"` in your CLI. Depending how you're running Java, you may need to enable more memory elsewhere too.
 1. Navigate to `airline-data` and run `sbt publishLocal`. If you see [encoding error](https://github.com/patsonluk/airline/issues/267), add character-set-server=utf8mb4 to your /etc/my.cnf and restart mysql. it's a unicode characters issue, see https://stackoverflow.com/questions/10957238/incorrect-string-value-when-trying-to-insert-utf-8-into-mysql-via-jdbc
 1. In `airline-data`, run `sbt run`, 
     1. Then, choose the one that runs `MainInit`. It will take awhile to init everything.
-1. Set `google.mapKey` in [`application.conf`](https://github.com/patsonluk/airline/blob/master/airline-web/conf/application.conf#L69) with ur google map API key value. Be careful with setting budget and limit, google gives some free credit but it CAN go over and you might get charged!
+1. Set `google.mapKey` in [`application.conf`](https://github.com/patsonluk/airline/blob/master/airline-web/conf/application.conf#L69) with your google map API key value. Be careful with setting budget and limit, google gives some free credit but it CAN go over and you might get charged!
 1. For the "Flight search" function to work, install elastic search 7.x, see https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html . For windows, I recommand downloading the zip archive and just unzip it - the MSI installer did not work on my PC
 1. For airport image search and email service for user pw reset - refer to https://github.com/patsonluk/airline/blob/master/airline-web/README
-1. Now run the background simulation by staying in `airline-data`, run `activator run`, select option `MainSimulation`. It should now run the backgroun simulation
-1. Open another terminal, navigate to `airline-web`, run the web server by `activator run`
+1. Now run the background simulation by staying in `airline-data`, run `sbt run`, select option `MainSimulation`. It should run the background simulation.
+1. Open another terminal, navigate to `airline-web`, run the web server by `sbt run`
 1. The application should be accessible at `localhost:9000`
+
+## Alternate Docker Setup
+1. Install Docker & Docker-compose
+1. run `cp docker-compose.override.yaml.dist docker-compose.override.yaml` and then edit the new file with your preferred ports. Mysql only has to have exposed ports if you like to connect from outside docker
+   1. If you plan to use this anything else than for development, adjust the credentials via environment variables
+2. start the stack with `docker compose up -d` and confirm both containers are running
+3. open a shell inside the container via `docker compose exec airline-app bash`
+4. run the init scripts:
+   1. `sh init-data.sh` (might need to run it a couple of times because migration seems to be spotty)
+5. To boot up both front and backend, use the start scripts `sh start-data.sh` and `sh start-web.sh` in separate sessions
+6. The application should be accessible at your hosts ip address and port 9000. If docker networks aren't limited by firewalls or network settings, it should be available without any reverse-proxying. (Dev only!)
+
 
 ## Nginx Proxy w/ Cloudflare HTTPS
 
@@ -79,12 +91,5 @@ server {
 }
 ```
 
-## Banners
-
-Self notes, too much trouble for other people to set it up right now. Just do NOT enable the banner. (disabled by default, to enable change `bannerEnabled` in `application.conf`
-
-For the banners to work properly, need to setup google photo API. Download the oauth json and put it under airline-web/conf. Then run the app, the log should show an oauth url, use it, then it should generate a token under airline-web/google-tokens. Now for server deployment, copy the oauth json `google-oauth-credentials.json` to `conf` AND the google-tokens (as folder) to the root of `airline-web`.
-
 ## Attribution
 1. Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/). Licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/)
-1. Flag icons by [famfamfam](https://github.com/legacy-icons/famfamfam-flags)

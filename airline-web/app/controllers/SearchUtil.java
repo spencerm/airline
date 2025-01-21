@@ -537,10 +537,12 @@ public class SearchUtil {
 
 
 	private static RestHighLevelClient getClient() {
+		String esHost = System.getenv().getOrDefault("ES_HOST", "localhost");
+		System.out.println("!!!!!!!!!!!!!!!ES HOST IS " + esHost);
 		RestHighLevelClient client = new RestHighLevelClient(
 				RestClient.builder(
-						new HttpHost("localhost", 9200, "http"),
-						new HttpHost("localhost", 9201, "http")));
+						new HttpHost(esHost, 9200, "http"),
+						new HttpHost(esHost, 9201, "http")));
 		return client;
 	}
 }
