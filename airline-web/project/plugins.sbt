@@ -3,6 +3,8 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.3")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
+ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
+
 // web plugins
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-coffeescript" % "1.0.2")
