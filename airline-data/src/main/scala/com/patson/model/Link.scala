@@ -101,6 +101,10 @@ case class Link(from : Airport, to : Airport, airline: Airline, price : LinkClas
     getOfficeStaffRequired(from, to, futureFrequency(), futureCapacity())
   }
 
+  lazy val getFutureOfficeStaffMinimizedRequired : Int = { //yike, to counter people that exploit the min airplane config
+    getOfficeStaffRequired(from, to, futureFrequency(), futureCapacity(minimized = true))
+  }
+
   lazy val getFutureOfficeStaffBreakdown : StaffBreakdown = {
     getOfficeStaffBreakdown(from, to, futureFrequency(), futureCapacity())
   }
@@ -137,10 +141,13 @@ case class Link(from : Airport, to : Airport, airline: Airline, price : LinkClas
     frequencyByClassLoaded = true
   }
 
-  def futureCapacity() = {
+  def futureCapacity(minimized : Boolean = false) = {
     var futureCapacity = LinkClassValues.getInstance()
     assignedAirplanes.foreach {
-      case(airplane, assignment) => futureCapacity = futureCapacity + (LinkClassValues(airplane.configuration.economyVal, airplane.configuration.businessVal, airplane.configuration.firstVal) * assignment.frequency)
+      case(airplane, assignment) => {
+        val configuration = if (minimized) airplane.configuration.minimized else airplane.configuration
+        futureCapacity = futureCapacity + (LinkClassValues(configuration.economyVal, configuration.businessVal, configuration.firstVal) * assignment.frequency)
+      }
     }
     futureCapacity
   }

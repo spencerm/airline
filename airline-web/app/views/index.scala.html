@@ -3837,8 +3837,10 @@
     <!-- popups and overlay buttons below. Hidden by default -->
     <div style="display: none; width: 100%; white-space: normal;" id="airportPopup" class="mapPopup">
     	<input type="hidden" id="airportPopupId">
-		<p class="airportPopupName"><strong class="iata" id="airportPopupIata"></strong><span id="airportPopupName"></span><span id="airportPopupCustomsIcon"></span></p>
-		<h4 id="airportPopupCity"></h4>
+    	<div>
+    		<h4 style="margin-bottom: 0px"><span id="airportPopupName"></span>&nbsp;(<span id="airportPopupIata"></span>)</h4>
+    	</div>
+		<h5><span id="airportPopupCity" style="display:inline-flex; align-items: center;"></span>(<span id="airportPopupZone"></span>)&nbsp;<span id="airportPopupOpennessIcon"></span></h5>
     	<div id="airportIcons" class="airportFeatures">
     		<img title="Your Headquarter" src='@routes.Assets.versioned("images/icons/building-hedge.png")' id="popupHeadquarterIcon" class="baseIcon" style="display: none">
     		<img title="Your Base" src='@routes.Assets.versioned("images/icons/building-low.png")' id="popupBaseIcon" class="baseIcon" style="display:none">

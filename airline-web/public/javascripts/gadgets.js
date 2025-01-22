@@ -429,6 +429,21 @@ function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway
 	return "" + description + "&nbsp;<img src='assets/images/icons/" + icon + "'/>"
 }
 
+
+function getOpennessIcon(openness) {
+	var description
+	var icon
+	if (openness >= 7) {
+		description = "Opened Market"
+		icon = "globe--plus.png"
+	} else {
+		description = "No International Connection"
+		icon = "globe--exclamation.png"
+    }
+	return "<img src='assets/images/icons/" + icon + "' title='" + description + "' style='vertical-align: middle;'/>"
+}
+
+
 function scrollToRow($matchingRow, $container) {
     var row = $matchingRow[0]
     var baseOffset = $container.find(".table-row")[0].offsetTop //somehow first row is not 0...
