@@ -410,7 +410,7 @@ function getOpennessIcon(openness, size=null, isDomesticAirport=false, isGateway
 	return "<img src='assets/images/icons/" + icon + "' title='" + description + "'/>"
 }
 
-function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway=false) {
+function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway=false, iconOnly=false) {
 	var description
 	var icon
     if (size && size <= 2 && ! isGateway ){
@@ -426,23 +426,8 @@ function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway
 		description = "No International to International Connections"
 		icon = "globe--exclamation.png"
 	}
-	return "" + description + "&nbsp;<img src='assets/images/icons/" + icon + "'/>"
+	return iconOnly ? "<img src='assets/images/icons/" + icon + "' title='" + description + "'/>" : "" + description + "&nbsp;<img src='assets/images/icons/" + icon + "'/>"
 }
-
-
-function getOpennessIcon(openness) {
-	var description
-	var icon
-	if (openness >= 7) {
-		description = "Opened Market"
-		icon = "globe--plus.png"
-	} else {
-		description = "No International Connection"
-		icon = "globe--exclamation.png"
-    }
-	return "<img src='assets/images/icons/" + icon + "' title='" + description + "' style='vertical-align: middle;'/>"
-}
-
 
 function scrollToRow($matchingRow, $container) {
     var row = $matchingRow[0]

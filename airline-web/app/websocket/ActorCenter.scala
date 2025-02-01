@@ -220,7 +220,7 @@ object ActorCenter {
   val remoteConfig = configFactory.getConfig(REMOTE_SYSTEM_NAME)
   val remoteSystem = ActorSystem(REMOTE_SYSTEM_NAME, remoteConfig)
 
-  val actorHost = if (configFactory.hasPath("sim.pekko-actor.host")) configFactory.getString("sim.pekko-actor.host") else "127.0.0.1:7355"
+  val actorHost = if (configFactory.hasPath("sim.pekko-actor.host")) configFactory.getString("sim.pekko-actor.host") else "127.0.0.1:2552 "
   println("!!!!!!!!!!!!!!!AKK ACTOR HOST IS " + actorHost)
 
   val subscribers = mutable.HashSet[ActorRef]()

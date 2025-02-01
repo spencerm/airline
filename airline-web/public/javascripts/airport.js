@@ -715,9 +715,8 @@ function addMarkers(airports) {
 				  updateBaseInfo(this.airport.id)
 			  }
 			  $("#airportPopupName").text(this.airport.name)
-			  let $opennessIcon = $(getOpennessIcon(loadedCountriesByCode[this.airport.countryCode].openness))
-			  $opennessIcon.css('vertical-align', 'middle');
-			  $("#airportPopupOpennessIcon").html($opennessIcon)
+			  let $opennessIcon = $(getOpennessSpan(loadedCountriesByCode[this.airport.countryCode].openness, this.airport.size, this.airport.isDomesticAirport, this.airport.isGateway, true))
+			  $("#airportPopupCustomsIcon").html($opennessIcon)
 			  $("#airportPopupIata").text(this.airport.iata)
 			  $("#airportPopupCity").html(this.airport.city + "&nbsp;" + getCountryFlagImg(this.airport.countryCode))
 //			  $("#airportPopupZone").text(zoneById[this.airport.zone])

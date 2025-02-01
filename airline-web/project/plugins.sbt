@@ -6,8 +6,6 @@ addSbtPlugin("com.github.sbt" % "sbt-less" % "2.0.1")
 // Resolves similar issue to https://stackoverflow.com/questions/76693403/scala-play-dependency-issue
 ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
 
-ThisBuild / libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always
-
 // web plugins
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-coffeescript" % "1.0.2")
