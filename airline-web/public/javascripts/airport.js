@@ -1131,13 +1131,28 @@ function updateAirportBaseMarkers(newBaseAirports, relatedFlightPaths) {
     baseMarkers = []
     var headquarterMarkerIcon = $("#map").data("headquarterMarker")
     var baseMarkerIcon = $("#map").data("baseMarker")
+	var baseAllianceIcon = $("#map").data("baseallianceMarker")
+	var baseAllianceHQIcon = $("#map").data("baseallianceHQMarker")
+
     $.each(newBaseAirports, function(key, baseAirport) {
+		if(!baseAirport) return;
         var marker = markers[baseAirport.airportId]
-        if (baseAirport.headquarter) {
-            marker.setIcon(headquarterMarkerIcon)
-        } else {
-            marker.setIcon(baseMarkerIcon)
-        }
+		
+		if(baseAirport.airlineId !== activeAirline.id) {
+			if (baseAirport.headquarter) {
+				marker.setIcon(baseAllianceHQIcon)
+			} else {
+				marker.setIcon(baseAllianceIcon)
+			}
+		}
+
+		else {
+			if (baseAirport.headquarter) {
+				marker.setIcon(headquarterMarkerIcon)
+			} else {
+				marker.setIcon(baseMarkerIcon)
+			}
+		}
         marker.setZIndex(999)
         marker.isBase = true
         marker.setVisible(true)
@@ -1505,3 +1520,58 @@ function showGenericTransitModal() {
     }
     $('#genericTransitModal').fadeIn(200)
 }
+
+
+let  _toggleState_AllianceBaseMapView = false;
+
+async function toggleAllianceBaseMapViewButton (state) {
+   
+    let alliancesDetails;
+    let allianceBases;
+    let alliancesId;
+    let airlineId;
+    
+    //Allow toggle using parameter
+    const toggleState = state || !_toggleState_AllianceBaseMapView
+    _toggleState_AllianceBaseMapView = !_toggleState_AllianceBaseMapView
+
+    
+    if(activeAirline) {
+        //airline is not in alliance so stop here
+        if(!activeAirline.allianceId) return;
+        alliancesId = activeAirline.allianceId
+        airlineId = activeAirline.id
+    }   
+
+    //if on turn off toggleState = false
+    if(!toggleState) return updateAirportMarkers(activeAirline);
+    
+    // if off turn on toggleState = ture
+    try {
+        const res = await fetch(`alliances/${alliancesId}/details`)
+        if(!res.ok) throw new Error('Fetch not okay');
+        if(res.status !== 200) throw new Error('Fetch not 200')
+        alliancesDetails = await res.json()
+    }
+    catch(error) {
+        console.error(error)
+    }
+
+    if(alliancesDetails) {
+        //FlatMap
+        //Get the alliance member details and put all the members bases in to one array
+        //This saves us loopping over the array twice and is a bit faster
+        allianceBases = alliancesDetails.members.flatMap(member => {
+			if(member.role !== 'APPLICANT') {
+				return member.bases
+			}
+		})
+    }
+
+    if(allianceBases) {
+        updateAirportBaseMarkers(allianceBases, [], true)
+    }
+}
+
+
+

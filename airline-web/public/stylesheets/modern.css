@@ -374,6 +374,9 @@ html[data-theme="dark"] :is(.gm-fullscreen-control img, .gmnoprint div button im
 #map #toggleMapLightButton {
 	top: 330px
 }
+#map #toggleAllianceBaseMapViewButton {
+	top: 377px
+}
 #map .gm-svpc {
 	position: fixed !important;
 	top: 136px !important;
