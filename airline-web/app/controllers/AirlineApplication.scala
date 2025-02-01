@@ -67,7 +67,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       "skipTutorial" -> JsBoolean(airline.isSkipTutorial),
       "initialized" -> JsBoolean(airline.isInitialized))
       
-      airline.getCountryCode.foreach { countryCode =>
+      airline.getCountryCode().foreach { countryCode =>
         values = values :+ ("countryCode" -> JsString(countryCode))
       }
 
@@ -180,7 +180,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
     val alliances = AllianceSource.loadAllAlliances().map(alliance => (alliance.id, alliance)).toMap
     Ok(Json.toJson(airlinesByUser.toList.map {
-      case(airline, user) => (airline, user, userStatusMap.get(user), airline.getAllianceId.map(alliances(_)), airlineModifiers.getOrElse(airline.id, List.empty), request.user.isAdmin)
+      case(airline, user) => (airline, user, userStatusMap.get(user), airline.getAllianceId().map(alliances(_)), airlineModifiers.getOrElse(airline.id, List.empty), request.user.isAdmin)
     })).withHeaders(
       ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:9000",
       "Access-Control-Allow-Credentials" -> "true"
@@ -263,7 +263,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
 
         val targetBase = existingBase match {
           case Some(base) => base.copy(scale = base.scale + 1)
-          case None => AirlineBase(airline = request.user, airport = airport, countryCode = airport.countryCode, scale = 1, foundedCycle = CycleSource.loadCycle(), headquarter = request.user.getHeadQuarter.isEmpty)
+          case None => AirlineBase(airline = request.user, airport = airport, countryCode = airport.countryCode, scale = 1, foundedCycle = CycleSource.loadCycle(), headquarter = request.user.getHeadQuarter().isEmpty)
         }
 
         result = result + ("targetBase" -> Json.toJson(targetBase))
@@ -293,7 +293,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   def getBaseRejection(airline : Airline, targetBase : AirlineBase) : Option[String] = {
     val airport = targetBase.airport
     val cost = targetBase.getValue
-    if (cost > airline.getBalance) {
+    if (cost > airline.getBalance()) {
       return Some("Not enough cash to build/upgrade the base")
     }
     if (targetBase.scale < 1) {
@@ -361,7 +361,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
         val cost = newLounge.getValue - lounge.getValue
         (cost, newLounge, inputFacility.level - lounge.level)
       case None =>
-        val newLounge = Lounge(airline, airline.getAllianceId, airport, name = inputFacility.name, level = 1, LoungeStatus.ACTIVE, CycleSource.loadCycle())
+        val newLounge = Lounge(airline, airline.getAllianceId(), airport, name = inputFacility.name, level = 1, LoungeStatus.ACTIVE, CycleSource.loadCycle())
         val cost = newLounge.getValue
         (cost, newLounge, inputFacility.level)
      }
@@ -385,7 +385,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       cost = 0
     }
 
-    if (cost > 0 && cost > airline.getBalance) {
+    if (cost > 0 && cost > airline.getBalance()) {
       return Consideration(cost, newLounge, Some("Not enough cash to build/upgrade the lounge"))
     }
 
@@ -647,7 +647,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
             loungeJson + ("profit" -> JsNumber(profit))
           case None =>
             //Ok(Json.obj())
-            Json.toJson(Lounge(airline = airline, allianceId = airline.getAllianceId, airport = airport, name = "", level = 0, status = LoungeStatus.INACTIVE, foundedCycle = 0)).asInstanceOf[JsObject]
+            Json.toJson(Lounge(airline = airline, allianceId = airline.getAllianceId(), airport = airport, name = "", level = 0, status = LoungeStatus.INACTIVE, foundedCycle = 0)).asInstanceOf[JsObject]
         }
 
 
@@ -993,7 +993,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
  }
 
   def uploadLogo(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
-    if (request.user.getReputation < 40) {
+    if (request.user.getReputation() < 40) {
       Ok(Json.obj("error" -> JsString("Cannot upload img at current reputation"))) //have to send ok as the jquery plugin's error cannot read the response
     } else {
       request.body.asMultipartFormData.map { data =>
@@ -1016,7 +1016,7 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
   }
 
   def uploadLivery(airlineId : Int) = AuthenticatedAirline(airlineId) { request =>
-    if (request.user.getReputation < 40) {
+    if (request.user.getReputation() < 40) {
       Ok(Json.obj("error" -> JsString("Cannot upload img at current reputation"))) //have to send ok as the jquery plugin's error cannot read the response
     } else {
       request.body.asMultipartFormData.map { data =>

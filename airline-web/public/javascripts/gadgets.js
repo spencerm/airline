@@ -410,7 +410,7 @@ function getOpennessIcon(openness, size=null, isDomesticAirport=false, isGateway
 	return "<img src='assets/images/icons/" + icon + "' title='" + description + "'/>"
 }
 
-function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway=false) {
+function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway=false, iconOnly=false) {
 	var description
 	var icon
     if (size && size <= 2 && ! isGateway ){
@@ -426,7 +426,7 @@ function getOpennessSpan(openness, size=null, isDomesticAirport=false, isGateway
 		description = "No International to International Connections"
 		icon = "globe--exclamation.png"
 	}
-	return "" + description + "&nbsp;<img src='assets/images/icons/" + icon + "'/>"
+	return iconOnly ? "<img src='assets/images/icons/" + icon + "' title='" + description + "'/>" : "" + description + "&nbsp;<img src='assets/images/icons/" + icon + "'/>"
 }
 
 function scrollToRow($matchingRow, $container) {
