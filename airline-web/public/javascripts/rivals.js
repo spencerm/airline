@@ -322,8 +322,7 @@ function updateRivalChampionedAirportsDetails(airlineId) {
 	    contentType: 'application/json; charset=utf-8',
 	    dataType: 'json',
 	    success: function(championedInfo) {
-	        var championedAirports = championedInfo.airports
-	    	$(championedAirports).each(function(index, championDetails) {
+	    	$(championedInfo).each(function(index, championDetails) {
                 var row = $("<div class='table-row clickable' data-link='airport' onclick=\"showAirportDetails('" + championDetails.airportId + "');\"></div>")
                 row.append("<div class='cell'>" + getRankingImg(championDetails.ranking) + "</div>")
                 row.append("<div class='cell'>" + getCountryFlagImg(championDetails.countryCode) + championDetails.airportText + "</div>")
