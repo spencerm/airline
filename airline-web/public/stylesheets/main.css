@@ -662,7 +662,7 @@ img.button:hover {
     opacity: 1;
 }
 
-//streetview button
+/*streetview button*/
 button.gm-svpc {
     display: none;
 }
@@ -670,7 +670,7 @@ button.gm-svpc {
 .airportPopupName {
     font-size: 14px;
     line-height: 1.02;
-    padding: 0 4px 6px 0;
+    padding: 0 18px 6px 0;
 }
 
 #airportPopupName {
@@ -689,9 +689,13 @@ button.gm-svpc {
 
 /*google map button styles*/
 .gm-ui-hover-effect {
-    position: absolute;
-	top: 0 !important;
-	right: 0 !important
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important
+}
+
+.gm-style-iw-chr {
+    height: 4px;
 }
 
 .gm-style .gm-style-iw-c {
