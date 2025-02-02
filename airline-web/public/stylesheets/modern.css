@@ -202,6 +202,7 @@ html[data-theme="dark"] [title="Close"] > span {
 .gm-fullscreen-control, .googleMapIcon, .gm-svpc, .gm-control-active {
 	background: var(--background-1) !important;
 	right: -6px !important;
+	left: unset !important;
 }
 /* this was the only way to select these that i could find */
 /* zoom buttons */
@@ -222,10 +223,6 @@ input, .select-css {
 }
 .planLinkPrice {
 	width: 64px
-}
-.gm-ui-hover-effect {
-	top: 0 !important;
-	right: 0 !important
 }
 .mapPopup * {
 	color: var(--color-1) !important

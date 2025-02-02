@@ -687,11 +687,23 @@ button.gm-svpc {
   flex-wrap: wrap;
 }
 
+//google map button styles
+.gm-ui-hover-effect {
+    position: absolute;
+	top: 0 !important;
+	right: 0 !important
+}
+
 .gm-style .gm-style-iw-c {
     padding: 12px !important;
 }
 
+.gm-style-iw-d {
+    max-height: unset !important;
+}
+
 .gm-style-iw {
+    max-height: unset !important;
 	overflow: hidden !important;
 	line-height: 1.35;
 	white-space: nowrap;
