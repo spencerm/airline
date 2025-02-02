@@ -1161,8 +1161,8 @@ function updateAirportBaseMarkers(newBaseAirports, relatedFlightPaths) {
     baseMarkers = []
     var headquarterMarkerIcon = $("#map").data("headquarterMarker")
     var baseMarkerIcon = $("#map").data("baseMarker")
-	var baseAllianceIcon = $("#map").data("baseallianceMarker")
-	var baseAllianceHQIcon = $("#map").data("baseallianceHQMarker")
+	var baseAllianceIcon = $("#map").data("baseAllianceMarker")
+	var baseAllianceHQIcon = $("#map").data("baseAlliancehqMarker")
 
     $.each(newBaseAirports, function(key, baseAirport) {
 		if(!baseAirport) return;
