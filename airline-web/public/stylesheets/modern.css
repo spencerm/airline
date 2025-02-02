@@ -202,7 +202,9 @@ html[data-theme="dark"] [title="Close"] > span {
 .gm-fullscreen-control, .googleMapIcon, .gm-svpc, .gm-control-active {
 	background: var(--background-1) !important;
 	right: -6px !important;
-	left: unset !important;
+}
+.googleMapIcon {
+    left: unset !important;
 }
 /* this was the only way to select these that i could find */
 /* zoom buttons */
