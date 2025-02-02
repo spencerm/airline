@@ -687,7 +687,7 @@ button.gm-svpc {
   flex-wrap: wrap;
 }
 
-//google map button styles
+/*google map button styles*/
 .gm-ui-hover-effect {
     position: absolute;
 	top: 0 !important;
