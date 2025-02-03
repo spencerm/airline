@@ -452,7 +452,7 @@ var currentTickTimer
 var tickTimerCreator
 
 function updateTime(cycle, fraction, cycleDurationEstimation) {
-	$(".currentTime").attr("title", "Current Cycle: " + cycle)
+	$(".currentTime").attr("title", "Day " + Math.floor(cycle / 48) + " & " + cycle % 48 + " cycles")
 	gameTimeStart = (cycle + fraction) * totalmillisecPerWeek
 
     var initialDurationTillNextTick
@@ -482,7 +482,7 @@ function updateTime(cycle, fraction, cycleDurationEstimation) {
 
         var currentGameTime = gameTimeStart + wallClockDurationSinceStart * timeMultiplier
         var currentGameDate = new Date(currentGameTime)
-        $(".currentTime").text("(" + days[currentGameDate.getDay()] + ") " + padBefore(currentGameDate.getMonth() + 1, "0", 2) + '/' + padBefore(currentGameDate.getDate(), "0", 2) +  " " + padBefore(currentGameDate.getHours(), "0", 2) + ":00")
+        $(".currentTime").text(padBefore(Math.floor(cycle / 48) + "." + cycle % 48, 2))
 
         if (hasTickEstimation) {
           var minutesLeft = Math.round(durationTillNextTick / 1000 / 60)

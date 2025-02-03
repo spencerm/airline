@@ -18,8 +18,6 @@ var wsUri = wsProtocol + "//" +  window.location.hostname + ":" + port + "/wsWit
 var websocket;
 var selectedAirlineId
 
-$( document ).ready(function() {})
-
 function checkWebSocket(selectedAirlineId) {
     if (websocket.readyState === WebSocket.CLOSED) {
         connectWebSocket(selectedAirlineId)
